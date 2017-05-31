@@ -12,7 +12,7 @@ public class Player : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		currentPosition = 0;
+		currentPosition = this.currentPosition;
 		Move(dice);
 		
 	}
@@ -36,6 +36,9 @@ public class Player : MonoBehaviour {
 			float currenty = this.transform.position.y;
 
 			this.transform.Translate(new Vector2(nextSquare.transform.position.x - currentx + 1, nextSquare.transform.position.y - currenty));
+
+	
+			this.transform.position = transform.position;
 
 			currentPosition++;
 			yield return new WaitForSeconds (1);
