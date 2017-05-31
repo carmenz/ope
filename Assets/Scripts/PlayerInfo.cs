@@ -5,18 +5,18 @@ using UnityEngine;
 public class PlayerInfo : MonoBehaviour {
 
 
-	string username;
-	string characterType;
-	int totalScore;
+    string username;
+    string characterType;
+    int totalScore;
 
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    // Use this for initialization
+    void Start () {
+        
+    }
+    
+    // Update is called once per frame
+    void Update () {
+        
+    }
 }
