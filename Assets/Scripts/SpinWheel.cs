@@ -26,7 +26,7 @@ public class SpinWheel : MonoBehaviour {
 
 		Sequence spinSequence = DOTween.Sequence ();  
 		spinSequence.SetEase (Ease.OutCirc)
-		.Append (transform.DORotate (new Vector3 (0, 0, val), 3, RotateMode.FastBeyond360));
+			.Append (transform.DORotate (new Vector3 (0, 0, val), 3, RotateMode.FastBeyond360));
 
 	}
 
