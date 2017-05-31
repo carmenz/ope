@@ -12,17 +12,6 @@ public class Player : MonoBehaviour {
     int dice = 5;
 
 
-	// Use this for initialization
-	void Start () {
-		currentPosition = this.currentPosition;
-		Move(dice);
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
 
     // Use this for initialization
     void Start () {
