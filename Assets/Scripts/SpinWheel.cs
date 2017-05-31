@@ -20,10 +20,6 @@ public class SpinWheel : MonoBehaviour {
 
 	}
 
-	void Move(int chance) {
-		player.GetComponent<Player>().Move(chance);
-	}
-
 	public void RandomFunc() {
 		int num = (int)Random.Range (1f, 7f);
 		print(num);
@@ -33,7 +29,7 @@ public class SpinWheel : MonoBehaviour {
 		Sequence spinSequence = DOTween.Sequence ();  
 		spinSequence.SetEase (Ease.OutCirc)
 			.Append (transform.DORotate (new Vector3 (0, 0, val), 3, RotateMode.FastBeyond360))
-			.OnComplete(() => Move(num));
+			.OnComplete(() => player.GetComponent<Player>().Move(num));
 	}
 
 
