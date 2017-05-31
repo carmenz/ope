@@ -4,47 +4,47 @@ using UnityEngine;
 
 public class BoardManager : MonoBehaviour {
 
-	public static List<GameObject> Squares = new List<GameObject>();
+    public static List<GameObject> Squares = new List<GameObject>();
 
-	// Use this for initialization
-	void Awake () {
-		foreach (Transform child in transform)
-		{
-			if (child.tag == "Square")
-			{
-				Squares.Add(child.gameObject);
-			}
-		}
+    // Use this for initialization
+    void Awake () {
+        foreach (Transform child in transform)
+        {
+            if (child.tag == "Square")
+            {
+                Squares.Add(child.gameObject);
+            }
+        }
 
-		PrintList ();
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
-
-
-	// determine if user needs to slide down
-	void AddSlide() {
-
-	}
-		
+        PrintList ();
+    }
+    
+    // Update is called once per frame
+    void Update () {
+        
+    }
 
 
-	//for test purpose
-	void Find() {
+    // determine if user needs to slide down
+    void AddSlide() {
 
-	}
+    }
+        
 
-	void Display() {
 
-	}
+    //for test purpose
+    void Find() {
 
-	void PrintList() {
-		foreach (GameObject square in Squares) {
-			print (square.name);
-		}
-	}
+    }
+
+    void Display() {
+
+    }
+
+    void PrintList() {
+        foreach (GameObject square in Squares) {
+            print (square.name);
+        }
+    }
 
 }
