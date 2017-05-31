@@ -11,6 +11,8 @@ public class Player : MonoBehaviour {
 
     int dice = 5;
 
+
+
     // Use this for initialization
     void Start () {
         currentPosition = 0;
@@ -23,11 +25,12 @@ public class Player : MonoBehaviour {
         
     }
 
+
     void Move() {
         targetPosition = currentPosition + dice;
         MoveTo();
     }
-    void testcom() {}
+
 
     void MoveTo() {
         if (currentPosition < targetPosition) {
@@ -44,8 +47,6 @@ public class Player : MonoBehaviour {
     void OnLanding() {
 
     }
-
-
 
     void UpdateScore() {
 
