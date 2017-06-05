@@ -21,6 +21,7 @@ public class SpinWheel : MonoBehaviour {
 	}
 
 	public void RandomFunc() {
+		//TODO: Check if button is active to avoid useless click
 		int num = (int)Random.Range (1f, 7f);
 		print(num);
 		

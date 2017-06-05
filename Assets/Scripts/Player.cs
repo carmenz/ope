@@ -44,10 +44,12 @@ public class Player : MonoBehaviour {
 	}
 
 	void OnLanding() {
-
+		//TODO: Check current square's type
+		//TODO: Load required mini-game / quiz scene
 	}
 
 	void UpdateScore() {
-
+		//TODO: Update & save score
+		//TODO: Set spinning button to active
 	}
 }
