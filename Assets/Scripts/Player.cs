@@ -5,8 +5,8 @@ using DG.Tweening;
 
 public class Player : MonoBehaviour {
 
-	int currentPosition;
-	int targetPosition;
+	public int currentPosition;
+	public int targetPosition;
 	string info;
 
 	public int chance;
