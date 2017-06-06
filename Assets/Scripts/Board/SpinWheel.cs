@@ -7,6 +7,8 @@ using DG.Tweening;
 public class SpinWheel : MonoBehaviour {
 	[SerializeField]
 	GameObject player;
+	[SerializeField]
+	int angleToAvoid = 8;
 	bool rotatable;
 
 	void Awake () {
@@ -37,7 +39,7 @@ public class SpinWheel : MonoBehaviour {
 		var chance = num > 4 ? num - 4: num;
 		print(chance);
 		
-		int val = 3600 + Random.Range ((num - 1) * 45 + 5, 45 * num - 5);
+		int val = 3600 + Random.Range ((num - 1) * 45 + angleToAvoid, 45 * num - angleToAvoid);
 
 		Sequence spinSequence = DOTween.Sequence ();  
 		spinSequence.SetEase (Ease.OutCirc)

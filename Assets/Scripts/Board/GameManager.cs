@@ -36,6 +36,7 @@ public class GameManager : MonoBehaviour {
 		{
 			Destroy(gameObject);
 		}
+
 	}
 
 	// Use this for initialization
