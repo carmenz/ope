@@ -20,6 +20,7 @@ public class Player: MonoBehaviour  {
 		squares = GameObject.Find("Board").GetComponent<BoardManager>().Squares;
 		currentPosition = gm.currentPosition;
 		SetTokenPosition();
+		ChangeToken(gm.token);
 	}
 
 	// Use this fors initialization
@@ -86,5 +87,23 @@ public class Player: MonoBehaviour  {
 		//Moving the token into current position
 		var curSquare = squares[currentPosition];
 		gameObject.transform.position = new Vector3(curSquare.transform.position.x, curSquare.transform.position.y, 0);
+	}
+
+	public void OnClickToken(string tokenName) {
+		// Hide the panel
+		GameObject.Find("Panel").SetActive(false);
+		gm.token = tokenName;
+		ChangeToken(tokenName);
+	}
+
+	void ChangeToken(string tokenName) {
+		Debug.Log(tokenName);
+		// Disable all the token
+		var childCount = gameObject.transform.childCount;
+		for (var i=0;i<childCount;i++) {
+			gameObject.transform.GetChild(i).gameObject.SetActive(false);
+		}
+		// Set the token image
+		gameObject.transform.Find(tokenName).gameObject.SetActive(true);
 	}
 }

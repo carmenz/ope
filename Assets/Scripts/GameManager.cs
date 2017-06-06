@@ -6,6 +6,7 @@ public class GameManager : MonoBehaviour {
 	public static GameManager instance;
 
 	public int currentPosition = 0;
+	public string token = "First";
 		
 	void Awake() {
 		DontDestroyOnLoad(this);
