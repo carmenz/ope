@@ -5,9 +5,30 @@ using UnityEngine;
 public class GameManager : MonoBehaviour {
 	public static GameManager instance;
 
-	public int currentPosition = 0;
-	public string token = "First";
-		
+	// Serialize for monitor
+	[SerializeField]
+	int _curPos = 0;
+	[SerializeField]
+	string _tokenName = "First";
+	
+	public int CurrentPosition{
+		get {
+			return _curPos;
+		}
+		set {
+			_curPos = value;
+		}
+	}
+
+	public string TokenName{
+		get {
+			return _tokenName;
+		}
+		set {
+			_tokenName = value;
+		}
+	}
+	
 	void Awake() {
 		DontDestroyOnLoad(this);
   

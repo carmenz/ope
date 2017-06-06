@@ -18,9 +18,9 @@ public class Player: MonoBehaviour  {
 		// Reset current position and reset token's visual position on the board
 		gm = GameObject.Find("GameManager").GetComponent<GameManager>();
 		squares = GameObject.Find("Board").GetComponent<BoardManager>().Squares;
-		currentPosition = gm.currentPosition;
+		currentPosition = gm.CurrentPosition;
 		SetTokenPosition();
-		ChangeToken(gm.token);
+		ChangeToken(gm.TokenName);
 	}
 
 	// Use this fors initialization
@@ -49,11 +49,11 @@ public class Player: MonoBehaviour  {
 				return;
 			}
 			var nextSquare = squares[currentPosition + 1];
-			Debug.Log("Next Landing Square is" + nextSquare);
+			// Debug.Log("Next Landing Square is" + nextSquare);
 			transform.DOMove(new Vector3(nextSquare.transform.position.x, nextSquare.transform.position.y, 0f), 1).OnComplete(MoveTo);
 			currentPosition++;
 		} else {
-			GameObject.Find("GameManager").GetComponent<GameManager>().currentPosition = currentPosition;
+			gm.CurrentPosition = currentPosition;
 			OnLanding();
 		}
 	}
@@ -92,12 +92,11 @@ public class Player: MonoBehaviour  {
 	public void OnClickToken(string tokenName) {
 		// Hide the panel
 		GameObject.Find("Panel").SetActive(false);
-		gm.token = tokenName;
+		gm.TokenName = tokenName;
 		ChangeToken(tokenName);
 	}
 
 	void ChangeToken(string tokenName) {
-		Debug.Log(tokenName);
 		// Disable all the token
 		var childCount = gameObject.transform.childCount;
 		for (var i=0;i<childCount;i++) {

@@ -22,7 +22,7 @@ public class RestartButton : MonoBehaviour {
 
 	public void RestartGame() {
 		// Reset state
-		gm.currentPosition = 0;
+		gm.CurrentPosition = 0;
 
 		// Reload main scene
 		SceneManager.LoadScene("Allison-ChangeWheel");
