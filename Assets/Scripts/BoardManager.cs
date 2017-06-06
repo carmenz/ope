@@ -15,8 +15,6 @@ public class BoardManager : MonoBehaviour {
 				Squares.Add(child.gameObject);
 			}
 		}
-
-		// PrintList ();
 	}
 	
 	// Update is called once per frame

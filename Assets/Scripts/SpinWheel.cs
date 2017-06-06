@@ -33,15 +33,16 @@ public class SpinWheel : MonoBehaviour {
 		// Start random
 		setWheelRotatable(false);
 		player = GameObject.FindGameObjectWithTag("Player");
-		int num = (int)Random.Range (1f, 7f);
-		print(num);
+		int num = Random.Range (1, 9);
+		var chance = num > 4 ? num - 4: num;
+		print(chance);
 		
-		int val = 3600 + (int)Random.Range ((num - 1) * 45f + 3, 45f * num - 3);
+		int val = 3600 + Random.Range ((num - 1) * 45 + 5, 45 * num - 5);
 
 		Sequence spinSequence = DOTween.Sequence ();  
 		spinSequence.SetEase (Ease.OutCirc)
 			.Append (transform.DORotate (new Vector3 (0, 0, val), 3, RotateMode.FastBeyond360))
-			.OnComplete(() => player.GetComponent<Player>().Move(num));
+			.OnComplete(() => player.GetComponent<Player>().Move(chance));
 
 	}
 

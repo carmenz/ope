@@ -6,25 +6,24 @@ using DG.Tweening;
 
 public class Player: MonoBehaviour  {
 
+	GameManager gm;
+	List<GameObject> squares;
 	int currentPosition;
 	int targetPosition;
 	string info;
-	[SerializeField]
-	GameObject wheel;
-
-	public int chance;
-
 
 	public static Player instance;
 		
 	void Awake() {
-
+		// Reset current position and reset token's visual position on the board
+		gm = GameObject.Find("GameManager").GetComponent<GameManager>();
+		squares = GameObject.Find("Board").GetComponent<BoardManager>().Squares;
+		currentPosition = gm.currentPosition;
+		SetTokenPosition();
 	}
 
 	// Use this fors initialization
 	void Start () {
-		Debug.Log("execute start in Player.cs");
-		currentPosition = GameObject.Find("GameManager").GetComponent<GameManager>().currentPosition;
 	}
 	
 	// Update is called once per frame
@@ -33,18 +32,23 @@ public class Player: MonoBehaviour  {
 	}
 
 
-	public void Move(int num) {
-		Debug.Log(num);
-		chance = num;
-		UpdateTargetPosition();
+	public void Move(int chance) {
+		Debug.Log("You got " + chance + "!!!!");
+		targetPosition = currentPosition + chance;
 		MoveTo();
 	}
 
 
 	void MoveTo() {
 		if (currentPosition < targetPosition) {
-			var nextSquare = GameObject.Find("Board").GetComponent<BoardManager>().Squares [currentPosition + 1];
-			Debug.Log(nextSquare);
+			if (HasAccident(currentPosition)) {
+				// Now means to the end;
+				//TODO: add more functions, save un-used steps
+				Debug.Log("Congrats!!!");
+				return;
+			}
+			var nextSquare = squares[currentPosition + 1];
+			Debug.Log("Next Landing Square is" + nextSquare);
 			transform.DOMove(new Vector3(nextSquare.transform.position.x, nextSquare.transform.position.y, 0f), 1).OnComplete(MoveTo);
 			currentPosition++;
 		} else {
@@ -53,8 +57,16 @@ public class Player: MonoBehaviour  {
 		}
 	}
 
-	void UpdateTargetPosition() {
-		targetPosition = currentPosition + chance;
+	// void UpdateTargetPosition() {
+		
+	// }
+
+	bool HasAccident(int curPos) {
+		var curSquare = squares[curPos];
+		if (curSquare.GetComponent<SquareController>().type == "Ending")
+			return true;
+		else
+			return false;
 	}
 
 	void OnLanding() {
@@ -65,8 +77,14 @@ public class Player: MonoBehaviour  {
 
 	void UpdateScore() {
 		//TODO: Update & save score
-		//Set spinning button to active
-		wheel = GameObject.FindGameObjectWithTag("Wheel");
-		wheel.GetComponent<SpinWheel>().setWheelRotatable(true);
+		//Set spinning button to active, doesn't need now, because board scene will reload after mini-challenge
+		// wheel = GameObject.FindGameObjectWithTag("Wheel");
+		// wheel.GetComponent<SpinWheel>().setWheelRotatable(true);
+	}
+
+	void SetTokenPosition() {
+		//Moving the token into current position
+		var curSquare = squares[currentPosition];
+		gameObject.transform.position = new Vector3(curSquare.transform.position.x, curSquare.transform.position.y, 0);
 	}
 }
