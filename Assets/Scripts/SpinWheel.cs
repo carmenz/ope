@@ -5,10 +5,12 @@ using DG.Tweening;
 
 
 public class SpinWheel : MonoBehaviour {
+	[SerializeField]
 	GameObject player;
+	bool rotatable;
 
 	void Awake () {
-		player = GameObject.FindGameObjectWithTag("Player");
+		setWheelRotatable(true);
 	}
 
 	// Use this for initialization
@@ -20,12 +22,21 @@ public class SpinWheel : MonoBehaviour {
 
 	}
 
+	public void setWheelRotatable(bool state) {
+		rotatable = state;
+	}
+
 	public void RandomFunc() {
-		//TODO: Check if button is active to avoid useless click
+		// Check if button is active to avoid useless click
+		if (!rotatable)
+			return;
+		// Start random
+		setWheelRotatable(false);
+		player = GameObject.FindGameObjectWithTag("Player");
 		int num = (int)Random.Range (1f, 7f);
 		print(num);
 		
-		int val = 3600 + (int)Random.Range ((num - 1) * 60f + 3, 60f * num - 3);
+		int val = 3600 + (int)Random.Range ((num - 1) * 45f + 3, 45f * num - 3);
 
 		Sequence spinSequence = DOTween.Sequence ();  
 		spinSequence.SetEase (Ease.OutCirc)

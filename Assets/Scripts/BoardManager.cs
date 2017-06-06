@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BoardManager : MonoBehaviour {
 
-	public static List<GameObject> Squares = new List<GameObject>();
+	public List<GameObject> Squares = new List<GameObject>();
 
 	// Use this for initialization
 	void Awake () {
