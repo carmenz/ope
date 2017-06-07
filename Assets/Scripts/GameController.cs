@@ -22,7 +22,6 @@ public class GameController : MonoBehaviour {
 	}
 
 	void Start() {
-
 		CreateUser (playerPath, new Vector3 (0,0,0), Quaternion.identity);
 	}
 
@@ -53,9 +52,9 @@ public class GameController : MonoBehaviour {
 		saveButton.onClick.AddListener (delegate {
 			SaveData.Save (datapath, SaveData.userContainer);
 		});
-		loadButton.onClick.AddListener(delegate {
-			SaveData.Load(datapath);
-		});
+		// loadButton.onClick.AddListener(delegate {
+		// 	SaveData.Load(datapath);
+		// });
 	}
 
 	void OnDisable() {

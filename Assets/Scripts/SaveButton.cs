@@ -1,9 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
-public class TestQuiz : MonoBehaviour {
+public class SaveButton : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
@@ -15,7 +14,7 @@ public class TestQuiz : MonoBehaviour {
 		
 	}
 
-	public void QuitQuiz() {
-		SceneManager.LoadScene("Main");
+	public void Save() {
+		SaveData.Save (System.IO.Path.Combine (Application.dataPath, "Resources/users.xml"), SaveData.userContainer);
 	}
 }
