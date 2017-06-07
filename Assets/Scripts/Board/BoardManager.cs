@@ -3,8 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class BoardManager : MonoBehaviour {
+	
+	List<GameObject> _squares = new List<GameObject>();
 
-	public static List<GameObject> Squares = new List<GameObject>();
+	public List<GameObject> Squares{
+		get {
+			return _squares;
+		}
+	}
 
 	// Use this for initialization
 	void Awake () {
@@ -12,11 +18,9 @@ public class BoardManager : MonoBehaviour {
 		{
 			if (child.tag == "Square")
 			{
-				Squares.Add(child.gameObject);
+				_squares.Add(child.gameObject);
 			}
 		}
-
-		// PrintList ();
 	}
 	
 	// Update is called once per frame
