@@ -25,6 +25,6 @@ public class RestartButton : MonoBehaviour {
 		gm.CurrentPosition = 0;
 
 		// Reload main scene
-		SceneManager.LoadScene("Allison-ChangeWheel");
+		SceneManager.LoadScene("Main");
 	}
 }
