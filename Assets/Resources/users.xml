@@ -2,13 +2,15 @@
 <UserCollection xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <Users>
     <User>
+      <Username>fhjdshfkdhsfs</Username>
       <Password>6666</Password>
-      <Currentpos>4</Currentpos>
+      <Currentpos>0</Currentpos>
       <CurrentScore>0</CurrentScore>
     </User>
     <User>
+      <Username>fhjdshfkdhsfs</Username>
       <Password>66666</Password>
-      <Currentpos>4</Currentpos>
+      <Currentpos>0</Currentpos>
       <CurrentScore>0</CurrentScore>
     </User>
   </Users>

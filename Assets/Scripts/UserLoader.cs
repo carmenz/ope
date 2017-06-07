@@ -7,7 +7,7 @@ public class UserLoader : MonoBehaviour {
 	public const string path = "Resources/users";
 
 	void Start() {
-		SaveData.Load (path);
+		//SaveData.Load (path);
 		//foreach (UserData user in uc.username) {
 			//print (user.username);
 	//	}

@@ -9,7 +9,7 @@ using UnityEngine.UI;
 public class User : MonoBehaviour {
 
 	public UserData data = new UserData ();
-	string nameInput = GameObject.FindGameObjectWithTag ("UsernameField").GetComponent<InputField> ().text;
+
 	public int password = 000;
 	public int currentPos = 0;
 	public int currentScore = 0;
@@ -18,7 +18,7 @@ public class User : MonoBehaviour {
 
 	public void StoreData() {
 
-
+		string nameInput = GameObject.FindGameObjectWithTag ("UsernameField").GetComponent<InputField> ().text;
 
 		data.username = nameInput;
 		//data.username = username_field.text;
