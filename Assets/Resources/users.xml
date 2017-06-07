@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="us-ascii"?>
+<UserCollection xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Users>
+    <User>
+      <Password>6666</Password>
+      <Currentpos>4</Currentpos>
+      <CurrentScore>0</CurrentScore>
+    </User>
+    <User>
+      <Password>66666</Password>
+      <Currentpos>4</Currentpos>
+      <CurrentScore>0</CurrentScore>
+    </User>
+  </Users>
+</UserCollection>

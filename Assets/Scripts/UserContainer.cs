@@ -13,13 +13,4 @@ public class UserContainer {
 	public List<UserData> users = new List<UserData>();
 
 
-//	public static UserContainer Load(string path){
-//		TextAsset _xml = Resources.Load<TextAsset> (path);
-//		XmlSerializer serializer = new XmlSerializer (typeof(UserContainer));
-//		StringReader reader = new StringReader (_xml.text);
-//		UserContainer users = serializer.Deserialize (reader) as UserContainer;
-//		reader.Close();
-//		return users;
-//
-//	}
 }
