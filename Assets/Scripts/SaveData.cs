@@ -10,6 +10,8 @@ public class SaveData : MonoBehaviour {
 
 	public static UserContainer userContainer = new UserContainer();
 
+
+
 	public delegate void SerializeAction ();
 
 	public static event SerializeAction OnLoaded;
@@ -21,8 +23,8 @@ public class SaveData : MonoBehaviour {
 		foreach (UserData data in userContainer.users) {
 			
 			GameController.CreateUser (data, GameController.playerPath, 
-				new Vector3 (BoardManager.Squares [data.currentPos].transform.position.x, 
-							BoardManager.Squares [data.currentPos].transform.position.x, 0f),
+				new Vector3 (GameObject.Find("Board").GetComponent<BoardManager>().Squares [data.currentPos].transform.position.x, 
+					GameObject.Find("Board").GetComponent<BoardManager>().Squares [data.currentPos].transform.position.x, 0f),
 				Quaternion.identity);
 
 		}

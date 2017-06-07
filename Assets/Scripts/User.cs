@@ -21,12 +21,11 @@ public class User : MonoBehaviour {
 
 
 		data.username = nameInput;
-
 		//data.username = username_field.text;
 		//data.username = name;
 
 		data.pwd = password;
-		data.currentPos = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().currentPosition;
+		data.currentPos = GameObject.Find("GameManager").GetComponent<GameManager>().CurrentPosition;
 		data.currentScore = currentScore;
 		Vector3 pos = transform.position;
 	}
@@ -36,7 +35,8 @@ public class User : MonoBehaviour {
 		name = data.username;
 		currentPos = data.currentPos;
 		currentScore = data.currentScore;
-		transform.position = new Vector2 (BoardManager.Squares [currentPos].transform.position.x, BoardManager.Squares [currentPos].transform.position.y);
+		transform.position = new Vector2 (GameObject.Find("Board").GetComponent<BoardManager>().Squares [currentPos].transform.position.x, 
+			GameObject.Find("Board").GetComponent<BoardManager>().Squares [currentPos].transform.position.y);
 	}
 
 	void OnEnable() {
