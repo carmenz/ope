@@ -49,6 +49,7 @@ public class GameController : MonoBehaviour {
 //	}
 
 	void OnEnable() {
+		Debug.Log("435345343");
 		saveButton.onClick.AddListener (delegate {
 			print("savebutton clicked OnEnable");
 			//SaveData.Save (datapath, SaveData.userContainer);

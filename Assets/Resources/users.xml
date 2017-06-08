@@ -14,21 +14,5 @@
       <Username />
       <CurrentPos>0</CurrentPos>
     </User>
-    <User>
-      <Username />
-      <CurrentPos>0</CurrentPos>
-    </User>
-    <User>
-      <Username />
-      <CurrentPos>0</CurrentPos>
-    </User>
-    <User>
-      <Username />
-      <CurrentPos>0</CurrentPos>
-    </User>
-    <User>
-      <Username />
-      <CurrentPos>0</CurrentPos>
-    </User>
   </Users>
 </UserCollection>
