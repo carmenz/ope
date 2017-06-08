@@ -31,18 +31,18 @@ public class User : MonoBehaviour {
 	}
 
 
-	public void LoadData() {
-		name = data.username;
-		currentPos = data.currentPos;
-		currentScore = data.currentScore;
-		transform.position = new Vector2 (GameObject.Find("Board").GetComponent<BoardManager>().Squares [currentPos].transform.position.x, 
-			GameObject.Find("Board").GetComponent<BoardManager>().Squares [currentPos].transform.position.y);
-	}
+	// public void LoadData() {
+	// 	name = data.username;
+	// 	currentPos = data.currentPos;
+	// 	currentScore = data.currentScore;
+	// 	transform.position = new Vector2 (GameObject.Find("Board").GetComponent<BoardManager>().Squares [currentPos].transform.position.x, 
+	// 		GameObject.Find("Board").GetComponent<BoardManager>().Squares [currentPos].transform.position.y);
+	// }
 
 	void OnEnable() {
-		SaveData.OnLoaded += delegate {
-			LoadData();
-		};
+		// SaveData.OnLoaded += delegate {
+		// 	LoadData();
+		// };
 		SaveData.OnBeforeSave += delegate {
 			StoreData();
 		};
@@ -54,9 +54,9 @@ public class User : MonoBehaviour {
 
 	void onDisable() {
 
-		SaveData.OnLoaded += delegate {
-			LoadData();
-		};
+		// SaveData.OnLoaded += delegate {
+		// 	LoadData();
+		// };
 		SaveData.OnBeforeSave += delegate {
 			StoreData();
 		};

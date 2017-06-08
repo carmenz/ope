@@ -9,7 +9,13 @@ Assets/Assets/Stylized Nature Pack.meta
 /[Ll]ibrary/
 sysinfo.txt
 *.stackdump
- 
+
+# ============ #
+# Executable file #
+# ============ #
+*.app
+*.zip
+
 # ============================================= #
 # Visual Studio / MonoDevelop / Rider generated #
 # ============================================= #
@@ -25,7 +31,7 @@ sysinfo.txt
 /*.booproj
 /.idea*/
 .vscode/
- 
+
 # ============ #
 # OS generated #
 # ============ #
