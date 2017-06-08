@@ -44,9 +44,11 @@ public class User : MonoBehaviour {
 		// 	LoadData();
 		// };
 		SaveData.OnBeforeSave += delegate {
+			print("User StoreData");
 			StoreData();
 		};
 		SaveData.OnBeforeSave += delegate {
+			print("User AddUserToData");
 			SaveData.AddUserToData(data);
 		};
 
