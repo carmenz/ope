@@ -42,20 +42,21 @@ public class SaveData : MonoBehaviour {
 	}
 
 	public static void Save(string path, User current) {
-	//public static void Save(string path, UserContainer users) {
-		OnBeforeSave ();
-		//SaveUsers (path, users);
-		SaveUser(path, current);
 
+		print ("saveData Save");
+//		OnBeforeSave ();
+		SaveUser(path, current);
 		// Don't want any duplicate data
 		//ClearUsers ();
 
 	}
 
 	// add users to list
-	public static void AddUserToData(UserData data) {
-		userContainer.users.Add (data);
-	}
+//	public static void AddUserToData(UserData data) {
+//
+//		print ("saveData addusertodata");
+//		userContainer.users.Add (data);
+//	}
 
 
 //	public static void ClearUsers() {
@@ -73,37 +74,61 @@ public class SaveData : MonoBehaviour {
 		return users;
 	}
 
-	private static void SaveUsers(string path, UserContainer users) {
-
-
-		XmlSerializer serializer = new XmlSerializer (typeof(UserContainer));
-		// tell program to open file in the path, if there's anything in it, append it 
-		FileStream stream = new FileStream (path, FileMode.Append);
-		serializer.Serialize(stream, users);
-		print ("SaveData SaveUsers");
-
-		stream.Close ();
-	}
-
+//	private static void SaveUsers(string path, UserContainer users) {
+//
+//
+//		XmlSerializer serializer = new XmlSerializer (typeof(UserContainer));
+//		// tell program to open file in the path, if there's anything in it, append it 
+//		FileStream stream = new FileStream (path, FileMode.Append);
+//		serializer.Serialize(stream, users);
+//		print ("SaveData SaveUsers");
+//
+//		stream.Close ();
+//	}
 
 
 	private static void SaveUser(string path, User current) {
 
+		print ("SaveData saveuser");
+
 		current.StoreData ();
-		XDocument doc = XDocument.Load(path);
-
-		XElement user = new XElement("User");
-		user.Add (new XElement ("Username", current.data.username));
-		user.Add (new XElement ("Password", current.data.password));
-		user.Add(new XElement("CurrentPos", current.data.currentPos));
-		user.Add (new XElement ("CurrentScore", current.data.currentScore));
-
-		doc.Root.Element ("Users").Add (user);
-		doc.Save(path);
-	}
+		bool userNotExist = true;
 
 
-	public void Save() {
-		//SaveData.Save (System.IO.Path.Combine (Application.dataPath, "Resources/users.xml"), SaveData.userContainer);
+		// check if xml file exist
+		if (File.Exists (path)) {
+			var dox = new XmlDocument ();
+				dox.Load (path);
+
+
+			FileStream stream = new FileStream (path, FileMode.Open);
+			XmlTextReader xmlReader = new XmlTextReader (stream);
+
+			// read file, check if user exist
+			while (xmlReader.Read ()) {
+				if (xmlReader.Name == "Username") {;
+					if (xmlReader.ReadElementContentAsString ().Equals (current.data.username)) {
+						userNotExist = false;
+						print ("user already exist");
+					}
+				}
+			}
+			stream.Close ();
+		}
+
+		// create a user element if user does not exist
+		if (userNotExist) {
+			
+			XDocument doc = XDocument.Load(path);
+
+			XElement user = new XElement("User");
+			user.Add (new XElement ("Username", current.data.username));
+			user.Add (new XElement ("Password", current.data.password));
+			user.Add(new XElement("CurrentPos", current.data.currentPos));
+			user.Add (new XElement ("CurrentScore", current.data.currentScore));
+
+			doc.Root.Element ("Users").Add (user);
+			doc.Save(path);
+		}
 	}
 }

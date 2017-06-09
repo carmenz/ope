@@ -5,6 +5,7 @@ using System.Xml;
 using System.Xml.Serialization;
 using UnityEngine.UI;
 using System;
+using UnityEngine.SceneManagement;
 
 
 public class User : MonoBehaviour {
@@ -12,7 +13,7 @@ public class User : MonoBehaviour {
 	public UserData data = new UserData ();
 
 	public string username = "TestUser";
-	public int password = 000;
+	public string  password = "000";
 	public int currentPos = 0;
 	public int currentScore = 0;
 
@@ -20,11 +21,26 @@ public class User : MonoBehaviour {
 
 	public void StoreData() {
 
-		string nameInput = GameObject.FindGameObjectWithTag ("UsernameField").GetComponent<InputField> ().text;
-		data.username = nameInput;
+		Scene currentScene = SceneManager.GetActiveScene ();
+		// Retrieve the name of this scene.
+		string sceneName = currentScene.name;
 
-		string passwordInput = GameObject.FindGameObjectWithTag ("PasswordField").GetComponent<InputField> ().text;
-		data.password = passwordInput;
+
+		if (sceneName == "Login") {
+			
+			string nameInput = GameObject.FindGameObjectWithTag ("UsernameField").GetComponent<InputField> ().text;
+			data.username = nameInput;
+
+			string passwordInput = GameObject.FindGameObjectWithTag ("PasswordField").GetComponent<InputField> ().text;
+			data.password = passwordInput;
+			print ("user storeloginData");
+
+		} else {
+			data.username = username;
+			data.password = password;
+			print ("user storemaindata");
+		}
+
 		data.currentPos = GameObject.Find("GameManager").GetComponent<GameManager>().CurrentPosition;
 		data.currentScore = currentScore;
 		//Vector3 pos = transform.position;
@@ -39,21 +55,21 @@ public class User : MonoBehaviour {
 	// 		GameObject.Find("Board").GetComponent<BoardManager>().Squares [currentPos].transform.position.y);
 	// }
 
-	void OnEnable() {
+//	void OnEnable() {
 		// SaveData.OnLoaded += delegate {
 		// 	LoadData();
 		// };
-		SaveData.OnBeforeSave += delegate {
-			print("User StoreData");
-			StoreData();
-		};
-		SaveData.OnBeforeSave += delegate {
-			print("User AddUserToData");
-			SaveData.AddUserToData(data);
+//		SaveData.OnBeforeSave += delegate {
+//			print("User StoreData");
+//			StoreData();
+//		};
+//		SaveData.OnBeforeSave += delegate {
+//			print("User AddUserToData");
+//			SaveData.AddUserToData(data);
+//
+//		};
 
-		};
-
-	}
+//	}
 
 	void onDisable() {
 
@@ -63,9 +79,9 @@ public class User : MonoBehaviour {
 		SaveData.OnBeforeSave += delegate {
 			StoreData();
 		};
-		SaveData.OnBeforeSave += delegate {
-			SaveData.AddUserToData(data);
-		};
+//		SaveData.OnBeforeSave += delegate {
+//			SaveData.AddUserToData(data);
+//		};
 	}
 
 }

@@ -53,10 +53,13 @@ public class GameController : MonoBehaviour {
 //	}
 
 	void OnEnable() {
+
+		// switch to main menu after saveButton on Login is clicked
 		saveButton.onClick.AddListener (delegate {
 			print("savebutton clicked OnEnable");
 			//SaveData.Save (datapath, SaveData.userContainer);
 			SaveData.Save(datapath, currentUser);
+			Application.LoadLevel ("Main");
 		});
 		 loadButton.onClick.AddListener(delegate {
 			print("loadbutton clicked OnEnable");

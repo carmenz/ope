@@ -15,6 +15,7 @@ public class UserContainer
 
 	public void Save(string path)
 	{
+		Debug.Log ("userContainer");
 		
 		var serializer = new XmlSerializer(typeof(UserContainer));
 		//Debug.Log("UserContainer Save");
