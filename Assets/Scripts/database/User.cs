@@ -32,7 +32,7 @@ public class User : MonoBehaviour {
 			data.username = nameInput;
 
 			string passwordInput = GameObject.FindGameObjectWithTag ("PasswordField").GetComponent<InputField> ().text;
-			data.password = passwordInput;
+			data.password = Login.Encrypt (passwordInput);
 			print ("user storeloginData");
 
 		} else {

@@ -59,7 +59,6 @@ public class GameController : MonoBehaviour {
 			print("savebutton clicked OnEnable");
 			//SaveData.Save (datapath, SaveData.userContainer);
 			SaveData.Save(datapath, currentUser);
-			Application.LoadLevel ("Main");
 		});
 		 loadButton.onClick.AddListener(delegate {
 			print("loadbutton clicked OnEnable");

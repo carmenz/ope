@@ -95,7 +95,7 @@ public class SaveData : MonoBehaviour {
 		bool userNotExist = true;
 
 
-		// check if xml file exist
+		// check if user.xml exist
 		if (File.Exists (path)) {
 			var dox = new XmlDocument ();
 				dox.Load (path);
@@ -110,6 +110,13 @@ public class SaveData : MonoBehaviour {
 					if (xmlReader.ReadElementContentAsString ().Equals (current.data.username)) {
 						userNotExist = false;
 						print ("user already exist");
+
+						xmlReader.ReadToNextSibling ("Password");
+						if (xmlReader.ReadElementContentAsString ().Equals (current.data.password)) {
+							Application.LoadLevel ("Main");
+						} else {
+							print ("Username and Password does not match");
+						}
 					}
 				}
 			}
@@ -119,16 +126,17 @@ public class SaveData : MonoBehaviour {
 		// create a user element if user does not exist
 		if (userNotExist) {
 			
-			XDocument doc = XDocument.Load(path);
+			XDocument doc = XDocument.Load (path);
 
-			XElement user = new XElement("User");
+			XElement user = new XElement ("User");
 			user.Add (new XElement ("Username", current.data.username));
 			user.Add (new XElement ("Password", current.data.password));
-			user.Add(new XElement("CurrentPos", current.data.currentPos));
+			user.Add (new XElement ("CurrentPos", current.data.currentPos));
 			user.Add (new XElement ("CurrentScore", current.data.currentScore));
 
 			doc.Root.Element ("Users").Add (user);
-			doc.Save(path);
-		}
+			doc.Save (path);
+		} 
+
 	}
 }

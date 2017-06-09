@@ -19,5 +19,17 @@
       <CurrentPos>0</CurrentPos>
       <CurrentScore>0</CurrentScore>
     </User>
+    <User>
+      <Username>testing</Username>
+      <Password>d3647d0e0f7644093aa86a885bd0b330</Password>
+      <CurrentPos>0</CurrentPos>
+      <CurrentScore>0</CurrentScore>
+    </User>
+    <User>
+      <Username>1</Username>
+      <Password>fn5g+xrZS7Ud7B8EBFfuxg==</Password>
+      <CurrentPos>0</CurrentPos>
+      <CurrentScore>0</CurrentScore>
+    </User>
   </Users>
 </UserCollection>
