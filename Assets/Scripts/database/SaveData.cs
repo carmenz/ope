@@ -12,7 +12,7 @@ public class SaveData : MonoBehaviour {
 	// xml loading occur
 
 	public static UserContainer userContainer = new UserContainer();
-	public static User user = new User();
+	//public static User user = new User();
 
 
 	public delegate void SerializeAction ();
@@ -89,17 +89,17 @@ public class SaveData : MonoBehaviour {
 
 	private static void SaveUser(string path, User current) {
 
+		current.StoreData ();
 		XDocument doc = XDocument.Load(path);
-		//doc = XDocument.Parse("<User></User>");
 
 		XElement user = new XElement("User");
-		user.Add(new XElement("Username", current.data.username));
+		user.Add (new XElement ("Username", current.data.username));
+		user.Add (new XElement ("Password", current.data.password));
 		user.Add(new XElement("CurrentPos", current.data.currentPos));
-		print ("hehehehhe");
+		user.Add (new XElement ("CurrentScore", current.data.currentScore));
+
 		doc.Root.Element ("Users").Add (user);
-
 		doc.Save(path);
-
 	}
 
 

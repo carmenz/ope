@@ -6,13 +6,5 @@
       <Currentpos>0</Currentpos>
       <CurrentScore>0</CurrentScore>
     </User>
-    <User>
-      <Username />
-      <CurrentPos>0</CurrentPos>
-    </User>
-    <User>
-      <Username />
-      <CurrentPos>0</CurrentPos>
-    </User>
   </Users>
 </UserCollection>

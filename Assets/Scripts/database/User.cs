@@ -4,12 +4,14 @@ using UnityEngine;
 using System.Xml;
 using System.Xml.Serialization;
 using UnityEngine.UI;
+using System;
 
 
 public class User : MonoBehaviour {
 
 	public UserData data = new UserData ();
 
+	public string username = "TestUser";
 	public int password = 000;
 	public int currentPos = 0;
 	public int currentScore = 0;
@@ -19,15 +21,13 @@ public class User : MonoBehaviour {
 	public void StoreData() {
 
 		string nameInput = GameObject.FindGameObjectWithTag ("UsernameField").GetComponent<InputField> ().text;
-
 		data.username = nameInput;
-		//data.username = username_field.text;
-		//data.username = name;
 
-		data.pwd = password;
+		string passwordInput = GameObject.FindGameObjectWithTag ("PasswordField").GetComponent<InputField> ().text;
+		data.password = passwordInput;
 		data.currentPos = GameObject.Find("GameManager").GetComponent<GameManager>().CurrentPosition;
 		data.currentScore = currentScore;
-		Vector3 pos = transform.position;
+		//Vector3 pos = transform.position;
 	}
 
 
@@ -50,6 +50,7 @@ public class User : MonoBehaviour {
 		SaveData.OnBeforeSave += delegate {
 			print("User AddUserToData");
 			SaveData.AddUserToData(data);
+
 		};
 
 	}
@@ -75,8 +76,7 @@ public class UserData{
 		public string username;
 
 	[XmlElement("Password")]
-		public int pwd;
-
+		public string password;
 
 	[XmlElement("Currentpos")]
 	public int currentPos;

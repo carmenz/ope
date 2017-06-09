@@ -7,7 +7,11 @@ public class GameController : MonoBehaviour {
 
 	public Button saveButton;
 	public Button loadButton;
-	public const string playerPath = "Prefebs/player";
+	//public const string playerPath = "Prefebs/player";
+
+	private User currentUser = new User();
+
+
 
 	private static string datapath = string.Empty;
 
@@ -49,11 +53,10 @@ public class GameController : MonoBehaviour {
 //	}
 
 	void OnEnable() {
-		Debug.Log("435345343");
 		saveButton.onClick.AddListener (delegate {
 			print("savebutton clicked OnEnable");
 			//SaveData.Save (datapath, SaveData.userContainer);
-			SaveData.Save(datapath, SaveData.user);
+			SaveData.Save(datapath, currentUser);
 		});
 		 loadButton.onClick.AddListener(delegate {
 			print("loadbutton clicked OnEnable");
@@ -65,7 +68,7 @@ public class GameController : MonoBehaviour {
 		saveButton.onClick.RemoveListener (delegate {
 			print("savebutton clicked OnDisable");
 			//SaveData.Save (datapath, SaveData.userContainer);
-			SaveData.Save(datapath, SaveData.user);
+			SaveData.Save(datapath, currentUser);
 		});
 		loadButton.onClick.RemoveListener(delegate {
 			print("loadbutton clicked OnDisable");
