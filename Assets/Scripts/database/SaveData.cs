@@ -107,14 +107,12 @@ public class SaveData : MonoBehaviour {
 						// match username and password
 						if (xmlReader.ReadElementContentAsString ().Equals (current.data.password)) {
 							
+							
 							xmlReader.ReadToNextSibling ("CurrentPos");
 
 							//load player position
-
-//							print (xmlReader.ReadElementContentAsInt ());
-//							GameManager gm = new GameManager();
-//							gm.CurrentPosition = xmlReader.ReadElementContentAsInt ();
-//							print (gm.CurrentPosition);
+							GameManager gm = GameObject.Find("GameManager").GetComponent<GameManager>();
+							gm.CurrentPosition = xmlReader.ReadElementContentAsInt ();
 							SceneManager.LoadScene ("Main");
 
 
