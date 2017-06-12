@@ -30,6 +30,9 @@ public class GameManager : MonoBehaviour {
 	}
 	
 	void Awake() {
+		// init
+		
+
 		DontDestroyOnLoad(this);
   
 		if (FindObjectsOfType(GetType()).Length > 1)
