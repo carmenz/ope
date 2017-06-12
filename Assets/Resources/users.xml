@@ -2,18 +2,6 @@
 <UserCollection xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <Users>
     <User>
-      <Username>fffffff</Username>
-      <Password>Password</Password>
-      <CurrentPos>0</CurrentPos>
-      <CurrentScore>0</CurrentScore>
-    </User>
-    <User>
-      <Username>dddd</Username>
-      <Password>Password</Password>
-      <CurrentPos>0</CurrentPos>
-      <CurrentScore>0</CurrentScore>
-    </User>
-    <User>
       <Username>nicdncidnicd</Username>
       <Password>Password</Password>
       <CurrentPos>0</CurrentPos>
@@ -28,7 +16,7 @@
     <User>
       <Username>1</Username>
       <Password>fn5g+xrZS7Ud7B8EBFfuxg==</Password>
-      <CurrentPos>0</CurrentPos>
+      <CurrentPos>3</CurrentPos>
       <CurrentScore>0</CurrentScore>
     </User>
   </Users>

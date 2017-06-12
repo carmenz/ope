@@ -7,11 +7,8 @@ public class GameController : MonoBehaviour {
 
 	public Button saveButton;
 	public Button loadButton;
-	//public const string playerPath = "Prefebs/player";
 
 	private User currentUser = new User();
-
-
 
 	private static string datapath = string.Empty;
 
@@ -24,33 +21,6 @@ public class GameController : MonoBehaviour {
 		}
 
 	}
-
-//	void Start() {
-//		CreateUser (playerPath, new Vector3 (0,0,0), Quaternion.identity);
-//	}
-//
-
-//
-//	public static User CreateUser(string path, Vector3 position, Quaternion rotation) {
-//		
-//		GameObject prefab = Resources.Load<GameObject> (path);
-//
-//		GameObject go = GameObject.Instantiate (prefab, position, Quaternion.identity) as GameObject;
-//		User user = go.GetComponent<User> () ?? go.AddComponent<User> ();
-//
-//		return user;
-//	}
-//		
-//
-//	public static User CreateUser(UserData data, string path, Vector3 position, Quaternion rotation) {
-//		
-//		GameObject prefab = Resources.Load<GameObject> (path);
-//		GameObject go = GameObject.Instantiate (prefab, position, rotation) as GameObject;
-//		User user = go.GetComponent<User> () ?? go.AddComponent<User> ();
-//
-//		user.data = data;
-//		return user;
-//	}
 
 	void OnEnable() {
 

@@ -18,7 +18,6 @@ public class UserContainer
 		Debug.Log ("userContainer");
 		
 		var serializer = new XmlSerializer(typeof(UserContainer));
-		//Debug.Log("UserContainer Save");
 		using(var stream = new FileStream(path, FileMode.Create))
 		{
 			serializer.Serialize(stream, this);

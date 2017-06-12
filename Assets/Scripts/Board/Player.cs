@@ -19,8 +19,10 @@ public class Player: MonoBehaviour  {
 		gm = GameObject.Find("GameManager").GetComponent<GameManager>();
 		squares = GameObject.Find("Board").GetComponent<BoardManager>().Squares;
 		currentPosition = gm.CurrentPosition;
+		print ("currentpos" + currentPosition);
 		SetTokenPosition();
 		ChangeToken(gm.TokenName);
+		print ("awake");
 	}
 
 	// Use this fors initialization
@@ -88,6 +90,7 @@ public class Player: MonoBehaviour  {
 		var curSquare = squares[currentPosition];
 		gameObject.transform.position = new Vector3(curSquare.transform.position.x, curSquare.transform.position.y, 0);
 	}
+		
 
 	public void OnClickToken(string tokenName) {
 		// Hide the panel
@@ -104,5 +107,14 @@ public class Player: MonoBehaviour  {
 		}
 		// Set the token image
 		gameObject.transform.Find(tokenName).gameObject.SetActive(true);
+	}
+
+
+	public void LoadPlayerStatusOnSignIn(int currentPos) {
+		print ("hehehheehehehhe" + currentPos);
+
+		var curSquare = squares[currentPos];
+		gameObject.transform.position = new Vector3(curSquare.transform.position.x, curSquare.transform.position.y, 0);
+
 	}
 }
