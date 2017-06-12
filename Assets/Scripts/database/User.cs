@@ -43,7 +43,6 @@ public class User : MonoBehaviour {
 
 		data.currentPos = GameObject.Find("GameManager").GetComponent<GameManager>().CurrentPosition;
 		data.currentScore = currentScore;
-		//Vector3 pos = transform.position;
 	}
 
 

@@ -6,6 +6,8 @@ using System.Xml.Serialization;
 using System.IO;
 using System.Xml.Linq;
 using System.Text;
+using UnityEngine.SceneManagement;
+using System;
 
 public class SaveData : MonoBehaviour {
 
@@ -22,6 +24,7 @@ public class SaveData : MonoBehaviour {
 
 	// tell user we are about to save
 	public static event SerializeAction OnBeforeSave;
+
 
 
 
@@ -46,22 +49,8 @@ public class SaveData : MonoBehaviour {
 		print ("saveData Save");
 //		OnBeforeSave ();
 		SaveUser(path, current);
-		// Don't want any duplicate data
-		//ClearUsers ();
-
 	}
 
-	// add users to list
-//	public static void AddUserToData(UserData data) {
-//
-//		print ("saveData addusertodata");
-//		userContainer.users.Add (data);
-//	}
-
-
-//	public static void ClearUsers() {
-//		userContainer.users.Clear ();
-//	}
 
 	private static UserContainer LoadUsers(string path) {
 		
@@ -104,16 +93,33 @@ public class SaveData : MonoBehaviour {
 			FileStream stream = new FileStream (path, FileMode.Open);
 			XmlTextReader xmlReader = new XmlTextReader (stream);
 
+
+
 			// read file, check if user exist
 			while (xmlReader.Read ()) {
 				if (xmlReader.Name == "Username") {;
+					// user exists
 					if (xmlReader.ReadElementContentAsString ().Equals (current.data.username)) {
 						userNotExist = false;
-						print ("user already exist");
-
+						print ("username already exist");
 						xmlReader.ReadToNextSibling ("Password");
+
+						// match username and password
 						if (xmlReader.ReadElementContentAsString ().Equals (current.data.password)) {
-							Application.LoadLevel ("Main");
+							
+							xmlReader.ReadToNextSibling ("CurrentPos");
+
+							//load player position
+
+//							print (xmlReader.ReadElementContentAsInt ());
+//							GameManager gm = new GameManager();
+//							gm.CurrentPosition = xmlReader.ReadElementContentAsInt ();
+//							print (gm.CurrentPosition);
+							SceneManager.LoadScene ("Main");
+
+
+
+
 						} else {
 							print ("Username and Password does not match");
 						}
@@ -125,7 +131,6 @@ public class SaveData : MonoBehaviour {
 
 		// create a user element if user does not exist
 		if (userNotExist) {
-			
 			XDocument doc = XDocument.Load (path);
 
 			XElement user = new XElement ("User");
@@ -137,6 +142,5 @@ public class SaveData : MonoBehaviour {
 			doc.Root.Element ("Users").Add (user);
 			doc.Save (path);
 		} 
-
 	}
 }
