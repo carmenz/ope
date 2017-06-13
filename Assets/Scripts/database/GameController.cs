@@ -32,7 +32,7 @@ public class GameController : MonoBehaviour {
 		});
 		 loadButton.onClick.AddListener(delegate {
 			print("loadbutton clicked OnEnable");
-		 	SaveData.Load(datapath);
+			SaveData.Load(datapath, currentUser);
 		 });
 	}
 
@@ -44,7 +44,7 @@ public class GameController : MonoBehaviour {
 		});
 		loadButton.onClick.RemoveListener(delegate {
 			print("loadbutton clicked OnDisable");
-			SaveData.Load(datapath);
+			SaveData.Load(datapath, currentUser);
 		});
 	}
 

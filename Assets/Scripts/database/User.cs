@@ -19,7 +19,7 @@ public class User : MonoBehaviour {
 
 
 
-	public void StoreData() {
+	public void GetInputData() {
 
 		Scene currentScene = SceneManager.GetActiveScene ();
 		// Retrieve the name of this scene.
@@ -33,7 +33,7 @@ public class User : MonoBehaviour {
 
 			string passwordInput = GameObject.FindGameObjectWithTag ("PasswordField").GetComponent<InputField> ().text;
 			data.password = Login.Encrypt (passwordInput);
-			print ("user storeloginData");
+			print ("user getloginData");
 
 		} else {
 			data.username = username;
@@ -76,7 +76,7 @@ public class User : MonoBehaviour {
 		// 	LoadData();
 		// };
 		SaveData.OnBeforeSave += delegate {
-			StoreData();
+			GetInputData();
 		};
 //		SaveData.OnBeforeSave += delegate {
 //			SaveData.AddUserToData(data);
