@@ -12,7 +12,7 @@ public class User : MonoBehaviour {
 
 	public UserData data = new UserData ();
 
-	public string username = "TestUser";
+	public string username = "1";
 	public string  password = "000";
 	public int currentPos = 0;
 	public int currentScore = 0;
@@ -36,13 +36,13 @@ public class User : MonoBehaviour {
 			print ("user getloginData");
 
 		} else {
-			data.username = username;
-			data.password = password;
+			data.username = GameObject.Find ("GameManager").GetComponent<GameManager> ().name;
 			print ("user storemaindata");
 		}
 
 		data.currentPos = GameObject.Find("GameManager").GetComponent<GameManager>().CurrentPosition;
 		data.currentScore = currentScore;
+
 	}
 
 
@@ -98,5 +98,6 @@ public class UserData{
 
 	[XmlElement("CurrentScore")]
 	public int currentScore;
+
 
 }

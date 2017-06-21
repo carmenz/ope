@@ -36,16 +36,16 @@ public class GameController : MonoBehaviour {
 		 });
 	}
 
-	void OnDisable() {
-		saveButton.onClick.RemoveListener (delegate {
-			print("savebutton clicked OnDisable");
-			//SaveData.Save (datapath, SaveData.userContainer);
-			SaveData.Save(datapath, currentUser);
-		});
-		loadButton.onClick.RemoveListener(delegate {
-			print("loadbutton clicked OnDisable");
-			SaveData.Load(datapath, currentUser);
-		});
-	}
+//	void OnDisable() {
+//		saveButton.onClick.RemoveListener (delegate {
+//			//print("savebutton clicked OnDisable");
+//			//SaveData.Save (datapath, SaveData.userContainer);
+//			SaveData.Save(datapath, currentUser);
+//		});
+//		loadButton.onClick.RemoveListener(delegate {
+//			print("loadbutton clicked OnDisable");
+//			SaveData.Load(datapath, currentUser);
+//		});
+//	}
 
 }

@@ -36,9 +36,17 @@ public class SaveData : MonoBehaviour {
 
 	public static void Load(string path, User current) {
 
-		print ("saveData Save");
+		print ("saveData Load");
 		//		OnBeforeSave ();
 		LoadUser(path, current);
+	}
+
+
+	public static void Update(string path, User current) {
+
+		print ("saveData Update");
+		//		OnBeforeSave ();
+		UpdateUser(path, current);
 	}
 		
 
@@ -72,6 +80,7 @@ public class SaveData : MonoBehaviour {
 
 		// create a user element if user does not exist
 		if (userNotExist) {
+
 			XDocument doc = XDocument.Load (path);
 
 			XElement user = new XElement ("User");
@@ -94,6 +103,7 @@ public class SaveData : MonoBehaviour {
 		if (File.Exists (path)) {
 			var dox = new XmlDocument ();
 			dox.Load (path);
+
 
 			FileStream stream = new FileStream (path, FileMode.Open);
 			XmlTextReader xmlReader = new XmlTextReader (stream);
@@ -121,6 +131,46 @@ public class SaveData : MonoBehaviour {
 						}
 					}
 				} 
+			}
+			stream.Close ();
+		}
+	}
+
+	private static void UpdateUser(string path, User current) {
+
+
+	
+		// check if user.xml exist
+		if (File.Exists (path)) {
+			var dox = new XmlDocument ();
+			dox.Load (path);
+			print ("file");
+
+			FileStream stream = new FileStream (path, FileMode.Open);
+			XmlTextReader xmlReader = new XmlTextReader (stream);
+
+			// read file, check if user exist
+			while (xmlReader.Read ()) {
+				if (xmlReader.Name == "Username") {
+					// user exists
+					if (xmlReader.ReadElementContentAsString ().Equals (current.data.username)) {
+						xmlReader.ReadToNextSibling ("CurrentPos");
+
+						GameManager gm = GameObject.Find ("GameManager").GetComponent<GameManager> ();
+
+						XDocument doc = XDocument.Load (path);
+						XElement currentPos = new XElement ("CurrentPos");
+						currentPos.SetValue (gm.CurrentPosition);
+						print ("gm current" + gm.CurrentPosition);
+						doc.Save (path);
+
+						print ("done updating");
+					}
+					//user has to exist
+					else {
+						print ("BUG!!!! user does not exist in db");
+					}
+				}
 			}
 			stream.Close ();
 		}

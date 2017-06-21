@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<QuizCollction xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Quizzes>
+    <Quiz>
+      <Index>1</Index>
+      <Question>this is the question for quiz 11</Question>
+      <Blank1>
+      	<Option1>
+      		<value>number1 in quiz 11</value>
+      		<info>number1 in quiz11 is wrong because...</info>
+      	</Option1>
+      	<Option2>
+      		<value>correct answer11</value>
+      		<info>GREAT!11 this is correct...</info>
+      	</Option2>
+      	<Option3>
+      		<value>number3 in quiz 11</value>
+      		<info>number3 in quiz 11 is wrong because...</info>
+      	</Option3>
+      	<Answer>correct answer11</Answer>
+      </Blank1>
+      <Blank2>
+      	<Option1>
+      		<value>number1 in quiz 12</value>
+      		<info>number1 in quiz 12 is wrong because...</info>
+      	</Option1>
+      	<Option2>
+      		<value>correct answer12</value>
+      		<info>GREAT!12 this is correct...</info>
+      	</Option2>
+      	<Option3>
+      		<value>number3 in quiz 12</value>
+      		<info>number3 in quiz 12 is wrong because...</info>
+      	</Option3>
+      	<Answer>correct answer12</Answer>
+      </Blank2>
+    </Quiz>
+    <Quiz>
+      <Index>2</Index>
+      <Question>this is the question for quiz 21</Question>
+      <Blank1>
+      	<Option1>
+      		<value>number1 in quiz 21</value>
+      		<info>number1 in quiz 21 is wrong because...</info>
+      	</Option1>
+      	<Option2>
+      		<value>correct answer in quiz 21</value>
+      		<info>GREAT! this is correct in quiz 21...</info>
+      	</Option2>
+      	<Option3>
+      		<value>number3 in quiz 21</value>
+      		<info>number3 in quiz 21 is wrong because...</info>
+      	</Option3>
+      	<Answer>correct answer in quiz 21</Answer>
+      </Blank1>
+      <Blank2>
+      	<Option1>
+      		<value>number1 in quiz 22</value>
+      		<info>number1 in quiz 22 is wrong because...</info>
+      	</Option1>
+      	<Option2>
+      		<value>correct answer in quiz 22</value>
+      		<info>GREAT! this is correct in quiz 22...</info>
+      	</Option2>
+      	<Option3>
+      		<value>number3 in quiz 22</value>
+      		<info>number3 in quiz 22 is wrong because...</info>
+      	</Option3>
+      	<Answer>correct answer in quiz 22</Answer>
+      </Blank2>
+    </Quiz>
+  </Quizzes>
+</QuizCollction>
