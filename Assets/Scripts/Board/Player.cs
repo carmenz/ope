@@ -65,7 +65,7 @@ public class Player: MonoBehaviour  {
 			gm.CurrentPosition = currentPosition;
 			user.currentPos = currentPosition;
 
-			print ("herererererer" + user.username);
+
 			SaveData.Update (System.IO.Path.Combine (Application.persistentDataPath, "Resources/users.xml"), user);
 			OnLanding();
 		}

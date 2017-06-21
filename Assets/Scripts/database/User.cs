@@ -12,7 +12,7 @@ public class User : MonoBehaviour {
 
 	public UserData data = new UserData ();
 
-	public string username = "1";
+	public string username = "TestName";
 	public string  password = "000";
 	public int currentPos = 0;
 	public int currentScore = 0;

@@ -10,6 +10,8 @@ public class GameManager : MonoBehaviour {
 	int _curPos = 0;
 	[SerializeField]
 	string _tokenName = "First";
+	[SerializeField]
+	string _uname = "TestUser";
 
 	
 	public int CurrentPosition{
@@ -21,6 +23,14 @@ public class GameManager : MonoBehaviour {
 		}
 	}
 		
+	public string Username{
+		get {
+			return _uname;
+		}
+		set {
+			_uname = value;
+		}
+	}
 
 	public string TokenName{
 		get {

@@ -124,6 +124,7 @@ public class SaveData : MonoBehaviour {
 							//load player position
 							GameManager gm = GameObject.Find ("GameManager").GetComponent<GameManager> ();
 							gm.CurrentPosition = xmlReader.ReadElementContentAsInt ();
+							gm.Username = current.data.username;
 							SceneManager.LoadScene ("Main");
 
 						} else {

@@ -23,6 +23,7 @@ public class Quiz : MonoBehaviour {
 
 	public void GetData(User current) {
 		bool firstChallengeOnIsland = true;
+		GameManager gm = GameObject.Find ("GameManager").GetComponent<GameManager> ();
 		userpath = System.IO.Path.Combine (Application.dataPath, "Resources/users.xml");
 
 		int pos = current.currentPos;
@@ -53,7 +54,6 @@ public class Quiz : MonoBehaviour {
 			var dox = new XmlDocument ();
 			dox.Load (path);
 
-
 			//check if user already have that quiz on file
 
 			FileStream quizStream = new FileStream (path, FileMode.Open);
@@ -62,18 +62,29 @@ public class Quiz : MonoBehaviour {
 
 			FileStream userStream = new FileStream (userpath, FileMode.Open);
 			XmlTextReader xmlUserReader = new XmlTextReader (userStream);
-
 		
 			xmlQuizReader.Read ();
 
-			// read file, check if user exist
 			while (xmlUserReader.Read ()) {
-		
-				print ("whileeee read");
+				
+				// user did some challenges on the island
 
-					// user did some challenges on the island
+
+
+				if (xmlUserReader.Name == "Username") {
+					if (xmlUserReader.ReadElementContentAsString ().Equals (gm.Username)) {
+
+						if (xmlUserReader.ReadOuterXml ().Contains (island)) {
+
+							print ("user already have island");
+						} else {
+							print ("user not yet have island");
+						}
+						
+					}
+				}
 				if (xmlUserReader.Name == island) {
-					firstChallengeOnIsland = false;
+					//firstChallengeOnIsland = false;
 					// user already did some quiz challenges
 					if (xmlUserReader.ReadToNextSibling ("Quiz")) {
 						print ("found quiz");
@@ -87,30 +98,26 @@ public class Quiz : MonoBehaviour {
 							print ("index matches");
 							xmlQuizReader.ReadToNextSibling ("Index");
 						}
-
 					} else {
-
 						print ("user not yet have challenge on the island");
-
 					}
 				} 
 			}
-			quizStream.Close();
+			quizStream.Close ();
 			userStream.Close ();
 		}
-		// user did not have any challenges for the island yet
 
 
 		if (firstChallengeOnIsland) {
-
+			print ("first challenge on island");
 			XmlDocument xmlDoc = new XmlDocument();
 			xmlDoc.Load (userpath);
 			XmlNode username = xmlDoc.SelectSingleNode("//Username");
 
 			while (firstChallengeOnIsland) {
 
-				if (username.InnerText == current.username) {
-					print ("herererereeeeeeeeeeeeeeeeeeee");
+				// find the matching user
+				if (username.InnerText == gm.Username) {
 					XmlNode user = username.ParentNode;
 					XmlNode nodeBefore = xmlDoc.SelectSingleNode ("//CurrentScore");
 
@@ -130,22 +137,11 @@ public class Quiz : MonoBehaviour {
 					firstChallengeOnIsland = false;
 				} else {
 					username = username.ParentNode.NextSibling.FirstChild;
-
 				}
-
 			}
-
-
 			xmlDoc.Save(userpath);
-
 		}
-
-
-
 	}
-		
-
-
 }
 
 public class QuizData{
@@ -155,7 +151,5 @@ public class QuizData{
 
 
 }
-
-
 
 

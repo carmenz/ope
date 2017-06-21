@@ -14,12 +14,6 @@
       <CurrentScore>0</CurrentScore>
     </User>
     <User>
-      <Username>235434543</Username>
-      <Password>VfRQkemCQnZmoZXHoD9FTg==</Password>
-      <CurrentPos>0</CurrentPos>
-      <CurrentScore>0</CurrentScore>
-    </User>
-    <User>
       <Username>allison</Username>
       <Password>srwfzn5PzJQ9Gzx8a0HFgA==</Password>
       <CurrentPos>5</CurrentPos>
@@ -33,7 +27,7 @@
       <IslandA>
         <Quizzes>
           <Quiz>
-            <Index>2</Index>
+            <Index>4</Index>
           </Quiz>
         </Quizzes>
       </IslandA>
