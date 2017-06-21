@@ -87,7 +87,7 @@ public class Player: MonoBehaviour  {
 		//TODO: Check current square's type
 		//TODO: Load required mini-game / quiz scene
 
-		quiz.GetData (user);
+		quiz.GetData ();
 		SceneManager.LoadScene("TestQuiz");
 
 	}

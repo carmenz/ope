@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using System.Xml;
 using System.Xml.Serialization;
 using System.IO;
@@ -16,17 +17,20 @@ public class Quiz : MonoBehaviour {
 	private static string path = string.Empty;
 	private static string userpath = string.Empty;
 
-	 public void LoadQuizData() {
-	 	
-	 }
+
+	private string quizQuestion;
+	public Text questionText;
 
 
-	public void GetData(User current) {
+	public void GetData() {
 		bool firstChallengeOnIsland = true;
+		bool firstQuizOnIsland = true;
+
 		GameManager gm = GameObject.Find ("GameManager").GetComponent<GameManager> ();
+
 		userpath = System.IO.Path.Combine (Application.dataPath, "Resources/users.xml");
 
-		int pos = current.currentPos;
+		int pos = gm.CurrentPosition;
 		print ("pos is" + pos);
 		// choose quiz file according to island
 
@@ -66,81 +70,138 @@ public class Quiz : MonoBehaviour {
 			xmlQuizReader.Read ();
 
 			while (xmlUserReader.Read ()) {
-				
-				// user did some challenges on the island
-
-
 
 				if (xmlUserReader.Name == "Username") {
+					// find user from user.xml
 					if (xmlUserReader.ReadElementContentAsString ().Equals (gm.Username)) {
+						xmlUserReader.Name.Contains ("User");
+						if (xmlUserReader.ReadToNextSibling(island)) {
+							print ("user already have the island");
+							firstChallengeOnIsland = false;
 
-						if (xmlUserReader.ReadOuterXml ().Contains (island)) {
-
-							print ("user already have island");
+							if (xmlUserReader.ReadToDescendant ("Quizzes")) {
+								firstQuizOnIsland = false;
+								print ("user already did a quiz on the island");
+							
+							} else {
+								print ("first quiz for user on the island");
+							}
 						} else {
 							print ("user not yet have island");
 						}
-						
 					}
 				}
-				if (xmlUserReader.Name == island) {
-					//firstChallengeOnIsland = false;
-					// user already did some quiz challenges
-					if (xmlUserReader.ReadToNextSibling ("Quiz")) {
-						print ("found quiz");
-						xmlUserReader.ReadToNextSibling ("Index");
-						print ("found index");
-						int index = xmlUserReader.ReadElementContentAsInt ();
-
-						print ("index is " + index);
-						// ignore quizes that the user already did
-						if (xmlQuizReader.ReadElementContentAsInt ().Equals (index)) {
-							print ("index matches");
-							xmlQuizReader.ReadToNextSibling ("Index");
-						}
-					} else {
-						print ("user not yet have challenge on the island");
-					}
-				} 
 			}
 			quizStream.Close ();
 			userStream.Close ();
 		}
 
 
-		if (firstChallengeOnIsland) {
-			print ("first challenge on island");
-			XmlDocument xmlDoc = new XmlDocument();
-			xmlDoc.Load (userpath);
-			XmlNode username = xmlDoc.SelectSingleNode("//Username");
+		if (firstQuizOnIsland) {
+			
+			XmlDocument xmlUserDoc = new XmlDocument ();
+			xmlUserDoc.Load (userpath);
+			XmlNode usernameNode = xmlUserDoc.SelectSingleNode ("//Username");
 
-			while (firstChallengeOnIsland) {
+
+			while (firstQuizOnIsland) {
+
+				XmlNode nodeBefore = xmlUserDoc.SelectSingleNode ("//CurrentScore");
+
+				XmlNode xmlIsland = xmlUserDoc.CreateNode (XmlNodeType.Element, island, null);
+				XmlNode xmlQuizzes = xmlUserDoc.CreateNode (XmlNodeType.Element, "Quizzes", null);
+				XmlNode xmlQuiz = xmlUserDoc.CreateNode (XmlNodeType.Element, "Quiz", null);
+				XmlNode xmlIndex = xmlUserDoc.CreateNode (XmlNodeType.Element, "Index", null);
 
 				// find the matching user
-				if (username.InnerText == gm.Username) {
-					XmlNode user = username.ParentNode;
-					XmlNode nodeBefore = xmlDoc.SelectSingleNode ("//CurrentScore");
+				if (firstChallengeOnIsland) {
 
+					if (usernameNode.InnerText == gm.Username) {
+						XmlNode user = usernameNode.ParentNode;
 
-					XmlNode xmlIsland = xmlDoc.CreateNode (XmlNodeType.Element, island, null);
-					XmlNode xmlQuizzes = xmlDoc.CreateNode (XmlNodeType.Element, "Quizzes", null);
-					XmlNode xmlQuiz = xmlDoc.CreateNode (XmlNodeType.Element, "Quiz", null);
-					XmlNode xmlIndex = xmlDoc.CreateNode (XmlNodeType.Element, "Index", null);
-					// index go by position
-					xmlIndex.InnerText = pos.ToString ();
+						xmlIndex.InnerText = "1";
 
-					xmlIsland.AppendChild (xmlQuizzes);
+						xmlIsland.AppendChild (xmlQuizzes);
+						xmlQuizzes.AppendChild (xmlQuiz);
+						xmlQuiz.AppendChild (xmlIndex);
+
+						user.InsertAfter (xmlIsland, nodeBefore);
+						firstQuizOnIsland = false;
+					} else {
+						usernameNode = usernameNode.ParentNode.NextSibling.FirstChild;
+					}
+				} else {
+					print ("not the first challenge");
+					XmlNode islandNode = xmlUserDoc.SelectSingleNode ("//" + island);
+					xmlIndex.InnerText = "2";
+
+					islandNode.AppendChild (xmlQuizzes);
 					xmlQuizzes.AppendChild (xmlQuiz);
 					xmlQuiz.AppendChild (xmlIndex);
 
-					user.InsertAfter (xmlIsland, nodeBefore);
-					firstChallengeOnIsland = false;
-				} else {
-					username = username.ParentNode.NextSibling.FirstChild;
+					firstQuizOnIsland = false;
 				}
 			}
-			xmlDoc.Save(userpath);
+			xmlUserDoc.Save (userpath);
+		} else {
+			// not the first quiz
+			bool finishAdding = false;
+			print("not the first quiz");
+			XmlDocument xmlUserDoc = new XmlDocument ();
+
+			xmlUserDoc.Load (userpath);
+			XmlNode usernameNode = xmlUserDoc.SelectSingleNode ("//Username");
+
+			while (!finishAdding) {
+				if (usernameNode.InnerText == gm.Username) {
+					XmlNode quizNode = xmlUserDoc.SelectSingleNode ("//Quizzes");
+
+					XmlNode newQuizNode = xmlUserDoc.CreateNode (XmlNodeType.Element, "Quiz", null);
+					XmlNode xmlIndex = xmlUserDoc.CreateNode (XmlNodeType.Element, "Index", null);
+
+					/////////////////////////////////////////////////////////////////////
+					xmlIndex.InnerText = "1";
+
+					newQuizNode.AppendChild (xmlIndex);
+
+					quizNode.InsertAfter (newQuizNode, quizNode);
+					finishAdding = true;
+
+				} else {
+					usernameNode = usernameNode.ParentNode.NextSibling.FirstChild;
+				}
+			}
+			xmlUserDoc.Save (userpath);
 		}
+	}
+
+
+
+
+
+	public void LoadQuizOnScreen() {
+
+		int index = 0;
+		quizQuestion = "";
+
+		FileStream quizStream = new FileStream (path, FileMode.Open);
+
+		XmlTextReader xmlQuizReader = new XmlTextReader (quizStream);
+
+		FileStream userStream = new FileStream (userpath, FileMode.Open);
+		XmlTextReader xmlUserReader = new XmlTextReader (userStream);
+
+		xmlQuizReader.Read ();
+
+
+
+
+
+
+
+
+		questionText.text = quizQuestion;
+
 	}
 }
 
