@@ -5,9 +5,12 @@ using UnityEngine.SceneManagement;
 
 public class TestQuiz : MonoBehaviour {
 
+	public string mainSceneName = "Main";
+	GameManager gm;
+
 	// Use this for initialization
 	void Start () {
-		
+		gm = GameObject.Find("GameManager").GetComponent<GameManager>();
 	}
 	
 	// Update is called once per frame
@@ -16,6 +19,8 @@ public class TestQuiz : MonoBehaviour {
 	}
 
 	public void QuitQuiz() {
-		SceneManager.LoadScene("Main");
+		gm.missions.quizRequired.Remove(gm.typeCode);
+		gm.typeCode = 0;
+		SceneManager.LoadScene(mainSceneName);
 	}
 }

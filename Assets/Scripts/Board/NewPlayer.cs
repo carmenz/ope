@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class NewPlayer : MonoBehaviour {
 
@@ -15,6 +17,9 @@ public class NewPlayer : MonoBehaviour {
 
 	private bool _isRuning = false;
 	private bool _canBeTriggered = true;
+
+	GameManager gm;
+	Text missionContainer;
 
 	public bool IsRuning
     {
@@ -76,6 +81,11 @@ public class NewPlayer : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		gm = GameObject.Find("GameManager").GetComponent<GameManager>();
+		missionContainer = GameObject.Find("MissionList").GetComponent<Text>();
+		if (gm.missions.quizRequired.Count > 0) {
+			missionContainer.text = gm.missions.quizInfo;
+		}
 	}
 	
 	// Update is called once per frame
@@ -87,17 +97,20 @@ public class NewPlayer : MonoBehaviour {
 		// Trigger should only be triggerd after the player stop moving
 		if (IsRuning || !_canBeTriggered)
 			return;
-		
+		Debug.Log(collider);
 		// Only can be triggerd once in the slot
 		_canBeTriggered = false;
 		// Get slot type
 		// WORDPLAY, SLIDESTORY, MADLIBS, SPINNINGWHEEL, SHOP, PORT
-		// collider.name;
-		var type = collider.name.Replace(" Slot", "");
-		Debug.Log(type);
+		// var type = collider.name.Replace(" Slot", "");
+		var type = collider.GetComponent<SquareController>().type;
+		gm.typeCode = collider.GetComponent<SquareController>().index;
+		SceneManager.LoadScene(type);
+		// Debug.Log(type);
 	}
 
 	void OnTriggerExit2D(Collider2D collider) {
 		_canBeTriggered = true;
+		// TODO: 
 	}
 }
