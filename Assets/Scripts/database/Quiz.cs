@@ -18,8 +18,6 @@ public class Quiz : MonoBehaviour {
 	private static string userpath = string.Empty;
 
 
-	private string quizQuestion;
-	public Text questionText;
 
 
 	public void GetData() {
@@ -52,6 +50,7 @@ public class Quiz : MonoBehaviour {
 			print ("we are on island D");
 		}
 
+		gm.Path = path;
 
 		if (File.Exists (path)) {
 
@@ -120,7 +119,7 @@ public class Quiz : MonoBehaviour {
 						XmlNode user = usernameNode.ParentNode;
 
 
-						//LoadQuizOnScreen ("1");
+
 						xmlIndex.InnerText = "1";
 
 						xmlIsland.AppendChild (xmlQuizzes);
@@ -129,15 +128,19 @@ public class Quiz : MonoBehaviour {
 
 						user.InsertAfter (xmlIsland, nodeBefore);
 						firstQuizOnIsland = false;
+
+						gm.Index = "1";
+
+
 					} else {
 						usernameNode = usernameNode.ParentNode.NextSibling.FirstChild;
 					}
 				} else {
-					print ("not the first challenge");
+					print ("not the first challenge but the first quiz");
 					XmlNode islandNode = xmlUserDoc.SelectSingleNode ("//" + island);
 
-					LoadQuizOnScreen ("0");
-					xmlIndex.InnerText = "0";
+					gm.Index = "1";
+					xmlIndex.InnerText = "1";
 
 					islandNode.AppendChild (xmlQuizzes);
 					xmlQuizzes.AppendChild (xmlQuiz);
@@ -172,15 +175,15 @@ public class Quiz : MonoBehaviour {
 					XmlNode xmlIndex = xmlUserDoc.CreateNode (XmlNodeType.Element, "Index", null);
 
 
-
-					//LoadQuizOnScreen (indexNode.InnerText);
-
 					xmlIndex.InnerText = indexNode.InnerText;
 
 					newQuizNode.AppendChild (xmlIndex);
 
 					quizNode.InsertAfter (newQuizNode, quizNode);
 					finishAdding = true;
+
+					gm.Index = indexNode.InnerText;
+
 				
 				} else {
 					usernameNode = usernameNode.ParentNode.NextSibling.FirstChild;
@@ -194,30 +197,35 @@ public class Quiz : MonoBehaviour {
 
 
 
-	public void LoadQuizOnScreen(string index) {
-
-		bool finishLoading = false;
-		quizQuestion = "";
-
-		XmlDocument xmlQuizDoc = new XmlDocument ();
-		xmlQuizDoc.Load (path);
-		XmlNode indexNode = xmlQuizDoc.SelectSingleNode ("//Index");
-
-
-		while (!finishLoading) {
-			
-			if (indexNode.InnerText == index) {
-				print ("this is the quiz to be display");
-				questionText.text = indexNode.NextSibling.InnerText;
-
-				finishLoading = true;
-			} else {
-				indexNode = indexNode.ParentNode.NextSibling.FirstChild;
-			}
-		}
-		//questionText.text = quizQuestion.ToString();
-
-	}
+//	public void LoadQuizOnScreen(string index) {
+//		
+//		SceneManager.LoadScene("TestQuiz");
+//
+//		bool finishLoading = false;
+//
+//
+//		XmlDocument xmlQuizDoc = new XmlDocument ();
+//		xmlQuizDoc.Load (path);
+//		XmlNode indexNode = xmlQuizDoc.SelectSingleNode ("//Index");
+//
+//
+//		while (!finishLoading) {
+//			
+//			if (indexNode.InnerText == index) {
+//				print ("this is the quiz to be display");
+//				//print (questionText.text.ToString ());
+//				Text questionText = GetComponent<Text> ();
+//
+//				questionText.text = indexNode.NextSibling.InnerText;
+//
+//				finishLoading = true;
+//			} else {
+//				indexNode = indexNode.ParentNode.NextSibling.FirstChild;
+//			}
+//		}
+//		//questionText.text = quizQuestion.ToString();
+//
+//	}
 }
 
 public class QuizData{

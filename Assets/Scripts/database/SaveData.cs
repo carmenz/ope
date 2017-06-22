@@ -122,10 +122,11 @@ public class SaveData : MonoBehaviour {
 							xmlReader.ReadToNextSibling ("CurrentPos");
 
 							//load player position
+
+							SceneManager.LoadScene ("Main");
 							GameManager gm = GameObject.Find ("GameManager").GetComponent<GameManager> ();
 							gm.CurrentPosition = xmlReader.ReadElementContentAsInt ();
 							gm.Username = current.data.username;
-							SceneManager.LoadScene ("Main");
 
 						} else {
 							print ("Username and Password does not match, please try again");

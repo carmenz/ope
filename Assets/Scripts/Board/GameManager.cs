@@ -13,6 +13,12 @@ public class GameManager : MonoBehaviour {
 	[SerializeField]
 	string _uname = "TestUser";
 
+	[SerializeField]
+	string _index = "index";
+
+	[SerializeField]
+	string _path = "path";
+
 	
 	public int CurrentPosition{
 		get {
@@ -40,6 +46,27 @@ public class GameManager : MonoBehaviour {
 			_tokenName = value;
 		}
 	}
+
+	public string Index{
+		get {
+			return _index;
+		}
+		set {
+			_index = value;
+		}
+	}
+
+	public string Path{
+		get {
+			return _path;
+		}
+		set {
+			_path = value;
+		}
+	}
+
+
+
 	
 	void Awake() {
 		// init
