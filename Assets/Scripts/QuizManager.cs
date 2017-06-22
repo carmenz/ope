@@ -24,8 +24,18 @@ public class QuizManager : MonoBehaviour {
 			if (indexNode.InnerText == gm.Index) {
 				print ("this is the quiz to be display");
 				Text questionText = GameObject.Find("Question").GetComponent<Text> ();
-
 				questionText.text = indexNode.NextSibling.FirstChild.InnerText;
+
+				Button option1 = GameObject.Find ("Option1").GetComponent<Button> ();
+				Button option2 = GameObject.Find ("Option2").GetComponent<Button> ();
+				Button option3 = GameObject.Find ("Option3").GetComponent<Button> ();
+				Button option4 = GameObject.Find ("Option4").GetComponent<Button> ();
+
+
+				option1.GetComponentInChildren<Text> ().text = indexNode.NextSibling.FirstChild.NextSibling.FirstChild.SelectSingleNode("//Option1//value").InnerText;
+				option2.GetComponentInChildren<Text> ().text = indexNode.NextSibling.FirstChild.NextSibling.ChildNodes.Item (1).SelectSingleNode("//Option2//value").InnerText;
+				option3.GetComponentInChildren<Text> ().text = indexNode.NextSibling.FirstChild.NextSibling.ChildNodes.Item (2).SelectSingleNode("//Option3//value").InnerText;
+				option4.GetComponentInChildren<Text> ().text = indexNode.NextSibling.FirstChild.NextSibling.ChildNodes.Item (3).SelectSingleNode("//Option4//value").InnerText;
 
 
 				finishLoading = true;
