@@ -8,40 +8,23 @@
       <CurrentScore>0</CurrentScore>
     </User>
     <User>
-      <Username>testing</Username>
-      <Password>d3647d0e0f7644093aa86a885bd0b330</Password>
-      <CurrentPos>0</CurrentPos>
+      <Username>allison</Username>
+      <Password>srwfzn5PzJQ9Gzx8a0HFgA==</Password>
+      <CurrentPos>5</CurrentPos>
       <CurrentScore>0</CurrentScore>
     </User>
     <User>
       <Username>1</Username>
       <Password>fn5g+xrZS7Ud7B8EBFfuxg==</Password>
-      <CurrentPos>3</CurrentPos>
-      <CurrentScore>0</CurrentScore>
-    </User>
-    <User>
-      <Username>ffff</Username>
-      <Password>PjWWYu5X1ixe5NzU+AjLtg==</Password>
       <CurrentPos>0</CurrentPos>
       <CurrentScore>0</CurrentScore>
-    </User>
-    <User>
-      <Username>342432</Username>
-      <Password>EoaZB5lgHkBJZBpzNdiLKA==</Password>
-      <CurrentPos>0</CurrentPos>
-      <CurrentScore>0</CurrentScore>
-    </User>
-    <User>
-      <Username>235434543</Username>
-      <Password>VfRQkemCQnZmoZXHoD9FTg==</Password>
-      <CurrentPos>0</CurrentPos>
-      <CurrentScore>0</CurrentScore>
-    </User>
-    <User>
-      <Username>allison</Username>
-      <Password>srwfzn5PzJQ9Gzx8a0HFgA==</Password>
-      <CurrentPos>5</CurrentPos>
-      <CurrentScore>0</CurrentScore>
+      <IslandA>
+        <Quizzes>
+          <Quiz>
+            <Index>1</Index>
+          </Quiz>
+        </Quizzes>
+      </IslandA>
     </User>
   </Users>
 </UserCollection>

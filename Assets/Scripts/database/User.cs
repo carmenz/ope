@@ -12,14 +12,14 @@ public class User : MonoBehaviour {
 
 	public UserData data = new UserData ();
 
-	public string username = "TestUser";
+	public string username = "TestName";
 	public string  password = "000";
 	public int currentPos = 0;
 	public int currentScore = 0;
 
 
 
-	public void StoreData() {
+	public void GetInputData() {
 
 		Scene currentScene = SceneManager.GetActiveScene ();
 		// Retrieve the name of this scene.
@@ -33,16 +33,16 @@ public class User : MonoBehaviour {
 
 			string passwordInput = GameObject.FindGameObjectWithTag ("PasswordField").GetComponent<InputField> ().text;
 			data.password = Login.Encrypt (passwordInput);
-			print ("user storeloginData");
+			print ("user getloginData");
 
 		} else {
-			data.username = username;
-			data.password = password;
+			data.username = GameObject.Find ("GameManager").GetComponent<GameManager> ().name;
 			print ("user storemaindata");
 		}
 
 		data.currentPos = GameObject.Find("GameManager").GetComponent<GameManager>().CurrentPosition;
 		data.currentScore = currentScore;
+
 	}
 
 
@@ -76,7 +76,7 @@ public class User : MonoBehaviour {
 		// 	LoadData();
 		// };
 		SaveData.OnBeforeSave += delegate {
-			StoreData();
+			GetInputData();
 		};
 //		SaveData.OnBeforeSave += delegate {
 //			SaveData.AddUserToData(data);
@@ -98,5 +98,6 @@ public class UserData{
 
 	[XmlElement("CurrentScore")]
 	public int currentScore;
+
 
 }

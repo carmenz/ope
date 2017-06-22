@@ -13,6 +13,10 @@ public class Player: MonoBehaviour  {
 	string info;
 
 	public static Player instance;
+
+	private static Quiz quiz = new Quiz();
+	private static User user = new User();
+
 		
 	void Awake() {
 		// Reset current position and reset token's visual position on the board
@@ -23,6 +27,8 @@ public class Player: MonoBehaviour  {
 		SetTokenPosition();
 		ChangeToken(gm.TokenName);
 		print ("awake");
+
+
 	}
 
 	// Use this fors initialization
@@ -55,7 +61,12 @@ public class Player: MonoBehaviour  {
 			transform.DOMove(new Vector3(nextSquare.transform.position.x, nextSquare.transform.position.y, 0f), 1).OnComplete(MoveTo);
 			currentPosition++;
 		} else {
+
 			gm.CurrentPosition = currentPosition;
+			user.currentPos = currentPosition;
+
+
+			SaveData.Update (System.IO.Path.Combine (Application.persistentDataPath, "Resources/users.xml"), user);
 			OnLanding();
 		}
 	}
@@ -75,7 +86,11 @@ public class Player: MonoBehaviour  {
 	void OnLanding() {
 		//TODO: Check current square's type
 		//TODO: Load required mini-game / quiz scene
+
+		quiz.GetData ();
+
 		SceneManager.LoadScene("TestQuiz");
+
 	}
 
 	void UpdateScore() {

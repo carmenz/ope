@@ -11,20 +11,35 @@ public class GameManager : MonoBehaviour {
 	[SerializeField]
 	string _tokenName = "First";
 	[SerializeField]
-	Vector2 _screenPosition;
-
 	// public List<int> quizRequired = new List<int>();
 	// public string quizDesc;
 	public Missions missions;
 
 	public int typeCode;
+	string _uname = "TestUser";
 
-	public int CurrentPosition {
+	[SerializeField]
+	string _index = "index";
+
+	[SerializeField]
+	string _path = "path";
+
+	
+	public int CurrentPosition{
 		get {
 			return _curPos;
 		}
 		set {
 			_curPos = value;
+		}
+	}
+		
+	public string Username{
+		get {
+			return _uname;
+		}
+		set {
+			_uname = value;
 		}
 	}
 
@@ -37,12 +52,21 @@ public class GameManager : MonoBehaviour {
 		}
 	}
 
-	public Vector2 ScreenPosition {
+	public string Index{
 		get {
-			return _screenPosition;
+			return _index;
 		}
 		set {
-			_screenPosition = value;
+			_index = value;
+		}
+	}
+
+	public string Path{
+		get {
+			return _path;
+		}
+		set {
+			_path = value;
 		}
 	}
 	
