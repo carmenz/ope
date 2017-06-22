@@ -7,7 +7,9 @@ public class GameManager : MonoBehaviour {
 
 	// Serialize for monitor
 	[SerializeField]
-	int _curPos = 0;
+	int _curPos;
+	[SerializeField]
+	Vector2 _coordinate;
 	[SerializeField]
 	string _tokenName = "First";
 	[SerializeField]
@@ -67,6 +69,15 @@ public class GameManager : MonoBehaviour {
 		}
 		set {
 			_path = value;
+		}
+	}
+
+	public Vector2 Coordinate {
+		get {
+			return _coordinate;
+		}
+		set {
+			_coordinate = value;
 		}
 	}
 	
