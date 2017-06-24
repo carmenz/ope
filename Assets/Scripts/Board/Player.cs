@@ -89,7 +89,7 @@ public class Player: MonoBehaviour  {
 
 		quiz.GetData ();
 
-		SceneManager.LoadScene("TestQuiz");
+		SceneManager.LoadScene("TestQuiz"+ gm.Index);
 
 	}
 

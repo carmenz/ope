@@ -4,82 +4,106 @@
     <Quiz>
       <Index>1</Index>
       <Q>
-      	<Question>this is the question for quiz 1111111111</Question>
+      	<Question>To celebrate her year end bonus, Megyn is thinking of spending some of her earnings on gambling. She thought of spending it on a chance based game like _________________. </Question>
 	    <Blank>
 	      	<Option1>
-	      		<value>number1 in quiz 11</value>
-	      		<info>number1 in quiz11 is wrong because...</info>
+	      		<value>Roulette</value>
+	      		<correct>T</correct>
+	      		<info>This is correct! Roulette is a chance based game, so as slots!</info>
 	      	</Option1>
 	      	<Option2>
-	      		<value>correct answer11</value>
-	      		<info>GREAT!11 this is correct...</info>
+	      		<value>Slots</value>
+	      		<correct>T</correct>
+	      		<info>This is correct! Slots is a chance based game, so as Roulette!</info>
 	      	</Option2>
 	      	<Option3>
-	      		<value>number3 in quiz 11</value>
-	      		<info>number3 in quiz 11 is wrong because...</info>
+	      		<value>Horse race betting</value>
+	      		<correct>F</correct>
+	      		<info>This is wrong!</info>
 	      	</Option3>
 	      	<Option4>
-	      		<value>number4 in quiz 11</value>
-	      		<info>number4 in quiz 11 is wrong because...</info>
+	      		<value>Poker</value>
+	      		<correct>F</correct>
+	      		<info>This is wrong!</info>
 	      	</Option4>
-	      	<Answer>correct answer11</Answer>
 	    </Blank>
 	  </Q>
 	  <Q>
-	  	<Question>this is the question for quiz 122222222</Question>
+	  	<Question>Megyn knows that this game _________________, </Question>
 	    <Blank>
 	      	<Option1>
-	      		<value>number1 in quiz 12</value>
-	      		<info>number1 in quiz 12 is wrong because...</info>
+	      		<value>purely random</value>
+	      		<correct>T</correct>
+	      		<info>This is correct! Chance based games are purely random</info>
 	      	</Option1>
 	      	<Option2>
-	      		<value>correct answer12</value>
-	      		<info>GREAT!12 this is correct...</info>
+	      		<value>requires skill</value>
+	      		<correct>F</correct>
+	      		<info>This is wrong!</info>
 	      	</Option2>
 	      	<Option3>
-	      		<value>number3 in quiz 12</value>
-	      		<info>number3 in quiz 12 is wrong because...</info>
+	      		<value>is a guaranteed win</value>
+	      		<correct>F</correct>
+	      		<info>This is wrong!</info>
 	      	</Option3>
-	      	<Answer>correct answer12</Answer>
+	      	<Option4>
+	      		<value>requires experience</value>
+	      		<correct>F</correct>
+	      		<info>This is wrong!</info>
+	      	</Option4>
 	    </Blank>
 	  </Q>
     </Quiz>
     <Quiz>
       <Index>2</Index>
       <Q>
-	      <Question>this is the question for quiz 22222222221</Question>
+	      <Question>Tom decided on buying a Lotto Max ticket, even though a _________________ ticket had better odds of winning. </Question>
 	      <Blank>
 	      	<Option1>
-	      		<value>number1 in quiz 21</value>
-	      		<info>number1 in quiz 21 is wrong because...</info>
+	      		<value>BC/49</value>
+	      		<correct>F</correct>
+	      		<info>This is wrong!</info>
 	      	</Option1>
 	      	<Option2>
-	      		<value>correct answer in quiz 21</value>
-	      		<info>GREAT! this is correct in quiz 21...</info>
+	      		<value>scratch and win</value>
+	      		<correct>T</correct>
+	      		<info>This is correct! Scratch and win has better odds of winning than a Lotto Max ticket.</info>
 	      	</Option2>
 	      	<Option3>
-	      		<value>number3 in quiz 21</value>
-	      		<info>number3 in quiz 21 is wrong because...</info>
+	      		<value>Daily Grand</value>
+	      		<correct>F</correct>
+	      		<info>This is wrong!</info>
 	      	</Option3>
-	      	<Answer>correct answer in quiz 21</Answer>
+	      	<Option4>
+	      		<value>blahblahblah</value>
+	      		<correct>F</correct>
+	      		<info>This is wrong!</info>
+	      	</Option4>
 	      </Blank>
 	  </Q>
 	  <Q>
-	  	<Question>this is the question for quiz 2222222222</Question>
+	  	<Question>this is the last question </Question>
 	    <Blank>
 	      	<Option1>
 	      		<value>number1 in quiz 22</value>
+	      		<correct>F</correct>
 	      		<info>number1 in quiz 22 is wrong because...</info>
 	      	</Option1>
 	      	<Option2>
 	      		<value>correct answer in quiz 22</value>
+	      		<correct>T</correct>
 	      		<info>GREAT! this is correct in quiz 22...</info>
 	      	</Option2>
 	      	<Option3>
 	      		<value>number3 in quiz 22</value>
+	      		<correct>F</correct>
 	      		<info>number3 in quiz 22 is wrong because...</info>
 	      	</Option3>
-	      	<Answer>correct answer in quiz 22</Answer>
+	      	<Option4>
+	      		<value>number3 in quiz 22</value>
+	      		<correct>F</correct>
+	      		<info>number3 in quiz 22 is wrong because...</info>
+	      	</Option4>
 	    </Blank>
 	   </Q>
     </Quiz>
