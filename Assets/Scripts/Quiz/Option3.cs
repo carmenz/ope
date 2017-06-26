@@ -30,12 +30,14 @@ public class Option3 : MonoBehaviour {
 
 		qm.Task3OnClick();
 
+
 		int subIndex = qm.subIndex - 1;
 
 		option1.GetComponentInChildren<Text> ().text = indexNode.NextSibling.NextSibling.FirstChild.SelectSingleNode ("//Blank"+ subIndex +"//Option1//value").InnerText;
 		option2.GetComponentInChildren<Text> ().text = indexNode.NextSibling.NextSibling.FirstChild.SelectSingleNode ("//Blank"+ subIndex +"//Option2//value").InnerText;
 		option3.GetComponentInChildren<Text> ().text = indexNode.NextSibling.NextSibling.FirstChild.SelectSingleNode ("//Blank"+ subIndex +"//Option3//value").InnerText;
 		option4.GetComponentInChildren<Text> ().text = indexNode.NextSibling.NextSibling.FirstChild.SelectSingleNode ("//Blank"+ subIndex +"//Option4//value").InnerText;
+
 
 	}
 

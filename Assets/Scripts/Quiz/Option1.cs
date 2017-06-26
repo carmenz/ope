@@ -18,7 +18,7 @@ public class Option1 : MonoBehaviour {
 	}
 
 	public void onClick() {
-		//qm = GameObject.Find("QuizManager").GetComponent<QuizManager>();
+
 
 		XmlDocument xmlQuizDoc = new XmlDocument ();
 		xmlQuizDoc.Load (gm.Path);
@@ -31,12 +31,16 @@ public class Option1 : MonoBehaviour {
 
 		qm.Task1OnClick();
 
+
+
 		int subIndex = qm.subIndex - 1;
 
 		option1.GetComponentInChildren<Text> ().text = indexNode.NextSibling.NextSibling.FirstChild.SelectSingleNode ("//Blank"+ subIndex +"//Option1//value").InnerText;
 		option2.GetComponentInChildren<Text> ().text = indexNode.NextSibling.NextSibling.FirstChild.SelectSingleNode ("//Blank"+ subIndex +"//Option2//value").InnerText;
 		option3.GetComponentInChildren<Text> ().text = indexNode.NextSibling.NextSibling.FirstChild.SelectSingleNode ("//Blank"+ subIndex +"//Option3//value").InnerText;
 		option4.GetComponentInChildren<Text> ().text = indexNode.NextSibling.NextSibling.FirstChild.SelectSingleNode ("//Blank"+ subIndex +"//Option4//value").InnerText;
+
+
 	
 	}
 	

@@ -8,6 +8,7 @@ using System.Xml;
 public class QuizManager : MonoBehaviour {
 	
 	private GameManager gm;
+	private QuizManager qm;
 
 	public int subIndex = 1;
 
@@ -15,6 +16,7 @@ public class QuizManager : MonoBehaviour {
 	IEnumerator Start () {
 		
 		gm = GameObject.Find("GameManager").GetComponent<GameManager>();
+		qm = GameObject.Find("QuizManager").GetComponent<QuizManager>();
 
 		XmlDocument xmlQuizDoc = new XmlDocument ();
 
@@ -30,10 +32,13 @@ public class QuizManager : MonoBehaviour {
 				Text questionText = GameObject.Find ("Question").GetComponent<Text> ();
 				XmlNode QNode = indexNode.NextSibling;
 				while (indexNode != null) {
-					print (subIndex);
-					questionText.text = questionText.text + indexNode.SelectSingleNode("//Question"+subIndex).InnerText;
-					print ("here is question" + subIndex);
+		
+					if (subIndex - 1 == 6) {
+						print ("nullll");
 
+						break;
+					}
+					questionText.text = questionText.text + indexNode.SelectSingleNode("//Question"+subIndex).InnerText;
 
 
 					Button option1 = GameObject.Find ("Option1").GetComponent<Button> ();
@@ -47,23 +52,25 @@ public class QuizManager : MonoBehaviour {
 					option3.GetComponentInChildren<Text> ().text = QNode.FirstChild.NextSibling.ChildNodes.Item (2).SelectSingleNode ("//Option3//value").InnerText;
 					option4.GetComponentInChildren<Text> ().text = QNode.FirstChild.NextSibling.ChildNodes.Item (3).SelectSingleNode ("//Option4//value").InnerText;
 
+				
+
 
 					// move to next question in the quiz
 					if (QNode.NextSibling.Name == "Q") {
-						print ("found Q");
+						//print ("found Q");
 						QNode = indexNode.NextSibling;
+						print (QNode.Name);
 						subIndex++;
+						yield return new WaitForSeconds(2000);
 					} 
-					if (subIndex-1 == 6) {
-						print ("nullll");
-						break;
-					}
-					yield return new WaitForSeconds(2000);
 
 				}
 
+
 				finishLoading = true;
 			} else {
+
+
 				//move to next quiz
 				indexNode = indexNode.ParentNode.NextSibling.FirstChild;
 			}
@@ -74,12 +81,11 @@ public class QuizManager : MonoBehaviour {
 
 	public void blankToChange(int subIndex, Button option, int optionNumber) {
 
-		print ("Blank" + subIndex);
 		Text blankText = GameObject.Find ("Blank" + subIndex).GetComponent<Text> ();
 
 		XmlDocument xmlQuizDoc = new XmlDocument ();
 		xmlQuizDoc.Load (gm.Path);
-	XmlNode indexNode = xmlQuizDoc.SelectSingleNode ("//Index");
+		XmlNode indexNode = xmlQuizDoc.SelectSingleNode ("//Index");
 
 
 		if (indexNode.NextSibling.FirstChild.NextSibling.FirstChild.SelectSingleNode ("//Option"+optionNumber+"//correct").InnerText == "T") {
@@ -95,7 +101,7 @@ public class QuizManager : MonoBehaviour {
 		Debug.Log("option1 is clicked");
 		Button option1 = GameObject.Find ("Option1").GetComponent<Button> ();
 
-		gm = GameObject.Find("GameManager").GetComponent<GameManager>();
+
 		XmlDocument xmlQuizDoc = new XmlDocument ();
 		xmlQuizDoc.Load (gm.Path);
 		XmlNode indexNode = xmlQuizDoc.SelectSingleNode ("//Index");
@@ -116,8 +122,10 @@ public class QuizManager : MonoBehaviour {
 			blankToChange (1, option1, 2);
 		}
 
+		int subIndexForInfo = qm.subIndex - 1;
+
 		Text infoText = GameObject.Find ("Info").GetComponent<Text> ();
-		infoText.text = indexNode.NextSibling.FirstChild.NextSibling.FirstChild.SelectSingleNode ("//Option1//info").InnerText;
+		infoText.text = indexNode.SelectSingleNode ("//Blank"+ subIndexForInfo +"//Option1//info").InnerText;
 
 		Start ().MoveNext();
 
@@ -127,7 +135,7 @@ public class QuizManager : MonoBehaviour {
 		Debug.Log("option2 is clicked");
 		Button option2 = GameObject.Find ("Option2").GetComponent<Button> ();
 
-		gm = GameObject.Find("GameManager").GetComponent<GameManager>();
+
 		XmlDocument xmlQuizDoc = new XmlDocument ();
 		xmlQuizDoc.Load (gm.Path);
 		XmlNode indexNode = xmlQuizDoc.SelectSingleNode ("//Index");
@@ -148,10 +156,11 @@ public class QuizManager : MonoBehaviour {
 		} else if (questionText.text == indexNode.SelectSingleNode ("//Question1").InnerText) {
 				blankToChange (1, option2, 2);
 		}
+			
+		int subIndexForInfo = qm.subIndex - 1;
 
 		Text infoText = GameObject.Find ("Info").GetComponent<Text> ();
-		infoText.text = indexNode.NextSibling.FirstChild.NextSibling.ChildNodes.Item (1).SelectSingleNode ("//Option2//info").InnerText;
-
+		infoText.text = indexNode.SelectSingleNode ("//Blank"+ subIndexForInfo +"//Option2//info").InnerText;
 
 		Start ().MoveNext();
 
@@ -162,7 +171,6 @@ public class QuizManager : MonoBehaviour {
 		Button option3 = GameObject.Find ("Option3").GetComponent<Button> ();
 
 
-		gm = GameObject.Find("GameManager").GetComponent<GameManager>();
 		XmlDocument xmlQuizDoc = new XmlDocument ();
 		xmlQuizDoc.Load (gm.Path);
 		XmlNode indexNode = xmlQuizDoc.SelectSingleNode ("//Index");
@@ -183,8 +191,10 @@ public class QuizManager : MonoBehaviour {
 			blankToChange (1, option3, 2);
 		}
 
+		int subIndexForInfo = qm.subIndex - 1;
+
 		Text infoText = GameObject.Find ("Info").GetComponent<Text> ();
-		infoText.text = indexNode.NextSibling.FirstChild.NextSibling.ChildNodes.Item (2).SelectSingleNode ("//Option3//info").InnerText;
+		infoText.text = indexNode.SelectSingleNode ("//Blank"+ subIndexForInfo +"//Option3//info").InnerText;
 
 		Start ().MoveNext();
 	}
@@ -193,14 +203,11 @@ public class QuizManager : MonoBehaviour {
 		Debug.Log("option4 is clicked");
 		Button option4 = GameObject.Find ("Option4").GetComponent<Button> ();
 
-		gm = GameObject.Find("GameManager").GetComponent<GameManager>();
 		XmlDocument xmlQuizDoc = new XmlDocument ();
 		xmlQuizDoc.Load (gm.Path);
 		XmlNode indexNode = xmlQuizDoc.SelectSingleNode ("//Index");
 
 		Text questionText = GameObject.Find ("Question").GetComponent<Text> ();
-		print (questionText.text);
-		print (indexNode.SelectSingleNode ("//Question1").InnerText);
 
 		if (questionText.text.Contains(indexNode.SelectSingleNode ("//Question6").InnerText)) {
 			blankToChange (6, option4, 2);
@@ -216,8 +223,11 @@ public class QuizManager : MonoBehaviour {
 			blankToChange (1, option4, 2);
 		}
 
+		int subIndexForInfo = qm.subIndex - 1;
+
 		Text infoText = GameObject.Find ("Info").GetComponent<Text> ();
-		infoText.text = indexNode.NextSibling.FirstChild.NextSibling.ChildNodes.Item (3).SelectSingleNode ("//Option4//info").InnerText;
+		infoText.text = indexNode.SelectSingleNode ("//Blank"+ subIndexForInfo +"//Option4//info").InnerText;
+
 
 		Start ().MoveNext();
 	}

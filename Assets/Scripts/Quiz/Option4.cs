@@ -28,6 +28,8 @@ public class Option4 : MonoBehaviour {
 		Button option4 = GameObject.Find ("Option4").GetComponent<Button> ();
 
 		qm.Task4OnClick();
+
+	
 	
 		int subIndex = qm.subIndex - 1;
 
@@ -36,6 +38,7 @@ public class Option4 : MonoBehaviour {
 		option3.GetComponentInChildren<Text> ().text = indexNode.NextSibling.NextSibling.FirstChild.SelectSingleNode ("//Blank"+ subIndex +"//Option3//value").InnerText;
 		option4.GetComponentInChildren<Text> ().text = indexNode.NextSibling.NextSibling.FirstChild.SelectSingleNode ("//Blank"+ subIndex +"//Option4//value").InnerText;
 
+	
 	}
 
 }
