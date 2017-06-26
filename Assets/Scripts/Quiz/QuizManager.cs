@@ -30,7 +30,7 @@ public class QuizManager : MonoBehaviour {
 				Text questionText = GameObject.Find ("Question").GetComponent<Text> ();
 				XmlNode QNode = indexNode.NextSibling;
 				while (indexNode != null) {
-
+					print (subIndex);
 					questionText.text = questionText.text + indexNode.SelectSingleNode("//Question"+subIndex).InnerText;
 					print ("here is question" + subIndex);
 
@@ -49,13 +49,14 @@ public class QuizManager : MonoBehaviour {
 
 
 					// move to next question in the quiz
-					if (QNode.NextSibling != null) {
+					if (QNode.NextSibling.Name == "Q") {
 						print ("found Q");
 						QNode = indexNode.NextSibling;
 						subIndex++;
-					} else {
+					} 
+					if (subIndex-1 == 6) {
 						print ("nullll");
-						indexNode = null;
+						break;
 					}
 					yield return new WaitForSeconds(2000);
 
