@@ -177,6 +177,7 @@ public class Quiz : MonoBehaviour {
 
 					newQuizNode.AppendChild (xmlIndex);
 
+					print (quizNode.InnerText);
 					quizNode.InsertAfter (newQuizNode, quizNode);
 					finishAdding = true;
 

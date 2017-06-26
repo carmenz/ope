@@ -8,6 +8,8 @@ public class WordGameManager : MonoBehaviour {
 
 	private GameManager gm;
 	private WordGameManager wgm;
+	public GameObject panel;
+
 	public int subIndex = 1;
 
 	// Use this for initialization
@@ -56,6 +58,7 @@ public class WordGameManager : MonoBehaviour {
 
 
 				finishLoading = true;
+				panel.SetActive(true);
 			} else {
 
 

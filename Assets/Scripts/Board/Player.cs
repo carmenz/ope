@@ -91,8 +91,7 @@ public class Player: MonoBehaviour  {
 		//TODO: Load required mini-game / quiz scene
 
 //		quiz.GetData ();
-//
-//		SceneManager.LoadScene("TestQuiz"+ gm.Index);
+//		SceneManager.LoadScene("TestQuiz1");
 
 		wordGame.GetData ();
 		SceneManager.LoadScene ("WordGame1");

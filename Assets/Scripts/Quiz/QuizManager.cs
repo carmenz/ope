@@ -8,7 +8,7 @@ public class QuizManager : MonoBehaviour {
 	
 	private GameManager gm;
 	private QuizManager qm;
-
+	public GameObject panel;
 
 	public int subIndex = 1;
 
@@ -68,6 +68,9 @@ public class QuizManager : MonoBehaviour {
 
 
 				finishLoading = true;
+
+				panel.SetActive(true);
+
 			} else {
 
 
