@@ -15,8 +15,8 @@ public class NewPlayer : MonoBehaviour {
     private float costTime = 0.0f;
     private float timePrecent = 0.0f;
 
-	private bool _isRuning = false;
-	private bool _canBeTriggered = true;
+	bool _isRuning = false;
+	bool _canBeTriggered = true;
 
 	GameManager gm;
 	Text missionContainer;
@@ -82,6 +82,8 @@ public class NewPlayer : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		gm = GameObject.Find("GameManager").GetComponent<GameManager>();
+        transform.position = gm.Coordinate;
+        _canBeTriggered = false;
 		missionContainer = GameObject.Find("MissionList").GetComponent<Text>();
 		if (gm.missions.quizRequired.Count > 0) {
 			missionContainer.text = gm.missions.quizInfo;
@@ -93,11 +95,15 @@ public class NewPlayer : MonoBehaviour {
 		MoveByTimeline();		
 	}
 
+    void OnTriggerEnter2D(Collider2D collider) {
+        if (IsRuning)
+            _canBeTriggered = true;
+    }
+
 	void OnTriggerStay2D(Collider2D collider) {
 		// Trigger should only be triggerd after the player stop moving
 		if (IsRuning || !_canBeTriggered)
 			return;
-		Debug.Log(collider);
 		// Only can be triggerd once in the slot
 		_canBeTriggered = false;
 		// Get slot type
@@ -105,6 +111,7 @@ public class NewPlayer : MonoBehaviour {
 		// var type = collider.name.Replace(" Slot", "");
 		var type = collider.GetComponent<SquareController>().type;
 		gm.typeCode = collider.GetComponent<SquareController>().index;
+        gm.Coordinate = new Vector2(transform.position.x, transform.position.y);
 		SceneManager.LoadScene(type);
 		// Debug.Log(type);
 	}
