@@ -26,7 +26,7 @@ public class Quiz : MonoBehaviour {
 
 		userpath = System.IO.Path.Combine (Application.dataPath, "Resources/users.xml");
 
-		int pos = gm.CurrentPosition;
+		int pos = gm.typeCode;
 		print ("pos is" + pos);
 		// choose quiz file according to island
 

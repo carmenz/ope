@@ -8,6 +8,7 @@ public class SquareController : MonoBehaviour {
 
 	public string type;
 	public int index;
+
 	
 	// Use this for initialization
 	void Awake () {

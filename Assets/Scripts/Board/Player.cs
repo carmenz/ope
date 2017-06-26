@@ -92,9 +92,9 @@ public class Player: MonoBehaviour  {
 
 //		quiz.GetData ();
 //		SceneManager.LoadScene("TestQuiz1");
-
-		wordGame.GetData ();
-		SceneManager.LoadScene ("WordGame1");
+//
+//		wordGame.GetData ();
+//		SceneManager.LoadScene ("WordGame1");
 	}
 
 	void UpdateScore() {
