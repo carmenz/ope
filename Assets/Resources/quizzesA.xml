@@ -19,12 +19,12 @@
 	      	<Option3>
 	      		<value>Horse race betting</value>
 	      		<correct>F</correct>
-	      		<info>This is wrong!</info>
+	      		<info>Horse race bettin is wrong!</info>
 	      	</Option3>
 	      	<Option4>
 	      		<value>Poker</value>
 	      		<correct>F</correct>
-	      		<info>This is wrong!</info>
+	      		<info>Poker is wrong!</info>
 	      	</Option4>
 	    </Blank1>
 	  </Q>
@@ -39,17 +39,17 @@
 	      	<Option2>
 	      		<value>requires skill</value>
 	      		<correct>F</correct>
-	      		<info>This is wrong!</info>
+	      		<info>Requires skill is wrong!</info>
 	      	</Option2>
 	      	<Option3>
 	      		<value>is a guaranteed win</value>
 	      		<correct>F</correct>
-	      		<info>This is wrong!</info>
+	      		<info>Guaranteed win is wrong!</info>
 	      	</Option3>
 	      	<Option4>
 	      		<value>requires experience</value>
 	      		<correct>F</correct>
-	      		<info>This is wrong!</info>
+	      		<info>Requires experience is wrong!</info>
 	      	</Option4>
 	    </Blank2>
 	  </Q>
@@ -64,17 +64,17 @@
 	      	<Option2>
 	      		<value>gets better</value>
 	      		<correct>F</correct>
-	      		<info>This is wrong!</info>
+	      		<info>Gets better is wrong!</info>
 	      	</Option2>
 	      	<Option3>
 	      		<value>gets worse</value>
 	      		<correct>F</correct>
-	      		<info>This is wrong!</info>
+	      		<info>Gets worse is wrong!</info>
 	      	</Option3>
 	      	<Option4>
 	      		<value>is very high</value>
 	      		<correct>F</correct>
-	      		<info>This is wrong!</info>
+	      		<info>Very high is wrong!</info>
 	      	</Option4>
 	    </Blank3>
 	  </Q>
@@ -89,17 +89,17 @@
 	      	<Option2>
 	      		<value>Roulette</value>
 	      		<correct>F</correct>
-	      		<info>This is wrong!</info>
+	      		<info>Roulette is wrong!</info>
 	      	</Option2>
 	      	<Option3>
 	      		<value>Slots</value>
 	      		<correct>F</correct>
-	      		<info>This is wrong!</info>
+	      		<info>Slots is wrong!</info>
 	      	</Option3>
 	      	<Option4>
 	      		<value>Bingo</value>
 	      		<correct>F</correct>
-	      		<info>This is wrong!</info>
+	      		<info>Bingo is wrong!</info>
 	      	</Option4>
 	    </Blank4>
 	  </Q>
@@ -119,12 +119,12 @@
 	      	<Option3>
 	      		<value>she can get tips on</value>
 	      		<correct>F</correct>
-	      		<info>Oops, she can’t affect the outcome of the game. Skill and strategy can play a role in these games, but you still don't control the cards that are being dealt or the outcome of an event that is being waged.</info>
+	      		<info>Oops, she can’t get tips. Skill and strategy can play a role in these games, but you still don't control the cards that are being dealt or the outcome of an event that is being waged.</info>
 	      	</Option3>
 	      	<Option4>
 	      		<value>she can get insights on</value>
 	      		<correct>F</correct>
-	      		<info>Oops, she can’t affect the outcome of the game. Skill and strategy can play a role in these games, but you still don't control the cards that are being dealt or the outcome of an event that is being waged.</info>
+	      		<info>Oops, she can’t get insights. Skill and strategy can play a role in these games, but you still don't control the cards that are being dealt or the outcome of an event that is being waged.</info>
 	      	</Option4>
 	    </Blank5>
 	  </Q>
@@ -134,12 +134,12 @@
 	      	<Option1>
 	      		<value>BC/49</value>
 	      		<correct>F</correct>
-	      		<info>This is wrong!</info>
+	      		<info>BC/49 is wrong!</info>
 	      	</Option1>
 	      	<Option2>
 	      		<value>Something else</value>
 	      		<correct>F</correct>
-	      		<info>This is wrong!</info>
+	      		<info>Something else is wrong!</info>
 	      	</Option2>
 	      	<Option3>
 	      		<value>scratch and win</value>
@@ -149,12 +149,12 @@
 	      	<Option4>
 	      		<value>Daily Grand</value>
 	      		<correct>F</correct>
-	      		<info>This is wrong!</info>
+	      		<info>Daily Grand is wrong!</info>
 	      	</Option4>
 	    </Blank6>
 	  </Q>
     </Quiz>
-       <Quiz>
+    <Quiz>
       <Index>2</Index>
       <Q>
       	<Question1>To celebrate her year end bonus, Megyn is thinking of spending some of her earnings on gambling. She thought of spending it on a chance based game like _________________. </Question1>

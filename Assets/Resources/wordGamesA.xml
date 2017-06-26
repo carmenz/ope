@@ -1,0 +1,91 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<WordGameCollction xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<Games>
+		<Game>
+			<Index>1</Index>
+			<Word1>
+				<value>WHEN THE FUN STOPS, STOP!</value>
+				<thisPillar>T</thisPillar>
+				<info>This is RG</info>
+			</Word1>
+			<Word2>
+				<value>DON'T LET GAMBLING BE A LOSING GAME</value>
+				<thisPillar>T</thisPillar>
+				<info>This is RG</info>
+			</Word2>
+			<Word3>
+				<value>PLAY LIKE MOST PLAYERS - POSITIVELY</value>
+				<thisPillar>F</thisPillar>
+				<info>This is PP</info>
+			</Word3>
+			<Word4>
+				<value>KNOW WHEN TO FOLD 'EM</value>
+				<thisPillar>T</thisPillar>
+				<info>This is RG</info>
+			</Word4>
+			<Word5>
+				<value>WHEN YOU’VE HAD ENOUGH, WALK AWAY!</value>
+				<thisPillar>T</thisPillar>
+				<info>This is RG</info>
+			</Word5>
+			<Word6>
+				<value>KEEP IT FUN</value>
+				<thisPillar>F</thisPillar>
+				<info>This is PP</info>
+			</Word6>
+			<Word7>
+				<value>HERE'S A SAFE BET - GET TO KNOW THE ODDS BEFORE YOU GAMBLE</value>
+				<thisPillar>F</thisPillar>
+				<info>This is PP</info>
+			</Word7>
+			<Word8>
+				<value>KNOW YOUR LIMIT, PLAY WITHIN IT</value>
+				<thisPillar>F</thisPillar>
+				<info>This is a PP</info>
+			</Word8>
+		</Game>
+		<Game>
+			<Index>2</Index>
+			<Word1>
+				<value>WHEN THE FUN STOPS, STOP!</value>
+				<thisPillar>T</thisPillar>
+				<info>This is RG</info>
+			</Word1>
+			<Word2>
+				<value>DON'T LET GAMBLING BE A LOSING GAME</value>
+				<thisPillar>T</thisPillar>
+				<info>This is RG</info>
+			</Word2>
+			<Word3>
+				<value>PLAY LIKE MOST PLAYERS - POSITIVELY</value>
+				<thisPillar>F</thisPillar>
+				<info>This is PP</info>
+			</Word3>
+			<Word4>
+				<value>KNOW WHEN TO FOLD 'EM</value>
+				<thisPillar>T</thisPillar>
+				<info>This is RG</info>
+			</Word4>
+			<Word5>
+				<value>WHEN YOU’VE HAD ENOUGH, WALK AWAY!</value>
+				<thisPillar>T</thisPillar>
+				<info>This is RG</info>
+			</Word5>
+			<Word6>
+				<value>KEEP IT FUN</value>
+				<thisPillar>F</thisPillar>
+				<info>This is PP</info>
+			</Word6>
+			<Word7>
+				<value>HERE'S A SAFE BET - GET TO KNOW THE ODDS BEFORE YOU GAMBLE</value>
+				<thisPillar>F</thisPillar>
+				<info>This is PP</info>
+			</Word7>
+			<Word8>
+				<value>KNOW YOUR LIMIT, PLAY WITHIN IT</value>
+				<thisPillar>F</thisPillar>
+				<info>This is a PP</info>
+			</Word8>
+		</Game>
+	</Games>
+</WordGameCollction>

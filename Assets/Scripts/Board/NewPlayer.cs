@@ -15,6 +15,11 @@ public class NewPlayer : MonoBehaviour {
     private float costTime = 0.0f;
     private float timePrecent = 0.0f;
 
+	private static Quiz quiz = new Quiz();
+	private static WordGame wordGame = new WordGame();
+
+
+
 	bool _isRuning = false;
 	bool _canBeTriggered = true;
 
@@ -41,11 +46,11 @@ public class NewPlayer : MonoBehaviour {
         if (_isRuning)
         {
             var d = Vector2.Distance(curenPosition, moveTowardPosition);
-            Debug.Log(d);
-            Debug.Log(curenPosition);
-            Debug.Log(moveTowardPosition);
+//            Debug.Log(d);
+//            Debug.Log(curenPosition);
+//            Debug.Log(moveTowardPosition);
             if (d < 1) {
-                Debug.Log("daolele");
+                //Debug.Log("daolele");
                 transform.GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
                 transform.position = moveTowardPosition;
                 _isRuning = false;
@@ -87,7 +92,15 @@ public class NewPlayer : MonoBehaviour {
 		var type = collider.GetComponent<SquareController>().type;
 		gm.typeCode = collider.GetComponent<SquareController>().index;
         gm.Coordinate = new Vector2(transform.position.x, transform.position.y);
+
+		if (type == "Quiz") {
+			quiz.GetData ();
+		} else if (type == "WordGame") {
+			wordGame.GetData ();
+		}
+
 		SceneManager.LoadScene(type);
+
 		// Debug.Log(type);
 	}
 
