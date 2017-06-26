@@ -15,6 +15,9 @@ public class Player: MonoBehaviour  {
 	public static Player instance;
 
 	private static Quiz quiz = new Quiz();
+
+	private static WordGame wordGame = new WordGame();
+
 	private static User user = new User();
 
 		
@@ -87,10 +90,12 @@ public class Player: MonoBehaviour  {
 		//TODO: Check current square's type
 		//TODO: Load required mini-game / quiz scene
 
-		quiz.GetData ();
+//		quiz.GetData ();
+//
+//		SceneManager.LoadScene("TestQuiz"+ gm.Index);
 
-		SceneManager.LoadScene("TestQuiz"+ gm.Index);
-
+		wordGame.GetData ();
+		SceneManager.LoadScene ("WordGame1");
 	}
 
 	void UpdateScore() {
