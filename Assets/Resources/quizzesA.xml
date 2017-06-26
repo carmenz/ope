@@ -4,8 +4,8 @@
     <Quiz>
       <Index>1</Index>
       <Q>
-      	<Question>To celebrate her year end bonus, Megyn is thinking of spending some of her earnings on gambling. She thought of spending it on a chance based game like _________________. </Question>
-	    <Blank>
+      	<Question1>To celebrate her year end bonus, Megyn is thinking of spending some of her earnings on gambling. She thought of spending it on a chance based game like _________________. </Question1>
+	    <Blank1>
 	      	<Option1>
 	      		<value>Roulette</value>
 	      		<correct>T</correct>
@@ -26,11 +26,11 @@
 	      		<correct>F</correct>
 	      		<info>This is wrong!</info>
 	      	</Option4>
-	    </Blank>
+	    </Blank1>
 	  </Q>
 	  <Q>
-	  	<Question>Megyn knows that this game _________________, </Question>
-	    <Blank>
+	  	<Question2>Megyn knows that this game _________________, </Question2>
+	    <Blank2>
 	      	<Option1>
 	      		<value>purely random</value>
 	      		<correct>T</correct>
@@ -51,61 +51,261 @@
 	      		<correct>F</correct>
 	      		<info>This is wrong!</info>
 	      	</Option4>
-	    </Blank>
+	    </Blank2>
 	  </Q>
-    </Quiz>
-    <Quiz>
-      <Index>2</Index>
-      <Q>
-	      <Question>Tom decided on buying a Lotto Max ticket, even though a _________________ ticket had better odds of winning. </Question>
-	      <Blank>
+	  <Q>
+	  	<Question3>which means that the odds of winning _________________ each time you play. </Question3>
+	    <Blank3>
+	      	<Option1>
+	      		<value>never change</value>
+	      		<correct>T</correct>
+	      		<info>This is correct! The odds of winning never changes in chance based games.</info>
+	      	</Option1>
+	      	<Option2>
+	      		<value>gets better</value>
+	      		<correct>F</correct>
+	      		<info>This is wrong!</info>
+	      	</Option2>
+	      	<Option3>
+	      		<value>gets worse</value>
+	      		<correct>F</correct>
+	      		<info>This is wrong!</info>
+	      	</Option3>
+	      	<Option4>
+	      		<value>is very high</value>
+	      		<correct>F</correct>
+	      		<info>This is wrong!</info>
+	      	</Option4>
+	    </Blank3>
+	  </Q>
+	  <Q>
+	  	<Question4>She also thought about spending it on a skill based game like _________________. </Question4>
+	    <Blank4>
+	      	<Option1>
+	      		<value>Poker</value>
+	      		<correct>T</correct>
+	      		<info>This is correct! Poker is a skill based game, so as a horse race betting.</info>
+	      	</Option1>
+	      	<Option2>
+	      		<value>Roulette</value>
+	      		<correct>F</correct>
+	      		<info>This is wrong!</info>
+	      	</Option2>
+	      	<Option3>
+	      		<value>Slots</value>
+	      		<correct>F</correct>
+	      		<info>This is wrong!</info>
+	      	</Option3>
+	      	<Option4>
+	      		<value>Bingo</value>
+	      		<correct>F</correct>
+	      		<info>This is wrong!</info>
+	      	</Option4>
+	    </Blank4>
+	  </Q>
+	  <Q>
+	  	<Question5>However, she understands that _________________ the outcome of the game. </Question5>
+	    <Blank5>
+	      	<Option1>
+	      		<value>she can easily predict</value>
+	      		<correct>F</correct>
+	      		<info>Oops, she can’t affect the outcome of the game. Skill and strategy can play a role in these games, but you still don't control the cards that are being dealt or the outcome of an event that is being waged.</info>
+	      	</Option1>
+	      	<Option2>
+	      		<value>she can’t affect</value>
+	      		<correct>T</correct>
+	      		<info>This is correct!</info>
+	      	</Option2>
+	      	<Option3>
+	      		<value>she can get tips on</value>
+	      		<correct>F</correct>
+	      		<info>Oops, she can’t affect the outcome of the game. Skill and strategy can play a role in these games, but you still don't control the cards that are being dealt or the outcome of an event that is being waged.</info>
+	      	</Option3>
+	      	<Option4>
+	      		<value>she can get insights on</value>
+	      		<correct>F</correct>
+	      		<info>Oops, she can’t affect the outcome of the game. Skill and strategy can play a role in these games, but you still don't control the cards that are being dealt or the outcome of an event that is being waged.</info>
+	      	</Option4>
+	    </Blank5>
+	  </Q>
+	  <Q>
+	  	<Question6>She finally decided on buying a Lotto Max ticket, even though a _________________ ticket had better odds of winning. </Question6>
+	    <Blank6>
 	      	<Option1>
 	      		<value>BC/49</value>
 	      		<correct>F</correct>
 	      		<info>This is wrong!</info>
 	      	</Option1>
 	      	<Option2>
+	      		<value>Something else</value>
+	      		<correct>F</correct>
+	      		<info>This is wrong!</info>
+	      	</Option2>
+	      	<Option3>
 	      		<value>scratch and win</value>
 	      		<correct>T</correct>
 	      		<info>This is correct! Scratch and win has better odds of winning than a Lotto Max ticket.</info>
-	      	</Option2>
-	      	<Option3>
+	      	</Option3>
+	      	<Option4>
 	      		<value>Daily Grand</value>
 	      		<correct>F</correct>
 	      		<info>This is wrong!</info>
+	      	</Option4>
+	    </Blank6>
+	  </Q>
+    </Quiz>
+       <Quiz>
+      <Index>2</Index>
+      <Q>
+      	<Question1>To celebrate her year end bonus, Megyn is thinking of spending some of her earnings on gambling. She thought of spending it on a chance based game like _________________. </Question1>
+	    <Blank1>
+	      	<Option1>
+	      		<value>Roulette</value>
+	      		<correct>T</correct>
+	      		<info>This is correct! Roulette is a chance based game, so as slots!</info>
+	      	</Option1>
+	      	<Option2>
+	      		<value>Slots</value>
+	      		<correct>T</correct>
+	      		<info>This is correct! Slots is a chance based game, so as Roulette!</info>
+	      	</Option2>
+	      	<Option3>
+	      		<value>Horse race betting</value>
+	      		<correct>F</correct>
+	      		<info>This is wrong!</info>
 	      	</Option3>
 	      	<Option4>
-	      		<value>blahblahblah</value>
+	      		<value>Poker</value>
 	      		<correct>F</correct>
 	      		<info>This is wrong!</info>
 	      	</Option4>
-	      </Blank>
+	    </Blank1>
 	  </Q>
 	  <Q>
-	  	<Question>this is the last question </Question>
-	    <Blank>
+	  	<Question2>Megyn knows that this game _________________, </Question2>
+	    <Blank2>
 	      	<Option1>
-	      		<value>number1 in quiz 22</value>
-	      		<correct>F</correct>
-	      		<info>number1 in quiz 22 is wrong because...</info>
+	      		<value>purely random</value>
+	      		<correct>T</correct>
+	      		<info>This is correct! Chance based games are purely random</info>
 	      	</Option1>
 	      	<Option2>
-	      		<value>correct answer in quiz 22</value>
-	      		<correct>T</correct>
-	      		<info>GREAT! this is correct in quiz 22...</info>
+	      		<value>requires skill</value>
+	      		<correct>F</correct>
+	      		<info>This is wrong!</info>
 	      	</Option2>
 	      	<Option3>
-	      		<value>number3 in quiz 22</value>
+	      		<value>is a guaranteed win</value>
 	      		<correct>F</correct>
-	      		<info>number3 in quiz 22 is wrong because...</info>
+	      		<info>This is wrong!</info>
 	      	</Option3>
 	      	<Option4>
-	      		<value>number3 in quiz 22</value>
+	      		<value>requires experience</value>
 	      		<correct>F</correct>
-	      		<info>number3 in quiz 22 is wrong because...</info>
+	      		<info>This is wrong!</info>
 	      	</Option4>
-	    </Blank>
-	   </Q>
+	    </Blank2>
+	  </Q>
+	  <Q>
+	  	<Question3>which means that the odds of winning _________________ each time you play. </Question3>
+	    <Blank3>
+	      	<Option1>
+	      		<value>never change</value>
+	      		<correct>T</correct>
+	      		<info>This is correct! The odds of winning never changes in chance based games.</info>
+	      	</Option1>
+	      	<Option2>
+	      		<value>gets better</value>
+	      		<correct>F</correct>
+	      		<info>This is wrong!</info>
+	      	</Option2>
+	      	<Option3>
+	      		<value>gets worse</value>
+	      		<correct>F</correct>
+	      		<info>This is wrong!</info>
+	      	</Option3>
+	      	<Option4>
+	      		<value>is very high</value>
+	      		<correct>F</correct>
+	      		<info>This is wrong!</info>
+	      	</Option4>
+	    </Blank3>
+	  </Q>
+	  <Q>
+	  	<Question4>She also thought about spending it on a skill based game like _________________. </Question4>
+	    <Blank4>
+	      	<Option1>
+	      		<value>Poker</value>
+	      		<correct>T</correct>
+	      		<info>This is correct! Poker is a skill based game, so as a horse race betting.</info>
+	      	</Option1>
+	      	<Option2>
+	      		<value>Roulette</value>
+	      		<correct>F</correct>
+	      		<info>This is wrong!</info>
+	      	</Option2>
+	      	<Option3>
+	      		<value>Slots</value>
+	      		<correct>F</correct>
+	      		<info>This is wrong!</info>
+	      	</Option3>
+	      	<Option4>
+	      		<value>Bingo</value>
+	      		<correct>F</correct>
+	      		<info>This is wrong!</info>
+	      	</Option4>
+	    </Blank4>
+	  </Q>
+	  <Q>
+	  	<Question5>However, she understands that _________________ the outcome of the game. </Question5>
+	    <Blank5>
+	      	<Option1>
+	      		<value>she can easily predict</value>
+	      		<correct>F</correct>
+	      		<info>Oops, she can’t affect the outcome of the game. Skill and strategy can play a role in these games, but you still don't control the cards that are being dealt or the outcome of an event that is being waged.</info>
+	      	</Option1>
+	      	<Option2>
+	      		<value>she can’t affect</value>
+	      		<correct>T</correct>
+	      		<info>This is correct!</info>
+	      	</Option2>
+	      	<Option3>
+	      		<value>she can get tips on</value>
+	      		<correct>F</correct>
+	      		<info>Oops, she can’t affect the outcome of the game. Skill and strategy can play a role in these games, but you still don't control the cards that are being dealt or the outcome of an event that is being waged.</info>
+	      	</Option3>
+	      	<Option4>
+	      		<value>she can get insights on</value>
+	      		<correct>F</correct>
+	      		<info>Oops, she can’t affect the outcome of the game. Skill and strategy can play a role in these games, but you still don't control the cards that are being dealt or the outcome of an event that is being waged.</info>
+	      	</Option4>
+	    </Blank5>
+	  </Q>
+	  <Q>
+	  	<Question6>She finally decided on buying a Lotto Max ticket, even though a _________________ ticket had better odds of winning. </Question6>
+	    <Blank6>
+	      	<Option1>
+	      		<value>BC/49</value>
+	      		<correct>F</correct>
+	      		<info>This is wrong!</info>
+	      	</Option1>
+	      	<Option2>
+	      		<value>Something else</value>
+	      		<correct>F</correct>
+	      		<info>This is wrong!</info>
+	      	</Option2>
+	      	<Option3>
+	      		<value>scratch and win</value>
+	      		<correct>T</correct>
+	      		<info>This is correct! Scratch and win has better odds of winning than a Lotto Max ticket.</info>
+	      	</Option3>
+	      	<Option4>
+	      		<value>Daily Grand</value>
+	      		<correct>F</correct>
+	      		<info>This is wrong!</info>
+	      	</Option4>
+	    </Blank6>
+	  </Q>
     </Quiz>
   </Quizzes>
 </QuizCollction>
