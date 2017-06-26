@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 using System.Xml;
 
 public class QuizManager : MonoBehaviour {
 	
 	private GameManager gm;
 	private QuizManager qm;
+
 
 	public int subIndex = 1;
 
@@ -231,6 +231,6 @@ public class QuizManager : MonoBehaviour {
 
 		Start ().MoveNext();
 	}
-		
+
 
 }

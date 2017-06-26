@@ -18,6 +18,13 @@
       <Password>fn5g+xrZS7Ud7B8EBFfuxg==</Password>
       <CurrentPos>0</CurrentPos>
       <CurrentScore>0</CurrentScore>
+      <IslandA>
+        <WordGames>
+          <WordGame>
+            <Index>1</Index>
+          </WordGame>
+        </WordGames>
+      </IslandA>
     </User>
   </Users>
 </UserCollection>

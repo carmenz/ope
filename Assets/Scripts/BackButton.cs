@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class TestQuiz : MonoBehaviour {
+public class BackButton : MonoBehaviour {
 
 	public string mainSceneName = "Main";
 	GameManager gm;
@@ -20,6 +20,12 @@ public class TestQuiz : MonoBehaviour {
 
 	public void QuitQuiz() {
 		gm.missions.quizRequired.Remove(gm.typeCode);
+		gm.typeCode = 0;
+		SceneManager.LoadScene(mainSceneName);
+	}
+
+	public void QuitWordGame() {
+		gm.missions.gameRequired.Remove(gm.typeCode);
 		gm.typeCode = 0;
 		SceneManager.LoadScene(mainSceneName);
 	}

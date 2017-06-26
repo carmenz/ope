@@ -9,16 +9,16 @@ using System.Text;
 using UnityEngine.SceneManagement;
 using System;
 
-public class Quiz : MonoBehaviour {
+public class WordGame : MonoBehaviour {
+
 
 	private string island;
 	private static string path = string.Empty;
 	private static string userpath = string.Empty;
 
-
 	public void GetData() {
 		bool firstChallengeOnIsland = true;
-		bool firstWordGameOnIsland = true;
+		bool firstQuizOnIsland = true;
 
 		GameManager gm = GameObject.Find ("GameManager").GetComponent<GameManager> ();
 
@@ -30,19 +30,19 @@ public class Quiz : MonoBehaviour {
 
 		if (pos < 25) {
 			island = "IslandA";
-			path = System.IO.Path.Combine (Application.dataPath, "Resources/quizzesA.xml");
+			path = System.IO.Path.Combine (Application.dataPath, "Resources/wordGamesA.xml");
 			print ("we are on island A");
 		} else if (pos < 30) {
 			island = "IslandB";
-			path = System.IO.Path.Combine (Application.persistentDataPath, "Resources/quizzesB.xml");
+			path = System.IO.Path.Combine (Application.persistentDataPath, "Resources/wordGamesB.xml");
 			print ("we are on island B");
 		} else if (pos < 40) {
 			island = "IslandC";
-			path = System.IO.Path.Combine (Application.persistentDataPath, "Resources/quizzesC.xml");
+			path = System.IO.Path.Combine (Application.persistentDataPath, "Resources/wordGamesC.xml");
 			print ("we are on island C");
 		} else if (pos < 50) {
 			island = "IslandD";
-			path = System.IO.Path.Combine (Application.persistentDataPath, "Resources/quizzesD.xml");
+			path = System.IO.Path.Combine (Application.persistentDataPath, "Resources/wordGamesD.xml");
 			print ("we are on island D");
 		}
 
@@ -53,16 +53,16 @@ public class Quiz : MonoBehaviour {
 			var dox = new XmlDocument ();
 			dox.Load (path);
 
-			//check if user already have that game on file
+			//check if user already have that quiz on file
 
-			FileStream wordGameStream = new FileStream (path, FileMode.Open);
-		
-			XmlTextReader xmlwordGameReader = new XmlTextReader (wordGameStream);
+			FileStream quizStream = new FileStream (path, FileMode.Open);
+
+			XmlTextReader xmlQuizReader = new XmlTextReader (quizStream);
 
 			FileStream userStream = new FileStream (userpath, FileMode.Open);
 			XmlTextReader xmlUserReader = new XmlTextReader (userStream);
-		
-			xmlwordGameReader.Read ();
+
+			xmlQuizReader.Read ();
 
 			while (xmlUserReader.Read ()) {
 
@@ -74,12 +74,12 @@ public class Quiz : MonoBehaviour {
 							print ("user already have the island");
 							firstChallengeOnIsland = false;
 
-							if (xmlUserReader.ReadToDescendant ("WordGames")) {
-								firstWordGameOnIsland = false;
-								print ("user already did a word game on the island");
-							
+							if (xmlUserReader.ReadToDescendant ("Quizzes")) {
+								firstQuizOnIsland = false;
+								print ("user already did a quiz on the island");
+
 							} else {
-								print ("first word game for user on the island");
+								print ("first quiz for user on the island");
 							}
 						} else {
 							print ("user not yet have island");
@@ -87,25 +87,25 @@ public class Quiz : MonoBehaviour {
 					}
 				}
 			}
-			wordGameStream.Close ();
+			quizStream.Close ();
 			userStream.Close ();
 		}
 
 
-		if (firstWordGameOnIsland) {
-			
+		if (firstQuizOnIsland) {
+
 			XmlDocument xmlUserDoc = new XmlDocument ();
 			xmlUserDoc.Load (userpath);
 			XmlNode usernameNode = xmlUserDoc.SelectSingleNode ("//Username");
 
 
-			while (firstWordGameOnIsland) {
+			while (firstQuizOnIsland) {
 
 				XmlNode nodeBefore = xmlUserDoc.SelectSingleNode ("//CurrentScore");
 
 				XmlNode xmlIsland = xmlUserDoc.CreateNode (XmlNodeType.Element, island, null);
-				XmlNode xmlWordGames = xmlUserDoc.CreateNode (XmlNodeType.Element, "WordGames", null);
-				XmlNode xmlWordGame = xmlUserDoc.CreateNode (XmlNodeType.Element, "WordGame", null);
+				XmlNode xmlQuizzes = xmlUserDoc.CreateNode (XmlNodeType.Element, "Quizzes", null);
+				XmlNode xmlQuiz = xmlUserDoc.CreateNode (XmlNodeType.Element, "Quiz", null);
 				XmlNode xmlIndex = xmlUserDoc.CreateNode (XmlNodeType.Element, "Index", null);
 
 				// find the matching user
@@ -118,12 +118,12 @@ public class Quiz : MonoBehaviour {
 
 						xmlIndex.InnerText = "1";
 
-						xmlIsland.AppendChild (xmlWordGames);
-						xmlWordGames.AppendChild (xmlWordGame);
-						xmlWordGame.AppendChild (xmlIndex);
+						xmlIsland.AppendChild (xmlQuizzes);
+						xmlQuizzes.AppendChild (xmlQuiz);
+						xmlQuiz.AppendChild (xmlIndex);
 
 						user.InsertAfter (xmlIsland, nodeBefore);
-						firstWordGameOnIsland = false;
+						firstQuizOnIsland = false;
 
 						gm.Index = "1";
 
@@ -138,49 +138,49 @@ public class Quiz : MonoBehaviour {
 					gm.Index = "1";
 					xmlIndex.InnerText = "1";
 
-					islandNode.AppendChild (xmlWordGames);
-					xmlWordGames.AppendChild (xmlWordGame);
-					xmlWordGame.AppendChild (xmlIndex);
+					islandNode.AppendChild (xmlQuizzes);
+					xmlQuizzes.AppendChild (xmlQuiz);
+					xmlQuiz.AppendChild (xmlIndex);
 
-					firstWordGameOnIsland = false;
+					firstQuizOnIsland = false;
 				}
 			}
 			xmlUserDoc.Save (userpath);
 		} else {
 			// not the first quiz
 			bool finishAdding = false;
-			print("not the first word game");
+			print("not the first quiz");
 			XmlDocument xmlUserDoc = new XmlDocument ();
 
 			xmlUserDoc.Load (userpath);
 			XmlNode usernameNode = xmlUserDoc.SelectSingleNode ("//Username");
 
-			XmlDocument xmlWordGameDoc = new XmlDocument ();
-			xmlWordGameDoc.Load (path);
-			XmlNode indexNode = xmlWordGameDoc.SelectSingleNode ("//Index");
+			XmlDocument xmlQuizDoc = new XmlDocument ();
+			xmlQuizDoc.Load (path);
+			XmlNode indexNode = xmlQuizDoc.SelectSingleNode ("//Index");
 
 			while (!finishAdding) {
 				if (usernameNode.InnerText == gm.Username) {
-					XmlNode wordGameNode = xmlUserDoc.SelectSingleNode ("//WordGames");
+					XmlNode quizNode = xmlUserDoc.SelectSingleNode ("//Quizzes");
 
-					while (wordGameNode.ChildNodes.Count.ToString() == indexNode.InnerText) {
+					while (quizNode.ChildNodes.Count.ToString() == indexNode.InnerText) {
 						indexNode = indexNode.ParentNode.NextSibling.FirstChild;
 					}
 
-					XmlNode newWordGameNode = xmlUserDoc.CreateNode (XmlNodeType.Element, "WordGame", null);
+					XmlNode newQuizNode = xmlUserDoc.CreateNode (XmlNodeType.Element, "Quiz", null);
 					XmlNode xmlIndex = xmlUserDoc.CreateNode (XmlNodeType.Element, "Index", null);
 
 
 					xmlIndex.InnerText = indexNode.InnerText;
 
-					newWordGameNode.AppendChild (xmlIndex);
+					newQuizNode.AppendChild (xmlIndex);
 
-					wordGameNode.InsertAfter (newWordGameNode, wordGameNode);
+					quizNode.InsertAfter (newQuizNode, quizNode);
 					finishAdding = true;
 
 					gm.Index = indexNode.InnerText;
 
-				
+
 				} else {
 					usernameNode = usernameNode.ParentNode.NextSibling.FirstChild;
 				}
@@ -189,12 +189,4 @@ public class Quiz : MonoBehaviour {
 		}
 	}
 }
-
-//public class WordGameData{
-//
-//	[XmlElement("Index")]
-//	public string index;
-//
-//}
-
 
