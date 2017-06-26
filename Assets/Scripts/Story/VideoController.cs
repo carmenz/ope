@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class VideoController : MonoBehaviour {
 
-	public string mainSceneName = "Main";
+	public GameObject panel;
 	private VideoPlayer vPlayer;
 
 	void Awake () {
@@ -26,6 +26,7 @@ public class VideoController : MonoBehaviour {
 
 	void EndReached(VideoPlayer vPlayer)
     {
-		SceneManager.LoadScene(mainSceneName);
+		// SceneManager.LoadScene(mainSceneName);
+		panel.SetActive(true);
     } 
 }

@@ -9,14 +9,14 @@ public class BackButton : MonoBehaviour {
 	GameManager gm;
 
 	// Use this for initialization
-	// void Start () {
-	// 	gm = GameObject.Find("GameManager").GetComponent<GameManager>();
-	// }
+	void Start () {
+		gm = GameObject.Find("GameManager").GetComponent<GameManager>();
+	}
 	
-	// // Update is called once per frame
-	// void Update () {
+	// Update is called once per frame
+	void Update () {
 		
-	// }
+	}
 
 	public void QuitQuiz() {
 		gm.missions.quizRequired.Remove(gm.typeCode);
@@ -26,6 +26,12 @@ public class BackButton : MonoBehaviour {
 
 	public void QuitWordGame() {
 		gm.missions.gameRequired.Remove(gm.typeCode);
+		gm.typeCode = 0;
+		SceneManager.LoadScene(mainSceneName);
+	}
+
+	public void QuitStory() {
+		gm.missions.storyRequired.Remove(gm.typeCode);
 		gm.typeCode = 0;
 		SceneManager.LoadScene(mainSceneName);
 	}
