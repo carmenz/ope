@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Video;
+using UnityEngine.SceneManagement;
 
 public class VideoController : MonoBehaviour {
 
-	public VideoPlayer vPlayer;
+	public string mainSceneName = "Main";
+	private VideoPlayer vPlayer;
 
 	void Awake () {
 		vPlayer = gameObject.GetComponent<VideoPlayer>();
@@ -24,6 +26,6 @@ public class VideoController : MonoBehaviour {
 
 	void EndReached(VideoPlayer vPlayer)
     {
-        Debug.Log("End reached!");
+		SceneManager.LoadScene(mainSceneName);
     } 
 }
