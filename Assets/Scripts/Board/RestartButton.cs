@@ -22,7 +22,7 @@ public class RestartButton : MonoBehaviour {
 
 	public void RestartGame() {
 		// Reset state
-		gm.CurrentPosition = 0;
+		gm.Coordinate = new Vector2 (0,0);
 
 		// Reload main scene
 		SceneManager.LoadScene("Main");

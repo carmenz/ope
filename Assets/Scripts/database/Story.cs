@@ -97,7 +97,7 @@ public class Story : MonoBehaviour {
 						user.InsertAfter (xmlIsland, nodeBefore);
 						firstStoryOnIsland = false;
 
-						gm.Index = "1";
+						gm.Index = 1;
 
 
 					} else {
@@ -107,7 +107,7 @@ public class Story : MonoBehaviour {
 					print ("not the first challenge but the first story");
 					XmlNode islandNode = xmlUserDoc.SelectSingleNode ("//" + island);
 
-					gm.Index = "1";
+					gm.Index = 1;
 			
 					xmlStory.InnerText = "1";
 

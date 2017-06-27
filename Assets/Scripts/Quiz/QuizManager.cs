@@ -27,7 +27,7 @@ public class QuizManager : MonoBehaviour {
 
 		while (!finishLoading) {
 
-			if (indexNode.InnerText == gm.Index) {
+			if (indexNode.InnerText == gm.Index.ToString()) {
 	
 				Text questionText = GameObject.Find ("Question").GetComponent<Text> ();
 				XmlNode QNode = indexNode.NextSibling;

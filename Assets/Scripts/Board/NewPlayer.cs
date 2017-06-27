@@ -92,6 +92,7 @@ public class NewPlayer : MonoBehaviour {
 		// var type = collider.name.Replace(" Slot", "");
 		var type = collider.GetComponent<SquareController>().type;
 		gm.typeCode = collider.GetComponent<SquareController>().index;
+		gm.Index = collider.GetComponent<SquareController>().index;
         gm.Coordinate = new Vector2(transform.position.x, transform.position.y);
 
 		if (type == "Quiz") {

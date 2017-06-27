@@ -24,7 +24,7 @@ public class WordGame : MonoBehaviour {
 
 		userpath = System.IO.Path.Combine (Application.dataPath, "Resources/users.xml");
 
-		int pos = gm.CurrentPosition;
+		int pos = gm.Index;
 		print ("pos is" + pos);
 		// choose quiz file according to island
 
@@ -110,7 +110,7 @@ public class WordGame : MonoBehaviour {
 
 				// find the matching user
 				if (firstChallengeOnIsland) {
-
+					print (gm.Username);
 					if (usernameNode.InnerText == gm.Username) {
 						XmlNode user = usernameNode.ParentNode;
 
@@ -125,7 +125,7 @@ public class WordGame : MonoBehaviour {
 						user.InsertAfter (xmlIsland, nodeBefore);
 						firstWordGameOnIsland = false;
 
-						gm.Index = "1";
+						gm.Index = 1;
 
 
 					} else {
@@ -135,7 +135,7 @@ public class WordGame : MonoBehaviour {
 					print ("not the first challenge but the first quiz");
 					XmlNode islandNode = xmlUserDoc.SelectSingleNode ("//" + island);
 
-					gm.Index = "1";
+					gm.Index = 1;
 					xmlIndex.InnerText = "1";
 
 					islandNode.AppendChild (xmlWordGames);
@@ -178,7 +178,8 @@ public class WordGame : MonoBehaviour {
 					wordGameNode.InsertAfter (newWordGameNode, wordGameNode);
 					finishAdding = true;
 
-					gm.Index = indexNode.InnerText;
+					gm.Index = int.Parse(indexNode.InnerText);
+
 
 
 				} else {

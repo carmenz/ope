@@ -14,7 +14,7 @@ public class User : MonoBehaviour {
 
 	public string username = "TestName";
 	public string  password = "000";
-	public int currentPos = 0;
+	public Vector2 currentPos = new Vector2(0,0);
 	public int currentScore = 0;
 
 
@@ -40,19 +40,19 @@ public class User : MonoBehaviour {
 			print ("user storemaindata");
 		}
 
-		data.currentPos = GameObject.Find("GameManager").GetComponent<GameManager>().CurrentPosition;
+		data.currentPos = GameObject.Find("GameManager").GetComponent<GameManager>().Coordinate;
 		data.currentScore = currentScore;
 
 	}
 
 
-	// public void LoadData() {
-	// 	name = data.username;
-	// 	currentPos = data.currentPos;
-	// 	currentScore = data.currentScore;
-	// 	transform.position = new Vector2 (GameObject.Find("Board").GetComponent<BoardManager>().Squares [currentPos].transform.position.x, 
-	// 		GameObject.Find("Board").GetComponent<BoardManager>().Squares [currentPos].transform.position.y);
-	// }
+//	 public void LoadData() {
+//	 	name = data.username;
+//	 	currentPos = data.currentPos;
+//	 	currentScore = data.currentScore;
+//	 	transform.position = new Vector2 (GameObject.Find("Board").GetComponent<BoardManager>().Squares [currentPos].transform.position.x, 
+//	 		GameObject.Find("Board").GetComponent<BoardManager>().Squares [currentPos].transform.position.y);
+//	 }
 
 //	void OnEnable() {
 		// SaveData.OnLoaded += delegate {
@@ -94,7 +94,7 @@ public class UserData{
 		public string password;
 
 	[XmlElement("Currentpos")]
-	public int currentPos;
+	public Vector2 currentPos;
 
 	[XmlElement("CurrentScore")]
 	public int currentScore;

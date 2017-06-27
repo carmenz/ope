@@ -26,6 +26,7 @@ public class SaveData : MonoBehaviour {
 	public static event SerializeAction OnBeforeSave;
 
 
+	public static NewPlayer player;
 
 	public static void Save(string path, User current) {
 
@@ -52,16 +53,16 @@ public class SaveData : MonoBehaviour {
 
 
 	private static void SaveUser(string path, User current) {
-
+		
 		current.GetInputData ();
 		bool userNotExist = true;
-
+		print ("hehehe");
 		// check if user.xml exist
 		if (File.Exists (path)) {
 			var dox = new XmlDocument ();
 				dox.Load (path);
 
-
+			print ("pathhhhh");
 			FileStream stream = new FileStream (path, FileMode.Open);
 			XmlTextReader xmlReader = new XmlTextReader (stream);
 
@@ -76,6 +77,7 @@ public class SaveData : MonoBehaviour {
 				}
 			}
 			stream.Close ();
+
 		}
 
 		// create a user element if user does not exist
@@ -91,6 +93,10 @@ public class SaveData : MonoBehaviour {
 
 			doc.Root.Element ("Users").Add (user);
 			doc.Save (path);
+
+			SceneManager.LoadScene ("Main");
+			GameManager gm = GameObject.Find ("GameManager").GetComponent<GameManager> ();
+			gm.Username = current.data.username;
 		} 
 	}
 		
@@ -125,7 +131,7 @@ public class SaveData : MonoBehaviour {
 
 							SceneManager.LoadScene ("Main");
 							GameManager gm = GameObject.Find ("GameManager").GetComponent<GameManager> ();
-							gm.CurrentPosition = xmlReader.ReadElementContentAsInt ();
+							//gm.CurrentPosition = xmlReader.ReadElementContentAsInt ();
 							gm.Username = current.data.username;
 
 						} else {
@@ -162,8 +168,8 @@ public class SaveData : MonoBehaviour {
 
 						XDocument doc = XDocument.Load (path);
 						XElement currentPos = new XElement ("CurrentPos");
-						currentPos.SetValue (gm.CurrentPosition);
-						print ("gm current" + gm.CurrentPosition);
+						currentPos.SetValue (gm.Coordinate);
+						//print ("gm current" + gm.CurrentPosition);
 						doc.Save (path);
 
 						print ("done updating");

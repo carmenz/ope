@@ -6,35 +6,33 @@ public class GameManager : MonoBehaviour {
 	public static GameManager instance;
 
 	// Serialize for monitor
-	[SerializeField]
-	int _curPos;
+//	[SerializeField]
+//	Vector2 _curPos;
 	[SerializeField]
 	Vector2 _coordinate;
 	[SerializeField]
 	string _tokenName = "First";
 	[SerializeField]
-	// public List<int> quizRequired = new List<int>();
-	// public string quizDesc;
 	public Missions missions;
 
 	public int typeCode;
 	string _uname = "TestUser";
 
 	[SerializeField]
-	string _index = "index";
+	int _index = 1;
 
 	[SerializeField]
 	string _path = "path";
 
 	
-	public int CurrentPosition{
-		get {
-			return _curPos;
-		}
-		set {
-			_curPos = value;
-		}
-	}
+//	public Vector2 CurrentPosition{
+//		get {
+//			return _curPos;
+//		}
+//		set {
+//			_curPos = value;
+//		}
+//	}
 		
 	public string Username{
 		get {
@@ -54,7 +52,7 @@ public class GameManager : MonoBehaviour {
 		}
 	}
 
-	public string Index{
+	public int Index{
 		get {
 			return _index;
 		}

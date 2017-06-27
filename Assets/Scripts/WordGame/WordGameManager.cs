@@ -26,7 +26,7 @@ public class WordGameManager : MonoBehaviour {
 
 		while (!finishLoading) {
 
-			if (indexNode.InnerText == gm.Index) {
+			if (indexNode.InnerText == gm.Index.ToString()) {
 
 				Text wordText = GameObject.Find ("Word").GetComponent<Text> ();
 				XmlNode wordNode = indexNode.NextSibling;
