@@ -165,17 +165,17 @@ public class WordGame : MonoBehaviour {
 
 					while (wordGameNode.ChildNodes.Count.ToString() == indexNode.InnerText) {
 						indexNode = indexNode.ParentNode.NextSibling.FirstChild;
+
 					}
 
 					XmlNode newWordGameNode = xmlUserDoc.CreateNode (XmlNodeType.Element, "Game", null);
 					XmlNode xmlIndex = xmlUserDoc.CreateNode (XmlNodeType.Element, "Index", null);
-
-
+				
 					xmlIndex.InnerText = indexNode.InnerText;
 
 					newWordGameNode.AppendChild (xmlIndex);
 
-					wordGameNode.InsertAfter (newWordGameNode, wordGameNode);
+					wordGameNode.InsertAfter (newWordGameNode, wordGameNode.LastChild);
 					finishAdding = true;
 
 					gm.Index = int.Parse(indexNode.InnerText);

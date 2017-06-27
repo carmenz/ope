@@ -179,7 +179,7 @@ public class Quiz : MonoBehaviour {
 					newQuizNode.AppendChild (xmlIndex);
 
 					print (quizNode.InnerText);
-					quizNode.InsertAfter (newQuizNode, quizNode);
+					quizNode.InsertAfter (newQuizNode, quizNode.LastChild);
 					finishAdding = true;
 
 					gm.Index = int.Parse(indexNode.InnerText);
