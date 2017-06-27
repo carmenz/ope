@@ -24,9 +24,13 @@ public class VideoController : MonoBehaviour {
 		
 	}
 
-	void EndReached(VideoPlayer vPlayer)
-    {
+	void EndReached(VideoPlayer vPlayer) {
 		// SceneManager.LoadScene(mainSceneName);
 		panel.SetActive(true);
     } 
+
+	public void Replay() {
+		panel.SetActive(false);
+		vPlayer.Play();
+	}
 }
