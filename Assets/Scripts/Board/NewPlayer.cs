@@ -16,6 +16,7 @@ public class NewPlayer : MonoBehaviour {
     private float timePrecent = 0.0f;
 
 	private static Quiz quiz = new Quiz();
+	private static Story story = new Story ();
 	private static WordGame wordGame = new WordGame();
 
 
@@ -97,6 +98,8 @@ public class NewPlayer : MonoBehaviour {
 			quiz.GetData ();
 		} else if (type == "WordGame") {
 			wordGame.GetData ();
+		} else if (type == "Story") {
+			story.GetData ();
 		}
 
 		SceneManager.LoadScene(type);
