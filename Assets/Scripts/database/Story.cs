@@ -15,9 +15,6 @@ public class Story : MonoBehaviour {
 	private static string path = string.Empty;
 	private static string userpath = string.Empty;
 
-
-
-
 	public void GetData() {
 		bool firstChallengeOnIsland = true;
 		bool firstStoryOnIsland = true;
@@ -28,7 +25,6 @@ public class Story : MonoBehaviour {
 
 		int pos = gm.typeCode;
 		print ("pos is" + pos);
-		// choose quiz file according to island
 
 		if (pos < 25) {
 			island = "IslandA";
@@ -38,54 +34,40 @@ public class Story : MonoBehaviour {
 			island = "IslandC";
 		} else if (pos < 50) {
 			island = "IslandD";
-
 		}
 
+		//check if user already have that story on file
+		FileStream userStream = new FileStream (userpath, FileMode.Open);
+		XmlTextReader xmlUserReader = new XmlTextReader (userStream);
 
-	
+		while (xmlUserReader.Read ()) {
+			
+			if (xmlUserReader.Name == "Username") {
+				// find user from user.xml
+				if (xmlUserReader.ReadElementContentAsString ().Equals (gm.Username)) {
+					
+					xmlUserReader.Name.Contains ("User");
+					if (xmlUserReader.ReadToNextSibling(island)) {
+						print ("user already have the island");
+						firstChallengeOnIsland = false;
 
+						if (xmlUserReader.ReadToDescendant ("Stories")) {
+							firstStoryOnIsland = false;
+							print ("user already did a story on the island");
 
-
-			//check if user already have that quiz on file
-
-
-			FileStream userStream = new FileStream (userpath, FileMode.Open);
-			XmlTextReader xmlUserReader = new XmlTextReader (userStream);
-
-
-
-			while (xmlUserReader.Read ()) {
-				print ("00000000");
-				if (xmlUserReader.Name == "Username") {
-					// find user from user.xml
-					print("1111111111");
-					if (xmlUserReader.ReadElementContentAsString ().Equals (gm.Username)) {
-						print ("22222222222");
-						xmlUserReader.Name.Contains ("User");
-						if (xmlUserReader.ReadToNextSibling(island)) {
-							print ("user already have the island");
-							firstChallengeOnIsland = false;
-
-							if (xmlUserReader.ReadToDescendant ("Stories")) {
-								firstStoryOnIsland = false;
-								print ("user already did a story on the island");
-
-							} else {
-								print ("first story for user on the island");
-							}
 						} else {
-							print ("user not yet have island");
+							print ("first story for user on the island");
 						}
+					} else {
+						print ("user not yet have island");
 					}
 				}
 			}
-
-			userStream.Close ();
-
-
+		}
+		userStream.Close ();
 
 		if (firstStoryOnIsland) {
-			print ("hehheheh");
+			
 			XmlDocument xmlUserDoc = new XmlDocument ();
 			xmlUserDoc.Load (userpath);
 			XmlNode usernameNode = xmlUserDoc.SelectSingleNode ("//Username");
@@ -98,7 +80,7 @@ public class Story : MonoBehaviour {
 				XmlNode xmlIsland = xmlUserDoc.CreateNode (XmlNodeType.Element, island, null);
 				XmlNode xmlStories = xmlUserDoc.CreateNode (XmlNodeType.Element, "Stories", null);
 				XmlNode xmlStory = xmlUserDoc.CreateNode (XmlNodeType.Element, "Story", null);
-				//XmlNode xmlIndex = xmlUserDoc.CreateNode (XmlNodeType.Element, "Index", null);
+
 
 				// find the matching user
 				if (firstChallengeOnIsland) {
@@ -107,8 +89,6 @@ public class Story : MonoBehaviour {
 						XmlNode user = usernameNode.ParentNode;
 
 						xmlStory.InnerText = "1";
-
-					
 
 						xmlIsland.AppendChild (xmlStories);
 						xmlStories.AppendChild (xmlStory);
@@ -128,12 +108,11 @@ public class Story : MonoBehaviour {
 					XmlNode islandNode = xmlUserDoc.SelectSingleNode ("//" + island);
 
 					gm.Index = "1";
-					//xmlIndex.InnerText = "1";
+			
 					xmlStory.InnerText = "1";
 
 					islandNode.AppendChild (xmlStories);
 					xmlStories.AppendChild (xmlStory);
-					//xmlQuiz.AppendChild (xmlIndex);
 
 					firstStoryOnIsland = false;
 				}
@@ -148,25 +127,14 @@ public class Story : MonoBehaviour {
 			xmlUserDoc.Load (userpath);
 			XmlNode usernameNode = xmlUserDoc.SelectSingleNode ("//Username");
 
-		
-		
 			if (usernameNode.InnerText == gm.Username) {
 				XmlNode storyNode = xmlUserDoc.SelectSingleNode ("//Story");
 
 				XmlNode newStoryNode = xmlUserDoc.CreateNode (XmlNodeType.Element, "Story", null);
 
-
-
 				newStoryNode.InnerText = gm.typeCode.ToString();
 
-
 				storyNode.InsertAfter (newStoryNode, storyNode);
-
-
-	
-
-
-			
 			}
 			xmlUserDoc.Save (userpath);
 		}
