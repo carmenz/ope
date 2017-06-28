@@ -175,8 +175,6 @@ public class Quiz : MonoBehaviour {
 					if (quizNode.ChildNodes.Count == numOfQuizzesInDB) {
 						// user have finished all the quizzes we have
 						print ("user have finished all the games we have");
-						print (quizNode.LastChild.FirstChild.InnerText);
-						print (indexNode.InnerText);
 						if (quizNode.LastChild.FirstChild.InnerText == indexNode.InnerText) {
 							indexNode = indexNode.ParentNode.NextSibling.FirstChild;
 						}

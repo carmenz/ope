@@ -10,6 +10,8 @@ public class QuizManager : MonoBehaviour {
 	private QuizManager qm;
 	public GameObject panel;
 
+	private int clickCount = 2;
+
 	public int subIndex = 1;
 
 	// Use this for initialization
@@ -34,8 +36,7 @@ public class QuizManager : MonoBehaviour {
 				while (indexNode != null) {
 		
 					if (subIndex - 1 == 6) {
-						print ("nullll");
-
+						// break once the last question is printed
 						break;
 					}
 					questionText.text = questionText.text + indexNode.SelectSingleNode("//Question"+subIndex).InnerText;
@@ -112,17 +113,17 @@ public class QuizManager : MonoBehaviour {
 		Text questionText = GameObject.Find ("Question").GetComponent<Text> ();
 
 		if (questionText.text.Contains(indexNode.SelectSingleNode ("//Question6").InnerText)) {
-			blankToChange (6, option1, 2);
+			blankToChange (6, option1, 1);
 		} else if (questionText.text.Contains(indexNode.SelectSingleNode ("//Question5").InnerText)) {
-			blankToChange (5, option1, 2);
+			blankToChange (5, option1, 1);
 		} else if (questionText.text.Contains(indexNode.SelectSingleNode ("//Question4").InnerText)) {
-			blankToChange (4, option1, 2);
+			blankToChange (4, option1, 1);
 		} else if (questionText.text.Contains(indexNode.SelectSingleNode ("//Question3").InnerText)) {
-			blankToChange (3, option1, 2);
+			blankToChange (3, option1, 1);
 		} else if (questionText.text.Contains(indexNode.SelectSingleNode ("//Question2").InnerText)) {
-			blankToChange (2, option1, 2);
+			blankToChange (2, option1, 1);
 		} else if (questionText.text == indexNode.SelectSingleNode ("//Question1").InnerText) {
-			blankToChange (1, option1, 2);
+			blankToChange (1, option1, 1);
 		}
 
 		int subIndexForInfo = qm.subIndex - 1;
@@ -181,17 +182,17 @@ public class QuizManager : MonoBehaviour {
 		Text questionText = GameObject.Find ("Question").GetComponent<Text> ();
 
 		if (questionText.text.Contains(indexNode.SelectSingleNode ("//Question6").InnerText)) {
-			blankToChange (6, option3, 2);
+			blankToChange (6, option3, 3);
 		} else if (questionText.text.Contains(indexNode.SelectSingleNode ("//Question5").InnerText)) {
-			blankToChange (5, option3, 2);
+			blankToChange (5, option3, 3);
 		} else if (questionText.text.Contains(indexNode.SelectSingleNode ("//Question4").InnerText)) {
-			blankToChange (4, option3, 2);
+			blankToChange (4, option3, 3);
 		} else if (questionText.text.Contains(indexNode.SelectSingleNode ("//Question3").InnerText)) {
-			blankToChange (3, option3, 2);
+			blankToChange (3, option3, 3);
 		} else if (questionText.text.Contains(indexNode.SelectSingleNode ("//Question2").InnerText)) {
-			blankToChange (2, option3, 2);
+			blankToChange (2, option3, 3);
 		} else if (questionText.text == indexNode.SelectSingleNode ("//Question1").InnerText) {
-			blankToChange (1, option3, 2);
+			blankToChange (1, option3, 3);
 		}
 
 		int subIndexForInfo = qm.subIndex - 1;
@@ -213,17 +214,17 @@ public class QuizManager : MonoBehaviour {
 		Text questionText = GameObject.Find ("Question").GetComponent<Text> ();
 
 		if (questionText.text.Contains(indexNode.SelectSingleNode ("//Question6").InnerText)) {
-			blankToChange (6, option4, 2);
+			blankToChange (6, option4, 4);
 		} else if (questionText.text.Contains(indexNode.SelectSingleNode ("//Question5").InnerText)) {
-			blankToChange (5, option4, 2);
+			blankToChange (5, option4, 4);
 		} else if (questionText.text.Contains(indexNode.SelectSingleNode ("//Question4").InnerText)) {
-			blankToChange (4, option4, 2);
+			blankToChange (4, option4, 4);
 		} else if (questionText.text.Contains(indexNode.SelectSingleNode ("//Question3").InnerText)) {
-			blankToChange (3, option4, 2);
+			blankToChange (3, option4, 4);
 		} else if (questionText.text.Contains(indexNode.SelectSingleNode ("//Question2").InnerText)) {
-			blankToChange (2, option4, 2);
+			blankToChange (2, option4, 4);
 		} else if (questionText.text == indexNode.SelectSingleNode ("//Question1").InnerText) {
-			blankToChange (1, option4, 2);
+			blankToChange (1, option4, 4);
 		}
 
 		int subIndexForInfo = qm.subIndex - 1;

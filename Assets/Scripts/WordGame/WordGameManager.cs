@@ -18,7 +18,6 @@ public class WordGameManager : MonoBehaviour {
 	// Use this for initialization
 	IEnumerator Start () {
 
-		print ("scorrrrrrr" + currentScore);
 		userpath = System.IO.Path.Combine (Application.dataPath, "Resources/users.xml");
 		gm = GameObject.Find("GameManager").GetComponent<GameManager>();
 		wgm = GameObject.Find("WordGameManager").GetComponent<WordGameManager>();
@@ -26,7 +25,6 @@ public class WordGameManager : MonoBehaviour {
 		XmlDocument xmlWordGameDoc = new XmlDocument ();
 		xmlWordGameDoc.Load (gm.Path);
 		XmlNode indexNode = xmlWordGameDoc.SelectSingleNode ("//Index");
-
 
 		XmlDocument xmlUserDoc = new XmlDocument ();
 		xmlUserDoc.Load (userpath);
@@ -134,7 +132,6 @@ public class WordGameManager : MonoBehaviour {
 					gameIndexNode = gameIndexNode.ParentNode.NextSibling.FirstChild;
 				}
 
-				print ("this is new gameIndex in userdb" + gameIndexNode.InnerText);
 				// update node if <word#> node already exist
 				if (gameIndexNode.ParentNode.ChildNodes.Count > subIndexForInfo+1) {
 					gameIndexNode.ParentNode.SelectSingleNode("//Word" + subIndexForInfo).InnerText = "T";
@@ -184,15 +181,10 @@ public class WordGameManager : MonoBehaviour {
 			if (usernameNode.InnerText == gm.Username) {
 				XmlNode gameIndexNode = xmlUserDoc.SelectSingleNode ("//Game//Index");
 
-
-				print ("this is gameIndex" + gameIndexNode.InnerText);
 				// find the matching game index
 				while (gm.Index.ToString() != gameIndexNode.InnerText) {
 					gameIndexNode = gameIndexNode.ParentNode.NextSibling.FirstChild;
 				}
-
-				print ("this is new gameIndex" + gameIndexNode.InnerText);
-				print ("subbbb" + subIndexForInfo);
 
 				// update node if <word#> node already exist
 				if (gameIndexNode.ParentNode.ChildNodes.Count > subIndexForInfo+1) {
