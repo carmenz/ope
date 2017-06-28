@@ -62,12 +62,14 @@ public class QuizManager : MonoBehaviour {
 
 				while (indexNode != null) {
 		
-					if (subIndex - 1 == 6) {
-						// break once the last question is printed
-						break;
-					}
+
 
 					if(o1Active && o2Active && o3Active && o4Active) {
+						if (subIndex - 1 == 6) {
+							// break once the last question is correct
+							break;
+						}
+
 						questionText.text = questionText.text + indexNode.SelectSingleNode ("//Question" + subIndex).InnerText;
 
 						// move to next question in the quiz
@@ -90,7 +92,10 @@ public class QuizManager : MonoBehaviour {
 				option3.GetComponent<Button>().interactable = false; 
 				option4.GetComponent<Button>().interactable = false; 
 			
-
+//				if (subIndex - 1 == 6) {
+//					// break once the last question is printed
+//					break;
+//				}
 				panel.SetActive(true);
 
 			} else {
