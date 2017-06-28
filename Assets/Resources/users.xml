@@ -19,17 +19,6 @@
       <CurrentPos>(0.0, 0.0)</CurrentPos>
       <CurrentScore>0</CurrentScore>
       <IslandA>
-        <WordGames>
-          <Game>
-            <Index>1</Index>
-          </Game>
-          <Game>
-            <Index>2</Index>
-          </Game>
-          <Game>
-            <Index>1</Index>
-          </Game>
-        </WordGames>
         <Quizzes>
           <Quiz>
             <Index>1</Index>
@@ -37,19 +26,15 @@
           <Quiz>
             <Index>2</Index>
           </Quiz>
-          <Quiz>
-            <Index>1</Index>
-          </Quiz>
-          <Quiz>
-            <Index>1</Index>
-          </Quiz>
-          <Quiz>
-            <Index>1</Index>
-          </Quiz>
         </Quizzes>
-        <Stories>
-          <Story>1</Story>
-        </Stories>
+        <WordGames>
+          <Game>
+            <Index>1</Index>
+          </Game>
+          <Game>
+            <Index>2</Index>
+          </Game>
+        </WordGames>
       </IslandA>
     </User>
   </Users>

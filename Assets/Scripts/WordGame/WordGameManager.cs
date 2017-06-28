@@ -49,7 +49,7 @@ public class WordGameManager : MonoBehaviour {
 					if (wordNode.NextSibling != null) {
 						//print ("found Q");
 						wordNode = indexNode.NextSibling;
-						print (wordNode.Name);
+
 						subIndex++;
 						yield return new WaitForSeconds(2000);
 					} 

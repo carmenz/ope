@@ -157,30 +157,52 @@ public class WordGame : MonoBehaviour {
 
 			XmlDocument xmlWordGameDoc = new XmlDocument ();
 			xmlWordGameDoc.Load (path);
-			XmlNode indexNode = xmlWordGameDoc.SelectSingleNode ("//Index");
+			XmlNode indexNode = xmlWordGameDoc.SelectSingleNode ("//Game//Index");
+			int numOfGamesInDB = xmlWordGameDoc.SelectNodes ("//Game//Index").Count;
 
 			while (!finishAdding) {
 				if (usernameNode.InnerText == gm.Username) {
 					XmlNode wordGameNode = xmlUserDoc.SelectSingleNode ("//WordGames");
 
+					print(wordGameNode.ChildNodes.Count);
+					print(indexNode.InnerText);
+
 					while (wordGameNode.ChildNodes.Count.ToString() == indexNode.InnerText) {
+						
 						indexNode = indexNode.ParentNode.NextSibling.FirstChild;
 
 					}
 
-					XmlNode newWordGameNode = xmlUserDoc.CreateNode (XmlNodeType.Element, "Game", null);
-					XmlNode xmlIndex = xmlUserDoc.CreateNode (XmlNodeType.Element, "Index", null);
-				
-					xmlIndex.InnerText = indexNode.InnerText;
+					if (wordGameNode.ChildNodes.Count == numOfGamesInDB) {
+						// user have finished all the games we have
+						print ("user have finished all the games we have");
+						print (wordGameNode.LastChild.FirstChild.InnerText);
+						print (indexNode.InnerText);
+						if (wordGameNode.LastChild.FirstChild.InnerText == indexNode.InnerText) {
+							indexNode = indexNode.ParentNode.NextSibling.FirstChild;
+						}
 
-					newWordGameNode.AppendChild (xmlIndex);
+						print ("update db");
+						//TODO: update db
+						finishAdding = true;
 
-					wordGameNode.InsertAfter (newWordGameNode, wordGameNode.LastChild);
-					finishAdding = true;
-
-					gm.Index = int.Parse(indexNode.InnerText);
+					} else {
 
 
+
+						XmlNode newWordGameNode = xmlUserDoc.CreateNode (XmlNodeType.Element, "Game", null);
+						XmlNode xmlIndex = xmlUserDoc.CreateNode (XmlNodeType.Element, "Index", null);
+
+
+						xmlIndex.InnerText = indexNode.InnerText;
+
+						newWordGameNode.AppendChild (xmlIndex);
+
+						wordGameNode.InsertAfter (newWordGameNode, wordGameNode.LastChild);
+						finishAdding = true;
+
+						gm.Index = int.Parse(indexNode.InnerText);
+					}
 
 				} else {
 					usernameNode = usernameNode.ParentNode.NextSibling.FirstChild;

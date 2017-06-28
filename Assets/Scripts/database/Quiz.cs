@@ -17,7 +17,6 @@ public class Quiz : MonoBehaviour {
 
 
 
-
 	public void GetData() {
 		bool firstChallengeOnIsland = true;
 		bool firstQuizOnIsland = true;
@@ -160,31 +159,48 @@ public class Quiz : MonoBehaviour {
 
 			XmlDocument xmlQuizDoc = new XmlDocument ();
 			xmlQuizDoc.Load (path);
-			XmlNode indexNode = xmlQuizDoc.SelectSingleNode ("//Index");
+			XmlNode indexNode = xmlQuizDoc.SelectSingleNode ("//Quiz//Index");
+			int numOfQuizzesInDB = xmlQuizDoc.SelectNodes ("//Quiz//Index").Count;
 
 			while (!finishAdding) {
 				if (usernameNode.InnerText == gm.Username) {
 					XmlNode quizNode = xmlUserDoc.SelectSingleNode ("//Quizzes");
 
+					print(quizNode.ChildNodes.Count);
+					print(indexNode.InnerText);
 					while (quizNode.ChildNodes.Count.ToString() == indexNode.InnerText) {
 						indexNode = indexNode.ParentNode.NextSibling.FirstChild;
 					}
 
-					XmlNode newQuizNode = xmlUserDoc.CreateNode (XmlNodeType.Element, "Quiz", null);
-					XmlNode xmlIndex = xmlUserDoc.CreateNode (XmlNodeType.Element, "Index", null);
+					if (quizNode.ChildNodes.Count == numOfQuizzesInDB) {
+						// user have finished all the quizzes we have
+						print ("user have finished all the games we have");
+						print (quizNode.LastChild.FirstChild.InnerText);
+						print (indexNode.InnerText);
+						if (quizNode.LastChild.FirstChild.InnerText == indexNode.InnerText) {
+							indexNode = indexNode.ParentNode.NextSibling.FirstChild;
+						}
+
+						//TODO: update db
+						print("update db");
+						finishAdding = true;
+
+					} else {
+						XmlNode newQuizNode = xmlUserDoc.CreateNode (XmlNodeType.Element, "Quiz", null);
+						XmlNode xmlIndex = xmlUserDoc.CreateNode (XmlNodeType.Element, "Index", null);
 
 
-					xmlIndex.InnerText = indexNode.InnerText;
+						xmlIndex.InnerText = indexNode.InnerText;
 
-					newQuizNode.AppendChild (xmlIndex);
+						newQuizNode.AppendChild (xmlIndex);
 
-					print (quizNode.InnerText);
-					quizNode.InsertAfter (newQuizNode, quizNode.LastChild);
-					finishAdding = true;
+						print (quizNode.InnerText);
+						quizNode.InsertAfter (newQuizNode, quizNode.LastChild);
+						finishAdding = true;
 
-					gm.Index = int.Parse(indexNode.InnerText);
+						gm.Index = int.Parse(indexNode.InnerText);
 
-				
+					}
 				} else {
 					usernameNode = usernameNode.ParentNode.NextSibling.FirstChild;
 				}
