@@ -112,7 +112,7 @@ public class Quiz : MonoBehaviour {
 				// found the matching user
 				if (firstChallengeOnIsland) {
 
-					print (gm.Username);
+
 					if (usernameNode.InnerText == gm.Username) {
 						XmlNode user = usernameNode.ParentNode;
 
@@ -166,8 +166,6 @@ public class Quiz : MonoBehaviour {
 				if (usernameNode.InnerText == gm.Username) {
 					XmlNode quizNode = xmlUserDoc.SelectSingleNode ("//Quizzes");
 
-					print(quizNode.ChildNodes.Count);
-					print(indexNode.InnerText);
 					while (quizNode.ChildNodes.Count.ToString() == indexNode.InnerText) {
 						indexNode = indexNode.ParentNode.NextSibling.FirstChild;
 					}
@@ -191,7 +189,6 @@ public class Quiz : MonoBehaviour {
 
 						newQuizNode.AppendChild (xmlIndex);
 
-						print (quizNode.InnerText);
 						quizNode.InsertAfter (newQuizNode, quizNode.LastChild);
 						finishAdding = true;
 
