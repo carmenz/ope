@@ -189,7 +189,6 @@ public class Quiz : MonoBehaviour {
 						XmlNode newQuizNode = xmlUserDoc.CreateNode (XmlNodeType.Element, "Quiz", null);
 						XmlNode xmlIndex = xmlUserDoc.CreateNode (XmlNodeType.Element, "Index", null);
 
-
 						xmlIndex.InnerText = indexNode.InnerText;
 
 						newQuizNode.AppendChild (xmlIndex);

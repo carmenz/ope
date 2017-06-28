@@ -49,7 +49,6 @@ public class WordGameManager : MonoBehaviour {
 					}
 					wordText.text = indexNode.SelectSingleNode("//Word" + subIndex + "//value").InnerText;
 
-
 					// move to next question in the quiz
 					if (wordNode.NextSibling != null) {
 						//print ("found Q");
@@ -65,9 +64,7 @@ public class WordGameManager : MonoBehaviour {
 				Text score = GameObject.Find("Score").GetComponent<Text>();
 				score.text = currentScore.ToString();
 
-
 				// Update user.xml with the score
-
 				XmlNode gameIndexNode = xmlUserDoc.SelectSingleNode ("//Game//Index");
 
 				// find the matching game index
@@ -84,16 +81,21 @@ public class WordGameManager : MonoBehaviour {
 					XmlNode scoreIndex = xmlUserDoc.CreateNode (XmlNodeType.Element, "Score", null);
 					scoreIndex.InnerText = currentScore.ToString();
 					gameIndexNode.ParentNode.AppendChild (scoreIndex);
-
 				}
-
-
-
 			} else {
 				//move to next quiz
 				indexNode = indexNode.ParentNode.NextSibling.FirstChild;
 			}
 		}
+		// Find user and update <TotalScore>
+
+		XmlNode usernameNode = xmlUserDoc.SelectSingleNode ("//Username");
+		while (usernameNode.InnerText != gm.Username) {
+			usernameNode = usernameNode.ParentNode.NextSibling.FirstChild;
+		} 
+		usernameNode.ParentNode.SelectSingleNode ("TotalScore").InnerText = 
+			(int.Parse(usernameNode.ParentNode.SelectSingleNode ("TotalScore").InnerText) + currentScore).ToString();
+
 		xmlUserDoc.Save (userpath);
 	}
 
@@ -144,7 +146,6 @@ public class WordGameManager : MonoBehaviour {
 
 					gameIndexNode.ParentNode.AppendChild (wordIndex);
 					finishAddingToDB = true;
-
 				}
 			} else {
 				usernameNode = usernameNode.ParentNode.NextSibling.FirstChild;
@@ -152,8 +153,8 @@ public class WordGameManager : MonoBehaviour {
 		}
 		xmlUserDoc.Save (userpath);
 		Start ().MoveNext();
-
 	}
+
 	public void OtherPillarOnClick()
 	{
 		Debug.Log("otherPillar is clicked");
@@ -208,18 +209,11 @@ public class WordGameManager : MonoBehaviour {
 			} else {
 				usernameNode = usernameNode.ParentNode.NextSibling.FirstChild;
 			}
-
 		}
 		xmlUserDoc.Save (userpath);
-
 		Start ().MoveNext();
-
 	}
 
-	// Update is called once per frame
-	void Update () {
-		
-	}
 }
 
 

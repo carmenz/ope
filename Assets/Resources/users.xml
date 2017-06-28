@@ -4,20 +4,20 @@
     <User>
       <Username>nicdncidnicd</Username>
       <Password>Password</Password>
-      <CurrentPos>0</CurrentPos>
-      <CurrentScore>0</CurrentScore>
+      <CurrentPos>(0.0, 0.0)</CurrentPos>
+      <TotalScore>0</TotalScore>
     </User>
     <User>
       <Username>allison</Username>
       <Password>srwfzn5PzJQ9Gzx8a0HFgA==</Password>
-      <CurrentPos>5</CurrentPos>
-      <CurrentScore>0</CurrentScore>
+      <CurrentPos>(0.0, 0.0)</CurrentPos>
+      <TotalScore>0</TotalScore>
     </User>
     <User>
       <Username>1</Username>
       <Password>fn5g+xrZS7Ud7B8EBFfuxg==</Password>
       <CurrentPos>(0.0, 0.0)</CurrentPos>
-      <TotalScore>30</TotalScore>
+      <TotalScore>130</TotalScore>
       <IslandA>
         <Quizzes>
           <Quiz>
@@ -37,16 +37,6 @@
             <Word5>T</Word5>
             <Word6>F</Word6>
             <Score>70</Score>
-          </Game>
-          <Game>
-            <Index>2</Index>
-            <Word1>F</Word1>
-            <Word2>F</Word2>
-            <Word3>F</Word3>
-            <Word4>F</Word4>
-            <Word5>F</Word5>
-            <Word6>F</Word6>
-            <Score>10</Score>
           </Game>
         </WordGames>
       </IslandA>

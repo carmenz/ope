@@ -40,6 +40,7 @@ public class BoardManager : MonoBehaviour {
 				if (xmlUserReader.ReadElementContentAsString ().Equals (gm.Username)) {
 					xmlUserReader.ReadToFollowing ("TotalScore").ToString ();
 					scoreText.text = xmlUserReader.ReadElementContentAsString ();
+
 				}
 			}
 		}
