@@ -150,6 +150,7 @@ public class WordGame : MonoBehaviour {
 			// not the first quiz
 			bool finishAdding = false;
 			print("not the first quiz");
+
 			XmlDocument xmlUserDoc = new XmlDocument ();
 
 			xmlUserDoc.Load (userpath);
@@ -162,6 +163,8 @@ public class WordGame : MonoBehaviour {
 
 			while (!finishAdding) {
 				if (usernameNode.InnerText == gm.Username) {
+					// locate user in user.xml
+
 					XmlNode wordGameNode = xmlUserDoc.SelectSingleNode ("//WordGames");
 
 					print(wordGameNode.ChildNodes.Count);
@@ -174,7 +177,7 @@ public class WordGame : MonoBehaviour {
 					}
 
 					if (wordGameNode.ChildNodes.Count == numOfGamesInDB) {
-						// user have finished all the games we have
+						// user have finished all the games we have in db
 						print ("user have finished all the games we have");
 						print (wordGameNode.LastChild.FirstChild.InnerText);
 						print (indexNode.InnerText);
@@ -188,15 +191,17 @@ public class WordGame : MonoBehaviour {
 
 					} else {
 
-
+						// user not yet finished all the games we have in db
 
 						XmlNode newWordGameNode = xmlUserDoc.CreateNode (XmlNodeType.Element, "Game", null);
 						XmlNode xmlIndex = xmlUserDoc.CreateNode (XmlNodeType.Element, "Index", null);
+	
 
 
 						xmlIndex.InnerText = indexNode.InnerText;
 
 						newWordGameNode.AppendChild (xmlIndex);
+					
 
 						wordGameNode.InsertAfter (newWordGameNode, wordGameNode.LastChild);
 						finishAdding = true;

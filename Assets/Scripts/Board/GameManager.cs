@@ -14,6 +14,8 @@ public class GameManager : MonoBehaviour {
 	string _tokenName = "First";
 	[SerializeField]
 	public Missions missions;
+	[SerializeField]
+	public int score;
 
 	public int typeCode;
 	string _uname = "TestUser";
@@ -89,6 +91,7 @@ public class GameManager : MonoBehaviour {
 		{
 			Destroy(gameObject);
 		}
+
 
 	}
 

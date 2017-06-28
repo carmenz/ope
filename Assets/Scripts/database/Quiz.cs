@@ -109,7 +109,7 @@ public class Quiz : MonoBehaviour {
 				XmlNode xmlQuiz = xmlUserDoc.CreateNode (XmlNodeType.Element, "Quiz", null);
 				XmlNode xmlIndex = xmlUserDoc.CreateNode (XmlNodeType.Element, "Index", null);
 
-				// find the matching user
+				// found the matching user
 				if (firstChallengeOnIsland) {
 
 					print (gm.Username);

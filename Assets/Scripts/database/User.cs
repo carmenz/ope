@@ -15,7 +15,7 @@ public class User : MonoBehaviour {
 	public string username = "TestName";
 	public string  password = "000";
 	public Vector2 currentPos = new Vector2(0,0);
-	public int currentScore = 0;
+	public int score = 0;
 
 
 
@@ -41,7 +41,7 @@ public class User : MonoBehaviour {
 		}
 
 		data.currentPos = GameObject.Find("GameManager").GetComponent<GameManager>().Coordinate;
-		data.currentScore = currentScore;
+		data.totalScore = score;
 
 	}
 
@@ -96,8 +96,8 @@ public class UserData{
 	[XmlElement("Currentpos")]
 	public Vector2 currentPos;
 
-	[XmlElement("CurrentScore")]
-	public int currentScore;
+	[XmlElement("TotalScore")]
+	public int totalScore;
 
 
 }
