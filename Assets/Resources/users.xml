@@ -18,7 +18,7 @@
         <FillInTheBlanks>
           <FillInTheBlank>
             <Index>1</Index>
-            <Score>40</Score>
+            <Score>50</Score>
           </FillInTheBlank>
           <FillInTheBlank>
             <Index>2</Index>
@@ -27,10 +27,10 @@
         <WordGames>
           <Game>
             <Index>1</Index>
-            <Word1>F</Word1>
-            <Word2>T</Word2>
+            <Word1>T</Word1>
+            <Word2>F</Word2>
             <Word3>F</Word3>
-            <Word4>T</Word4>
+            <Word4>F</Word4>
             <Word5>F</Word5>
             <Word6>T</Word6>
             <Score>50</Score>
@@ -49,7 +49,63 @@
         <Stories>
           <Story>1</Story>
         </Stories>
+        <FillInTheBlanks>
+          <FillInTheBlank>
+            <Index>1</Index>
+          </FillInTheBlank>
+        </FillInTheBlanks>
+        <WordGames>
+          <Game>
+            <Index>1</Index>
+          </Game>
+        </WordGames>
+        <FillInTheBlanks>
+          <FillInTheBlank>
+            <Index>1</Index>
+          </FillInTheBlank>
+        </FillInTheBlanks>
+        <WordGames>
+          <Game>
+            <Index>1</Index>
+          </Game>
+        </WordGames>
+        <FillInTheBlanks>
+          <FillInTheBlank>
+            <Index>1</Index>
+          </FillInTheBlank>
+        </FillInTheBlanks>
+        <WordGames>
+          <Game>
+            <Index>1</Index>
+          </Game>
+        </WordGames>
       </IslandA>
+    </User>
+    <User>
+      <Username>Yeajin</Username>
+      <Password>azt2C9hFtsUE9/75At/QFw==</Password>
+      <CurrentPosX>-490.0876</CurrentPosX>
+      <CurrentPosY>-127.4544</CurrentPosY>
+      <TotalScore>0</TotalScore>
+    </User>
+    <User>
+      <Username>Angie</Username>
+      <Password>z8Vo0vuFo6DC3D0Y2SjO9w==</Password>
+      <CurrentPosX>-67.72333</CurrentPosX>
+      <CurrentPosY>-55.48801</CurrentPosY>
+      <TotalScore>320</TotalScore>
+      <IslandA>
+        <Stories>
+          <Story>1</Story>
+        </Stories>
+      </IslandA>
+    </User>
+    <User>
+      <Username>5454545</Username>
+      <Password>7AiNeLB+YE8/Cts/QxTIiw==</Password>
+      <CurrentPosX>0</CurrentPosX>
+      <CurrentPosY>0</CurrentPosY>
+      <TotalScore>0</TotalScore>
     </User>
   </Users>
 </UserCollection>
