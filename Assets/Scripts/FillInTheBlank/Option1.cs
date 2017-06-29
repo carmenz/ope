@@ -6,18 +6,20 @@ using UnityEngine.SceneManagement;
 using System.Xml;
 
 
-public class Option3 : MonoBehaviour {
+public class Option1 : MonoBehaviour {
 
-	private QuizManager qm;
+	private FillInTheBlankManager fm;
 	private GameManager gm;
 
 	// Use this for initialization
 	void Start() {
-		qm = GameObject.Find("QuizManager").GetComponent<QuizManager>();
+		fm = GameObject.Find("FillInTheBlankManager").GetComponent<FillInTheBlankManager>();
 		gm = GameObject.Find("GameManager").GetComponent<GameManager>();
 	}
 
 	public void onClick() {
+
+//
 //		XmlDocument xmlQuizDoc = new XmlDocument ();
 //		xmlQuizDoc.Load (gm.Path);
 //		XmlNode indexNode = xmlQuizDoc.SelectSingleNode ("//Index");
@@ -27,9 +29,9 @@ public class Option3 : MonoBehaviour {
 //		Button option3 = GameObject.Find ("Option3").GetComponent<Button> ();
 //		Button option4 = GameObject.Find ("Option4").GetComponent<Button> ();
 
+		fm.Task1OnClick();
 
-		qm.Task3OnClick();
-
+//
 //
 //		int subIndex = qm.subIndex - 1;
 //
@@ -38,9 +40,9 @@ public class Option3 : MonoBehaviour {
 //		option3.GetComponentInChildren<Text> ().text = indexNode.NextSibling.NextSibling.FirstChild.SelectSingleNode ("//Blank"+ subIndex +"//Option3//value").InnerText;
 //		option4.GetComponentInChildren<Text> ().text = indexNode.NextSibling.NextSibling.FirstChild.SelectSingleNode ("//Blank"+ subIndex +"//Option4//value").InnerText;
 //
-
+//
+	
 	}
-
-
+	
 
 }

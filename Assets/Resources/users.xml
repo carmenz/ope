@@ -2,53 +2,50 @@
 <UserCollection xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <Users>
     <User>
-      <Username>nicdncidnicd</Username>
-      <Password>Password</Password>
-      <CurrentPos>(0.0, 0.0)</CurrentPos>
-      <TotalScore>0</TotalScore>
-    </User>
-    <User>
       <Username>allison</Username>
       <Password>srwfzn5PzJQ9Gzx8a0HFgA==</Password>
-      <CurrentPos>(0.0, 0.0)</CurrentPos>
+      <CurrentPosX>0</CurrentPosX>
+      <CurrentPosY>0</CurrentPosY>
       <TotalScore>0</TotalScore>
     </User>
     <User>
       <Username>1</Username>
       <Password>fn5g+xrZS7Ud7B8EBFfuxg==</Password>
-      <CurrentPos>(0.0, 0.0)</CurrentPos>
-      <TotalScore>120</TotalScore>
+      <CurrentPosX>304.461</CurrentPosX>
+      <CurrentPosY>-50.50897</CurrentPosY>
+      <TotalScore>430</TotalScore>
       <IslandA>
+        <FillInTheBlanks>
+          <FillInTheBlank>
+            <Index>1</Index>
+            <Score>50</Score>
+          </FillInTheBlank>
+          <FillInTheBlank>
+            <Index>2</Index>
+          </FillInTheBlank>
+        </FillInTheBlanks>
         <WordGames>
           <Game>
             <Index>1</Index>
             <Word1>T</Word1>
-            <Word2>F</Word2>
-            <Word3>F</Word3>
+            <Word2>T</Word2>
+            <Word3>T</Word3>
+            <Word4>T</Word4>
+            <Word5>F</Word5>
+            <Word6>F</Word6>
+            <Score>50</Score>
+          </Game>
+          <Game>
+            <Index>2</Index>
+            <Word1>T</Word1>
+            <Word2>T</Word2>
+            <Word3>T</Word3>
             <Word4>F</Word4>
             <Word5>F</Word5>
             <Word6>F</Word6>
             <Score>40</Score>
           </Game>
-          <Game>
-            <Index>2</Index>
-            <Word1>T</Word1>
-            <Word2>F</Word2>
-            <Word3>T</Word3>
-            <Word4>F</Word4>
-            <Word5>T</Word5>
-            <Word6>F</Word6>
-            <Score>40</Score>
-          </Game>
         </WordGames>
-        <Quizzes>
-          <Quiz>
-            <Index>1</Index>
-          </Quiz>
-          <Quiz>
-            <Index>2</Index>
-          </Quiz>
-        </Quizzes>
         <Stories>
           <Story>1</Story>
         </Stories>

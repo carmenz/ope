@@ -18,8 +18,8 @@ public class BackButton : MonoBehaviour {
 		
 	}
 
-	public void QuitQuiz() {
-		gm.missions.quizRequired.Remove(gm.typeCode);
+	public void QuitFillInTheBlank() {
+		gm.missions.fillInTheBlankRequired.Remove(gm.typeCode);
 		gm.typeCode = 0;
 		SceneManager.LoadScene(mainSceneName);
 	}

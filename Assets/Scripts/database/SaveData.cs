@@ -56,7 +56,6 @@ public class SaveData : MonoBehaviour {
 		
 		current.GetInputData ();
 		bool userNotExist = true;
-		print ("hehehe");
 		// check if user.xml exist
 		if (File.Exists (path)) {
 			var dox = new XmlDocument ();
@@ -88,7 +87,8 @@ public class SaveData : MonoBehaviour {
 			XElement user = new XElement ("User");
 			user.Add (new XElement ("Username", current.data.username));
 			user.Add (new XElement ("Password", current.data.password));
-			user.Add (new XElement ("CurrentPos", current.data.currentPos));
+			user.Add (new XElement ("CurrentPosX", current.data.currentPosX));
+			user.Add (new XElement ("CurrentPosY", current.data.currentPosY));
 			user.Add (new XElement ("TotalScore", current.data.totalScore));
 
 			doc.Root.Element ("Users").Add (user);

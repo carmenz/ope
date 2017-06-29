@@ -4,10 +4,10 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Xml;
 
-public class QuizManager : MonoBehaviour {
+public class FillInTheBlankManager : MonoBehaviour {
 	
 	private GameManager gm;
-	private QuizManager qm;
+	private FillInTheBlankManager qm;
 	public GameObject panel;
 	private static string userpath = string.Empty;
 	private int currentScore = 0;
@@ -31,12 +31,12 @@ public class QuizManager : MonoBehaviour {
 	IEnumerator Start () {
 		userpath = System.IO.Path.Combine (Application.dataPath, "Resources/users.xml");
 		gm = GameObject.Find("GameManager").GetComponent<GameManager>();
-		qm = GameObject.Find("QuizManager").GetComponent<QuizManager>();
+		qm = GameObject.Find("FillInTheBlankManager").GetComponent<FillInTheBlankManager>();
 
-		XmlDocument xmlQuizDoc = new XmlDocument ();
+		XmlDocument xmlFillInTheBlankDoc = new XmlDocument ();
 
-		xmlQuizDoc.Load (gm.Path);
-		XmlNode indexNode = xmlQuizDoc.SelectSingleNode ("//Index");
+		xmlFillInTheBlankDoc.Load (gm.Path);
+		XmlNode indexNode = xmlFillInTheBlankDoc.SelectSingleNode ("//Index");
 
 		XmlDocument xmlUserDoc = new XmlDocument ();
 		xmlUserDoc.Load (userpath);
@@ -75,7 +75,7 @@ public class QuizManager : MonoBehaviour {
 
 						questionText.text = questionText.text + indexNode.SelectSingleNode ("//Question" + subIndex).InnerText;
 
-						// move to next question in the quiz
+						// move to next question
 						if (QNode.NextSibling.Name == "Q") {
 							//print ("found Q");
 							QNode = indexNode.NextSibling;
@@ -99,33 +99,44 @@ public class QuizManager : MonoBehaviour {
 
 				// display score on panel
 				Text score = GameObject.Find("Score").GetComponent<Text>();
-				score.text = (currentScore + 10).ToString ();
+				currentScore = currentScore + 10;
+				score.text = currentScore.ToString ();
 
 
 				// Update user.xml with the score
-				XmlNode quizIndexNode = xmlUserDoc.SelectSingleNode ("//Quiz//Index");
+				XmlNode fillInTheBlankIndexNode = xmlUserDoc.SelectSingleNode ("//FillInTheBlank//Index");
 
 				// find the matching game index
-				while (gm.Index.ToString() != quizIndexNode.InnerText) {
-					quizIndexNode = quizIndexNode.ParentNode.NextSibling.FirstChild;
+				while (gm.Index.ToString() != fillInTheBlankIndexNode.InnerText) {
+					fillInTheBlankIndexNode = fillInTheBlankIndexNode.ParentNode.NextSibling.FirstChild;
 				}
 
 				// update node if <Score> node already exist
-				if (quizIndexNode.ParentNode.ChildNodes.Count == 8) {
-					quizIndexNode.ParentNode.SelectSingleNode("//Score").InnerText = currentScore.ToString();
+				if (fillInTheBlankIndexNode.ParentNode.ChildNodes.Count == 2) {
+					fillInTheBlankIndexNode.ParentNode.SelectSingleNode("//Score").InnerText = currentScore.ToString();
 					finishAddingToDB = true;
 				} else {
 					// create new <Score> node
 					XmlNode scoreIndex = xmlUserDoc.CreateNode (XmlNodeType.Element, "Score", null);
 					scoreIndex.InnerText = currentScore.ToString();
-					quizIndexNode.ParentNode.AppendChild (scoreIndex);
+					fillInTheBlankIndexNode.ParentNode.AppendChild (scoreIndex);
 				}
 
 			} else {
-				//move to next quiz
+				//move to next blank
 				indexNode = indexNode.ParentNode.NextSibling.FirstChild;
 			}
 		}
+
+		// Find user and update <TotalScore>
+		XmlNode usernameNode = xmlUserDoc.SelectSingleNode ("//Username");
+		while (usernameNode.InnerText != gm.Username) {
+			usernameNode = usernameNode.ParentNode.NextSibling.FirstChild;
+		} 
+		usernameNode.ParentNode.SelectSingleNode ("TotalScore").InnerText = 
+			(int.Parse(usernameNode.ParentNode.SelectSingleNode ("TotalScore").InnerText) + currentScore).ToString();
+
+		xmlUserDoc.Save (userpath);
 	}
 
 
@@ -133,9 +144,9 @@ public class QuizManager : MonoBehaviour {
 
 		Text blankText = GameObject.Find ("Blank" + subIndex).GetComponent<Text> ();
 
-		XmlDocument xmlQuizDoc = new XmlDocument ();
-		xmlQuizDoc.Load (gm.Path);
-		XmlNode indexNode = xmlQuizDoc.SelectSingleNode ("//Index");
+		XmlDocument xmlFillInTheBlankDoc = new XmlDocument ();
+		xmlFillInTheBlankDoc.Load (gm.Path);
+		XmlNode indexNode = xmlFillInTheBlankDoc.SelectSingleNode ("//Index");
 
 		int subIndexForInfo = qm.subIndex - 1;
 
@@ -199,7 +210,7 @@ public class QuizManager : MonoBehaviour {
 			option3.gameObject.SetActive (true); 
 			option4.gameObject.SetActive (true);
 
-			// update button text to show options for next quiz
+			// update button text to show options for next blank
 			if (qm.subIndex <= 6) {
 				option1.GetComponentInChildren<Text> ().text = indexNode.NextSibling.NextSibling.FirstChild.NextSibling.SelectSingleNode ("//Blank" + qm.subIndex + "//Option1//value").InnerText;
 				option2.GetComponentInChildren<Text> ().text = indexNode.NextSibling.NextSibling.FirstChild.NextSibling.SelectSingleNode ("//Blank" + qm.subIndex + "//Option2//value").InnerText;
@@ -217,9 +228,9 @@ public class QuizManager : MonoBehaviour {
 		Button option1 = GameObject.Find ("Option1").GetComponent<Button> ();
 
 
-		XmlDocument xmlQuizDoc = new XmlDocument ();
-		xmlQuizDoc.Load (gm.Path);
-		XmlNode indexNode = xmlQuizDoc.SelectSingleNode ("//Index");
+		XmlDocument xmlFillInTheBlankDoc = new XmlDocument ();
+		xmlFillInTheBlankDoc.Load (gm.Path);
+		XmlNode indexNode = xmlFillInTheBlankDoc.SelectSingleNode ("//Index");
 
 		Text questionText = GameObject.Find ("Question").GetComponent<Text> ();
 
@@ -243,9 +254,9 @@ public class QuizManager : MonoBehaviour {
 		Button option2 = GameObject.Find ("Option2").GetComponent<Button> ();
 
 
-		XmlDocument xmlQuizDoc = new XmlDocument ();
-		xmlQuizDoc.Load (gm.Path);
-		XmlNode indexNode = xmlQuizDoc.SelectSingleNode ("//Index");
+		XmlDocument xmlFillInTheBlankDoc = new XmlDocument ();
+		xmlFillInTheBlankDoc.Load (gm.Path);
+		XmlNode indexNode = xmlFillInTheBlankDoc.SelectSingleNode ("//Index");
 
 		Text questionText = GameObject.Find ("Question").GetComponent<Text> ();
 
@@ -270,9 +281,9 @@ public class QuizManager : MonoBehaviour {
 		Button option3 = GameObject.Find ("Option3").GetComponent<Button> ();
 
 
-		XmlDocument xmlQuizDoc = new XmlDocument ();
-		xmlQuizDoc.Load (gm.Path);
-		XmlNode indexNode = xmlQuizDoc.SelectSingleNode ("//Index");
+		XmlDocument xmlFillInTheBlankDoc = new XmlDocument ();
+		xmlFillInTheBlankDoc.Load (gm.Path);
+		XmlNode indexNode = xmlFillInTheBlankDoc.SelectSingleNode ("//Index");
 
 		Text questionText = GameObject.Find ("Question").GetComponent<Text> ();
 
@@ -295,9 +306,9 @@ public class QuizManager : MonoBehaviour {
 		Debug.Log("option4 is clicked");
 		Button option4 = GameObject.Find ("Option4").GetComponent<Button> ();
 
-		XmlDocument xmlQuizDoc = new XmlDocument ();
-		xmlQuizDoc.Load (gm.Path);
-		XmlNode indexNode = xmlQuizDoc.SelectSingleNode ("//Index");
+		XmlDocument xmlFillInTheBlankDoc = new XmlDocument ();
+		xmlFillInTheBlankDoc.Load (gm.Path);
+		XmlNode indexNode = xmlFillInTheBlankDoc.SelectSingleNode ("//Index");
 
 		Text questionText = GameObject.Find ("Question").GetComponent<Text> ();
 

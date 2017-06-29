@@ -86,8 +86,8 @@ public class WordGameManager : MonoBehaviour {
 				indexNode = indexNode.ParentNode.NextSibling.FirstChild;
 			}
 		}
-		// Find user and update <TotalScore>
 
+		// Find user and update <TotalScore>
 		XmlNode usernameNode = xmlUserDoc.SelectSingleNode ("//Username");
 		while (usernameNode.InnerText != gm.Username) {
 			usernameNode = usernameNode.ParentNode.NextSibling.FirstChild;

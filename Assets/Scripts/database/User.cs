@@ -14,7 +14,8 @@ public class User : MonoBehaviour {
 
 	public string username = "TestName";
 	public string  password = "000";
-	public Vector2 currentPos = new Vector2(0,0);
+	public float currentPosX = 0.0f;
+	public float currentPosY = 0.0f;
 	public int score = 0;
 
 
@@ -39,8 +40,9 @@ public class User : MonoBehaviour {
 			data.username = GameObject.Find ("GameManager").GetComponent<GameManager> ().name;
 			print ("user storemaindata");
 		}
-
-		data.currentPos = GameObject.Find("GameManager").GetComponent<GameManager>().Coordinate;
+		print ("dataaaaaaaaaaaaa" + GameObject.Find ("GameManager").GetComponent<GameManager> ().Coordinate);
+		data.currentPosX = GameObject.Find ("GameManager").GetComponent<GameManager> ().Coordinate.x;
+		data.currentPosY = GameObject.Find ("GameManager").GetComponent<GameManager> ().Coordinate.y;
 		data.totalScore = score;
 
 	}
@@ -93,8 +95,11 @@ public class UserData{
 	[XmlElement("Password")]
 		public string password;
 
-	[XmlElement("Currentpos")]
-	public Vector2 currentPos;
+	[XmlElement("CurrentposX")]
+	public float currentPosX;
+
+	[XmlElement("CurrentposY")]
+	public float currentPosY;
 
 	[XmlElement("TotalScore")]
 	public int totalScore;

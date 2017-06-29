@@ -15,9 +15,9 @@ public class NewPlayer : MonoBehaviour {
     private float costTime = 0.0f;
     private float timePrecent = 0.0f;
 
-	private static Quiz quiz = new Quiz();
-	private static Story story = new Story ();
-	private static WordGame wordGame = new WordGame();
+	private FillInTheBlank fillInTheBlank = new FillInTheBlank();
+	private Story story = new Story ();
+	private WordGame wordGame = new WordGame();
 
 
 
@@ -48,13 +48,14 @@ public class NewPlayer : MonoBehaviour {
         {
             var d = Vector2.Distance(curenPosition, moveTowardPosition);
 //            Debug.Log(d);
-//            Debug.Log(curenPosition);
-//            Debug.Log(moveTowardPosition);
+            Debug.Log(curenPosition);
+            Debug.Log(moveTowardPosition);
             if (d < 1) {
                 //Debug.Log("daolele");
                 transform.GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
                 transform.position = moveTowardPosition;
                 _isRuning = false;
+				gm.Coordinate = new Vector2(transform.position.x, transform.position.y);
             }
 
         }
@@ -66,8 +67,8 @@ public class NewPlayer : MonoBehaviour {
         transform.position = gm.Coordinate;
         _canBeTriggered = false;
 		missionContainer = GameObject.Find("MissionList").GetComponent<Text>();
-		if (gm.missions.quizRequired.Count > 0) {
-			missionContainer.text = gm.missions.quizInfo;
+		if (gm.missions.fillInTheBlankRequired.Count > 0) {
+			missionContainer.text = gm.missions.fillInTheBlankInfo;
 		}
 	}
 	
@@ -95,8 +96,8 @@ public class NewPlayer : MonoBehaviour {
 		gm.Index = collider.GetComponent<SquareController>().index;
         gm.Coordinate = new Vector2(transform.position.x, transform.position.y);
 
-		if (type == "Quiz") {
-			quiz.GetData ();
+		if (type == "FillInTheBlank") {
+			fillInTheBlank.GetData ();
 		} else if (type == "WordGame") {
 			wordGame.GetData ();
 		} else if (type == "Story") {

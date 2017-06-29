@@ -9,7 +9,7 @@ using System.Text;
 using UnityEngine.SceneManagement;
 using System;
 
-public class Quiz : MonoBehaviour {
+public class FillInTheBlank : MonoBehaviour {
 
 	private string island;
 	private static string path = string.Empty;
@@ -18,7 +18,7 @@ public class Quiz : MonoBehaviour {
 
 	public void GetData() {
 		bool firstChallengeOnIsland = true;
-		bool firstQuizOnIsland = true;
+		bool firstFillInTheBlankOnIsland = true;
 
 		GameManager gm = GameObject.Find ("GameManager").GetComponent<GameManager> ();
 
@@ -26,23 +26,23 @@ public class Quiz : MonoBehaviour {
 
 		int pos = gm.Index;
 		print ("pos is" + pos);
-		// choose quiz file according to island
+		// choose FillInTheBlank file according to island
 
 		if (pos < 25) {
 			island = "IslandA";
-			path = System.IO.Path.Combine (Application.dataPath, "Resources/quizzesA.xml");
+			path = System.IO.Path.Combine (Application.dataPath, "Resources/blanksA.xml");
 			print ("we are on island A");
 		} else if (pos < 30) {
 			island = "IslandB";
-			path = System.IO.Path.Combine (Application.persistentDataPath, "Resources/quizzesB.xml");
+			path = System.IO.Path.Combine (Application.persistentDataPath, "Resources/blanksB.xml");
 			print ("we are on island B");
 		} else if (pos < 40) {
 			island = "IslandC";
-			path = System.IO.Path.Combine (Application.persistentDataPath, "Resources/quizzesC.xml");
+			path = System.IO.Path.Combine (Application.persistentDataPath, "Resources/blanksC.xml");
 			print ("we are on island C");
 		} else if (pos < 50) {
 			island = "IslandD";
-			path = System.IO.Path.Combine (Application.persistentDataPath, "Resources/quizzesD.xml");
+			path = System.IO.Path.Combine (Application.persistentDataPath, "Resources/blanksD.xml");
 			print ("we are on island D");
 		}
 
@@ -53,16 +53,16 @@ public class Quiz : MonoBehaviour {
 			var dox = new XmlDocument ();
 			dox.Load (path);
 
-			//check if user already have that quiz on file
+			//check if user already have that FillInTheBlank on file
 
-			FileStream quizStream = new FileStream (path, FileMode.Open);
+			FileStream fillInTheBlankStream = new FileStream (path, FileMode.Open);
 		
-			XmlTextReader xmlQuizReader = new XmlTextReader (quizStream);
+			XmlTextReader xmlFillInTheBlankReader = new XmlTextReader (fillInTheBlankStream);
 
 			FileStream userStream = new FileStream (userpath, FileMode.Open);
 			XmlTextReader xmlUserReader = new XmlTextReader (userStream);
 		
-			xmlQuizReader.Read ();
+			xmlFillInTheBlankReader.Read ();
 
 			while (xmlUserReader.Read ()) {
 
@@ -74,12 +74,12 @@ public class Quiz : MonoBehaviour {
 							print ("user already have the island");
 							firstChallengeOnIsland = false;
 
-							if (xmlUserReader.ReadToDescendant ("Quizzes")) {
-								firstQuizOnIsland = false;
-								print ("user already did a quiz on the island");
+							if (xmlUserReader.ReadToDescendant ("FillInTheBlanks")) {
+								firstFillInTheBlankOnIsland = false;
+								print ("user already did a FillInTheBlank on the island");
 							
 							} else {
-								print ("first quiz for user on the island");
+								print ("first FillInTheBlank for user on the island");
 							}
 						} else {
 							print ("user not yet have island");
@@ -87,25 +87,25 @@ public class Quiz : MonoBehaviour {
 					}
 				}
 			}
-			quizStream.Close ();
+			fillInTheBlankStream.Close ();
 			userStream.Close ();
 		}
 
 
-		if (firstQuizOnIsland) {
+		if (firstFillInTheBlankOnIsland) {
 			
 			XmlDocument xmlUserDoc = new XmlDocument ();
 			xmlUserDoc.Load (userpath);
 			XmlNode usernameNode = xmlUserDoc.SelectSingleNode ("//Username");
 
 
-			while (firstQuizOnIsland) {
+			while (firstFillInTheBlankOnIsland) {
 
 				XmlNode nodeBefore = xmlUserDoc.SelectSingleNode ("//TotalScore");
 
 				XmlNode xmlIsland = xmlUserDoc.CreateNode (XmlNodeType.Element, island, null);
-				XmlNode xmlQuizzes = xmlUserDoc.CreateNode (XmlNodeType.Element, "Quizzes", null);
-				XmlNode xmlQuiz = xmlUserDoc.CreateNode (XmlNodeType.Element, "Quiz", null);
+				XmlNode xmlFillInTheBlanks = xmlUserDoc.CreateNode (XmlNodeType.Element, "FillInTheBlanks", null);
+				XmlNode xmlFillInTheBlank = xmlUserDoc.CreateNode (XmlNodeType.Element, "FillInTheBlank", null);
 				XmlNode xmlIndex = xmlUserDoc.CreateNode (XmlNodeType.Element, "Index", null);
 
 				// found the matching user
@@ -119,12 +119,12 @@ public class Quiz : MonoBehaviour {
 
 						xmlIndex.InnerText = "1";
 
-						xmlIsland.AppendChild (xmlQuizzes);
-						xmlQuizzes.AppendChild (xmlQuiz);
-						xmlQuiz.AppendChild (xmlIndex);
+						xmlIsland.AppendChild (xmlFillInTheBlanks);
+						xmlFillInTheBlanks.AppendChild (xmlFillInTheBlank);
+						xmlFillInTheBlank.AppendChild (xmlIndex);
 
 						user.InsertAfter (xmlIsland, nodeBefore);
-						firstQuizOnIsland = false;
+						firstFillInTheBlankOnIsland = false;
 
 						gm.Index = 1;
 
@@ -133,46 +133,46 @@ public class Quiz : MonoBehaviour {
 						usernameNode = usernameNode.ParentNode.NextSibling.FirstChild;
 					}
 				} else {
-					print ("not the first challenge but the first quiz");
+					print ("not the first challenge but the first FillInTheBlank");
 					XmlNode islandNode = xmlUserDoc.SelectSingleNode ("//" + island);
 
 					gm.Index = 1;
 					xmlIndex.InnerText = "1";
 
-					islandNode.AppendChild (xmlQuizzes);
-					xmlQuizzes.AppendChild (xmlQuiz);
-					xmlQuiz.AppendChild (xmlIndex);
+					islandNode.AppendChild (xmlFillInTheBlanks);
+					xmlFillInTheBlanks.AppendChild (xmlFillInTheBlank);
+					xmlFillInTheBlank.AppendChild (xmlIndex);
 
-					firstQuizOnIsland = false;
+					firstFillInTheBlankOnIsland = false;
 				}
 			}
 			xmlUserDoc.Save (userpath);
 		} else {
-			// not the first quiz
+			// not the first FillInTheBlank
 			bool finishAdding = false;
-			print("not the first quiz");
+			print("not the first FillInTheBlank");
 			XmlDocument xmlUserDoc = new XmlDocument ();
 
 			xmlUserDoc.Load (userpath);
 			XmlNode usernameNode = xmlUserDoc.SelectSingleNode ("//Username");
 
-			XmlDocument xmlQuizDoc = new XmlDocument ();
-			xmlQuizDoc.Load (path);
-			XmlNode indexNode = xmlQuizDoc.SelectSingleNode ("//Quiz//Index");
-			int numOfQuizzesInDB = xmlQuizDoc.SelectNodes ("//Quiz//Index").Count;
+			XmlDocument xmlFillInTheBlankDoc = new XmlDocument ();
+			xmlFillInTheBlankDoc.Load (path);
+			XmlNode indexNode = xmlFillInTheBlankDoc.SelectSingleNode ("//FillInTheBlank//Index");
+			int numOfFillInTheBlanksInDB = xmlFillInTheBlankDoc.SelectNodes ("//FillInTheBlank//Index").Count;
 
 			while (!finishAdding) {
 				if (usernameNode.InnerText == gm.Username) {
-					XmlNode quizNode = xmlUserDoc.SelectSingleNode ("//Quizzes");
+					XmlNode fillInTheBlankNode = xmlUserDoc.SelectSingleNode ("//FillInTheBlanks");
 
-					while (quizNode.ChildNodes.Count.ToString() == indexNode.InnerText) {
+					while (fillInTheBlankNode.ChildNodes.Count.ToString() == indexNode.InnerText) {
 						indexNode = indexNode.ParentNode.NextSibling.FirstChild;
 					}
 
-					if (quizNode.ChildNodes.Count == numOfQuizzesInDB) {
-						// user have finished all the quizzes we have
+					if (fillInTheBlankNode.ChildNodes.Count == numOfFillInTheBlanksInDB) {
+						// user have finished all the FillInTheBlanks we have
 						print ("user have finished all the games we have");
-						if (quizNode.LastChild.FirstChild.InnerText == indexNode.InnerText) {
+						if (fillInTheBlankNode.LastChild.FirstChild.InnerText == indexNode.InnerText) {
 							indexNode = indexNode.ParentNode.NextSibling.FirstChild;
 						}
 
@@ -181,14 +181,14 @@ public class Quiz : MonoBehaviour {
 						finishAdding = true;
 
 					} else {
-						XmlNode newQuizNode = xmlUserDoc.CreateNode (XmlNodeType.Element, "Quiz", null);
+						XmlNode newFillInTheBlankNode = xmlUserDoc.CreateNode (XmlNodeType.Element, "FillInTheBlank", null);
 						XmlNode xmlIndex = xmlUserDoc.CreateNode (XmlNodeType.Element, "Index", null);
 
 						xmlIndex.InnerText = indexNode.InnerText;
 
-						newQuizNode.AppendChild (xmlIndex);
+						newFillInTheBlankNode.AppendChild (xmlIndex);
 
-						quizNode.InsertAfter (newQuizNode, quizNode.LastChild);
+						fillInTheBlankNode.InsertAfter (newFillInTheBlankNode, fillInTheBlankNode.LastChild);
 						finishAdding = true;
 
 						gm.Index = int.Parse(indexNode.InnerText);
@@ -203,7 +203,7 @@ public class Quiz : MonoBehaviour {
 	}
 }
 
-public class QuizData{
+public class FillInTheBlankData{
 
 	[XmlElement("Index")]
 	public string index;

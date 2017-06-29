@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<QuizCollction xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <Quizzes>
-    <Quiz>
+<FillInTheBlankCollction xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <FillInTheBlanks>
+    <FillInTheBlank>
       <Index>1</Index>
       <Q>
       	<Question1>To celebrate her year end bonus, Megyn is thinking of spending some of her earnings on gambling. She thought of spending it on a chance based game like _________________. </Question1>
@@ -153,8 +153,8 @@
 	      	</Option4>
 	    </Blank6>
 	  </Q>
-    </Quiz>
-    <Quiz>
+    </FillInTheBlank>
+    <FillInTheBlank>
       <Index>2</Index>
       <Q>
       	<Question1>To celebrate her year end bonus, Megyn is thinking of spending some of her earnings on gambling. She thought of spending it on a chance based game like _________________. </Question1>
@@ -306,6 +306,6 @@
 	      	</Option4>
 	    </Blank6>
 	  </Q>
-    </Quiz>
-  </Quizzes>
-</QuizCollction>
+    </FillInTheBlank>
+  </FillInTheBlanks>
+</FillInTheBlankCollction>

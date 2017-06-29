@@ -4,8 +4,8 @@ using UnityEngine;
 
 [System.Serializable]
 public class Missions {
-	public List<int> quizRequired = new List<int>();
-	public string quizInfo;
+	public List<int> fillInTheBlankRequired = new List<int>();
+	public string fillInTheBlankInfo;
 
 	public List<int> storyRequired = new List<int>();
 	public string storyInfo;

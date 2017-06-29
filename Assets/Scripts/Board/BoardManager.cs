@@ -36,10 +36,20 @@ public class BoardManager : MonoBehaviour {
 		while (xmlUserReader.Read ()) {
 
 			if (xmlUserReader.Name == "Username") {
-				// find user from user.xml and get TotalScore
+				
+				// find user from user.xml and get Positions
 				if (xmlUserReader.ReadElementContentAsString ().Equals (gm.Username)) {
+					xmlUserReader.ReadToFollowing ("CurrentPosX").ToString ();
+					float x = xmlUserReader.ReadElementContentAsFloat();
+					xmlUserReader.ReadToFollowing ("CurrentPosY").ToString ();
+					float y = xmlUserReader.ReadElementContentAsFloat();
+
+					Vector2 coordinateValue = new Vector2(x,y);
+					gm.Coordinate = coordinateValue;
+
 					xmlUserReader.ReadToFollowing ("TotalScore").ToString ();
 					scoreText.text = xmlUserReader.ReadElementContentAsString ();
+
 
 				}
 			}
