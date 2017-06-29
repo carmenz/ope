@@ -11,14 +11,14 @@
     <User>
       <Username>1</Username>
       <Password>fn5g+xrZS7Ud7B8EBFfuxg==</Password>
-      <CurrentPosX>304.461</CurrentPosX>
-      <CurrentPosY>-50.50897</CurrentPosY>
-      <TotalScore>430</TotalScore>
+      <CurrentPosX>101.664</CurrentPosX>
+      <CurrentPosY>-284.6172</CurrentPosY>
+      <TotalScore>690</TotalScore>
       <IslandA>
         <FillInTheBlanks>
           <FillInTheBlank>
             <Index>1</Index>
-            <Score>50</Score>
+            <Score>40</Score>
           </FillInTheBlank>
           <FillInTheBlank>
             <Index>2</Index>
@@ -27,12 +27,12 @@
         <WordGames>
           <Game>
             <Index>1</Index>
-            <Word1>T</Word1>
+            <Word1>F</Word1>
             <Word2>T</Word2>
-            <Word3>T</Word3>
+            <Word3>F</Word3>
             <Word4>T</Word4>
             <Word5>F</Word5>
-            <Word6>F</Word6>
+            <Word6>T</Word6>
             <Score>50</Score>
           </Game>
           <Game>

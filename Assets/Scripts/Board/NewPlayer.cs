@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using System.Xml;
+using System.IO;
 
 public class NewPlayer : MonoBehaviour {
 
@@ -47,15 +49,13 @@ public class NewPlayer : MonoBehaviour {
         if (_isRuning)
         {
             var d = Vector2.Distance(curenPosition, moveTowardPosition);
-//            Debug.Log(d);
-            Debug.Log(curenPosition);
-            Debug.Log(moveTowardPosition);
+
             if (d < 1) {
-                //Debug.Log("daolele");
                 transform.GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
                 transform.position = moveTowardPosition;
                 _isRuning = false;
 				gm.Coordinate = new Vector2(transform.position.x, transform.position.y);
+				SaveCoordinate();
             }
 
         }
@@ -95,6 +95,7 @@ public class NewPlayer : MonoBehaviour {
 		gm.typeCode = collider.GetComponent<SquareController>().index;
 		gm.Index = collider.GetComponent<SquareController>().index;
         gm.Coordinate = new Vector2(transform.position.x, transform.position.y);
+		SaveCoordinate();
 
 		if (type == "FillInTheBlank") {
 			fillInTheBlank.GetData ();
@@ -106,11 +107,27 @@ public class NewPlayer : MonoBehaviour {
 
 		SceneManager.LoadScene(type);
 
-		// Debug.Log(type);
 	}
 
 	void OnTriggerExit2D(Collider2D collider) {
 		_canBeTriggered = true;
 		// TODO: 
+	}
+
+	void SaveCoordinate() {
+		var userpath = System.IO.Path.Combine (Application.dataPath, "Resources/users.xml");
+		XmlDocument xmlUserDoc = new XmlDocument ();
+		xmlUserDoc.Load (userpath);
+
+		XmlNode usernameNode = xmlUserDoc.SelectSingleNode ("//Username");
+
+		while (usernameNode.InnerText != gm.Username) {
+			usernameNode = usernameNode.ParentNode.NextSibling.FirstChild;
+		} 
+
+		usernameNode.ParentNode.SelectSingleNode ("CurrentPosX").InnerText = gm.Coordinate.x.ToString();
+		usernameNode.ParentNode.SelectSingleNode ("CurrentPosY").InnerText = gm.Coordinate.y.ToString();
+
+		xmlUserDoc.Save (userpath);
 	}
 }
