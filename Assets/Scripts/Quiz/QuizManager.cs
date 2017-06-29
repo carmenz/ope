@@ -9,7 +9,9 @@ public class QuizManager : MonoBehaviour {
 	private GameManager gm;
 	private QuizManager qm;
 	public GameObject panel;
-
+	private static string userpath = string.Empty;
+	private int currentScore = 0;
+	public static bool finishAddingToDB = false;
 
 	private int clickCounter = 3;
 	bool o1Active = true;
@@ -27,7 +29,7 @@ public class QuizManager : MonoBehaviour {
 
 	// Use this for initialization
 	IEnumerator Start () {
-		
+		userpath = System.IO.Path.Combine (Application.dataPath, "Resources/users.xml");
 		gm = GameObject.Find("GameManager").GetComponent<GameManager>();
 		qm = GameObject.Find("QuizManager").GetComponent<QuizManager>();
 
@@ -35,6 +37,9 @@ public class QuizManager : MonoBehaviour {
 
 		xmlQuizDoc.Load (gm.Path);
 		XmlNode indexNode = xmlQuizDoc.SelectSingleNode ("//Index");
+
+		XmlDocument xmlUserDoc = new XmlDocument ();
+		xmlUserDoc.Load (userpath);
 
 		bool finishLoading = false;
 		XmlNode QNode = indexNode.NextSibling;
@@ -46,13 +51,13 @@ public class QuizManager : MonoBehaviour {
 			option4 = GameObject.Find ("Option4").GetComponent<Button> ();
 		}
 
+		// show options for question 1 -- this only executes the first time
 		if (clickCounter == 3) {
 			option1.GetComponentInChildren<Text> ().text = QNode.FirstChild.NextSibling.FirstChild.SelectSingleNode ("//Option1//value").InnerText;
 					option2.GetComponentInChildren<Text> ().text = QNode.FirstChild.NextSibling.ChildNodes.Item (1).SelectSingleNode ("//Option2//value").InnerText;
 					option3.GetComponentInChildren<Text> ().text = QNode.FirstChild.NextSibling.ChildNodes.Item (2).SelectSingleNode ("//Option3//value").InnerText;
 					option4.GetComponentInChildren<Text> ().text = QNode.FirstChild.NextSibling.ChildNodes.Item (3).SelectSingleNode ("//Option4//value").InnerText;
-			clickCounter = 2;
-			
+			clickCounter = 2;	
 		}
 
 		while (!finishLoading) {
@@ -61,8 +66,6 @@ public class QuizManager : MonoBehaviour {
 				Text questionText = GameObject.Find ("Question").GetComponent<Text> ();
 
 				while (indexNode != null) {
-		
-
 
 					if(o1Active && o2Active && o3Active && o4Active) {
 						if (subIndex - 1 == 6) {
@@ -91,12 +94,32 @@ public class QuizManager : MonoBehaviour {
 				option2.GetComponent<Button>().interactable = false; 
 				option3.GetComponent<Button>().interactable = false; 
 				option4.GetComponent<Button>().interactable = false; 
-			
-//				if (subIndex - 1 == 6) {
-//					// break once the last question is printed
-//					break;
-//				}
+
 				panel.SetActive(true);
+
+				// display score on panel
+				Text score = GameObject.Find("Score").GetComponent<Text>();
+				score.text = (currentScore + 10).ToString ();
+
+
+				// Update user.xml with the score
+				XmlNode quizIndexNode = xmlUserDoc.SelectSingleNode ("//Quiz//Index");
+
+				// find the matching game index
+				while (gm.Index.ToString() != quizIndexNode.InnerText) {
+					quizIndexNode = quizIndexNode.ParentNode.NextSibling.FirstChild;
+				}
+
+				// update node if <Score> node already exist
+				if (quizIndexNode.ParentNode.ChildNodes.Count == 8) {
+					quizIndexNode.ParentNode.SelectSingleNode("//Score").InnerText = currentScore.ToString();
+					finishAddingToDB = true;
+				} else {
+					// create new <Score> node
+					XmlNode scoreIndex = xmlUserDoc.CreateNode (XmlNodeType.Element, "Score", null);
+					scoreIndex.InnerText = currentScore.ToString();
+					quizIndexNode.ParentNode.AppendChild (scoreIndex);
+				}
 
 			} else {
 				//move to next quiz
@@ -116,12 +139,13 @@ public class QuizManager : MonoBehaviour {
 
 		int subIndexForInfo = qm.subIndex - 1;
 
+
+		// check if user answer is correct
 		if(indexNode.SelectSingleNode ("//Blank"+ subIndexForInfo +"//Option"+ optionNumber +"//correct").InnerText == "T") {
 			print ("you got it correct");
 			blankText.color = Color.green;
 			clickCounter = 2;
 		} else {
-			
 			blankText.color = Color.red;
 			print ("wrongggggg");
 
@@ -132,7 +156,9 @@ public class QuizManager : MonoBehaviour {
 			
 		blankText.text = option.GetComponentInChildren<Text> ().text;
 
+		Text infoText = GameObject.Find ("Info").GetComponent<Text> ();
 
+		// user got the first chance wrong
 		if (clickCounter == 1) {
 			
 			Button clicked = GameObject.Find ("Option" + optionNumber).GetComponent<Button> ();
@@ -147,9 +173,20 @@ public class QuizManager : MonoBehaviour {
 			} else if (optionNumber == 4) {
 				o4Active = false;
 			}
+
+			// clear info text if wrong
+			infoText.text = "";
+
 		} else {
-			Text infoText = GameObject.Find ("Info").GetComponent<Text> ();
+
+			// update info text 
 			infoText.text = indexNode.SelectSingleNode ("//Blank"+ subIndexForInfo +"//Option"+ optionNumber +"//info").InnerText;
+
+
+			// if user got it correct in either chance, score + 10
+			if (indexNode.SelectSingleNode ("//Blank" + subIndexForInfo + "//Option" + optionNumber + "//correct").InnerText == "T") {
+				currentScore = currentScore + 10;
+			}
 
 			o1Active = true;
 			o2Active = true;

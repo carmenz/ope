@@ -16,7 +16,6 @@ public class Quiz : MonoBehaviour {
 	private static string userpath = string.Empty;
 
 
-
 	public void GetData() {
 		bool firstChallengeOnIsland = true;
 		bool firstQuizOnIsland = true;
@@ -102,7 +101,7 @@ public class Quiz : MonoBehaviour {
 
 			while (firstQuizOnIsland) {
 
-				XmlNode nodeBefore = xmlUserDoc.SelectSingleNode ("//CurrentScore");
+				XmlNode nodeBefore = xmlUserDoc.SelectSingleNode ("//TotalScore");
 
 				XmlNode xmlIsland = xmlUserDoc.CreateNode (XmlNodeType.Element, island, null);
 				XmlNode xmlQuizzes = xmlUserDoc.CreateNode (XmlNodeType.Element, "Quizzes", null);

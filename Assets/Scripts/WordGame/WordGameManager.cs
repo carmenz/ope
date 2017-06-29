@@ -59,6 +59,7 @@ public class WordGameManager : MonoBehaviour {
 				finishLoading = true;
 				panel.SetActive(true);
 
+				// display score on panel
 				Text score = GameObject.Find("Score").GetComponent<Text>();
 				score.text = currentScore.ToString();
 
@@ -81,7 +82,7 @@ public class WordGameManager : MonoBehaviour {
 					gameIndexNode.ParentNode.AppendChild (scoreIndex);
 				}
 			} else {
-				//move to next quiz
+				//move to next word
 				indexNode = indexNode.ParentNode.NextSibling.FirstChild;
 			}
 		}

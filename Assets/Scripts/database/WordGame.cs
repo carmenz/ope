@@ -101,7 +101,7 @@ public class WordGame : MonoBehaviour {
 
 			while (firstWordGameOnIsland) {
 
-				XmlNode nodeBefore = xmlUserDoc.SelectSingleNode ("//CurrentScore");
+				XmlNode nodeBefore = xmlUserDoc.SelectSingleNode ("//TotalScore");
 
 				XmlNode xmlIsland = xmlUserDoc.CreateNode (XmlNodeType.Element, island, null);
 				XmlNode xmlWordGames = xmlUserDoc.CreateNode (XmlNodeType.Element, "WordGames", null);
