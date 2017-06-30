@@ -5,66 +5,66 @@
 			<Index>1</Index>
 			<Word1>
 				<value>WHEN THE FUN STOPS, STOP!</value>
-				<thisPillar>T</thisPillar>
-				<info>This is RG</info>
+				<thisPillar>F</thisPillar>
+				<info>This is Wrong</info>
 			</Word1>
 			<Word2>
 				<value>DON'T LET GAMBLING BE A LOSING GAME</value>
-				<thisPillar>T</thisPillar>
-				<info>This is RG</info>
+				<thisPillar>F</thisPillar>
+				<info>This is Wrong</info>
 			</Word2>
 			<Word3>
 				<value>PLAY LIKE MOST PLAYERS - POSITIVELY</value>
-				<thisPillar>F</thisPillar>
-				<info>This is PP</info>
+				<thisPillar>T</thisPillar>
+				<info>This is Correct</info>
 			</Word3>
 			<Word4>
 				<value>KNOW WHEN TO FOLD 'EM</value>
-				<thisPillar>T</thisPillar>
-				<info>This is RG</info>
+				<thisPillar>F</thisPillar>
+				<info>This is Wrong</info>
 			</Word4>
 			<Word5>
 				<value>WHEN YOU’VE HAD ENOUGH, WALK AWAY!</value>
-				<thisPillar>T</thisPillar>
-				<info>This is RG</info>
+				<thisPillar>F</thisPillar>
+				<info>This is Wrong</info>
 			</Word5>
 			<Word6>
 				<value>KEEP IT FUN</value>
-				<thisPillar>F</thisPillar>
-				<info>This is PP</info>
+				<thisPillar>T</thisPillar>
+				<info>This is Correct</info>
 			</Word6>
 		</Game>
 		<Game>
 			<Index>2</Index>
 			<Word1>
 				<value>WHEN THE FUN STOPS, STOP!</value>
-				<thisPillar>T</thisPillar>
-				<info>This is RG</info>
+				<thisPillar>F</thisPillar>
+				<info>This is Wrong</info>
 			</Word1>
 			<Word2>
 				<value>DON'T LET GAMBLING BE A LOSING GAME</value>
-				<thisPillar>T</thisPillar>
-				<info>This is RG</info>
+				<thisPillar>F</thisPillar>
+				<info>This is Wrong</info>
 			</Word2>
 			<Word3>
 				<value>PLAY LIKE MOST PLAYERS - POSITIVELY</value>
-				<thisPillar>F</thisPillar>
-				<info>This is PP</info>
+				<thisPillar>T</thisPillar>
+				<info>This is Correct</info>
 			</Word3>
 			<Word4>
 				<value>KNOW WHEN TO FOLD 'EM</value>
-				<thisPillar>T</thisPillar>
-				<info>This is RG</info>
+				<thisPillar>F</thisPillar>
+				<info>This is Wrong</info>
 			</Word4>
 			<Word5>
 				<value>WHEN YOU’VE HAD ENOUGH, WALK AWAY!</value>
-				<thisPillar>T</thisPillar>
-				<info>This is RG</info>
+				<thisPillar>F</thisPillar>
+				<info>This is Wrong</info>
 			</Word5>
 			<Word6>
 				<value>KEEP IT FUN</value>
-				<thisPillar>F</thisPillar>
-				<info>This is PP</info>
+				<thisPillar>T</thisPillar>
+				<info>This is Correct</info>
 			</Word6>
 		</Game>
 	</Games>
