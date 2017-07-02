@@ -24,7 +24,7 @@
             <Word4>F</Word4>
             <Word5>F</Word5>
             <Word6>F</Word6>
-            <Score>50</Score>
+            <Score>60</Score>
           </Game>
         </WordGames>
       </IslandA>
@@ -32,9 +32,9 @@
     <User>
       <Username>fff</Username>
       <Password>X0lMUVZ39WErIv5/PnyM2Q==</Password>
-      <CurrentPosX>88.10374</CurrentPosX>
-      <CurrentPosY>-327.1536</CurrentPosY>
-      <TotalScore>1450</TotalScore>
+      <CurrentPosX>102.4078</CurrentPosX>
+      <CurrentPosY>-288.632</CurrentPosY>
+      <TotalScore>1620</TotalScore>
       <IslandA>
         <FillInTheBlanks>
           <FIB>
@@ -43,6 +43,7 @@
           </FIB>
           <FIB>
             <Index>2</Index>
+            <Score>60</Score>
           </FIB>
         </FillInTheBlanks>
       </IslandA>

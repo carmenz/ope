@@ -6,8 +6,6 @@ public class GameManager : MonoBehaviour {
 	public static GameManager instance;
 
 	// Serialize for monitor
-//	[SerializeField]
-//	Vector2 _curPos;
 	[SerializeField]
 	Vector2 _coordinate;
 	[SerializeField]
@@ -26,15 +24,6 @@ public class GameManager : MonoBehaviour {
 	[SerializeField]
 	string _path = "path";
 
-	
-//	public Vector2 CurrentPosition{
-//		get {
-//			return _curPos;
-//		}
-//		set {
-//			_curPos = value;
-//		}
-//	}
 		
 	public string Username{
 		get {

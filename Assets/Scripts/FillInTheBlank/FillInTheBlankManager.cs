@@ -11,7 +11,6 @@ public class FillInTheBlankManager : MonoBehaviour {
 	public GameObject panel;
 	private static string userpath = string.Empty;
 	private int currentScore = 0;
-	public static bool finishAddingToDB = false;
 
 	private int clickCounter = 3;
 	bool o1Active = true;
@@ -34,14 +33,12 @@ public class FillInTheBlankManager : MonoBehaviour {
 		qm = GameObject.Find("FillInTheBlankManager").GetComponent<FillInTheBlankManager>();
 
 		XmlDocument xmlFillInTheBlankDoc = new XmlDocument ();
-
 		xmlFillInTheBlankDoc.Load (gm.Path);
 		XmlNode indexNode = xmlFillInTheBlankDoc.SelectSingleNode ("//Index");
 
 		XmlDocument xmlUserDoc = new XmlDocument ();
 		xmlUserDoc.Load (userpath);
 		XmlNode usernameNode = xmlUserDoc.SelectSingleNode ("//Username");
-		bool finishLoading = false;
 		XmlNode QNode = indexNode.NextSibling;
 
 		if (o1Active && o2Active && o3Active && o4Active) {
@@ -51,7 +48,7 @@ public class FillInTheBlankManager : MonoBehaviour {
 			option4 = GameObject.Find ("Option4").GetComponent<Button> ();
 		}
 
-		// show options for question 1 -- this only executes the first time
+		// show options for question 1 -- this only execute the first time
 		if (clickCounter == 3) {
 			option1.GetComponentInChildren<Text> ().text = QNode.FirstChild.NextSibling.FirstChild.SelectSingleNode ("//Option1//value").InnerText;
 			option2.GetComponentInChildren<Text> ().text = QNode.FirstChild.NextSibling.ChildNodes.Item (1).SelectSingleNode ("//Option2//value").InnerText;
@@ -60,76 +57,71 @@ public class FillInTheBlankManager : MonoBehaviour {
 			clickCounter = 2;	
 		}
 
-		while (!finishLoading) {
-			if (indexNode.InnerText == gm.Index.ToString()) {
-				
-				Text questionText = GameObject.Find ("Question").GetComponent<Text> ();
 
-				while (indexNode != null) {
-
-					if(o1Active && o2Active && o3Active && o4Active) {
-						if (subIndex - 1 == 6) {
-							// break once the last question is correct
-							break;
-						}
-
-						questionText.text = questionText.text + indexNode.SelectSingleNode ("//Question" + subIndex).InnerText;
-
-						// move to next question
-						if (QNode.NextSibling.Name == "Q") {
-							//print ("found Q");
-							QNode = indexNode.NextSibling;
-							print (QNode.Name);
-							subIndex++;
-							yield return new WaitForSeconds(2000);
-						} 
-					}
-					yield return new WaitForSeconds(2000);
-				}
-
-				finishLoading = true;
-
-				// Disable buttons
-				option1.GetComponent<Button>().interactable = false; 
-				option2.GetComponent<Button>().interactable = false; 
-				option3.GetComponent<Button>().interactable = false; 
-				option4.GetComponent<Button>().interactable = false; 
-
-
-				panel.SetActive(true);
-				// display score on panel
-				Text score = GameObject.Find("Score").GetComponent<Text>();
-				currentScore = currentScore + 10;
-				score.text = currentScore.ToString ();
-
-				while (usernameNode.InnerText != gm.Username) {
-					usernameNode = usernameNode.ParentNode.NextSibling.FirstChild;
-				}
-
-				// Update user.xml with the score
-				XmlNode fillInTheBlankIndexNode = usernameNode.ParentNode.SelectSingleNode (".//FIB//Index");
-
-				// find the matching game index
-				while (gm.Index.ToString() != fillInTheBlankIndexNode.InnerText) {
-					fillInTheBlankIndexNode = fillInTheBlankIndexNode.ParentNode.NextSibling.FirstChild;
-				}
-
-				// update node if <Score> node already exist
-				if (fillInTheBlankIndexNode.ParentNode.ChildNodes.Count == 2) {
-					fillInTheBlankIndexNode.ParentNode.SelectSingleNode("//Score").InnerText = currentScore.ToString();
-					finishAddingToDB = true;
-				} else {
-					// create new <Score> node
-					XmlNode scoreIndex = xmlUserDoc.CreateNode (XmlNodeType.Element, "Score", null);
-					scoreIndex.InnerText = currentScore.ToString();
-					fillInTheBlankIndexNode.ParentNode.AppendChild (scoreIndex);
-				}
-
-			} else {
-				//move to next blank
-				indexNode = indexNode.ParentNode.NextSibling.FirstChild;
-			}
+		while (indexNode.InnerText != gm.Index.ToString ()) {
+			//move to next FIB
+			indexNode = indexNode.ParentNode.NextSibling.FirstChild;
 		}
+			
+		Text questionText = GameObject.Find ("Question").GetComponent<Text> ();
+
+		while (indexNode != null) {
+
+			if(o1Active && o2Active && o3Active && o4Active) {
+				if (subIndex - 1 == 6) {
+					// break once the last question is correct
+					break;
+				}
+
+				questionText.text = questionText.text + indexNode.SelectSingleNode ("//Question" + subIndex).InnerText;
+
+				// move to next question
+				if (QNode.NextSibling.Name == "Q") {
+					//print ("found Q");
+					QNode = indexNode.NextSibling;
+					print (QNode.Name);
+					subIndex++;
+					yield return new WaitForSeconds(2000);
+				} 
+			}
+			yield return new WaitForSeconds(2000);
+		}
+
+		// Disable buttons
+		option1.GetComponent<Button>().interactable = false; 
+		option2.GetComponent<Button>().interactable = false; 
+		option3.GetComponent<Button>().interactable = false; 
+		option4.GetComponent<Button>().interactable = false; 
+
+
+		panel.SetActive(true);
+		// display score on panel
+		Text score = GameObject.Find("Score").GetComponent<Text>();
+		currentScore = currentScore + 10;
+		score.text = currentScore.ToString ();
+
+		while (usernameNode.InnerText != gm.Username) {
+			usernameNode = usernameNode.ParentNode.NextSibling.FirstChild;
+		}
+
+		// Update user.xml with the score
+		XmlNode fillInTheBlankIndexNode = usernameNode.ParentNode.SelectSingleNode (".//FIB//Index");
+
+		// find the matching game index
+		while (gm.Index.ToString() != fillInTheBlankIndexNode.InnerText) {
+			fillInTheBlankIndexNode = fillInTheBlankIndexNode.ParentNode.NextSibling.FirstChild;
+		}
+
+		// update node if <Score> node already exist
+		if (fillInTheBlankIndexNode.ParentNode.ChildNodes.Count == 2) {
+			fillInTheBlankIndexNode.ParentNode.SelectSingleNode("//Score").InnerText = currentScore.ToString();
+		} else {
+			// create new <Score> node
+			XmlNode scoreIndex = xmlUserDoc.CreateNode (XmlNodeType.Element, "Score", null);
+			scoreIndex.InnerText = currentScore.ToString();
+			fillInTheBlankIndexNode.ParentNode.AppendChild (scoreIndex);
+		}
+
 
 		// Find user and update <TotalScore>
 		while (usernameNode.InnerText != gm.Username) {
@@ -248,7 +240,7 @@ public class FillInTheBlankManager : MonoBehaviour {
 		MacthQuestionWithOption (option4, 4);
 	}
 
-	public void MacthQuestionWithOption(Button optionButton, int optionNumber) 
+	private void MacthQuestionWithOption(Button optionButton, int optionNumber) 
 	{
 		XmlDocument xmlFillInTheBlankDoc = new XmlDocument ();
 		xmlFillInTheBlankDoc.Load (gm.Path);
