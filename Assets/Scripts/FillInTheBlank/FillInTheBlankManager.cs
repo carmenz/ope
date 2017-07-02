@@ -40,7 +40,7 @@ public class FillInTheBlankManager : MonoBehaviour {
 
 		XmlDocument xmlUserDoc = new XmlDocument ();
 		xmlUserDoc.Load (userpath);
-
+		XmlNode usernameNode = xmlUserDoc.SelectSingleNode ("//Username");
 		bool finishLoading = false;
 		XmlNode QNode = indexNode.NextSibling;
 
@@ -54,15 +54,15 @@ public class FillInTheBlankManager : MonoBehaviour {
 		// show options for question 1 -- this only executes the first time
 		if (clickCounter == 3) {
 			option1.GetComponentInChildren<Text> ().text = QNode.FirstChild.NextSibling.FirstChild.SelectSingleNode ("//Option1//value").InnerText;
-					option2.GetComponentInChildren<Text> ().text = QNode.FirstChild.NextSibling.ChildNodes.Item (1).SelectSingleNode ("//Option2//value").InnerText;
-					option3.GetComponentInChildren<Text> ().text = QNode.FirstChild.NextSibling.ChildNodes.Item (2).SelectSingleNode ("//Option3//value").InnerText;
-					option4.GetComponentInChildren<Text> ().text = QNode.FirstChild.NextSibling.ChildNodes.Item (3).SelectSingleNode ("//Option4//value").InnerText;
+			option2.GetComponentInChildren<Text> ().text = QNode.FirstChild.NextSibling.ChildNodes.Item (1).SelectSingleNode ("//Option2//value").InnerText;
+			option3.GetComponentInChildren<Text> ().text = QNode.FirstChild.NextSibling.ChildNodes.Item (2).SelectSingleNode ("//Option3//value").InnerText;
+			option4.GetComponentInChildren<Text> ().text = QNode.FirstChild.NextSibling.ChildNodes.Item (3).SelectSingleNode ("//Option4//value").InnerText;
 			clickCounter = 2;	
 		}
 
 		while (!finishLoading) {
 			if (indexNode.InnerText == gm.Index.ToString()) {
-	
+				
 				Text questionText = GameObject.Find ("Question").GetComponent<Text> ();
 
 				while (indexNode != null) {
@@ -95,16 +95,19 @@ public class FillInTheBlankManager : MonoBehaviour {
 				option3.GetComponent<Button>().interactable = false; 
 				option4.GetComponent<Button>().interactable = false; 
 
-				panel.SetActive(true);
 
+				panel.SetActive(true);
 				// display score on panel
 				Text score = GameObject.Find("Score").GetComponent<Text>();
 				currentScore = currentScore + 10;
 				score.text = currentScore.ToString ();
 
+				while (usernameNode.InnerText != gm.Username) {
+					usernameNode = usernameNode.ParentNode.NextSibling.FirstChild;
+				}
 
 				// Update user.xml with the score
-				XmlNode fillInTheBlankIndexNode = xmlUserDoc.SelectSingleNode ("//FillInTheBlank//Index");
+				XmlNode fillInTheBlankIndexNode = usernameNode.ParentNode.SelectSingleNode (".//FIB//Index");
 
 				// find the matching game index
 				while (gm.Index.ToString() != fillInTheBlankIndexNode.InnerText) {
@@ -129,7 +132,6 @@ public class FillInTheBlankManager : MonoBehaviour {
 		}
 
 		// Find user and update <TotalScore>
-		XmlNode usernameNode = xmlUserDoc.SelectSingleNode ("//Username");
 		while (usernameNode.InnerText != gm.Username) {
 			usernameNode = usernameNode.ParentNode.NextSibling.FirstChild;
 		} 
@@ -150,19 +152,13 @@ public class FillInTheBlankManager : MonoBehaviour {
 
 		int subIndexForInfo = qm.subIndex - 1;
 
-
 		// check if user answer is correct
 		if(indexNode.SelectSingleNode ("//Blank"+ subIndexForInfo +"//Option"+ optionNumber +"//correct").InnerText == "T") {
-			print ("you got it correct");
 			blankText.color = Color.green;
 			clickCounter = 2;
 		} else {
 			blankText.color = Color.red;
-			print ("wrongggggg");
-
 			clickCounter--;
-
-			print (clickCounter);
 		}
 			
 		blankText.text = option.GetComponentInChildren<Text> ().text;
@@ -211,11 +207,13 @@ public class FillInTheBlankManager : MonoBehaviour {
 			option4.gameObject.SetActive (true);
 
 			// update button text to show options for next blank
+			XmlNode nextBlankNode = indexNode.NextSibling.NextSibling.FirstChild.NextSibling;
+
 			if (qm.subIndex <= 6) {
-				option1.GetComponentInChildren<Text> ().text = indexNode.NextSibling.NextSibling.FirstChild.NextSibling.SelectSingleNode ("//Blank" + qm.subIndex + "//Option1//value").InnerText;
-				option2.GetComponentInChildren<Text> ().text = indexNode.NextSibling.NextSibling.FirstChild.NextSibling.SelectSingleNode ("//Blank" + qm.subIndex + "//Option2//value").InnerText;
-				option3.GetComponentInChildren<Text> ().text = indexNode.NextSibling.NextSibling.FirstChild.NextSibling.SelectSingleNode ("//Blank" + qm.subIndex + "//Option3//value").InnerText;
-				option4.GetComponentInChildren<Text> ().text = indexNode.NextSibling.NextSibling.FirstChild.NextSibling.SelectSingleNode ("//Blank" + qm.subIndex + "//Option4//value").InnerText;
+				option1.GetComponentInChildren<Text> ().text = nextBlankNode.SelectSingleNode ("//Blank" + qm.subIndex + "//Option1//value").InnerText;
+				option2.GetComponentInChildren<Text> ().text = nextBlankNode.SelectSingleNode ("//Blank" + qm.subIndex + "//Option2//value").InnerText;
+				option3.GetComponentInChildren<Text> ().text = nextBlankNode.SelectSingleNode ("//Blank" + qm.subIndex + "//Option3//value").InnerText;
+				option4.GetComponentInChildren<Text> ().text = nextBlankNode.SelectSingleNode ("//Blank" + qm.subIndex + "//Option4//value").InnerText;
 			}
 			clickCounter = 2;
 		}
@@ -226,86 +224,32 @@ public class FillInTheBlankManager : MonoBehaviour {
 	{
 		Debug.Log("option1 is clicked");
 		Button option1 = GameObject.Find ("Option1").GetComponent<Button> ();
-
-
-		XmlDocument xmlFillInTheBlankDoc = new XmlDocument ();
-		xmlFillInTheBlankDoc.Load (gm.Path);
-		XmlNode indexNode = xmlFillInTheBlankDoc.SelectSingleNode ("//Index");
-
-		Text questionText = GameObject.Find ("Question").GetComponent<Text> ();
-
-		if (questionText.text.Contains(indexNode.SelectSingleNode ("//Question6").InnerText)) {
-			blankToChange (6, option1, 1);
-		} else if (questionText.text.Contains(indexNode.SelectSingleNode ("//Question5").InnerText)) {
-			blankToChange (5, option1, 1);
-		} else if (questionText.text.Contains(indexNode.SelectSingleNode ("//Question4").InnerText)) {
-			blankToChange (4, option1, 1);
-		} else if (questionText.text.Contains(indexNode.SelectSingleNode ("//Question3").InnerText)) {
-			blankToChange (3, option1, 1);
-		} else if (questionText.text.Contains(indexNode.SelectSingleNode ("//Question2").InnerText)) {
-			blankToChange (2, option1, 1);
-		} else if (questionText.text == indexNode.SelectSingleNode ("//Question1").InnerText) {
-			blankToChange (1, option1, 1);
-		}
+		MacthQuestionWithOption (option1, 1);
 	}
+
 	public void Task2OnClick()
 	{
 		Debug.Log("option2 is clicked");
 		Button option2 = GameObject.Find ("Option2").GetComponent<Button> ();
-
-
-		XmlDocument xmlFillInTheBlankDoc = new XmlDocument ();
-		xmlFillInTheBlankDoc.Load (gm.Path);
-		XmlNode indexNode = xmlFillInTheBlankDoc.SelectSingleNode ("//Index");
-
-		Text questionText = GameObject.Find ("Question").GetComponent<Text> ();
-
-		  
-		if (questionText.text.Contains(indexNode.SelectSingleNode ("//Question6").InnerText)) {
-			blankToChange (6, option2, 2);
-		} else if (questionText.text.Contains(indexNode.SelectSingleNode ("//Question5").InnerText)) {
-				blankToChange (5, option2, 2);
-		} else if (questionText.text.Contains(indexNode.SelectSingleNode ("//Question4").InnerText)) {
-				blankToChange (4, option2, 2);
-		} else if (questionText.text.Contains(indexNode.SelectSingleNode ("//Question3").InnerText)) {
-				blankToChange (3, option2, 2);
-		} else if (questionText.text.Contains(indexNode.SelectSingleNode ("//Question2").InnerText)) {
-				blankToChange (2, option2, 2);
-		} else if (questionText.text == indexNode.SelectSingleNode ("//Question1").InnerText) {
-				blankToChange (1, option2, 2);
-		}
+		MacthQuestionWithOption (option2, 2);
 	}
+
 	public void Task3OnClick()
 	{
 		Debug.Log("option3 is clicked");
 		Button option3 = GameObject.Find ("Option3").GetComponent<Button> ();
-
-
-		XmlDocument xmlFillInTheBlankDoc = new XmlDocument ();
-		xmlFillInTheBlankDoc.Load (gm.Path);
-		XmlNode indexNode = xmlFillInTheBlankDoc.SelectSingleNode ("//Index");
-
-		Text questionText = GameObject.Find ("Question").GetComponent<Text> ();
-
-		if (questionText.text.Contains(indexNode.SelectSingleNode ("//Question6").InnerText)) {
-			blankToChange (6, option3, 3);
-		} else if (questionText.text.Contains(indexNode.SelectSingleNode ("//Question5").InnerText)) {
-			blankToChange (5, option3, 3);
-		} else if (questionText.text.Contains(indexNode.SelectSingleNode ("//Question4").InnerText)) {
-			blankToChange (4, option3, 3);
-		} else if (questionText.text.Contains(indexNode.SelectSingleNode ("//Question3").InnerText)) {
-			blankToChange (3, option3, 3);
-		} else if (questionText.text.Contains(indexNode.SelectSingleNode ("//Question2").InnerText)) {
-			blankToChange (2, option3, 3);
-		} else if (questionText.text == indexNode.SelectSingleNode ("//Question1").InnerText) {
-			blankToChange (1, option3, 3);
-		}
+		MacthQuestionWithOption (option3, 3);
 	}
+
 	public void Task4OnClick()
 	{
 		Debug.Log("option4 is clicked");
 		Button option4 = GameObject.Find ("Option4").GetComponent<Button> ();
+		MacthQuestionWithOption (option4, 4);
+	}
 
+	public void MacthQuestionWithOption(Button optionButton, int optionNumber) 
+	{
 		XmlDocument xmlFillInTheBlankDoc = new XmlDocument ();
 		xmlFillInTheBlankDoc.Load (gm.Path);
 		XmlNode indexNode = xmlFillInTheBlankDoc.SelectSingleNode ("//Index");
@@ -313,18 +257,19 @@ public class FillInTheBlankManager : MonoBehaviour {
 		Text questionText = GameObject.Find ("Question").GetComponent<Text> ();
 
 		if (questionText.text.Contains(indexNode.SelectSingleNode ("//Question6").InnerText)) {
-			blankToChange (6, option4, 4);
+			blankToChange (6, optionButton, optionNumber);
 		} else if (questionText.text.Contains(indexNode.SelectSingleNode ("//Question5").InnerText)) {
-			blankToChange (5, option4, 4);
+			blankToChange (5, optionButton, optionNumber);
 		} else if (questionText.text.Contains(indexNode.SelectSingleNode ("//Question4").InnerText)) {
-			blankToChange (4, option4, 4);
+			blankToChange (4, optionButton, optionNumber);
 		} else if (questionText.text.Contains(indexNode.SelectSingleNode ("//Question3").InnerText)) {
-			blankToChange (3, option4, 4);
+			blankToChange (3, optionButton, optionNumber);
 		} else if (questionText.text.Contains(indexNode.SelectSingleNode ("//Question2").InnerText)) {
-			blankToChange (2, option4, 4);
+			blankToChange (2, optionButton, optionNumber);
 		} else if (questionText.text == indexNode.SelectSingleNode ("//Question1").InnerText) {
-			blankToChange (1, option4, 4);
+			blankToChange (1, optionButton, optionNumber);
 		}
 	}
+
 
 }

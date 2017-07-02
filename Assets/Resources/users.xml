@@ -11,101 +11,41 @@
     <User>
       <Username>1</Username>
       <Password>fn5g+xrZS7Ud7B8EBFfuxg==</Password>
-      <CurrentPosX>-50.94421</CurrentPosX>
-      <CurrentPosY>-222.101</CurrentPosY>
-      <TotalScore>820</TotalScore>
+      <CurrentPosX>-103.4208</CurrentPosX>
+      <CurrentPosY>-35.01769</CurrentPosY>
+      <TotalScore>160</TotalScore>
       <IslandA>
-        <FillInTheBlanks>
-          <FillInTheBlank>
-            <Index>1</Index>
-            <Score>70</Score>
-          </FillInTheBlank>
-          <FillInTheBlank>
-            <Index>2</Index>
-          </FillInTheBlank>
-        </FillInTheBlanks>
         <WordGames>
           <Game>
             <Index>1</Index>
-            <Word1>T</Word1>
-            <Word2>F</Word2>
-            <Word3>F</Word3>
-            <Word4>F</Word4>
-            <Word5>F</Word5>
-            <Word6>T</Word6>
-            <Score>50</Score>
-          </Game>
-          <Game>
-            <Index>2</Index>
             <Word1>T</Word1>
             <Word2>T</Word2>
             <Word3>T</Word3>
             <Word4>F</Word4>
             <Word5>F</Word5>
             <Word6>F</Word6>
-            <Score>40</Score>
-          </Game>
-        </WordGames>
-        <Stories>
-          <Story>1</Story>
-        </Stories>
-        <FillInTheBlanks>
-          <FillInTheBlank>
-            <Index>1</Index>
-          </FillInTheBlank>
-        </FillInTheBlanks>
-        <WordGames>
-          <Game>
-            <Index>1</Index>
-          </Game>
-        </WordGames>
-        <FillInTheBlanks>
-          <FillInTheBlank>
-            <Index>1</Index>
-          </FillInTheBlank>
-        </FillInTheBlanks>
-        <WordGames>
-          <Game>
-            <Index>1</Index>
-          </Game>
-        </WordGames>
-        <FillInTheBlanks>
-          <FillInTheBlank>
-            <Index>1</Index>
-          </FillInTheBlank>
-        </FillInTheBlanks>
-        <WordGames>
-          <Game>
-            <Index>1</Index>
+            <Score>50</Score>
           </Game>
         </WordGames>
       </IslandA>
     </User>
     <User>
-      <Username>Yeajin</Username>
-      <Password>azt2C9hFtsUE9/75At/QFw==</Password>
-      <CurrentPosX>-490.0876</CurrentPosX>
-      <CurrentPosY>-127.4544</CurrentPosY>
-      <TotalScore>0</TotalScore>
-    </User>
-    <User>
-      <Username>Angie</Username>
-      <Password>z8Vo0vuFo6DC3D0Y2SjO9w==</Password>
-      <CurrentPosX>-67.72333</CurrentPosX>
-      <CurrentPosY>-55.48801</CurrentPosY>
-      <TotalScore>320</TotalScore>
+      <Username>fff</Username>
+      <Password>X0lMUVZ39WErIv5/PnyM2Q==</Password>
+      <CurrentPosX>88.10374</CurrentPosX>
+      <CurrentPosY>-327.1536</CurrentPosY>
+      <TotalScore>1450</TotalScore>
       <IslandA>
-        <Stories>
-          <Story>1</Story>
-        </Stories>
+        <FillInTheBlanks>
+          <FIB>
+            <Index>1</Index>
+            <Score>50</Score>
+          </FIB>
+          <FIB>
+            <Index>2</Index>
+          </FIB>
+        </FillInTheBlanks>
       </IslandA>
-    </User>
-    <User>
-      <Username>5454545</Username>
-      <Password>7AiNeLB+YE8/Cts/QxTIiw==</Password>
-      <CurrentPosX>0</CurrentPosX>
-      <CurrentPosY>0</CurrentPosY>
-      <TotalScore>0</TotalScore>
     </User>
   </Users>
 </UserCollection>

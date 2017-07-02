@@ -28,7 +28,7 @@ public class WordGameManager : MonoBehaviour {
 
 		XmlDocument xmlUserDoc = new XmlDocument ();
 		xmlUserDoc.Load (userpath);
-
+		XmlNode usernameNode = xmlUserDoc.SelectSingleNode ("//Username");
 		bool finishLoading = false;
 
 		print("this is game" + gm.Index.ToString());
@@ -63,14 +63,19 @@ public class WordGameManager : MonoBehaviour {
 				Text score = GameObject.Find("Score").GetComponent<Text>();
 				score.text = currentScore.ToString();
 
+
+				while (usernameNode.InnerText != gm.Username) {
+
+					usernameNode = usernameNode.ParentNode.NextSibling.FirstChild;
+				}
 				// Update user.xml with the score
-				XmlNode gameIndexNode = xmlUserDoc.SelectSingleNode ("//Game//Index");
+				XmlNode gameIndexNode = usernameNode.ParentNode.SelectSingleNode (".//Game//Index");
 
 				// find the matching game index
 				while (gm.Index.ToString() != gameIndexNode.InnerText) {
 					gameIndexNode = gameIndexNode.ParentNode.NextSibling.FirstChild;
 				}
-					
+
 				// update node if <Score> node already exist
 				if (gameIndexNode.ParentNode.ChildNodes.Count == 8) {
 					gameIndexNode.ParentNode.SelectSingleNode("//Score").InnerText = currentScore.ToString();
@@ -81,6 +86,7 @@ public class WordGameManager : MonoBehaviour {
 					scoreIndex.InnerText = currentScore.ToString();
 					gameIndexNode.ParentNode.AppendChild (scoreIndex);
 				}
+				
 			} else {
 				//move to next word
 				indexNode = indexNode.ParentNode.NextSibling.FirstChild;
@@ -88,7 +94,7 @@ public class WordGameManager : MonoBehaviour {
 		}
 
 		// Find user and update <TotalScore>
-		XmlNode usernameNode = xmlUserDoc.SelectSingleNode ("//Username");
+
 		while (usernameNode.InnerText != gm.Username) {
 			usernameNode = usernameNode.ParentNode.NextSibling.FirstChild;
 		} 
@@ -124,31 +130,31 @@ public class WordGameManager : MonoBehaviour {
 		}
 			
 		// update user.xml to store user answers
-		while (!finishAddingToDB) {
-			if (usernameNode.InnerText == gm.Username) {
-				XmlNode gameIndexNode = xmlUserDoc.SelectSingleNode ("//Game//Index");
-
-				// find the matching game index
-				while (gm.Index.ToString() != gameIndexNode.InnerText) {
-					gameIndexNode = gameIndexNode.ParentNode.NextSibling.FirstChild;
-				}
-
-				// update node if <word#> node already exist
-				if (gameIndexNode.ParentNode.ChildNodes.Count > subIndexForInfo+1) {
-					gameIndexNode.ParentNode.SelectSingleNode("//Word" + subIndexForInfo).InnerText = "T";
-					finishAddingToDB = true;
-				} else {
-					// create new <word#> node
-					XmlNode wordIndex = xmlUserDoc.CreateNode (XmlNodeType.Element, "Word" + subIndexForInfo, null);
-					wordIndex.InnerText = "T";
-
-					gameIndexNode.ParentNode.AppendChild (wordIndex);
-					finishAddingToDB = true;
-				}
-			} else {
-				usernameNode = usernameNode.ParentNode.NextSibling.FirstChild;
-			}
+		while (usernameNode.InnerText != gm.Username) {
+			usernameNode = usernameNode.ParentNode.NextSibling.FirstChild;
 		}
+
+		XmlNode islandNode = usernameNode.NextSibling.NextSibling.NextSibling.NextSibling.NextSibling;
+		XmlNode gameIndexNode = islandNode.SelectSingleNode (".//Game//Index");
+
+		// find the matching game index
+		while (gm.Index.ToString() != gameIndexNode.InnerText) {
+			gameIndexNode = gameIndexNode.ParentNode.NextSibling.FirstChild;
+		}
+
+		// update node if <word#> node already exist
+		if (gameIndexNode.ParentNode.ChildNodes.Count > subIndexForInfo + 1) {
+			gameIndexNode.ParentNode.SelectSingleNode (".//Word" + subIndexForInfo).InnerText = "T";
+			finishAddingToDB = true;
+		} else {
+			// create new <word#> node
+			XmlNode wordIndex = xmlUserDoc.CreateNode (XmlNodeType.Element, "Word" + subIndexForInfo, null);
+			wordIndex.InnerText = "T";
+
+			gameIndexNode.ParentNode.AppendChild (wordIndex);
+		
+		}
+
 		xmlUserDoc.Save (userpath);
 		Start ().MoveNext();
 	}
@@ -178,30 +184,28 @@ public class WordGameManager : MonoBehaviour {
 		}
 
 		// update user.xml to store user answers
-		while (!finishAddingToDB) {
-			if (usernameNode.InnerText == gm.Username) {
-				XmlNode gameIndexNode = xmlUserDoc.SelectSingleNode ("//Game//Index");
+		while (usernameNode.InnerText != gm.Username) {
+			usernameNode = usernameNode.ParentNode.NextSibling.FirstChild;
+		}
 
-				// find the matching game index
-				while (gm.Index.ToString() != gameIndexNode.InnerText) {
-					gameIndexNode = gameIndexNode.ParentNode.NextSibling.FirstChild;
-				}
+		XmlNode islandNode = usernameNode.NextSibling.NextSibling.NextSibling.NextSibling.NextSibling;
+		XmlNode gameIndexNode = islandNode.SelectSingleNode (".//Game//Index");
 
-				// update node if <word#> node already exist
-				if (gameIndexNode.ParentNode.ChildNodes.Count > subIndexForInfo+1) {
-					gameIndexNode.ParentNode.SelectSingleNode("//Word" + subIndexForInfo).InnerText = "F";
-					finishAddingToDB = true;
-				} else {
-					// create new <word#> node
-					XmlNode wordIndex = xmlUserDoc.CreateNode (XmlNodeType.Element, "Word" + subIndexForInfo, null);
-					wordIndex.InnerText = "F";
+		// find the matching game index
+		while (gm.Index.ToString() != gameIndexNode.InnerText) {
+			gameIndexNode = gameIndexNode.ParentNode.NextSibling.FirstChild;
+		}
 
-					gameIndexNode.ParentNode.AppendChild (wordIndex);
-					finishAddingToDB = true;
-				}
-			} else {
-				usernameNode = usernameNode.ParentNode.NextSibling.FirstChild;
-			}
+		// update node if <word#> node already exist
+		if (gameIndexNode.ParentNode.ChildNodes.Count > subIndexForInfo+1) {
+			gameIndexNode.ParentNode.SelectSingleNode(".//Word" + subIndexForInfo).InnerText = "F";
+			
+		} else {
+			// create new <word#> node
+			XmlNode wordIndex = xmlUserDoc.CreateNode (XmlNodeType.Element, "Word" + subIndexForInfo, null);
+			wordIndex.InnerText = "F";
+
+			gameIndexNode.ParentNode.AppendChild (wordIndex);
 		}
 		xmlUserDoc.Save (userpath);
 		Start ().MoveNext();
