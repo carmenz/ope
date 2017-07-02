@@ -36,4 +36,10 @@ public class BackButton : MonoBehaviour {
 		SceneManager.LoadScene(mainSceneName);
 	}
 
+	public void QuitQuiz() {
+		gm.missions.storyRequired.Remove(gm.typeCode);
+		gm.typeCode = 0;
+		SceneManager.LoadScene(mainSceneName);
+	}
+
 }

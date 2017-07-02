@@ -20,6 +20,7 @@ public class NewPlayer : MonoBehaviour {
 	private FillInTheBlank fillInTheBlank = new FillInTheBlank();
 	private Story story = new Story ();
 	private WordGame wordGame = new WordGame();
+	private Quiz quiz = new Quiz();
 
 
 
@@ -104,6 +105,8 @@ public class NewPlayer : MonoBehaviour {
 			wordGame.GetData ();
 		} else if (type == "Story") {
 			story.GetData ();
+		} else if (type == "Quiz") {
+			quiz.GetData ();
 		}
 
 		SceneManager.LoadScene(type);
