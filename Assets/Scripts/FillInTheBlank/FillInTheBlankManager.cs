@@ -32,6 +32,7 @@ public class FillInTheBlankManager : MonoBehaviour {
 		gm = GameObject.Find("GameManager").GetComponent<GameManager>();
 		qm = GameObject.Find("FillInTheBlankManager").GetComponent<FillInTheBlankManager>();
 
+
 		XmlDocument xmlFillInTheBlankDoc = new XmlDocument ();
 		xmlFillInTheBlankDoc.Load (gm.Path);
 		XmlNode indexNode = xmlFillInTheBlankDoc.SelectSingleNode ("//Index");
@@ -72,7 +73,6 @@ public class FillInTheBlankManager : MonoBehaviour {
 					// break once the last question is correct
 					break;
 				}
-
 				questionText.text = questionText.text + indexNode.SelectSingleNode ("//Question" + subIndex).InnerText;
 
 				// move to next question
@@ -84,6 +84,9 @@ public class FillInTheBlankManager : MonoBehaviour {
 					yield return new WaitForSeconds(2000);
 				} 
 			}
+
+
+
 			yield return new WaitForSeconds(2000);
 		}
 
@@ -96,9 +99,9 @@ public class FillInTheBlankManager : MonoBehaviour {
 
 		panel.SetActive(true);
 		// display score on panel
-		Text score = GameObject.Find("Score").GetComponent<Text>();
+		Text panelScore = GameObject.Find("PanelScore").GetComponent<Text>();
 		currentScore = currentScore + 10;
-		score.text = currentScore.ToString ();
+		panelScore.text = currentScore.ToString ();
 
 		while (usernameNode.InnerText != gm.Username) {
 			usernameNode = usernameNode.ParentNode.NextSibling.FirstChild;
@@ -185,6 +188,8 @@ public class FillInTheBlankManager : MonoBehaviour {
 			// if user got it correct in either chance, score + 10
 			if (indexNode.SelectSingleNode ("//Blank" + subIndexForInfo + "//Option" + optionNumber + "//correct").InnerText == "T") {
 				currentScore = currentScore + 10;
+				Text score = GameObject.Find("Score").GetComponent<Text>();
+				score.text = currentScore.ToString ();
 			}
 
 			o1Active = true;
