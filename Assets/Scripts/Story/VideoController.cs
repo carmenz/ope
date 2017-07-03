@@ -33,7 +33,7 @@ public class VideoController : MonoBehaviour {
 		while (usernameNode.InnerText != gm.Username) {
 			usernameNode = usernameNode.ParentNode.NextSibling.FirstChild;
 		} 
-		usernameNode.ParentNode.SelectSingleNode ("TotalScore").InnerText = 
+		usernameNode.ParentNode.SelectSingleNode (".//TotalScore").InnerText = 
 			(int.Parse(usernameNode.ParentNode.SelectSingleNode ("TotalScore").InnerText) + currentScore).ToString();
 
 		xmlUserDoc.Save (userpath);

@@ -75,7 +75,7 @@ public class Story : MonoBehaviour {
 
 			while (firstStoryOnIsland) {
 
-				XmlNode nodeBefore = xmlUserDoc.SelectSingleNode ("//CurrentScore");
+				XmlNode nodeBefore = xmlUserDoc.SelectSingleNode (".//TotalScore");
 
 				XmlNode xmlIsland = xmlUserDoc.CreateNode (XmlNodeType.Element, island, null);
 				XmlNode xmlStories = xmlUserDoc.CreateNode (XmlNodeType.Element, "Stories", null);
@@ -105,7 +105,7 @@ public class Story : MonoBehaviour {
 					}
 				} else {
 					print ("not the first challenge but the first story");
-					XmlNode islandNode = xmlUserDoc.SelectSingleNode ("//" + island);
+					XmlNode islandNode = xmlUserDoc.SelectSingleNode (".//" + island);
 
 					gm.Index = 1;
 			
@@ -128,7 +128,7 @@ public class Story : MonoBehaviour {
 			XmlNode usernameNode = xmlUserDoc.SelectSingleNode ("//Username");
 
 			if (usernameNode.InnerText == gm.Username) {
-				XmlNode storyNode = xmlUserDoc.SelectSingleNode ("//Story");
+				XmlNode storyNode = xmlUserDoc.SelectSingleNode (".//Story");
 
 				XmlNode newStoryNode = xmlUserDoc.CreateNode (XmlNodeType.Element, "Story", null);
 
