@@ -27,6 +27,7 @@ public class SaveData : MonoBehaviour {
 
 
 	public static NewPlayer player;
+	private static TextAsset textAsset;
 
 	public static void Save(string path, User current) {
 
@@ -55,6 +56,7 @@ public class SaveData : MonoBehaviour {
 	private static void SaveUser(string path, User current) {
 		
 		current.GetInputData ();
+	
 		bool userNotExist = true;
 		// check if user.xml exist
 		if (File.Exists (path)) {
@@ -62,36 +64,82 @@ public class SaveData : MonoBehaviour {
 				dox.Load (path);
 
 			print ("pathhhhh");
-			FileStream stream = new FileStream (path, FileMode.Open);
-			XmlTextReader xmlReader = new XmlTextReader (stream);
+			//FileStream stream = new FileStream (path, FileMode.Open);
+			//XmlTextReader xmlReader = new XmlTextReader (stream);
+
+
+		
+			XmlDocument xmlReader = new XmlDocument();
+
+			xmlReader.Load (path);
+			textAsset = (TextAsset) Resources.Load("users.xml");
+			//xmlReader.LoadXml(textAsset.text);
 
 			// read file, check if user exist
-			while (xmlReader.Read ()) {
-				if (xmlReader.Name == "Username") {
-					// user exists
-					if (xmlReader.ReadElementContentAsString ().Equals (current.data.username)) {
-						userNotExist = false;
-						print ("username already exist, please load saved game!!!!");
-					}
+//			while (xmlReader.Read ()) {
+//				if (xmlReader.Name == "Username") {
+//					// user exists
+//					if (xmlReader.ReadElementContentAsString ().Equals (current.data.username)) {
+//						userNotExist = false;
+//						print ("username already exist, please load saved game!!!!");
+//					}
+//				}
+//			}
+			XmlNode usernameNode = xmlReader.SelectSingleNode("//Username");
+			while(usernameNode != null) {
+				if (usernameNode.InnerText == current.data.username) {
+					userNotExist = false;
+					print ("username already exist, please load saved game!!!!");
+					break;
+				} else {
+					usernameNode = usernameNode.ParentNode.NextSibling.FirstChild;
 				}
 			}
-			stream.Close ();
+			//stream.Close ();
 
 		}
 
 		// create a user element if user does not exist
 		if (userNotExist) {
 
-			XDocument doc = XDocument.Load (path);
+			//XDocument doc = XDocument.Load (path);
 
-			XElement user = new XElement ("User");
-			user.Add (new XElement ("Username", current.data.username));
-			user.Add (new XElement ("Password", current.data.password));
-			user.Add (new XElement ("CurrentPosX", current.data.currentPosX));
-			user.Add (new XElement ("CurrentPosY", current.data.currentPosY));
-			user.Add (new XElement ("TotalScore", current.data.totalScore));
+			XmlDocument doc = new XmlDocument ();
+			doc.Load (path);
+//
+//			XElement user = new XElement ("User");
+//			user.Add (new XElement ("Username", current.data.username));
+//			user.Add (new XElement ("Password", current.data.password));
+//			user.Add (new XElement ("CurrentPosX", current.data.currentPosX));
+//			user.Add (new XElement ("CurrentPosY", current.data.currentPosY));
+//			user.Add (new XElement ("TotalScore", current.data.totalScore));
+//
+//			doc.Root.Element ("Users").Add (user);
+//			doc.Save (path);
 
-			doc.Root.Element ("Users").Add (user);
+
+			XmlNode newUserNode = doc.CreateNode (XmlNodeType.Element, "User", null);
+			XmlNode usernameNode = doc.CreateNode (XmlNodeType.Element, "UserName", null);
+			XmlNode passwordNode = doc.CreateNode (XmlNodeType.Element, "Password", null);
+			XmlNode currentPosXNode = doc.CreateNode (XmlNodeType.Element, "CurrentPosX", null);
+			XmlNode currentPosYNode = doc.CreateNode (XmlNodeType.Element, "CurrentPosY", null);
+			XmlNode totalScoreNode = doc.CreateNode (XmlNodeType.Element, "TotalScore", null);
+
+			usernameNode.InnerText = current.data.username;
+			passwordNode.InnerText = current.data.password;
+			currentPosXNode.InnerText = current.data.currentPosX.ToString();
+			currentPosYNode.InnerText = current.data.currentPosY.ToString();
+			totalScoreNode.InnerText = current.data.totalScore.ToString();
+
+			newUserNode.AppendChild (usernameNode);
+			newUserNode.AppendChild (passwordNode);
+			newUserNode.AppendChild (currentPosXNode);
+			newUserNode.AppendChild (currentPosYNode);
+			newUserNode.AppendChild (totalScoreNode);
+
+			XmlNode usersNode = doc.SelectSingleNode ("//Users");
+			usersNode.InsertAfter (newUserNode, usersNode.LastChild);
+
 			doc.Save (path);
 
 			SceneManager.LoadScene ("Main");

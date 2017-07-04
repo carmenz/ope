@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Xml;
+using System.Xml.Serialization;
 
 public class GameController : MonoBehaviour {
 
@@ -10,14 +12,15 @@ public class GameController : MonoBehaviour {
 
 	private User currentUser = new User();
 
-	private static string datapath = string.Empty;
 
+	private static string datapath;
 
 	void Awake() {
 		if (Application.platform == RuntimePlatform.WindowsPlayer) {
 			datapath = System.IO.Path.Combine (Application.persistentDataPath, "Resources/users.xml");
 		} else {
-			datapath = System.IO.Path.Combine (Application.dataPath, "Resources/users.xml");
+		datapath = System.IO.Path.Combine (Application.persistentDataPath, "Resources/users.xml");
+
 		}
 
 	}

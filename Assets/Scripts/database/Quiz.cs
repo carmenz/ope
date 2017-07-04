@@ -16,7 +16,7 @@ public class Quiz : MonoBehaviour {
 		// choose FillInTheBlank file according to island
 		if (pos < 25) {
 			island = "IslandA";
-			path = System.IO.Path.Combine (Application.dataPath, "Resources/quizzesA.xml");
+			path = System.IO.Path.Combine (Application.persistentDataPath, "Resources/quizzesA.xml");
 			print ("we are on island A");
 		} else if (pos < 30) {
 			island = "IslandB";

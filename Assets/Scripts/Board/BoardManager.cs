@@ -29,7 +29,7 @@ public class BoardManager : MonoBehaviour {
 		GameManager gm = GameObject.Find ("GameManager").GetComponent<GameManager> ();
 		Text scoreText = GameObject.Find ("Score").GetComponent<Text> ();
 
-		userpath = System.IO.Path.Combine (Application.dataPath, "Resources/users.xml");
+		userpath = System.IO.Path.Combine (Application.persistentDataPath, "Resources/users.xml");
 		FileStream userStream = new FileStream (userpath, FileMode.Open);
 		XmlTextReader xmlUserReader = new XmlTextReader (userStream);
 

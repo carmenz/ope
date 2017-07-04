@@ -11,7 +11,7 @@ public class HistoryCheck : MonoBehaviour {
 
 	public static void FirstTimeCheck(string path, string island, string miniChallengeName, string miniChallengeNameSingular) {
 		
-		userpath = System.IO.Path.Combine (Application.dataPath, "Resources/users.xml");
+		userpath = System.IO.Path.Combine (Application.persistentDataPath, "Resources/users.xml");
 		GameManager gm = GameObject.Find ("GameManager").GetComponent<GameManager> ();
 
 

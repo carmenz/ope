@@ -23,7 +23,7 @@ public class VideoController : MonoBehaviour {
         vPlayer.Play();
 
 		// store and update score in user.xml
-		userpath = System.IO.Path.Combine (Application.dataPath, "Resources/users.xml");
+		userpath = System.IO.Path.Combine (Application.persistentDataPath, "Resources/users.xml");
 		gm = GameObject.Find("GameManager").GetComponent<GameManager>();
 
 		XmlDocument xmlUserDoc = new XmlDocument ();

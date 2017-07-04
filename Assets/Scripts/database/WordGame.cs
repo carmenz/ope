@@ -25,7 +25,7 @@ public class WordGame : MonoBehaviour {
 		// choose quiz file according to island
 		if (pos < 25) {
 			island = "IslandA";
-			path = System.IO.Path.Combine (Application.dataPath, "Resources/wordGamesA.xml");
+			path = System.IO.Path.Combine (Application.persistentDataPath, "Resources/wordGamesA.xml");
 			print ("we are on island A");
 		} else if (pos < 30) {
 			island = "IslandB";

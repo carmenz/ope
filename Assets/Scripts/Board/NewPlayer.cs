@@ -119,7 +119,7 @@ public class NewPlayer : MonoBehaviour {
 	}
 
 	void SaveCoordinate() {
-		var userpath = System.IO.Path.Combine (Application.dataPath, "Resources/users.xml");
+		var userpath = System.IO.Path.Combine (Application.persistentDataPath, "Resources/users.xml");
 		XmlDocument xmlUserDoc = new XmlDocument ();
 		xmlUserDoc.Load (userpath);
 

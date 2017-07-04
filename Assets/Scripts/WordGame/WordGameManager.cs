@@ -18,7 +18,7 @@ public class WordGameManager : MonoBehaviour {
 	// Use this for initialization
 	IEnumerator Start () {
 
-		userpath = System.IO.Path.Combine (Application.dataPath, "Resources/users.xml");
+		userpath = System.IO.Path.Combine (Application.persistentDataPath, "Resources/users.xml");
 		gm = GameObject.Find("GameManager").GetComponent<GameManager>();
 		wgm = GameObject.Find("WordGameManager").GetComponent<WordGameManager>();
 
