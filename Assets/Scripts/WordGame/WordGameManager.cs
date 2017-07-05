@@ -70,8 +70,9 @@ public class WordGameManager : MonoBehaviour {
 				Text score = GameObject.Find("Score").GetComponent<Text>();
 				score.text = currentScore.ToString();
 
+				updateDBScore ();
+				print ("hehehhehe");
 
-				updateDBTotalScore ();
 				
 			} else {
 				//move to next word
@@ -79,15 +80,8 @@ public class WordGameManager : MonoBehaviour {
 			}
 		}
 
-		// Find user and update <TotalScore>
+		updateDBTotalScore ();
 
-		while (usernameNode.InnerText != gm.Username) {
-			usernameNode = usernameNode.ParentNode.NextSibling.FirstChild;
-		} 
-		usernameNode.ParentNode.SelectSingleNode ("TotalScore").InnerText = 
-			(int.Parse(usernameNode.ParentNode.SelectSingleNode ("TotalScore").InnerText) + currentScore).ToString();
-
-		xmlUserDoc.Save (userpath);
 	}
 
 
@@ -109,34 +103,6 @@ public class WordGameManager : MonoBehaviour {
 		Text infoText = GameObject.Find ("Info").GetComponent<Text> ();
 		infoText.text = indexNode.SelectSingleNode ("//Word"+ subIndexForInfo + "//info").InnerText;
 
-		if (indexNode.SelectSingleNode ("//Word" + subIndexForInfo + "//Yes").InnerText == "T") {
-			print ("user got the correct answer");
-			currentScore = currentScore + 10;
-			cross1.gameObject.SetActive (false);
-			cross2.gameObject.SetActive (false);
-			cross3.gameObject.SetActive (false);
-			crossCount = 0;
-		} else {
-			print ("wrongggggggggggggggggggggggggggg");
-			crossCount++;
-			if (crossCount == 1) {
-				cross1.gameObject.SetActive (true);
-			} else if (crossCount == 2) {
-				cross2.gameObject.SetActive (true);
-			} else {
-				cross3.gameObject.SetActive (true);
-				panel.SetActive(true);
-
-				// display score on panel
-				Text score = GameObject.Find("Score").GetComponent<Text>();
-				score.text = currentScore.ToString();
-
-
-				updateDBTotalScore ();
-			}
-
-		}
-			
 		// update user.xml to store user answers
 		while (usernameNode.InnerText != gm.Username) {
 			usernameNode = usernameNode.ParentNode.NextSibling.FirstChild;
@@ -164,8 +130,35 @@ public class WordGameManager : MonoBehaviour {
 			gameIndexNode.ParentNode.AppendChild (wordIndex);
 		
 		}
-
 		xmlUserDoc.Save (userpath);
+
+		// check if user got the correct answer
+		if (indexNode.SelectSingleNode ("//Word" + subIndexForInfo + "//Yes").InnerText == "T") {
+			print ("user got the correct answer");
+			currentScore = currentScore + 10;
+			cross1.gameObject.SetActive (false);
+			cross2.gameObject.SetActive (false);
+			cross3.gameObject.SetActive (false);
+			crossCount = 0;
+		} else {
+			crossCount++;
+			if (crossCount == 1) {
+				cross1.gameObject.SetActive (true);
+			} else if (crossCount == 2) {
+				cross2.gameObject.SetActive (true);
+			} else {
+				cross3.gameObject.SetActive (true);
+
+				panel.SetActive(true);
+
+				// display score on panel
+				Text score = GameObject.Find("Score").GetComponent<Text>();
+				score.text = currentScore.ToString();
+
+				updateDBScore ();
+			}
+		}
+
 		Start ().MoveNext();
 	}
 
@@ -187,36 +180,7 @@ public class WordGameManager : MonoBehaviour {
 		Text infoText = GameObject.Find ("Info").GetComponent<Text> ();
 		infoText.text = indexNode.SelectSingleNode ("//Word"+ subIndexForInfo + "//info").InnerText;
 
-		if (indexNode.SelectSingleNode ("//Word" + subIndexForInfo + "//Yes").InnerText == "F") {
-			print ("user got the correct answer");
-			currentScore = currentScore + 10;
-			crossCount = 0;
-			cross1.gameObject.SetActive (false);
-			cross2.gameObject.SetActive (false);
-			cross3.gameObject.SetActive (false);
-		} else {
-			print ("wrongggggggggggg");
-			crossCount++;
-			print (crossCount);
-			if (crossCount == 1) {
-				print ("hahahhahaha");
-				cross1.gameObject.SetActive (true);
-			} else if (crossCount == 2) {
-				cross2.gameObject.SetActive (true);
-			} else {
-				cross3.gameObject.SetActive (true);
 
-				panel.SetActive(true);
-
-				// display score on panel
-				Text score = GameObject.Find("Score").GetComponent<Text>();
-				score.text = currentScore.ToString();
-
-
-				updateDBTotalScore ();
-			}
-
-		}
 
 		// update user.xml to store user answers
 		while (usernameNode.InnerText != gm.Username) {
@@ -243,10 +207,37 @@ public class WordGameManager : MonoBehaviour {
 			gameIndexNode.ParentNode.AppendChild (wordIndex);
 		}
 		xmlUserDoc.Save (userpath);
+
+
+		// check if user got the correct answer
+		if (indexNode.SelectSingleNode ("//Word" + subIndexForInfo + "//Yes").InnerText == "F") {
+			print ("user got the correct answer");
+			currentScore = currentScore + 10;
+			crossCount = 0;
+			cross1.gameObject.SetActive (false);
+			cross2.gameObject.SetActive (false);
+			cross3.gameObject.SetActive (false);
+		} else {
+			crossCount++;
+			if (crossCount == 1) {
+				cross1.gameObject.SetActive (true);
+			} else if (crossCount == 2) {
+				cross2.gameObject.SetActive (true);
+			} else {
+				cross3.gameObject.SetActive (true);
+				panel.SetActive(true);
+
+				// display score on panel
+				Text score = GameObject.Find("Score").GetComponent<Text>();
+				score.text = currentScore.ToString();
+
+				updateDBScore ();
+			}
+		}
 		Start ().MoveNext();
 	}
 
-	public void updateDBTotalScore() {
+	public void updateDBScore() {
 
 		XmlDocument xmlUserDoc = new XmlDocument ();
 		xmlUserDoc.Load (userpath);
@@ -267,14 +258,31 @@ public class WordGameManager : MonoBehaviour {
 		// update node if <Score> node already exist
 		if (gameIndexNode.ParentNode.ChildNodes.Count == 8) {
 			gameIndexNode.ParentNode.SelectSingleNode("//Score").InnerText = currentScore.ToString();
-			finishAddingToDB = true;
+			//finishAddingToDB = true;
 		} else {
 			// create new <Score> node
 			XmlNode scoreIndex = xmlUserDoc.CreateNode (XmlNodeType.Element, "Score", null);
 			scoreIndex.InnerText = currentScore.ToString();
+			print (gameIndexNode.ParentNode.InnerXml);
 			gameIndexNode.ParentNode.AppendChild (scoreIndex);
+			print (gameIndexNode.ParentNode.InnerXml);
 		}
+		xmlUserDoc.Save (userpath);
+	}
 
+
+	public void updateDBTotalScore() {
+		XmlDocument xmlUserDoc = new XmlDocument ();
+		xmlUserDoc.Load (userpath);
+		XmlNode usernameNode = xmlUserDoc.SelectSingleNode ("//Username");
+		// Find user and update <TotalScore>
+		while (usernameNode.InnerText != gm.Username) {
+			usernameNode = usernameNode.ParentNode.NextSibling.FirstChild;
+		} 
+		usernameNode.ParentNode.SelectSingleNode ("TotalScore").InnerText = 
+			(int.Parse(usernameNode.ParentNode.SelectSingleNode ("TotalScore").InnerText) + currentScore).ToString();
+
+		xmlUserDoc.Save (userpath);
 	}
 
 }
