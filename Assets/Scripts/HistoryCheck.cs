@@ -114,7 +114,6 @@ public class HistoryCheck : MonoBehaviour {
 							firstMiniChallengeOnIsland = false;
 					} 
 				} else {
-					print (usernameNode.InnerText);
 					usernameNode = usernameNode.ParentNode.NextSibling.FirstChild;
 				} 
 			}

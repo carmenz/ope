@@ -16,7 +16,7 @@ public class ThisPillar : MonoBehaviour {
 
 	public void onClick() {
 
-		wgm.ThisPillarOnClick();
+		wgm.YesOnClick();
 
 	}
 

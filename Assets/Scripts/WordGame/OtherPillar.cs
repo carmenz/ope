@@ -15,7 +15,7 @@ public class OtherPillar : MonoBehaviour {
 
 	public void onClick() {
 
-		wgm.OtherPillarOnClick();
+		wgm.NoOnClick();
 
 	}
 }

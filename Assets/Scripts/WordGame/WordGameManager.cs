@@ -10,13 +10,20 @@ public class WordGameManager : MonoBehaviour {
 	private WordGameManager wgm;
 	public GameObject panel;
 	private static string userpath = string.Empty;
-	private int currentScore = 70;
+	private int currentScore = 0;
 	public static bool finishAddingToDB = false;
+
+	private int crossCount = 0;
+	public GameObject cross1;
+	public GameObject cross2;
+	public GameObject cross3;
+
 
 	public int subIndex = 1;
 
 	// Use this for initialization
 	IEnumerator Start () {
+	
 
 		userpath = System.IO.Path.Combine (Application.dataPath, "Resources/users.xml");
 		gm = GameObject.Find("GameManager").GetComponent<GameManager>();
@@ -64,28 +71,7 @@ public class WordGameManager : MonoBehaviour {
 				score.text = currentScore.ToString();
 
 
-				while (usernameNode.InnerText != gm.Username) {
-
-					usernameNode = usernameNode.ParentNode.NextSibling.FirstChild;
-				}
-				// Update user.xml with the score
-				XmlNode gameIndexNode = usernameNode.ParentNode.SelectSingleNode (".//Game//Index");
-
-				// find the matching game index
-				while (gm.Index.ToString() != gameIndexNode.InnerText) {
-					gameIndexNode = gameIndexNode.ParentNode.NextSibling.FirstChild;
-				}
-
-				// update node if <Score> node already exist
-				if (gameIndexNode.ParentNode.ChildNodes.Count == 8) {
-					gameIndexNode.ParentNode.SelectSingleNode("//Score").InnerText = currentScore.ToString();
-					finishAddingToDB = true;
-				} else {
-					// create new <Score> node
-					XmlNode scoreIndex = xmlUserDoc.CreateNode (XmlNodeType.Element, "Score", null);
-					scoreIndex.InnerText = currentScore.ToString();
-					gameIndexNode.ParentNode.AppendChild (scoreIndex);
-				}
+				updateDBTotalScore ();
 				
 			} else {
 				//move to next word
@@ -105,9 +91,9 @@ public class WordGameManager : MonoBehaviour {
 	}
 
 
-	public void ThisPillarOnClick()
+	public void YesOnClick()
 	{
-		Debug.Log("thisPillar is clicked");
+		Debug.Log("yes is clicked");
 		finishAddingToDB = false;
 
 		XmlDocument xmlWordGameDoc = new XmlDocument ();
@@ -123,10 +109,32 @@ public class WordGameManager : MonoBehaviour {
 		Text infoText = GameObject.Find ("Info").GetComponent<Text> ();
 		infoText.text = indexNode.SelectSingleNode ("//Word"+ subIndexForInfo + "//info").InnerText;
 
-		if (indexNode.SelectSingleNode ("//Word" + subIndexForInfo + "//thisPillar").InnerText == "T") {
+		if (indexNode.SelectSingleNode ("//Word" + subIndexForInfo + "//Yes").InnerText == "T") {
 			print ("user got the correct answer");
+			currentScore = currentScore + 10;
+			cross1.gameObject.SetActive (false);
+			cross2.gameObject.SetActive (false);
+			cross3.gameObject.SetActive (false);
+			crossCount = 0;
 		} else {
-			currentScore = currentScore - 10;
+			print ("wrongggggggggggggggggggggggggggg");
+			crossCount++;
+			if (crossCount == 1) {
+				cross1.gameObject.SetActive (true);
+			} else if (crossCount == 2) {
+				cross2.gameObject.SetActive (true);
+			} else {
+				cross3.gameObject.SetActive (true);
+				panel.SetActive(true);
+
+				// display score on panel
+				Text score = GameObject.Find("Score").GetComponent<Text>();
+				score.text = currentScore.ToString();
+
+
+				updateDBTotalScore ();
+			}
+
 		}
 			
 		// update user.xml to store user answers
@@ -146,6 +154,8 @@ public class WordGameManager : MonoBehaviour {
 		if (gameIndexNode.ParentNode.ChildNodes.Count > subIndexForInfo + 1) {
 			gameIndexNode.ParentNode.SelectSingleNode (".//Word" + subIndexForInfo).InnerText = "T";
 			finishAddingToDB = true;
+
+
 		} else {
 			// create new <word#> node
 			XmlNode wordIndex = xmlUserDoc.CreateNode (XmlNodeType.Element, "Word" + subIndexForInfo, null);
@@ -159,9 +169,9 @@ public class WordGameManager : MonoBehaviour {
 		Start ().MoveNext();
 	}
 
-	public void OtherPillarOnClick()
+	public void NoOnClick()
 	{
-		Debug.Log("otherPillar is clicked");
+		Debug.Log("No is clicked");
 		finishAddingToDB = false;
 
 		XmlDocument xmlWordGameDoc = new XmlDocument ();
@@ -177,10 +187,35 @@ public class WordGameManager : MonoBehaviour {
 		Text infoText = GameObject.Find ("Info").GetComponent<Text> ();
 		infoText.text = indexNode.SelectSingleNode ("//Word"+ subIndexForInfo + "//info").InnerText;
 
-		if (indexNode.SelectSingleNode ("//Word" + subIndexForInfo + "//thisPillar").InnerText == "F") {
+		if (indexNode.SelectSingleNode ("//Word" + subIndexForInfo + "//Yes").InnerText == "F") {
 			print ("user got the correct answer");
+			currentScore = currentScore + 10;
+			crossCount = 0;
+			cross1.gameObject.SetActive (false);
+			cross2.gameObject.SetActive (false);
+			cross3.gameObject.SetActive (false);
 		} else {
-			currentScore = currentScore - 10;
+			print ("wrongggggggggggg");
+			crossCount++;
+			print (crossCount);
+			if (crossCount == 1) {
+				print ("hahahhahaha");
+				cross1.gameObject.SetActive (true);
+			} else if (crossCount == 2) {
+				cross2.gameObject.SetActive (true);
+			} else {
+				cross3.gameObject.SetActive (true);
+
+				panel.SetActive(true);
+
+				// display score on panel
+				Text score = GameObject.Find("Score").GetComponent<Text>();
+				score.text = currentScore.ToString();
+
+
+				updateDBTotalScore ();
+			}
+
 		}
 
 		// update user.xml to store user answers
@@ -209,6 +244,37 @@ public class WordGameManager : MonoBehaviour {
 		}
 		xmlUserDoc.Save (userpath);
 		Start ().MoveNext();
+	}
+
+	public void updateDBTotalScore() {
+
+		XmlDocument xmlUserDoc = new XmlDocument ();
+		xmlUserDoc.Load (userpath);
+		XmlNode usernameNode = xmlUserDoc.SelectSingleNode ("//Username");
+
+		while (usernameNode.InnerText != gm.Username) {
+
+			usernameNode = usernameNode.ParentNode.NextSibling.FirstChild;
+		}
+		// Update user.xml with the score
+		XmlNode gameIndexNode = usernameNode.ParentNode.SelectSingleNode (".//Game//Index");
+
+		// find the matching game index
+		while (gm.Index.ToString() != gameIndexNode.InnerText) {
+			gameIndexNode = gameIndexNode.ParentNode.NextSibling.FirstChild;
+		}
+
+		// update node if <Score> node already exist
+		if (gameIndexNode.ParentNode.ChildNodes.Count == 8) {
+			gameIndexNode.ParentNode.SelectSingleNode("//Score").InnerText = currentScore.ToString();
+			finishAddingToDB = true;
+		} else {
+			// create new <Score> node
+			XmlNode scoreIndex = xmlUserDoc.CreateNode (XmlNodeType.Element, "Score", null);
+			scoreIndex.InnerText = currentScore.ToString();
+			gameIndexNode.ParentNode.AppendChild (scoreIndex);
+		}
+
 	}
 
 }
