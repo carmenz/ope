@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using System.Xml;
 using System.Xml.Serialization;
 using System.IO;
@@ -81,7 +82,8 @@ public class SaveData : MonoBehaviour {
 					// user exists
 					if (xmlReader.ReadElementContentAsString ().Equals (current.data.username)) {
 						userNotExist = false;
-						print ("username already exist, please load saved game!!!!");
+						//TODO: put the info into info box
+						GameObject.Find("InfoBox").GetComponent<Text>().text = "username already exist, please load saved game!!!!";
 					}
 				}
 			}
@@ -183,7 +185,7 @@ public class SaveData : MonoBehaviour {
 							gm.Username = current.data.username;
 
 						} else {
-							print ("Username and Password does not match, please try again");
+							GameObject.Find("InfoBox").GetComponent<Text>().text = "Username and Password does not match, please try again";
 						}
 					}
 				} 
