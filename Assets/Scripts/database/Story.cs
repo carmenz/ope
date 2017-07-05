@@ -21,7 +21,7 @@ public class Story : MonoBehaviour {
 
 		GameManager gm = GameObject.Find ("GameManager").GetComponent<GameManager> ();
 
-		userpath = System.IO.Path.Combine (Application.persistentDataPath, "Resources/users.xml");
+		userpath = System.IO.Path.Combine (Application.dataPath, "Resources/users.xml");
 
 		int pos = gm.typeCode;
 		print ("pos is" + pos);

@@ -33,12 +33,13 @@ public class LeaveButton : MonoBehaviour {
 			usernameNode = usernameNode.ParentNode.NextSibling.FirstChild;
 		} 
 
-		print ("Fdsfdsfdsfsd"+ gm.Coordinate.x.ToString());
-
 		usernameNode.ParentNode.SelectSingleNode ("CurrentPosX").InnerText = gm.Coordinate.x.ToString();
 		usernameNode.ParentNode.SelectSingleNode ("CurrentPosY").InnerText = gm.Coordinate.y.ToString();
 
 		xmlUserDoc.Save (userpath);
+
+		gm.Username = "";
+
 
 		SceneManager.LoadScene ("Login");
 

@@ -23,19 +23,19 @@ public class FillInTheBlank : MonoBehaviour {
 		// choose FillInTheBlank file according to island
 		if (pos < 25) {
 			island = "IslandA";
-			path = System.IO.Path.Combine (Application.persistentDataPath, "Resources/blanksA.xml");
+			path = System.IO.Path.Combine (Application.dataPath, "Resources/blanksA.xml");
 			print ("we are on island A");
 		} else if (pos < 30) {
 			island = "IslandB";
-			path = System.IO.Path.Combine (Application.persistentDataPath, "Resources/blanksB.xml");
+			path = System.IO.Path.Combine (Application.dataPath, "Resources/blanksB.xml");
 			print ("we are on island B");
 		} else if (pos < 40) {
 			island = "IslandC";
-			path = System.IO.Path.Combine (Application.persistentDataPath, "Resources/blanksC.xml");
+			path = System.IO.Path.Combine (Application.dataPath, "Resources/blanksC.xml");
 			print ("we are on island C");
 		} else if (pos < 50) {
 			island = "IslandD";
-			path = System.IO.Path.Combine (Application.persistentDataPath, "Resources/blanksD.xml");
+			path = System.IO.Path.Combine (Application.dataPath, "Resources/blanksD.xml");
 			print ("we are on island D");
 		}
 

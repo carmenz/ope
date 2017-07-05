@@ -28,7 +28,7 @@ public class FillInTheBlankManager : MonoBehaviour {
 
 	// Use this for initialization
 	IEnumerator Start () {
-		userpath = System.IO.Path.Combine (Application.persistentDataPath, "Resources/users.xml");
+		userpath = System.IO.Path.Combine (Application.dataPath, "Resources/users.xml");
 		gm = GameObject.Find("GameManager").GetComponent<GameManager>();
 		qm = GameObject.Find("FillInTheBlankManager").GetComponent<FillInTheBlankManager>();
 

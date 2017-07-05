@@ -7,23 +7,23 @@ using System.Xml.Serialization;
 
 public class GameController : MonoBehaviour {
 
-	public Button saveButton;
-	public Button loadButton;
+	public static Button saveButton;
+	public static Button loadButton;
 
 	private User currentUser = new User();
-
-
 	private static string datapath;
 
 	void Awake() {
 		if (Application.platform == RuntimePlatform.WindowsPlayer) {
 			datapath = System.IO.Path.Combine (Application.persistentDataPath, "Resources/users.xml");
 		} else {
-		datapath = System.IO.Path.Combine (Application.persistentDataPath, "Resources/users.xml");
+		datapath = System.IO.Path.Combine (Application.dataPath, "Resources/users.xml");
 
 		}
-
+		saveButton = GameObject.Find ("SaveButton").GetComponent<Button> ();
+		loadButton = GameObject.Find ("LoadButton").GetComponent<Button> ();
 	}
+
 
 	void OnEnable() {
 

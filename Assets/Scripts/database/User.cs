@@ -28,7 +28,7 @@ public class User : MonoBehaviour {
 
 
 		if (sceneName == "Login") {
-			
+			print ("hehehehe");
 			string nameInput = GameObject.FindGameObjectWithTag ("UsernameField").GetComponent<InputField> ().text;
 			data.username = nameInput;
 
