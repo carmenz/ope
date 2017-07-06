@@ -10,16 +10,10 @@ public class LeaveButton : MonoBehaviour {
 	private static string userpath = string.Empty;
 	private GameManager gm;
 
-	// Use this for initialization
+
 	void Start () {
 		gm = GameObject.Find ("GameManager").GetComponent<GameManager> ();
 	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
-
 
 	public void LeaveTheGame() {
 
@@ -39,7 +33,6 @@ public class LeaveButton : MonoBehaviour {
 		xmlUserDoc.Save (userpath);
 
 		gm.Username = "";
-
 
 		SceneManager.LoadScene ("Login");
 

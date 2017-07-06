@@ -28,19 +28,15 @@ public class User : MonoBehaviour {
 
 
 		if (sceneName == "Login") {
-			print ("hehehehe");
 			string nameInput = GameObject.FindGameObjectWithTag ("UsernameField").GetComponent<InputField> ().text;
 			data.username = nameInput;
 
 			string passwordInput = GameObject.FindGameObjectWithTag ("PasswordField").GetComponent<InputField> ().text;
 			data.password = Login.Encrypt (passwordInput);
-			print ("user getloginData");
 
 		} else {
 			data.username = GameObject.Find ("GameManager").GetComponent<GameManager> ().name;
-			print ("user storemaindata");
 		}
-		print ("dataaaaaaaaaaaaa" + GameObject.Find ("GameManager").GetComponent<GameManager> ().Coordinate);
 		data.currentPosX = GameObject.Find ("GameManager").GetComponent<GameManager> ().Coordinate.x;
 		data.currentPosY = GameObject.Find ("GameManager").GetComponent<GameManager> ().Coordinate.y;
 		data.totalScore = score;

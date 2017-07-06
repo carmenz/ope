@@ -100,7 +100,6 @@ public class NewPlayer : MonoBehaviour {
 
 		if (type == "FillInTheBlank") {
 			fillInTheBlank.GetData ();
-			//fillInTheBlank.GetData ();
 		} else if (type == "WordGame") {
 			wordGame.GetData ();
 		} else if (type == "Story") {

@@ -15,15 +15,6 @@ public class SpinWheel : MonoBehaviour {
 		setWheelRotatable(true);
 	}
 
-	// Use this for initialization
-	void Start () {
-	}
-	
-	// Update is called once per frame
-	void Update () {
-
-	}
-
 	public void setWheelRotatable(bool state) {
 		rotatable = state;
 	}
@@ -47,6 +38,4 @@ public class SpinWheel : MonoBehaviour {
 			//.OnComplete(() => player.GetComponent<Player>().Move(chance));
 
 	}
-
-
 }

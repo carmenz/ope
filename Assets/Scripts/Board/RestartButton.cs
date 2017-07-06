@@ -10,15 +10,6 @@ public class RestartButton : MonoBehaviour {
 	void Awake () {
 		gm = GameObject.Find("GameManager").GetComponent<GameManager>();
 	}
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
 
 	public void RestartGame() {
 		// Reset state

@@ -11,29 +11,9 @@
     <User>
       <Username>1</Username>
       <Password>fn5g+xrZS7Ud7B8EBFfuxg==</Password>
-      <CurrentPosX>-224.58</CurrentPosX>
-      <CurrentPosY>-146.786</CurrentPosY>
-      <TotalScore>1960</TotalScore>
-      <IslandA>
-        <FillInTheBlanks>
-          <FIB>
-            <Index>1</Index>
-            <Score>40</Score>
-          </FIB>
-          <FIB>
-            <Index>2</Index>
-            <Score>30</Score>
-          </FIB>
-        </FillInTheBlanks>
-        <Stories>
-          <Story>1</Story>
-        </Stories>
-        <WordGames>
-          <Game>
-            <Index>1</Index>
-          </Game>
-        </WordGames>
-      </IslandA>
+      <CurrentPosX>7.299728</CurrentPosX>
+      <CurrentPosY>-19.96808</CurrentPosY>
+      <TotalScore>2300</TotalScore>
     </User>
     <User>
       <Username>4545454</Username>
@@ -47,6 +27,45 @@
       <Password>zu9DpO2NoTBvPoWX1qcZGg==</Password>
       <CurrentPosX>0</CurrentPosX>
       <CurrentPosY>0</CurrentPosY>
+      <TotalScore>0</TotalScore>
+    </User>
+    <User>
+      <Username>2</Username>
+      <Password>fn5g+xrZS7Ud7B8EBFfuxg==</Password>
+      <CurrentPosX>-224.6969</CurrentPosX>
+      <CurrentPosY>-159.7791</CurrentPosY>
+      <TotalScore>290</TotalScore>
+      <IslandA>
+        <Stories>
+          <Story>1</Story>
+        </Stories>
+        <WordGames>
+          <Game>
+            <Index>1</Index>
+            <Word1>T</Word1>
+            <Word2>T</Word2>
+            <Word3>T</Word3>
+            <Word4>F</Word4>
+            <Word5>F</Word5>
+            <Word6>T</Word6>
+            <Word7>T</Word7>
+            <Word8>T</Word8>
+            <Score>210</Score>
+          </Game>
+        </WordGames>
+        <FillInTheBlanks>
+          <FIB>
+            <Index>1</Index>
+            <Score>50</Score>
+          </FIB>
+        </FillInTheBlanks>
+      </IslandA>
+    </User>
+    <User>
+      <Username>3</Username>
+      <Password>AmvWv+57bYEooZUuBaF+JA==</Password>
+      <CurrentPosX>125.7659</CurrentPosX>
+      <CurrentPosY>-70.97927</CurrentPosY>
       <TotalScore>0</TotalScore>
     </User>
   </Users>

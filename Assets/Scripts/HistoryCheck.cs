@@ -14,8 +14,6 @@ public class HistoryCheck : MonoBehaviour {
 		userpath = System.IO.Path.Combine (Application.dataPath, "Resources/users.xml");
 		GameManager gm = GameObject.Find ("GameManager").GetComponent<GameManager> ();
 
-
-
 		bool firstChallengeOnIsland = true;
 		bool firstMiniChallengeOnIsland = true;
 
@@ -25,8 +23,7 @@ public class HistoryCheck : MonoBehaviour {
 			var dox = new XmlDocument ();
 			dox.Load (path);
 
-			//check if user already have that FillInTheBlank on file
-
+			//check if user already have that Mini challenge on file
 			FileStream miniChallengeStream = new FileStream (path, FileMode.Open);
 
 			XmlTextReader xmlMiniChallengeReader = new XmlTextReader (miniChallengeStream);
@@ -81,9 +78,6 @@ public class HistoryCheck : MonoBehaviour {
 				XmlNode xmlIndex = xmlUserDoc.CreateNode (XmlNodeType.Element, "Index", null);
 
 				// found the matching user
-
-
-				print ("first challenge on island");
 				if (usernameNode.InnerText == gm.Username) {
 					XmlNode user = usernameNode.ParentNode;
 
@@ -121,7 +115,6 @@ public class HistoryCheck : MonoBehaviour {
 
 		} else {
 			// not the first such mini challenge
-			print("not the first such mini challenge");
 			XmlDocument xmlUserDoc = new XmlDocument ();
 
 			xmlUserDoc.Load (userpath);
@@ -161,9 +154,7 @@ public class HistoryCheck : MonoBehaviour {
 				xmlIndex.InnerText = indexNode.InnerText;
 
 				newMiniChallengeNode.AppendChild (xmlIndex);
-
 				miniChallengeNode.InsertAfter (newMiniChallengeNode, miniChallengeNode.LastChild);
-
 
 				gm.Index = int.Parse(indexNode.InnerText);
 

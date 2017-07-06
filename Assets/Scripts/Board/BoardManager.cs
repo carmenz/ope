@@ -9,14 +9,16 @@ public class BoardManager : MonoBehaviour {
 	
 	List<GameObject> _squares = new List<GameObject>();
 	private static string userpath = string.Empty;
+	private GameManager gm;
+	private Text scoreText;
+
 
 	public List<GameObject> Squares{
 		get {
 			return _squares;
 		}
 	}
-
-	// Use this for initialization
+		
 	void Awake () {
 		foreach (Transform child in transform)
 		{
@@ -26,8 +28,8 @@ public class BoardManager : MonoBehaviour {
 			}
 		}
 
-		GameManager gm = GameObject.Find ("GameManager").GetComponent<GameManager> ();
-		Text scoreText = GameObject.Find ("Score").GetComponent<Text> ();
+		gm = GameObject.Find ("GameManager").GetComponent<GameManager> ();
+		scoreText = GameObject.Find ("Score").GetComponent<Text> ();
 
 		userpath = System.IO.Path.Combine (Application.dataPath, "Resources/users.xml");
 		FileStream userStream = new FileStream (userpath, FileMode.Open);
@@ -37,7 +39,7 @@ public class BoardManager : MonoBehaviour {
 
 			if (xmlUserReader.Name == "Username") {
 				
-				// find user from user.xml and get Positions
+				// find user from user.xml and get Positions, score
 				if (xmlUserReader.ReadElementContentAsString ().Equals (gm.Username)) {
 					xmlUserReader.ReadToFollowing ("CurrentPosX").ToString ();
 					float x = xmlUserReader.ReadElementContentAsFloat();
@@ -50,13 +52,10 @@ public class BoardManager : MonoBehaviour {
 					xmlUserReader.ReadToFollowing ("TotalScore").ToString ();
 					scoreText.text = xmlUserReader.ReadElementContentAsString ();
 
-
 				}
 			}
 		}
-
 		userStream.Close ();
-
 	}
 	
 	// Update is called once per frame

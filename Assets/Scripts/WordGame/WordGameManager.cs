@@ -27,7 +27,6 @@ public class WordGameManager : MonoBehaviour {
 	// Use this for initialization
 	IEnumerator Start () {
 		multiplexer = GameObject.Find("Multiplexer").GetComponent<Text>();
-		//multiplexer.text = "x1";
 
 		userpath = System.IO.Path.Combine (Application.dataPath, "Resources/users.xml");
 		gm = GameObject.Find("GameManager").GetComponent<GameManager>();
@@ -39,51 +38,40 @@ public class WordGameManager : MonoBehaviour {
 
 		XmlDocument xmlUserDoc = new XmlDocument ();
 		xmlUserDoc.Load (userpath);
-		XmlNode usernameNode = xmlUserDoc.SelectSingleNode ("//Username");
-		bool finishLoading = false;
 
 		print("this is game" + gm.Index.ToString());
 
-		while (!finishLoading) {
-
-			if (indexNode.InnerText == gm.Index.ToString()) {
-
-				Text wordText = GameObject.Find ("Word").GetComponent<Text> ();
-				XmlNode wordNode = indexNode.NextSibling;
-				while (indexNode != null) {
-
-					if (subIndex - 1 == 8) {
-						print ("nullll");
-						break;
-					}
-					wordText.text = indexNode.SelectSingleNode("//Word" + subIndex + "//value").InnerText;
-
-					// move to next question in the quiz
-					if (wordNode.NextSibling != null) {
-						//print ("found Q");
-						wordNode = indexNode.NextSibling;
-
-						subIndex++;
-						yield return new WaitForSeconds(2000);
-					} 
-				}
-				finishLoading = true;
-				panel.SetActive(true);
-
-				// display score on panel
-				panelScore = GameObject.Find("PanelScore").GetComponent<Text>();
-				panelScore.text = currentScore.ToString();
-
-				updateDBScore ();
-				print ("hehehhehe");
-
-				
-			} else {
-				//move to next word
-				indexNode = indexNode.ParentNode.NextSibling.FirstChild;
-			}
+		while (indexNode.InnerText != gm.Index.ToString ()) {
+			//move to next word
+			indexNode = indexNode.ParentNode.NextSibling.FirstChild;
 		}
 
+		Text wordText = GameObject.Find ("Word").GetComponent<Text> ();
+		XmlNode wordNode = indexNode.NextSibling;
+		while (indexNode != null) {
+
+			if (subIndex - 1 == 8) {
+				print ("nullll");
+				break;
+			}
+			wordText.text = indexNode.SelectSingleNode("//Word" + subIndex + "//value").InnerText;
+
+			// move to next question in the quiz
+			if (wordNode.NextSibling != null) {
+				wordNode = indexNode.NextSibling;
+
+				subIndex++;
+				yield return new WaitForSeconds(2000);
+			} 
+		}
+	
+		panel.SetActive(true);
+
+		// display score on panel
+		panelScore = GameObject.Find("PanelScore").GetComponent<Text>();
+		panelScore.text = currentScore.ToString();
+
+		updateDBScore ();
 		updateDBTotalScore ();
 
 	}
@@ -152,9 +140,6 @@ public class WordGameManager : MonoBehaviour {
 			cross1.gameObject.SetActive (false);
 			cross2.gameObject.SetActive (false);
 			cross3.gameObject.SetActive (false);
-
-
-
 
 		} else {
 			multiplexerCount = 0;
@@ -295,9 +280,7 @@ public class WordGameManager : MonoBehaviour {
 			// create new <Score> node
 			XmlNode scoreIndex = xmlUserDoc.CreateNode (XmlNodeType.Element, "Score", null);
 			scoreIndex.InnerText = currentScore.ToString();
-			print (gameIndexNode.ParentNode.InnerXml);
 			gameIndexNode.ParentNode.AppendChild (scoreIndex);
-			print (gameIndexNode.ParentNode.InnerXml);
 		}
 		xmlUserDoc.Save (userpath);
 	}
@@ -320,7 +303,6 @@ public class WordGameManager : MonoBehaviour {
 	public void multiplexerCheck(int multiplexerCount) {
 		multiplexer = GameObject.Find("Multiplexer").GetComponent<Text>();
 		if (multiplexerCount <= 3) {
-			print ("heheheheheheehheh");
 			multiplexer.text = "x1";
 		} else if (multiplexerCount <= 6) {
 			multiplexer.text = "x2";
