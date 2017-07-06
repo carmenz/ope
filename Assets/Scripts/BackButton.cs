@@ -19,26 +19,18 @@ public class BackButton : MonoBehaviour {
 	}
 
 	public void QuitFillInTheBlank() {
-		gm.missions.fillInTheBlankRequired.Remove(gm.typeCode);
-		gm.typeCode = 0;
 		SceneManager.LoadScene(mainSceneName);
 	}
 
 	public void QuitWordGame() {
-		gm.missions.gameRequired.Remove(gm.typeCode);
-		gm.typeCode = 0;
 		SceneManager.LoadScene(mainSceneName);
 	}
 
 	public void QuitStory() {
-		gm.missions.storyRequired.Remove(gm.typeCode);
-		gm.typeCode = 0;
 		SceneManager.LoadScene(mainSceneName);
 	}
 
 	public void QuitQuiz() {
-		gm.missions.storyRequired.Remove(gm.typeCode);
-		gm.typeCode = 0;
 		SceneManager.LoadScene(mainSceneName);
 	}
 
