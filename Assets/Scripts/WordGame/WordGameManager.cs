@@ -8,7 +8,8 @@ public class WordGameManager : MonoBehaviour {
 
 	private GameManager gm;
 	private WordGameManager wgm;
-	public GameObject panel;
+	public GameObject congratsPanel;
+	public GameObject oopsPanel;
 	private static string userpath = string.Empty;
 	private int currentScore = 0;
 	public static bool finishAddingToDB = false;
@@ -65,10 +66,10 @@ public class WordGameManager : MonoBehaviour {
 			} 
 		}
 	
-		panel.SetActive(true);
+		congratsPanel.SetActive(true);
 
 		// display score on panel
-		panelScore = GameObject.Find("PanelScore").GetComponent<Text>();
+		panelScore = GameObject.Find("CongratsPanelScore").GetComponent<Text>();
 		panelScore.text = currentScore.ToString();
 
 		updateDBScore ();
@@ -153,10 +154,10 @@ public class WordGameManager : MonoBehaviour {
 			} else {
 				cross3.gameObject.SetActive (true);
 
-				panel.SetActive(true);
+				oopsPanel.SetActive(true);
 
 				// display score on panel
-				panelScore = GameObject.Find("PanelScore").GetComponent<Text>();
+				panelScore = GameObject.Find("OopsPanelScore").GetComponent<Text>();
 				panelScore.text = currentScore.ToString();
 
 				updateDBScore ();
@@ -242,10 +243,10 @@ public class WordGameManager : MonoBehaviour {
 				cross2.gameObject.SetActive (true);
 			} else {
 				cross3.gameObject.SetActive (true);
-				panel.SetActive(true);
+				oopsPanel.SetActive(true);
 
 				// display score on panel
-				panelScore = GameObject.Find("PanelScore").GetComponent<Text>();
+				panelScore = GameObject.Find("OopsPanelScore").GetComponent<Text>();
 				panelScore.text = currentScore.ToString();
 
 				updateDBScore ();
