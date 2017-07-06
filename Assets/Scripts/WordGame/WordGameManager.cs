@@ -14,16 +14,20 @@ public class WordGameManager : MonoBehaviour {
 	public static bool finishAddingToDB = false;
 
 	private int crossCount = 0;
+	private int multiplexerCount = 0;
 	public GameObject cross1;
 	public GameObject cross2;
 	public GameObject cross3;
 
+	private Text multiplexer;
+	private Text panelScore;
 
 	public int subIndex = 1;
 
 	// Use this for initialization
 	IEnumerator Start () {
-	
+		multiplexer = GameObject.Find("Multiplexer").GetComponent<Text>();
+		//multiplexer.text = "x1";
 
 		userpath = System.IO.Path.Combine (Application.dataPath, "Resources/users.xml");
 		gm = GameObject.Find("GameManager").GetComponent<GameManager>();
@@ -48,7 +52,7 @@ public class WordGameManager : MonoBehaviour {
 				XmlNode wordNode = indexNode.NextSibling;
 				while (indexNode != null) {
 
-					if (subIndex - 1 == 6) {
+					if (subIndex - 1 == 8) {
 						print ("nullll");
 						break;
 					}
@@ -67,8 +71,8 @@ public class WordGameManager : MonoBehaviour {
 				panel.SetActive(true);
 
 				// display score on panel
-				Text score = GameObject.Find("Score").GetComponent<Text>();
-				score.text = currentScore.ToString();
+				panelScore = GameObject.Find("PanelScore").GetComponent<Text>();
+				panelScore.text = currentScore.ToString();
 
 				updateDBScore ();
 				print ("hehehhehe");
@@ -135,13 +139,28 @@ public class WordGameManager : MonoBehaviour {
 		// check if user got the correct answer
 		if (indexNode.SelectSingleNode ("//Word" + subIndexForInfo + "//Yes").InnerText == "T") {
 			print ("user got the correct answer");
-			currentScore = currentScore + 10;
+			multiplexerCount++;
+			crossCount = 0;
+
+			multiplexerCheck (multiplexerCount);
+
+			currentScore = currentScore + 10 * multiplexerCount;
+
+			Text score = GameObject.Find("Score").GetComponent<Text>();
+			score.text = currentScore.ToString();
+
 			cross1.gameObject.SetActive (false);
 			cross2.gameObject.SetActive (false);
 			cross3.gameObject.SetActive (false);
-			crossCount = 0;
+
+
+
+
 		} else {
+			multiplexerCount = 0;
 			crossCount++;
+			multiplexerCheck (multiplexerCount);
+
 			if (crossCount == 1) {
 				cross1.gameObject.SetActive (true);
 			} else if (crossCount == 2) {
@@ -152,8 +171,8 @@ public class WordGameManager : MonoBehaviour {
 				panel.SetActive(true);
 
 				// display score on panel
-				Text score = GameObject.Find("Score").GetComponent<Text>();
-				score.text = currentScore.ToString();
+				panelScore = GameObject.Find("PanelScore").GetComponent<Text>();
+				panelScore.text = currentScore.ToString();
 
 				updateDBScore ();
 			}
@@ -212,13 +231,26 @@ public class WordGameManager : MonoBehaviour {
 		// check if user got the correct answer
 		if (indexNode.SelectSingleNode ("//Word" + subIndexForInfo + "//Yes").InnerText == "F") {
 			print ("user got the correct answer");
-			currentScore = currentScore + 10;
+			multiplexerCount++;
 			crossCount = 0;
+
+			multiplexerCheck (multiplexerCount);
+
+			currentScore = currentScore + 10 * multiplexerCount;
+
+			Text score = GameObject.Find("Score").GetComponent<Text>();
+			score.text = currentScore.ToString();
+
+
 			cross1.gameObject.SetActive (false);
 			cross2.gameObject.SetActive (false);
 			cross3.gameObject.SetActive (false);
 		} else {
+			multiplexerCount = 0;
 			crossCount++;
+			multiplexerCheck (multiplexerCount);
+
+
 			if (crossCount == 1) {
 				cross1.gameObject.SetActive (true);
 			} else if (crossCount == 2) {
@@ -228,8 +260,8 @@ public class WordGameManager : MonoBehaviour {
 				panel.SetActive(true);
 
 				// display score on panel
-				Text score = GameObject.Find("Score").GetComponent<Text>();
-				score.text = currentScore.ToString();
+				panelScore = GameObject.Find("PanelScore").GetComponent<Text>();
+				panelScore.text = currentScore.ToString();
 
 				updateDBScore ();
 			}
@@ -256,7 +288,7 @@ public class WordGameManager : MonoBehaviour {
 		}
 
 		// update node if <Score> node already exist
-		if (gameIndexNode.ParentNode.ChildNodes.Count == 8) {
+		if (gameIndexNode.ParentNode.ChildNodes.Count == 10) {
 			gameIndexNode.ParentNode.SelectSingleNode("//Score").InnerText = currentScore.ToString();
 			//finishAddingToDB = true;
 		} else {
@@ -283,6 +315,19 @@ public class WordGameManager : MonoBehaviour {
 			(int.Parse(usernameNode.ParentNode.SelectSingleNode ("TotalScore").InnerText) + currentScore).ToString();
 
 		xmlUserDoc.Save (userpath);
+	}
+
+	public void multiplexerCheck(int multiplexerCount) {
+		multiplexer = GameObject.Find("Multiplexer").GetComponent<Text>();
+		if (multiplexerCount <= 3) {
+			print ("heheheheheheehheh");
+			multiplexer.text = "x1";
+		} else if (multiplexerCount <= 6) {
+			multiplexer.text = "x2";
+		} else {
+			multiplexer.text = "x3";
+		}
+
 	}
 
 }
