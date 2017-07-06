@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour {
 	[SerializeField]
 	string _tokenName = "First";
 	[SerializeField]
-	public Missions missions;
+	public List<Mission> missionList = new List<Mission>();
 	[SerializeField]
 	public int score;
 
