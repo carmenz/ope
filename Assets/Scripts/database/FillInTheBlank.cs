@@ -1,24 +1,19 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
-using System.Xml;
-using System.Xml.Serialization;
-using System.IO;
-using System.Text;
-using UnityEngine.SceneManagement;
-using System;
+
 
 public class FillInTheBlank : MonoBehaviour {
 
 	private string island;
 	private static string path = string.Empty;
+	private GameManager gm;
+	private int pos;
 
 	public void GetData() {
-		GameManager gm = GameObject.Find ("GameManager").GetComponent<GameManager> ();
+		gm = GameObject.Find ("GameManager").GetComponent<GameManager> ();
 	
-		int pos = gm.Index;
-		print ("pos is" + pos);
+		pos = gm.Index;
 
 		// choose FillInTheBlank file according to island
 		if (pos < 25) {
@@ -40,16 +35,13 @@ public class FillInTheBlank : MonoBehaviour {
 		}
 
 		gm.Path = path;
-
 		HistoryCheck.FirstTimeCheck (path, island, "FillInTheBlanks", "FIB");
 	}
 }
 
-public class FillInTheBlankData{
-
-	[XmlElement("Index")]
-	public string index;
-
-}
+//public class FillInTheBlankData{
+//	[XmlElement("Index")]
+//	public string index;
+//}
 
 

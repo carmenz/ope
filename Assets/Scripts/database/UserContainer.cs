@@ -22,7 +22,6 @@ public class UserContainer
 		{
 			serializer.Serialize(stream, this);
 		}
-
 	}
 
 	public static UserContainer Load(string path)

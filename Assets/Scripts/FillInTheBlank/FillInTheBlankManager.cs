@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System.Xml;
+using System;
 
 public class FillInTheBlankManager : MonoBehaviour {
 	
 	private GameManager gm;
-	private FillInTheBlankManager qm;
+	private FillInTheBlankManager fibm;
 	public GameObject panel;
 	private static string userpath = string.Empty;
 	private int currentScore = 0;
@@ -30,7 +31,7 @@ public class FillInTheBlankManager : MonoBehaviour {
 	IEnumerator Start () {
 		userpath = System.IO.Path.Combine (Application.dataPath, "Resources/users.xml");
 		gm = GameObject.Find("GameManager").GetComponent<GameManager>();
-		qm = GameObject.Find("FillInTheBlankManager").GetComponent<FillInTheBlankManager>();
+		fibm = GameObject.Find("FillInTheBlankManager").GetComponent<FillInTheBlankManager>();
 
 
 		XmlDocument xmlFillInTheBlankDoc = new XmlDocument ();
@@ -77,16 +78,12 @@ public class FillInTheBlankManager : MonoBehaviour {
 
 				// move to next question
 				if (QNode.NextSibling.Name == "Q") {
-					//print ("found Q");
 					QNode = indexNode.NextSibling;
 					print (QNode.Name);
 					subIndex++;
 					yield return new WaitForSeconds(2000);
 				} 
-			}
-
-
-
+			}      
 			yield return new WaitForSeconds(2000);
 		}
 
@@ -106,9 +103,10 @@ public class FillInTheBlankManager : MonoBehaviour {
 		while (usernameNode.InnerText != gm.Username) {
 			usernameNode = usernameNode.ParentNode.NextSibling.FirstChild;
 		}
+		XmlNode userNode = usernameNode.ParentNode;
 
 		// Update user.xml with the score
-		XmlNode fillInTheBlankIndexNode = usernameNode.ParentNode.SelectSingleNode (".//FIB//Index");
+		XmlNode fillInTheBlankIndexNode = userNode.SelectSingleNode (".//FIB//Index");
 
 		// find the matching game index
 		while (gm.Index.ToString() != fillInTheBlankIndexNode.InnerText) {
@@ -127,11 +125,11 @@ public class FillInTheBlankManager : MonoBehaviour {
 
 
 		// Find user and update <TotalScore>
-		while (usernameNode.InnerText != gm.Username) {
-			usernameNode = usernameNode.ParentNode.NextSibling.FirstChild;
-		} 
-		usernameNode.ParentNode.SelectSingleNode ("TotalScore").InnerText = 
-			(int.Parse(usernameNode.ParentNode.SelectSingleNode ("TotalScore").InnerText) + currentScore).ToString();
+//		while (usernameNode.InnerText != gm.Username) {
+//			usernameNode = usernameNode.ParentNode.NextSibling.FirstChild;
+//		} 
+		userNode.SelectSingleNode ("TotalScore").InnerText = 
+			(int.Parse(userNode.SelectSingleNode ("TotalScore").InnerText) + currentScore).ToString();
 
 		xmlUserDoc.Save (userpath);
 	}
@@ -145,7 +143,7 @@ public class FillInTheBlankManager : MonoBehaviour {
 		xmlFillInTheBlankDoc.Load (gm.Path);
 		XmlNode indexNode = xmlFillInTheBlankDoc.SelectSingleNode ("//Index");
 
-		int subIndexForInfo = qm.subIndex - 1;
+		int subIndexForInfo = fibm.subIndex - 1;
 
 		// check if user answer is correct
 		if(indexNode.SelectSingleNode ("//Blank"+ subIndexForInfo +"//Option"+ optionNumber +"//correct").InnerText == "T") {
@@ -187,9 +185,7 @@ public class FillInTheBlankManager : MonoBehaviour {
 
 			// if user got it correct in either chance, score + 10
 			if (indexNode.SelectSingleNode ("//Blank" + subIndexForInfo + "//Option" + optionNumber + "//correct").InnerText == "T") {
-				currentScore = currentScore + 10;
-				Text score = GameObject.Find("Score").GetComponent<Text>();
-				score.text = currentScore.ToString ();
+				InvokeRepeating ("AddScore", 0.0f, 0.1f);
 			}
 
 			o1Active = true;
@@ -206,11 +202,11 @@ public class FillInTheBlankManager : MonoBehaviour {
 			// update button text to show options for next blank
 			XmlNode nextBlankNode = indexNode.NextSibling.NextSibling.FirstChild.NextSibling;
 
-			if (qm.subIndex <= 6) {
-				option1.GetComponentInChildren<Text> ().text = nextBlankNode.SelectSingleNode ("//Blank" + qm.subIndex + "//Option1//value").InnerText;
-				option2.GetComponentInChildren<Text> ().text = nextBlankNode.SelectSingleNode ("//Blank" + qm.subIndex + "//Option2//value").InnerText;
-				option3.GetComponentInChildren<Text> ().text = nextBlankNode.SelectSingleNode ("//Blank" + qm.subIndex + "//Option3//value").InnerText;
-				option4.GetComponentInChildren<Text> ().text = nextBlankNode.SelectSingleNode ("//Blank" + qm.subIndex + "//Option4//value").InnerText;
+			if (fibm.subIndex <= 6) {
+				option1.GetComponentInChildren<Text> ().text = nextBlankNode.SelectSingleNode ("//Blank" + fibm.subIndex + "//Option1//value").InnerText;
+				option2.GetComponentInChildren<Text> ().text = nextBlankNode.SelectSingleNode ("//Blank" + fibm.subIndex + "//Option2//value").InnerText;
+				option3.GetComponentInChildren<Text> ().text = nextBlankNode.SelectSingleNode ("//Blank" + fibm.subIndex + "//Option3//value").InnerText;
+				option4.GetComponentInChildren<Text> ().text = nextBlankNode.SelectSingleNode ("//Blank" + fibm.subIndex + "//Option4//value").InnerText;
 			}
 			clickCounter = 2;
 		}
@@ -267,6 +263,18 @@ public class FillInTheBlankManager : MonoBehaviour {
 			blankToChange (1, optionButton, optionNumber);
 		}
 	}
+
+
+	public void AddScore () {
+		currentScore++;
+		Text score = GameObject.Find("Score").GetComponent<Text>();
+		score.text = currentScore.ToString ();
+
+		if (currentScore % 10 == 0) {
+			CancelInvoke ();
+		}
+	}
+
 
 
 }

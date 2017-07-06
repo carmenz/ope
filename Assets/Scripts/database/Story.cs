@@ -12,19 +12,18 @@ using System;
 public class Story : MonoBehaviour {
 
 	private string island;
-	private static string path = string.Empty;
 	private static string userpath = string.Empty;
+	private GameManager gm;
+	private int pos;
 
 	public void GetData() {
 		bool firstChallengeOnIsland = true;
 		bool firstStoryOnIsland = true;
 
-		GameManager gm = GameObject.Find ("GameManager").GetComponent<GameManager> ();
-
+		gm = GameObject.Find ("GameManager").GetComponent<GameManager> ();
 		userpath = System.IO.Path.Combine (Application.dataPath, "Resources/users.xml");
 
-		int pos = gm.typeCode;
-		print ("pos is" + pos);
+		int pos = gm.Index;
 
 		if (pos < 25) {
 			island = "IslandA";

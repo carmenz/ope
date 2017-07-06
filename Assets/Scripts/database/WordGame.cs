@@ -1,28 +1,21 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
-using System.Xml;
-using System.Xml.Serialization;
-using System.IO;
-using System.Text;
-using UnityEngine.SceneManagement;
-using System;
 
 public class WordGame : MonoBehaviour {
 
-
 	private string island;
 	private static string path = string.Empty;
+	private GameManager gm;
+	private int pos;
 
 	public void GetData() {
 
-		GameManager gm = GameObject.Find ("GameManager").GetComponent<GameManager> ();
+		gm = GameObject.Find ("GameManager").GetComponent<GameManager> ();
 
-		int pos = gm.Index;
-		print ("pos is" + pos);
+		pos = gm.Index;
 
-		// choose quiz file according to island
+		// choose game file according to island
 		if (pos < 25) {
 			island = "IslandA";
 			path = System.IO.Path.Combine (Application.dataPath, "Resources/wordGamesA.xml");
