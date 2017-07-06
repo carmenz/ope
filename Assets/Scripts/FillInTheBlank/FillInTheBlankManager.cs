@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System.Xml;
+using System;
 
 public class FillInTheBlankManager : MonoBehaviour {
 	
@@ -187,9 +188,7 @@ public class FillInTheBlankManager : MonoBehaviour {
 
 			// if user got it correct in either chance, score + 10
 			if (indexNode.SelectSingleNode ("//Blank" + subIndexForInfo + "//Option" + optionNumber + "//correct").InnerText == "T") {
-				currentScore = currentScore + 10;
-				Text score = GameObject.Find("Score").GetComponent<Text>();
-				score.text = currentScore.ToString ();
+				InvokeRepeating ("AddScore", 0.0f, 0.1f);
 			}
 
 			o1Active = true;
@@ -267,6 +266,18 @@ public class FillInTheBlankManager : MonoBehaviour {
 			blankToChange (1, optionButton, optionNumber);
 		}
 	}
+
+
+	void AddScore () {
+		currentScore++;
+		Text score = GameObject.Find("Score").GetComponent<Text>();
+		score.text = currentScore.ToString ();
+
+		if (currentScore % 10 == 0) {
+			CancelInvoke ();
+		}
+	}
+
 
 
 }
