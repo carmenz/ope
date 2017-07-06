@@ -83,7 +83,7 @@ public class FillInTheBlankManager : MonoBehaviour {
 					subIndex++;
 					yield return new WaitForSeconds(2000);
 				} 
-			}
+			}      
 			yield return new WaitForSeconds(2000);
 		}
 
@@ -103,9 +103,10 @@ public class FillInTheBlankManager : MonoBehaviour {
 		while (usernameNode.InnerText != gm.Username) {
 			usernameNode = usernameNode.ParentNode.NextSibling.FirstChild;
 		}
+		XmlNode userNode = usernameNode.ParentNode;
 
 		// Update user.xml with the score
-		XmlNode fillInTheBlankIndexNode = usernameNode.ParentNode.SelectSingleNode (".//FIB//Index");
+		XmlNode fillInTheBlankIndexNode = userNode.SelectSingleNode (".//FIB//Index");
 
 		// find the matching game index
 		while (gm.Index.ToString() != fillInTheBlankIndexNode.InnerText) {
@@ -124,11 +125,11 @@ public class FillInTheBlankManager : MonoBehaviour {
 
 
 		// Find user and update <TotalScore>
-		while (usernameNode.InnerText != gm.Username) {
-			usernameNode = usernameNode.ParentNode.NextSibling.FirstChild;
-		} 
-		usernameNode.ParentNode.SelectSingleNode ("TotalScore").InnerText = 
-			(int.Parse(usernameNode.ParentNode.SelectSingleNode ("TotalScore").InnerText) + currentScore).ToString();
+//		while (usernameNode.InnerText != gm.Username) {
+//			usernameNode = usernameNode.ParentNode.NextSibling.FirstChild;
+//		} 
+		userNode.SelectSingleNode ("TotalScore").InnerText = 
+			(int.Parse(userNode.SelectSingleNode ("TotalScore").InnerText) + currentScore).ToString();
 
 		xmlUserDoc.Save (userpath);
 	}
@@ -264,7 +265,7 @@ public class FillInTheBlankManager : MonoBehaviour {
 	}
 
 
-	void AddScore () {
+	public void AddScore () {
 		currentScore++;
 		Text score = GameObject.Find("Score").GetComponent<Text>();
 		score.text = currentScore.ToString ();
