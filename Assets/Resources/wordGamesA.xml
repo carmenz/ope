@@ -33,6 +33,16 @@
 				<Yes>T</Yes>
 				<info>This is Yes</info>
 			</Word6>
+			<Word7>
+				<value>yessssssssssss</value>
+				<Yes>T</Yes>
+				<info>This is Yes</info>
+			</Word7>
+			<Word8>
+				<value>yessss again</value>
+				<Yes>T</Yes>
+				<info>This is Yes</info>
+			</Word8>
 		</Game>
 		<Game>
 			<Index>2</Index>
@@ -66,6 +76,16 @@
 				<Yes>T</Yes>
 				<info>This is Correct</info>
 			</Word6>
+			<Word7>
+				<value>yessssssssssss</value>
+				<Yes>T</Yes>
+				<info>This is Yes</info>
+			</Word7>
+			<Word8>
+				<value>yessss again</value>
+				<Yes>T</Yes>
+				<info>This is Yes</info>
+			</Word8>
 		</Game>
 	</Games>
 </WordGameCollction>
