@@ -152,13 +152,14 @@ public class FillInTheBlankManager : MonoBehaviour {
 		// check if user answer is correct
 		if(indexNode.SelectSingleNode ("//Blank"+ subIndexForInfo +"//Option"+ optionNumber +"//correct").InnerText == "T") {
 			blankText.color = Color.green;
+			blankText.text = indexNode.SelectSingleNode ("//Blank"+ subIndexForInfo +"//Option"+ optionNumber +"//value").InnerText;
 			clickCounter = 2;
 		} else {
 			blankText.color = Color.red;
 			clickCounter--;
 		}
 			
-		blankText.text = option.GetComponentInChildren<Text> ().text;
+		//blankText.text = option.GetComponentInChildren<Text> ().text;
 
 		Text infoText = GameObject.Find ("Info").GetComponent<Text> ();
 
@@ -178,26 +179,34 @@ public class FillInTheBlankManager : MonoBehaviour {
 				o4Active = false;
 			}
 
-			// clear info text if wrong
-			infoText.text = "";
+			// update info text on screen
+			infoText.text = option.GetComponentInChildren<Text>().text + " is not correct, try again!";
 
 		} else {
-
+			
 			// update info text 
-			infoText.text = indexNode.SelectSingleNode ("//Blank"+ subIndexForInfo +"//Option"+ optionNumber +"//info").InnerText;
+
+			//infoText.text = indexNode.SelectSingleNode ("//Blank"+ subIndexForInfo +"//Option"+ optionNumber +"//info").InnerText;
 
 
 			// if user got it correct in either chance, score + 10
 			if (indexNode.SelectSingleNode ("//Blank" + subIndexForInfo + "//Option" + optionNumber + "//correct").InnerText == "T") {
+
+				infoText.text = "That's correct!";
+
 				InvokeRepeating ("AddScore", 0.0f, 0.1f);
 
-
-
-			
-
-				StartCoroutine(FadeTextInAndOut(0.6f));
+				StartCoroutine (FadeTextInAndOut (0.6f));
 				//i.transform.position = new Vector2 (i.transform.position.x, i.transform.position.y);
 				//break;
+			} else {
+				int check = 1;
+				while (indexNode.SelectSingleNode ("//Blank" + subIndexForInfo + "//Option" + check + "//correct").InnerText != "T") {
+					check++;
+				}
+				XmlNode correctAnsNode = indexNode.SelectSingleNode ("//Blank" + subIndexForInfo + "//Option" + check + "//value");
+				infoText.text = option.GetComponentInChildren<Text> ().text + " is also not correct." + correctAnsNode.InnerText + " is the correct answer.";
+				blankText.text = correctAnsNode.InnerText;
 			}
 
 			o1Active = true;
@@ -298,7 +307,7 @@ public class FillInTheBlankManager : MonoBehaviour {
 			//Transform target;
 			float step = 0.2f * Time.deltaTime;
 
-			Vector2 start = new Vector2 (i.transform.position.x, i.transform.position.y - 1f);
+			Vector2 temp = new Vector2 (i.transform.position.x, i.transform.position.y - 1f);
 			Vector2 target = new Vector2 (i.transform.position.x, i.transform.position.y + 1f);
 			i.transform.position = Vector2.MoveTowards (i.transform.position, target, step);
 			print ("ummmm");
