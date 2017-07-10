@@ -288,7 +288,8 @@ public class WordGameManager : MonoBehaviour {
 
 			multiplexerCheck (multiplexerCount);
 
-			currentScore = currentScore + 10 * multiplexerCount;
+			updateCurrentScore ();
+			//currentScore = currentScore + 10 * multiplexerCount;
 
 			Text score = GameObject.Find("Score").GetComponent<Text>();
 			score.text = currentScore.ToString();
@@ -307,8 +308,8 @@ public class WordGameManager : MonoBehaviour {
 				cross2.gameObject.SetActive (true);
 			} else {
 				cross3.gameObject.SetActive (true);
-
-				if (subIndex == 8) {
+			
+				if (subIndex == 9) {
 					missionCompletePanel.SetActive(true);
 
 					// display score on panel
@@ -383,12 +384,24 @@ public class WordGameManager : MonoBehaviour {
 		multiplexer = GameObject.Find("Multiplexer").GetComponent<Text>();
 		if (multiplexerCount <= 2) {
 			multiplexer.text = "x1";
+
 		} else if (multiplexerCount <= 5) {
 			multiplexer.text = "x2";
+
 		} else {
 			multiplexer.text = "x3";
+	
 		}
+	}
 
+	public void updateCurrentScore() {
+		if (multiplexer.text == "x1") {
+			currentScore = currentScore + 10 * 1;
+		} else if (multiplexer.text == "x2") {
+			currentScore = currentScore + 10 * 2;
+		} else {
+			currentScore = currentScore + 10 * 3;
+		}
 	}
 
 }
