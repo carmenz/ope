@@ -11,59 +11,9 @@
     <User>
       <Username>1</Username>
       <Password>fn5g+xrZS7Ud7B8EBFfuxg==</Password>
-      <CurrentPosX>-0.4008293</CurrentPosX>
-      <CurrentPosY>-13.89985</CurrentPosY>
-      <TotalScore>2310</TotalScore>
-      <IslandA>
-        <FillInTheBlanks>
-          <FIB>
-            <Index>1</Index>
-            <Score>100</Score>
-          </FIB>
-          <FIB>
-            <Index>2</Index>
-          </FIB>
-        </FillInTheBlanks>
-        <WordGames>
-          <Game>
-            <Index>1</Index>
-            <Word1>T</Word1>
-            <Word2>T</Word2>
-            <Word3>T</Word3>
-            <Word4>T</Word4>
-            <Word5>T</Word5>
-            <Word6>T</Word6>
-            <Word7>T</Word7>
-            <Word8>T</Word8>
-          </Game>
-          <Game>
-            <Index>2</Index>
-            <Word1>F</Word1>
-            <Word2>F</Word2>
-            <Word3>T</Word3>
-            <Word4>F</Word4>
-            <Word5>F</Word5>
-            <Word6>T</Word6>
-            <Word7>F</Word7>
-            <Word8>T</Word8>
-            <Score>70</Score>
-          </Game>
-        </WordGames>
-      </IslandA>
-    </User>
-    <User>
-      <Username>4545454</Username>
-      <Password>+1LmY02ObFBwN749JRC4fg==</Password>
-      <CurrentPosX>-11.39111</CurrentPosX>
-      <CurrentPosY>-9.585732</CurrentPosY>
-      <TotalScore>30</TotalScore>
-    </User>
-    <User>
-      <Username>3</Username>
-      <Password>AmvWv+57bYEooZUuBaF+JA==</Password>
-      <CurrentPosX>125.7659</CurrentPosX>
-      <CurrentPosY>-70.97927</CurrentPosY>
-      <TotalScore>0</TotalScore>
+      <CurrentPosX>-9.545918</CurrentPosX>
+      <CurrentPosY>-12.38175</CurrentPosY>
+      <TotalScore>2990</TotalScore>
     </User>
     <User>
       <Username>4</Username>
@@ -71,14 +21,6 @@
       <CurrentPosX>163.6889</CurrentPosX>
       <CurrentPosY>-217.7268</CurrentPosY>
       <TotalScore>30</TotalScore>
-      <IslandA>
-        <FillInTheBlanks>
-          <FIB>
-            <Index>1</Index>
-            <Score>30</Score>
-          </FIB>
-        </FillInTheBlanks>
-      </IslandA>
     </User>
   </Users>
 </UserCollection>

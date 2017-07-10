@@ -22,7 +22,7 @@ public class WordGameManager : MonoBehaviour {
 	public GameObject cross3;
 
 	private Text multiplexer;
-	private Text panelScore;
+//	private Text panelScore;
 
 	public int subIndex = 1;
 
@@ -67,15 +67,22 @@ public class WordGameManager : MonoBehaviour {
 			} 
 		}
 	
-		missionCompletePanel.SetActive(true);
-
-		// display score on panel
-		panelScore = GameObject.Find("MissionCompletePanelScore").GetComponent<Text>();
-		panelScore.text = currentScore.ToString();
+		showPanel ("MissionComplete");
 
 		updateDBScore ();
 		updateDBTotalScore ();
 
+	}
+
+	public void showPanel(string type) {
+		if (type == "MissionComplete") {
+			missionCompletePanel.SetActive (true);
+		} else {
+			oopsPanel.SetActive(true);
+		}
+		// display score on panel
+		Text panelScore = GameObject.Find("PanelScore").GetComponent<Text>();
+		panelScore.text = currentScore.ToString();
 	}
 
 
@@ -311,16 +318,13 @@ public class WordGameManager : MonoBehaviour {
 				cross3.gameObject.SetActive (true);
 			
 				if (subIndex == 9) {
-					missionCompletePanel.SetActive(true);
-
-					// display score on panel
-					panelScore = GameObject.Find("MissionCompletePanelScore").GetComponent<Text>();
-					panelScore.text = currentScore.ToString();
+					showPanel ("MissionComplete");
 				} else {
-					oopsPanel.SetActive(true);
-					// display score on panel
-					panelScore = GameObject.Find("OopsPanelScore").GetComponent<Text>();
-					panelScore.text = currentScore.ToString();
+					showPanel ("Oops");
+//					oopsPanel.SetActive(true);
+//					// display score on panel
+//					panelScore = GameObject.Find("OopsPanelScore").GetComponent<Text>();
+//					panelScore.text = currentScore.ToString();
 				}
 				updateDBScore ();
 			}
