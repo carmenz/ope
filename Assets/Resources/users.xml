@@ -11,9 +11,20 @@
     <User>
       <Username>1</Username>
       <Password>fn5g+xrZS7Ud7B8EBFfuxg==</Password>
-      <CurrentPosX>-9.545918</CurrentPosX>
-      <CurrentPosY>-12.38175</CurrentPosY>
-      <TotalScore>2990</TotalScore>
+      <CurrentPosX>-218.1665</CurrentPosX>
+      <CurrentPosY>-144.3679</CurrentPosY>
+      <TotalScore>3529</TotalScore>
+      <IslandA>
+        <FillInTheBlanks>
+          <FIB>
+            <Index>1</Index>
+            <Score>59</Score>
+          </FIB>
+          <FIB>
+            <Index>2</Index>
+          </FIB>
+        </FillInTheBlanks>
+      </IslandA>
     </User>
     <User>
       <Username>4</Username>

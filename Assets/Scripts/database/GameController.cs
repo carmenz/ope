@@ -15,7 +15,7 @@ public class GameController : MonoBehaviour {
 
 	void Awake() {
 		if (Application.platform == RuntimePlatform.WindowsPlayer) {
-			datapath = System.IO.Path.Combine (Application.persistentDataPath, "Resources/users.xml");
+			datapath = System.IO.Path.Combine (Application.dataPath, "Resources/users.xml");
 		} else {
 		datapath = System.IO.Path.Combine (Application.dataPath, "Resources/users.xml");
 
