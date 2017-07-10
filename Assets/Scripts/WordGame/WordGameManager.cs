@@ -12,7 +12,8 @@ public class WordGameManager : MonoBehaviour {
 	public GameObject oopsPanel;
 	private static string userpath = string.Empty;
 	private int currentScore = 0;
-	public static bool finishAddingToDB = false;
+	//public static bool finishAddingToDB = false;
+
 
 	private int crossCount = 0;
 	private int multiplexerCount = 0;
@@ -27,7 +28,7 @@ public class WordGameManager : MonoBehaviour {
 
 	// Use this for initialization
 	IEnumerator Start () {
-		multiplexer = GameObject.Find("Multiplexer").GetComponent<Text>();
+		//multiplexer = GameObject.Find("Multiplexer").GetComponent<Text>();
 
 		userpath = System.IO.Path.Combine (Application.dataPath, "Resources/users.xml");
 		gm = GameObject.Find("GameManager").GetComponent<GameManager>();
@@ -81,7 +82,7 @@ public class WordGameManager : MonoBehaviour {
 	public void YesOnClick()
 	{
 		Debug.Log("yes is clicked");
-		finishAddingToDB = false;
+		//finishAddingToDB = false;
 
 		XmlDocument xmlWordGameDoc = new XmlDocument ();
 		xmlWordGameDoc.Load (gm.Path);
@@ -112,7 +113,7 @@ public class WordGameManager : MonoBehaviour {
 		// update node if <word#> node already exist
 		if (gameIndexNode.ParentNode.ChildNodes.Count > subIndexForInfo + 1) {
 			gameIndexNode.ParentNode.SelectSingleNode (".//Word" + subIndexForInfo).InnerText = "T";
-			finishAddingToDB = true;
+			//finishAddingToDB = true;
 
 
 		} else {
@@ -178,7 +179,7 @@ public class WordGameManager : MonoBehaviour {
 	public void NoOnClick()
 	{
 		Debug.Log("No is clicked");
-		finishAddingToDB = false;
+		//finishAddingToDB = false;
 
 		XmlDocument xmlWordGameDoc = new XmlDocument ();
 		xmlWordGameDoc.Load (gm.Path);
@@ -315,18 +316,12 @@ public class WordGameManager : MonoBehaviour {
 					// display score on panel
 					panelScore = GameObject.Find("MissionCompletePanelScore").GetComponent<Text>();
 					panelScore.text = currentScore.ToString();
-
-
 				} else {
 					oopsPanel.SetActive(true);
-
-
 					// display score on panel
 					panelScore = GameObject.Find("OopsPanelScore").GetComponent<Text>();
 					panelScore.text = currentScore.ToString();
 				}
-
-
 				updateDBScore ();
 			}
 		}
@@ -380,6 +375,7 @@ public class WordGameManager : MonoBehaviour {
 		xmlUserDoc.Save (userpath);
 	}
 
+
 	public void multiplexerCheck(int multiplexerCount) {
 		multiplexer = GameObject.Find("Multiplexer").GetComponent<Text>();
 		if (multiplexerCount <= 2) {
@@ -387,12 +383,17 @@ public class WordGameManager : MonoBehaviour {
 
 		} else if (multiplexerCount <= 5) {
 			multiplexer.text = "x2";
-
+			if (multiplexerCount == 3) {
+				multiplexer.GetComponent<Animation>().Play();
+			}
 		} else {
 			multiplexer.text = "x3";
-	
+			if (multiplexerCount == 6) {
+				multiplexer.GetComponent<Animation>().Play();
+			}
 		}
 	}
+
 
 	public void updateCurrentScore() {
 		if (multiplexer.text == "x1") {
@@ -403,7 +404,6 @@ public class WordGameManager : MonoBehaviour {
 			currentScore = currentScore + 10 * 3;
 		}
 	}
-
 }
 
 
