@@ -4,12 +4,14 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Xml;
 using System;
+using DG.Tweening;
 
 public class FillInTheBlankManager : MonoBehaviour {
 	
 	private GameManager gm;
 	private FillInTheBlankManager fibm;
 	public GameObject panel;
+	public GameObject ten;
 	private static string userpath = string.Empty;
 	private int currentScore = 0;
 
@@ -30,7 +32,7 @@ public class FillInTheBlankManager : MonoBehaviour {
 
 	// Use this for initialization
 	IEnumerator Start () {
-		Text i = GameObject.Find ("Ten").GetComponent<Text> ();
+		// Text i = GameObject.Find ("Ten").GetComponent<Text> ();
 		//Vector2 startPos = i.transform.position;
 
 		userpath = System.IO.Path.Combine (Application.dataPath, "Resources/users.xml");
@@ -196,10 +198,16 @@ public class FillInTheBlankManager : MonoBehaviour {
 
 				InvokeRepeating ("AddScore", 0.0f, 0.1f);
 
-	
 				StartCoroutine (FadeTextInAndOut (0.6f));
-				//i.transform.position = new Vector2 (i.transform.position.x, i.transform.position.y);
-				//break;
+
+//				var y = ten.transform.localPosition.y;
+//				ten.SetActive(true);
+//				ten.transform.DOLocalMoveY(-182, 2f);
+//				ten.GetComponent<Text>().DOFade(0, 2f).OnComplete(() => {
+//					ten.SetActive(false);
+//					ten.transform.DOLocalMoveY(y, 0f);
+//					ten.GetComponent<Text>().DOFade(1, 2f);
+
 			} else {
 				int check = 1;
 				while (indexNode.SelectSingleNode ("//Blank" + subIndexForInfo + "//Option" + check + "//correct").InnerText != "T") {
