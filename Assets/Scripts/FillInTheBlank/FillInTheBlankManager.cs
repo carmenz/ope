@@ -309,6 +309,7 @@ public class FillInTheBlankManager : MonoBehaviour {
 
 	public IEnumerator FadeTextInAndOut(float t){
 		Text i = GameObject.Find ("Tennnn").GetComponent<Text> ();
+		Color tempColor = i.color;
 		i.color = new Color(0, 255, 0, 1);
 		Vector2 target = new Vector2 (i.transform.position.x, i.transform.position.y + 0.2f);
 		Vector2 temp = new Vector2 (i.transform.position.x, i.transform.position.y);
@@ -323,6 +324,7 @@ public class FillInTheBlankManager : MonoBehaviour {
 			yield return null;
 		}
 		i.transform.position = Vector2.MoveTowards (i.transform.position, temp, 1);
+		i.color = tempColor;
 	}
 
 
