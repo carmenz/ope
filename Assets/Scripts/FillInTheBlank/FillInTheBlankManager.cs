@@ -196,7 +196,7 @@ public class FillInTheBlankManager : MonoBehaviour {
 
 				InvokeRepeating ("AddScore", 0.0f, 0.1f);
 
-
+	
 				//StartCoroutine (FadeTextInAndOut (0.6f));
 				//i.transform.position = new Vector2 (i.transform.position.x, i.transform.position.y);
 				//break;
@@ -214,6 +214,7 @@ public class FillInTheBlankManager : MonoBehaviour {
 			o2Active = true;
 			o3Active = true;
 			o4Active = true;
+
 
 			// set all buttons active
 			option1.gameObject.SetActive (true);
