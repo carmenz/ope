@@ -8,7 +8,7 @@ public class WordGameManager : MonoBehaviour {
 
 	private GameManager gm;
 	private WordGameManager wgm;
-	public GameObject congratsPanel;
+	public GameObject missionCompletePanel;
 	public GameObject oopsPanel;
 	private static string userpath = string.Empty;
 	private int currentScore = 0;
@@ -66,10 +66,10 @@ public class WordGameManager : MonoBehaviour {
 			} 
 		}
 	
-		congratsPanel.SetActive(true);
+		missionCompletePanel.SetActive(true);
 
 		// display score on panel
-		panelScore = GameObject.Find("CongratsPanelScore").GetComponent<Text>();
+		panelScore = GameObject.Find("MissionCompletePanelScore").GetComponent<Text>();
 		panelScore.text = currentScore.ToString();
 
 		updateDBScore ();
@@ -307,11 +307,24 @@ public class WordGameManager : MonoBehaviour {
 				cross2.gameObject.SetActive (true);
 			} else {
 				cross3.gameObject.SetActive (true);
-				oopsPanel.SetActive(true);
-	
-				// display score on panel
-				panelScore = GameObject.Find("OopsPanelScore").GetComponent<Text>();
-				panelScore.text = currentScore.ToString();
+
+				if (subIndex == 8) {
+					missionCompletePanel.SetActive(true);
+
+					// display score on panel
+					panelScore = GameObject.Find("MissionCompletePanelScore").GetComponent<Text>();
+					panelScore.text = currentScore.ToString();
+
+
+				} else {
+					oopsPanel.SetActive(true);
+
+
+					// display score on panel
+					panelScore = GameObject.Find("OopsPanelScore").GetComponent<Text>();
+					panelScore.text = currentScore.ToString();
+				}
+
 
 				updateDBScore ();
 			}
