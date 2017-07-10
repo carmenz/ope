@@ -97,7 +97,8 @@ public class NewPlayer : MonoBehaviour {
 			missionsPanel.transform.Find("Footer").GetComponent<Text>().text = (200-tts).ToString() + " Left";
 		}
 
-		missionsPanel.SetActive(false);
+		// show or hide the mission panel
+		missionsPanel.SetActive(tts > 0 ? false : true);
 
 		// in case players stay on a position before quit
         _canBeTriggered = false;
