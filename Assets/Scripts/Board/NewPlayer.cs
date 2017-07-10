@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 using System.Xml;
 using System.IO;
 using System;
@@ -40,7 +41,7 @@ public class NewPlayer : MonoBehaviour {
 
 	void MoveByTimeline() {
         Vector2 curenPosition = new Vector2(this.transform.position.x, this.transform.position.y);
-        if (Input.GetButton("Fire1"))
+        if (Input.GetButton("Fire1") && !EventSystem.current.IsPointerOverGameObject())
         {   
             moveStartPosition = curenPosition;
             moveTowardPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
