@@ -124,9 +124,12 @@ public class NewPlayer : MonoBehaviour {
 		// Get slot type
 		// WORDPLAY, SLIDESTORY, MADLIBS, SPINNINGWHEEL, SHOP, PORT
 		// var type = collider.name.Replace(" Slot", "");
-		var type = collider.GetComponent<SquareController>().type;
-		gm.typeCode = collider.GetComponent<SquareController>().index;
-		gm.Index = collider.GetComponent<SquareController>().index;
+		var sc = collider.GetComponent<SquareController>();
+		if (!sc)
+			return;
+		var type = sc.type;
+		gm.typeCode = sc.index;
+		gm.Index = sc.index;
         gm.Coordinate = new Vector2(transform.position.x, transform.position.y);
 		SaveCoordinate();
 
