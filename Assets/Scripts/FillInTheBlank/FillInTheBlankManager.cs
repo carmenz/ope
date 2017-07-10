@@ -197,7 +197,7 @@ public class FillInTheBlankManager : MonoBehaviour {
 				InvokeRepeating ("AddScore", 0.0f, 0.1f);
 
 	
-				//StartCoroutine (FadeTextInAndOut (0.6f));
+				StartCoroutine (FadeTextInAndOut (0.6f));
 				//i.transform.position = new Vector2 (i.transform.position.x, i.transform.position.y);
 				//break;
 			} else {
@@ -299,28 +299,23 @@ public class FillInTheBlankManager : MonoBehaviour {
 	}
 
 
-//	public IEnumerator FadeTextInAndOut(float t){
-//		Text i = GameObject.Find ("Ten").GetComponent<Text> ();
-//		i.color = new Color(0, 255, 0, 1);
-//		Vector2 target = new Vector2 (i.transform.position.x, i.transform.position.y + 0.2f);
-//		Vector2 temp = new Vector2 (5.9f, -2.9f);
-//		print (temp);
-//		while (i.color.a > 0.0f)
-//		{
-//			print ("hehehehehehe");
-//			i.color = Color.Lerp (i.color, Color.clear, 0.9f * Time.deltaTime);
-//			//Transform target;
-//			float step = 0.2f * Time.deltaTime;
-//
-//
-//			i.transform.position = Vector2.MoveTowards (i.transform.position, target, step);
-//			print ("ummmm");
-//			
-//			yield return null;
-//
-//		}
-//		i.transform.position = Vector2.MoveTowards (i.transform.position, temp, 1);
-//	}
+	public IEnumerator FadeTextInAndOut(float t){
+		Text i = GameObject.Find ("Tennnn").GetComponent<Text> ();
+		i.color = new Color(0, 255, 0, 1);
+		Vector2 target = new Vector2 (i.transform.position.x, i.transform.position.y + 0.2f);
+		Vector2 temp = new Vector2 (i.transform.position.x, i.transform.position.y);
+
+		while (i.color.a > 0.3f)
+		{
+			i.color = Color.Lerp (i.color, Color.clear, 0.9f * Time.deltaTime);
+			//Transform target;
+			float step = 0.2f * Time.deltaTime;
+			i.transform.position = Vector2.MoveTowards (i.transform.position, target, step);
+			
+			yield return null;
+		}
+		i.transform.position = Vector2.MoveTowards (i.transform.position, temp, 1);
+	}
 
 
 
