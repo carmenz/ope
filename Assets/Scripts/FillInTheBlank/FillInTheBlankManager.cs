@@ -26,9 +26,13 @@ public class FillInTheBlankManager : MonoBehaviour {
 	private Button option4;
 
 	public int subIndex = 1;
+	Vector2 startPos;
 
 	// Use this for initialization
 	IEnumerator Start () {
+		Text i = GameObject.Find ("Ten").GetComponent<Text> ();
+		//Vector2 startPos = i.transform.position;
+
 		userpath = System.IO.Path.Combine (Application.dataPath, "Resources/users.xml");
 		gm = GameObject.Find("GameManager").GetComponent<GameManager>();
 		fibm = GameObject.Find("FillInTheBlankManager").GetComponent<FillInTheBlankManager>();
@@ -186,6 +190,14 @@ public class FillInTheBlankManager : MonoBehaviour {
 			// if user got it correct in either chance, score + 10
 			if (indexNode.SelectSingleNode ("//Blank" + subIndexForInfo + "//Option" + optionNumber + "//correct").InnerText == "T") {
 				InvokeRepeating ("AddScore", 0.0f, 0.1f);
+
+
+
+			
+
+				StartCoroutine(FadeTextInAndOut(0.6f));
+				//i.transform.position = new Vector2 (i.transform.position.x, i.transform.position.y);
+				//break;
 			}
 
 			o1Active = true;
@@ -272,6 +284,26 @@ public class FillInTheBlankManager : MonoBehaviour {
 
 		if (currentScore % 10 == 0) {
 			CancelInvoke ();
+		}
+	}
+
+
+	public IEnumerator FadeTextInAndOut(float t){
+		Text i = GameObject.Find ("Ten").GetComponent<Text> ();
+		i.color = new Color(0, 255, 0, 1);
+		while (i.color.a > 0.0f)
+		{
+			print ("hehehehehehe");
+			i.color = Color.Lerp (i.color, Color.clear, 0.9f * Time.deltaTime);
+			//Transform target;
+			float step = 0.2f * Time.deltaTime;
+
+			Vector2 start = new Vector2 (i.transform.position.x, i.transform.position.y - 1f);
+			Vector2 target = new Vector2 (i.transform.position.x, i.transform.position.y + 1f);
+			i.transform.position = Vector2.MoveTowards (i.transform.position, target, step);
+			print ("ummmm");
+			yield return null;
+			//i.transform.position = start;
 		}
 	}
 

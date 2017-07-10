@@ -91,10 +91,10 @@ public class NewPlayer : MonoBehaviour {
 		var tts = GetTotalScore();
 		if (tts >= 200) {
 			coinsCm.SetActive(true);
-			missionsPanel.transform.Find("Footer").GetComponent<Text>().text = (tts - 200).ToString() + " Left";
+			missionsPanel.transform.Find("Footer").GetComponent<Text>().text = "0 Left";
 		} else {
 			coinsCm.SetActive(false);
-			missionsPanel.transform.Find("Footer").GetComponent<Text>().text = "";
+			missionsPanel.transform.Find("Footer").GetComponent<Text>().text = (200-tts).ToString() + " Left";
 		}
 
 		missionsPanel.SetActive(false);

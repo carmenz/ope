@@ -368,9 +368,9 @@ public class WordGameManager : MonoBehaviour {
 
 	public void multiplexerCheck(int multiplexerCount) {
 		multiplexer = GameObject.Find("Multiplexer").GetComponent<Text>();
-		if (multiplexerCount <= 3) {
+		if (multiplexerCount <= 2) {
 			multiplexer.text = "x1";
-		} else if (multiplexerCount <= 6) {
+		} else if (multiplexerCount <= 5) {
 			multiplexer.text = "x2";
 		} else {
 			multiplexer.text = "x3";
