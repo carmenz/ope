@@ -182,7 +182,10 @@ public class FillInTheBlankManager : MonoBehaviour {
 			}
 
 			// update info text on screen
-			infoText.text = option.GetComponentInChildren<Text>().text + " is not correct, try again!";
+			// OLD VERSION
+			// infoText.text = option.GetComponentInChildren<Text>().text + " is not correct, try again!";
+			// New version july11
+			infoText.text = "Ooh, that's incorrect. Try again!";
 
 		} else {
 			
@@ -193,8 +196,8 @@ public class FillInTheBlankManager : MonoBehaviour {
 
 			// if user got it correct in either chance, score + 10
 			if (indexNode.SelectSingleNode ("//Blank" + subIndexForInfo + "//Option" + optionNumber + "//correct").InnerText == "T") {
-
-				infoText.text = "That's correct!";
+				var info = indexNode.SelectSingleNode ("//Blank" + subIndexForInfo + "//Option" + optionNumber + "//info").InnerXml;
+				infoText.text = "That's correct! " + info;
 
 				InvokeRepeating ("AddScore", 0.0f, 0.1f);
 
@@ -215,7 +218,11 @@ public class FillInTheBlankManager : MonoBehaviour {
 					check++;
 				}
 				XmlNode correctAnsNode = indexNode.SelectSingleNode ("//Blank" + subIndexForInfo + "//Option" + check + "//value");
-				infoText.text = option.GetComponentInChildren<Text> ().text + " is also not correct." + correctAnsNode.InnerText + " is the correct answer.";
+				var info = indexNode.SelectSingleNode ("//Blank" + subIndexForInfo + "//Option" + optionNumber + "//info").InnerXml;
+				// OLD version
+				// infoText.text = option.GetComponentInChildren<Text> ().text + " is also not correct." + correctAnsNode.InnerText + " is the correct answer.";
+				// New version july11
+				infoText.text = "That's still incorrect. " + info;
 				blankText.text = correctAnsNode.InnerText;
 			}
 

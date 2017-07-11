@@ -9,22 +9,22 @@
 	      	<Option1>
 	      		<value>Roulette</value>
 	      		<correct>T</correct>
-	      		<info>This is correct! Roulette is a chance based game, so as slots!</info>
+	      		<info>Roulette, Slots and Bingo are chance based games.</info>
 	      	</Option1>
 	      	<Option2>
 	      		<value>Slots</value>
 	      		<correct>T</correct>
-	      		<info>This is correct! Slots is a chance based game, so as Roulette!</info>
+	      		<info>Roulette, Slots and Bingo are chance based games.</info>
 	      	</Option2>
 	      	<Option3>
 	      		<value>Horse race betting</value>
 	      		<correct>F</correct>
-	      		<info>Horse race bettin is wrong!</info>
+	      		<info>Roulette, Slots and Bingo are chance based games.</info>
 	      	</Option3>
 	      	<Option4>
 	      		<value>Poker</value>
 	      		<correct>F</correct>
-	      		<info>Poker is wrong!</info>
+	      		<info>Roulette, Slots and Bingo are chance based games.</info>
 	      	</Option4>
 	    </Blank1>
 	  </Q>
@@ -34,22 +34,22 @@
 	      	<Option1>
 	      		<value>purely random</value>
 	      		<correct>T</correct>
-	      		<info>This is correct! Chance based games are purely random</info>
+	      		<info>Chance based games are purely random.</info>
 	      	</Option1>
 	      	<Option2>
 	      		<value>requires skill</value>
 	      		<correct>F</correct>
-	      		<info>Requires skill is wrong!</info>
+	      		<info>Chance based games are purely random.</info>
 	      	</Option2>
 	      	<Option3>
 	      		<value>is a guaranteed win</value>
 	      		<correct>F</correct>
-	      		<info>Guaranteed win is wrong!</info>
+	      		<info>Chance based games are purely random.</info>
 	      	</Option3>
 	      	<Option4>
 	      		<value>requires experience</value>
 	      		<correct>F</correct>
-	      		<info>Requires experience is wrong!</info>
+	      		<info>Chance based games are purely random.</info>
 	      	</Option4>
 	    </Blank2>
 	  </Q>
@@ -59,22 +59,22 @@
 	      	<Option1>
 	      		<value>never change</value>
 	      		<correct>T</correct>
-	      		<info>This is correct! The odds of winning never changes in chance based games.</info>
+	      		<info>The odds of winning random games never change.</info>
 	      	</Option1>
 	      	<Option2>
 	      		<value>gets better</value>
 	      		<correct>F</correct>
-	      		<info>Gets better is wrong!</info>
+	      		<info>The odds of winning random games never change.</info>
 	      	</Option2>
 	      	<Option3>
 	      		<value>gets worse</value>
 	      		<correct>F</correct>
-	      		<info>Gets worse is wrong!</info>
+	      		<info>The odds of winning random games never change.</info>
 	      	</Option3>
 	      	<Option4>
 	      		<value>is very high</value>
 	      		<correct>F</correct>
-	      		<info>Very high is wrong!</info>
+	      		<info>The odds of winning random games never change.</info>
 	      	</Option4>
 	    </Blank3>
 	  </Q>
@@ -84,22 +84,22 @@
 	      	<Option1>
 	      		<value>Poker</value>
 	      		<correct>T</correct>
-	      		<info>This is correct! Poker is a skill based game, so as a horse race betting.</info>
+	      		<info>Horse race betting and Poker are chance based games.</info>
 	      	</Option1>
 	      	<Option2>
 	      		<value>Roulette</value>
 	      		<correct>F</correct>
-	      		<info>Roulette is wrong!</info>
+	      		<info>Horse race betting and Poker are chance based games.</info>
 	      	</Option2>
 	      	<Option3>
 	      		<value>Slots</value>
 	      		<correct>F</correct>
-	      		<info>Slots is wrong!</info>
+	      		<info>Horse race betting and Poker are chance based games.</info>
 	      	</Option3>
 	      	<Option4>
 	      		<value>Bingo</value>
 	      		<correct>F</correct>
-	      		<info>Bingo is wrong!</info>
+	      		<info>Horse race betting and Poker are chance based games.</info>
 	      	</Option4>
 	    </Blank4>
 	  </Q>
@@ -109,22 +109,22 @@
 	      	<Option1>
 	      		<value>she can easily predict</value>
 	      		<correct>F</correct>
-	      		<info>Oops, she can’t affect the outcome of the game. Skill and strategy can play a role in these games, but you still don't control the cards that are being dealt or the outcome of an event that is being waged.</info>
+	      		<info>A gambler cannot affect the outcome of a skill based game.</info>
 	      	</Option1>
 	      	<Option2>
 	      		<value>she can’t affect</value>
 	      		<correct>T</correct>
-	      		<info>This is correct!</info>
+	      		<info>A gambler cannot affect the outcome of a skill based game.</info>
 	      	</Option2>
 	      	<Option3>
 	      		<value>she can get tips on</value>
 	      		<correct>F</correct>
-	      		<info>Oops, she can’t get tips. Skill and strategy can play a role in these games, but you still don't control the cards that are being dealt or the outcome of an event that is being waged.</info>
+	      		<info>A gambler cannot affect the outcome of a skill based game.</info>
 	      	</Option3>
 	      	<Option4>
 	      		<value>she can get insights on</value>
 	      		<correct>F</correct>
-	      		<info>Oops, she can’t get insights. Skill and strategy can play a role in these games, but you still don't control the cards that are being dealt or the outcome of an event that is being waged.</info>
+	      		<info>A gambler cannot affect the outcome of a skill based game.</info>
 	      	</Option4>
 	    </Blank5>
 	  </Q>
@@ -134,24 +134,49 @@
 	      	<Option1>
 	      		<value>BC/49</value>
 	      		<correct>F</correct>
-	      		<info>BC/49 is wrong!</info>
+	      		<info>Scratch and win has the best odds of winning something.</info>
 	      	</Option1>
 	      	<Option2>
 	      		<value>Something else</value>
 	      		<correct>F</correct>
-	      		<info>Something else is wrong!</info>
+	      		<info>Scratch and win has the best odds of winning something.</info>
 	      	</Option2>
 	      	<Option3>
 	      		<value>scratch and win</value>
 	      		<correct>T</correct>
-	      		<info>This is correct! Scratch and win has better odds of winning than a Lotto Max ticket.</info>
+	      		<info>Scratch and win has the best odds of winning something.</info>
 	      	</Option3>
 	      	<Option4>
 	      		<value>Daily Grand</value>
 	      		<correct>F</correct>
-	      		<info>Daily Grand is wrong!</info>
+	      		<info>Scratch and win has the best odds of winning something.</info>
 	      	</Option4>
 	    </Blank6>
+	  </Q>
+	  <Q>
+	  	<Question7>Megyn doesn’t expect to win the ultimate prize, because quite frankly _________________ has a better chance of happening. </Question7>
+	    <Blank7>
+	      	<Option1>
+	      		<value>Asteroid hitting earth</value>
+	      		<correct>T</correct>
+	      		<info>All of these events have better chances of happening than winning the Lotto.</info>
+	      	</Option1>
+	      	<Option2>
+	      		<value>Getting struck by lightning</value>
+	      		<correct>T</correct>
+	      		<info>All of these events have better chances of happening than winning the Lotto.</info>
+	      	</Option2>
+	      	<Option3>
+	      		<value>Winning in bingo</value>
+	      		<correct>T</correct>
+	      		<info>All of these events have better chances of happening than winning the Lotto.</info>
+	      	</Option3>
+	      	<Option4>
+	      		<value>Being in a car accident</value>
+	      		<correct>T</correct>
+	      		<info>All of these events have better chances of happening than winning the Lotto.</info>
+	      	</Option4>
+	    </Blank7>
 	  </Q>
     </FIB>
     <FIB>
