@@ -11,10 +11,11 @@ sysinfo.txt
 *.stackdump
 
 # ============ #
-# Executable file #
+# Executable file and other large files #
 # ============ #
 *.app
 *.zip
+*.mp4
 
 # ============================================= #
 # Visual Studio / MonoDevelop / Rider generated #
