@@ -14,6 +14,7 @@ public class FillInTheBlankManager : MonoBehaviour {
 	public GameObject ten;
 	private static string userpath = string.Empty;
 	private int currentScore = 0;
+	private int scorePlaceholder = 0;
 
 	private int clickCounter = 3;
 	bool o1Active = true;
@@ -32,8 +33,6 @@ public class FillInTheBlankManager : MonoBehaviour {
 
 	// Use this for initialization
 	IEnumerator Start () {
-		// Text i = GameObject.Find ("Ten").GetComponent<Text> ();
-		//Vector2 startPos = i.transform.position;
 
 		userpath = System.IO.Path.Combine (Application.dataPath, "Resources/users.xml");
 		gm = GameObject.Find("GameManager").GetComponent<GameManager>();
@@ -77,7 +76,8 @@ public class FillInTheBlankManager : MonoBehaviour {
 
 			if(o1Active && o2Active && o3Active && o4Active) {
 				if (subIndex - 1 == 7) {
-					// break once the last question is correct
+					// break once the last question is shown
+					print("break");
 					break;
 				}
 				questionText.text = questionText.text + indexNode.SelectSingleNode ("//Question" + subIndex).InnerText;
@@ -88,9 +88,11 @@ public class FillInTheBlankManager : MonoBehaviour {
 					print (QNode.Name);
 					subIndex++;
 					yield return new WaitForSeconds(2000);
+					//StartCoroutine(AddListener());
 				} 
 			}      
 			yield return new WaitForSeconds(2000);
+
 		}
 
 		// Disable buttons
@@ -103,7 +105,10 @@ public class FillInTheBlankManager : MonoBehaviour {
 		panel.SetActive(true);
 		// display score on panel
 		Text panelScore = GameObject.Find("PanelScore").GetComponent<Text>();
+
+		print (currentScore);
 		currentScore = currentScore + 10;
+		print (currentScore);
 		panelScore.text = currentScore.ToString ();
 
 		while (usernameNode.InnerText != gm.Username) {
@@ -128,12 +133,6 @@ public class FillInTheBlankManager : MonoBehaviour {
 			scoreIndex.InnerText = currentScore.ToString();
 			fillInTheBlankIndexNode.ParentNode.AppendChild (scoreIndex);
 		}
-
-
-		// Find user and update <TotalScore>
-//		while (usernameNode.InnerText != gm.Username) {
-//			usernameNode = usernameNode.ParentNode.NextSibling.FirstChild;
-//		} 
 		userNode.SelectSingleNode ("TotalScore").InnerText = 
 			(int.Parse(userNode.SelectSingleNode ("TotalScore").InnerText) + currentScore).ToString();
 
@@ -160,8 +159,6 @@ public class FillInTheBlankManager : MonoBehaviour {
 			blankText.color = Color.red;
 			clickCounter--;
 		}
-			
-		//blankText.text = option.GetComponentInChildren<Text> ().text;
 
 		Text infoText = GameObject.Find ("Info").GetComponent<Text> ();
 
@@ -188,19 +185,15 @@ public class FillInTheBlankManager : MonoBehaviour {
 			infoText.text = "Ooh, that's incorrect. Try again!";
 
 		} else {
-			
-			// update info text 
-
-			//infoText.text = indexNode.SelectSingleNode ("//Blank"+ subIndexForInfo +"//Option"+ optionNumber +"//info").InnerText;
-
 
 			// if user got it correct in either chance, score + 10
 			if (indexNode.SelectSingleNode ("//Blank" + subIndexForInfo + "//Option" + optionNumber + "//correct").InnerText == "T") {
 				var info = indexNode.SelectSingleNode ("//Blank" + subIndexForInfo + "//Option" + optionNumber + "//info").InnerXml;
 				infoText.text = "That's correct! " + info;
 
-				InvokeRepeating ("AddScore", 0.0f, 0.1f);
-
+				currentScore = currentScore + 10;
+				InvokeRepeating ("AddScore", 0.0f, 0.07f);
+	
 				StartCoroutine (FadeTextInAndOut (0.6f));
 
 //				var y = ten.transform.localPosition.y;
@@ -224,6 +217,8 @@ public class FillInTheBlankManager : MonoBehaviour {
 				infoText.text = "That's still incorrect. " + info;
 				blankText.text = correctAnsNode.InnerText;
 			}
+
+
 
 			o1Active = true;
 			o2Active = true;
@@ -250,6 +245,7 @@ public class FillInTheBlankManager : MonoBehaviour {
 		}
 		Start ().MoveNext();
 	}
+		
 
 	public void Task1OnClick()
 	{
@@ -306,14 +302,20 @@ public class FillInTheBlankManager : MonoBehaviour {
 
 
 	public void AddScore () {
-		currentScore++;
+		scorePlaceholder++;
 		Text score = GameObject.Find("Score").GetComponent<Text>();
-		score.text = currentScore.ToString ();
-
-		if (currentScore % 10 == 0) {
+		score.text = scorePlaceholder.ToString ();
+		if (scorePlaceholder % 10 == 0) {
 			CancelInvoke ();
 		}
 	}
+
+	IEnumerator Wait() {
+
+		print ("hehhheheheehhee");
+		yield return new WaitForSeconds(40f);
+	}
+
 
 
 	public IEnumerator FadeTextInAndOut(float t){
@@ -334,6 +336,7 @@ public class FillInTheBlankManager : MonoBehaviour {
 		}
 		i.transform.position = Vector2.MoveTowards (i.transform.position, temp, 1);
 		i.color = tempColor;
+
 	}
 
 

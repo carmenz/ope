@@ -19,48 +19,6 @@ public class HistoryCheck : MonoBehaviour {
 		xmlUserDoc.Load (userpath);
 		XmlNode usernameNode = xmlUserDoc.SelectSingleNode ("//Username");
 
-//		if (File.Exists (path)) {
-
-//			var dox = new XmlDocument ();
-//			dox.Load (path);
-//
-//			//check if user already have that Mini challenge on file
-//			FileStream miniChallengeStream = new FileStream (path, FileMode.Open);
-//
-//			XmlTextReader xmlMiniChallengeReader = new XmlTextReader (miniChallengeStream);
-//
-//			FileStream userStream = new FileStream (userpath, FileMode.Open);
-//			XmlTextReader xmlUserReader = new XmlTextReader (userStream);
-//
-//			xmlMiniChallengeReader.Read ();
-//
-//			while (xmlUserReader.Read ()) {
-//
-//				if (xmlUserReader.Name == "Username") {
-//					// find user from user.xml
-//					if (xmlUserReader.ReadElementContentAsString ().Equals (gm.Username)) {
-//						xmlUserReader.Name.Contains ("User");
-//						if (xmlUserReader.ReadToNextSibling(island)) {
-//							print ("user already have the island");
-//							firstChallengeOnIsland = false;
-//
-//							if (xmlUserReader.ReadToDescendant (miniChallengeName)) {
-//								firstMiniChallengeOnIsland = false;
-//								print ("user already did such a mini challenge on the island");
-//
-//							} else {
-//								print ("first such mini challenge for user on the island");
-//							}
-//						} else {
-//							print ("user not yet have island");
-//						}
-//					}
-//				}
-//			}
-//			miniChallengeStream.Close ();
-//			userStream.Close ();
-
-
 
 		while (usernameNode.InnerText != gm.Username) {
 			usernameNode = usernameNode.ParentNode.NextSibling.FirstChild;
@@ -137,10 +95,6 @@ public class HistoryCheck : MonoBehaviour {
 			XmlNode indexNode = xmlMiniChallengeDoc.SelectSingleNode (".//" + miniChallengeNameSingular + "//Index");
 			int numOfSuchMiniChallengeInDB = xmlMiniChallengeDoc.SelectNodes (".//" + miniChallengeNameSingular + "//Index").Count;
 
-		
-//			while (usernameNode.InnerText != gm.Username) {
-//				usernameNode = usernameNode.ParentNode.NextSibling.FirstChild;
-//			}
 					
 			XmlNode miniChallengeNode = userNode.SelectSingleNode (".//" + miniChallengeName);
 

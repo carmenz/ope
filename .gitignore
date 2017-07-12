@@ -16,6 +16,9 @@ sysinfo.txt
 *.app
 *.zip
 *.mp4
+*.mp4.meta
+*.mov
+*.mov.meta
 
 # ============================================= #
 # Visual Studio / MonoDevelop / Rider generated #

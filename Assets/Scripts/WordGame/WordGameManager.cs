@@ -38,8 +38,6 @@ public class WordGameManager : MonoBehaviour {
 		xmlWordGameDoc.Load (gm.Path);
 		XmlNode indexNode = xmlWordGameDoc.SelectSingleNode ("//Index");
 
-//		XmlDocument xmlUserDoc = new XmlDocument ();
-//		xmlUserDoc.Load (userpath);
 
 		print("this is game" + gm.Index.ToString());
 
@@ -142,44 +140,6 @@ public class WordGameManager : MonoBehaviour {
 		xmlUserDoc.Save (userpath);
 
 		verifyAnswer ("T");
-		// check if user got the correct answer
-//		if (indexNode.SelectSingleNode ("//Word" + subIndexForInfo + "//Yes").InnerText == "T") {
-//			print ("user got the correct answer");
-//			multiplexerCount++;
-//			crossCount = 0;
-//
-//			multiplexerCheck (multiplexerCount);
-//
-//			currentScore = currentScore + 10 * multiplexerCount;
-//
-//			Text score = GameObject.Find("Score").GetComponent<Text>();
-//			score.text = currentScore.ToString();
-//
-//			cross1.gameObject.SetActive (false);
-//			cross2.gameObject.SetActive (false);
-//			cross3.gameObject.SetActive (false);
-//
-//		} else {
-//			multiplexerCount = 0;
-//			crossCount++;
-//			multiplexerCheck (multiplexerCount);
-//
-//			if (crossCount == 1) {
-//				cross1.gameObject.SetActive (true);
-//			} else if (crossCount == 2) {
-//				cross2.gameObject.SetActive (true);
-//			} else {
-//				cross3.gameObject.SetActive (true);
-//
-//				oopsPanel.SetActive(true);
-//
-//				// display score on panel
-//				panelScore = GameObject.Find("OopsPanelScore").GetComponent<Text>();
-//				panelScore.text = currentScore.ToString();
-//
-//				updateDBScore ();
-//			}
-//		}
 
 		Start ().MoveNext();
 	}
@@ -243,44 +203,6 @@ public class WordGameManager : MonoBehaviour {
 		xmlUserDoc.Save (userpath);
 
 		verifyAnswer ("F");
-		// check if user got the correct answer
-//		if (indexNode.SelectSingleNode ("//Word" + subIndexForInfo + "//Yes").InnerText == "F") {
-//			print ("user got the correct answer");
-//			multiplexerCount++;
-//			crossCount = 0;
-//
-//			multiplexerCheck (multiplexerCount);
-//
-//			currentScore = currentScore + 10 * multiplexerCount;
-//
-//			Text score = GameObject.Find("Score").GetComponent<Text>();
-//			score.text = currentScore.ToString();
-//
-//
-//			cross1.gameObject.SetActive (false);
-//			cross2.gameObject.SetActive (false);
-//			cross3.gameObject.SetActive (false);
-//		} else {
-//			multiplexerCount = 0;
-//			crossCount++;
-//			multiplexerCheck (multiplexerCount);
-//
-//
-//			if (crossCount == 1) {
-//				cross1.gameObject.SetActive (true);
-//			} else if (crossCount == 2) {
-//				cross2.gameObject.SetActive (true);
-//			} else {
-//				cross3.gameObject.SetActive (true);
-//				oopsPanel.SetActive(true);
-//
-//				// display score on panel
-//				panelScore = GameObject.Find("OopsPanelScore").GetComponent<Text>();
-//				panelScore.text = currentScore.ToString();
-//
-//				updateDBScore ();
-//			}
-//		}
 		Start ().MoveNext();
 	}
 
@@ -301,7 +223,6 @@ public class WordGameManager : MonoBehaviour {
 			multiplexerCheck (multiplexerCount);
 
 			updateCurrentScore ();
-			//currentScore = currentScore + 10 * multiplexerCount;
 
 			Text score = GameObject.Find("Score").GetComponent<Text>();
 			score.text = currentScore.ToString();
@@ -326,10 +247,6 @@ public class WordGameManager : MonoBehaviour {
 					showPanel ("MissionComplete");
 				} else {
 					showPanel ("Oops");
-//					oopsPanel.SetActive(true);
-//					// display score on panel
-//					panelScore = GameObject.Find("OopsPanelScore").GetComponent<Text>();
-//					panelScore.text = currentScore.ToString();
 				}
 				updateDBScore ();
 			}

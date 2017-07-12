@@ -331,6 +331,31 @@
 	      	</Option4>
 	    </Blank6>
 	  </Q>
+	  <Q>
+	  	<Question7>Megyn doesn’t expect to win the ultimate prize, because quite frankly _________________ has a better chance of happening. </Question7>
+	    <Blank7>
+	      	<Option1>
+	      		<value>Asteroid hitting earth</value>
+	      		<correct>T</correct>
+	      		<info>All of these events have better chances of happening than winning the Lotto.</info>
+	      	</Option1>
+	      	<Option2>
+	      		<value>Getting struck by lightning</value>
+	      		<correct>T</correct>
+	      		<info>All of these events have better chances of happening than winning the Lotto.</info>
+	      	</Option2>
+	      	<Option3>
+	      		<value>Winning in bingo</value>
+	      		<correct>T</correct>
+	      		<info>All of these events have better chances of happening than winning the Lotto.</info>
+	      	</Option3>
+	      	<Option4>
+	      		<value>Being in a car accident</value>
+	      		<correct>T</correct>
+	      		<info>All of these events have better chances of happening than winning the Lotto.</info>
+	      	</Option4>
+	    </Blank7>
+	  </Q>
     </FIB>
   </FillInTheBlanks>
 </FillInTheBlankCollction>

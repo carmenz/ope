@@ -19,6 +19,8 @@ public class SpinWheel : MonoBehaviour {
 		rotatable = state;
 	}
 
+	protected Animation anim;
+
 	public void RandomFunc() {
 		// Check if button is active to avoid useless click
 		if (!rotatable)
@@ -32,10 +34,29 @@ public class SpinWheel : MonoBehaviour {
 		
 		int val = 3600 + Random.Range ((num - 1) * 45 + angleToAvoid, 45 * num - angleToAvoid);
 
+		GameObject star = GameObject.Find("StarButton");
+		if (!star.GetComponent<Animation> ().isPlaying) {
+			print ("hahahah");
+			star.GetComponent<Animation>().Play();
+		}
+
 		Sequence spinSequence = DOTween.Sequence ();  
 		spinSequence.SetEase (Ease.OutCirc)
 			.Append (transform.DORotate (new Vector3 (0, 0, val), 3, RotateMode.FastBeyond360));
 			//.OnComplete(() => player.GetComponent<Player>().Move(chance));
+
+
+	}
+
+	public void OnClick() {
+		GameObject star = GameObject.Find("StarButton");
+
+
+		if (!star.GetComponent<Animation> ().isPlaying) {
+			print ("hahahah");
+			star.GetComponent<Animation>().Play();
+		}
+		print ("heheheh");
 
 	}
 }
