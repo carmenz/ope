@@ -76,7 +76,7 @@ public class FillInTheBlankManager : MonoBehaviour {
 		while (indexNode != null) {
 
 			if(o1Active && o2Active && o3Active && o4Active) {
-				if (subIndex - 1 == 6) {
+				if (subIndex - 1 == 7) {
 					// break once the last question is correct
 					break;
 				}
@@ -182,7 +182,10 @@ public class FillInTheBlankManager : MonoBehaviour {
 			}
 
 			// update info text on screen
-			infoText.text = option.GetComponentInChildren<Text>().text + " is not correct, try again!";
+			// OLD VERSION
+			// infoText.text = option.GetComponentInChildren<Text>().text + " is not correct, try again!";
+			// New version july11
+			infoText.text = "Ooh, that's incorrect. Try again!";
 
 		} else {
 			
@@ -193,8 +196,8 @@ public class FillInTheBlankManager : MonoBehaviour {
 
 			// if user got it correct in either chance, score + 10
 			if (indexNode.SelectSingleNode ("//Blank" + subIndexForInfo + "//Option" + optionNumber + "//correct").InnerText == "T") {
-
-				infoText.text = "That's correct!";
+				var info = indexNode.SelectSingleNode ("//Blank" + subIndexForInfo + "//Option" + optionNumber + "//info").InnerXml;
+				infoText.text = "That's correct! " + info;
 
 				InvokeRepeating ("AddScore", 0.0f, 0.1f);
 
@@ -214,7 +217,11 @@ public class FillInTheBlankManager : MonoBehaviour {
 					check++;
 				}
 				XmlNode correctAnsNode = indexNode.SelectSingleNode ("//Blank" + subIndexForInfo + "//Option" + check + "//value");
-				infoText.text = option.GetComponentInChildren<Text> ().text + " is also not correct." + correctAnsNode.InnerText + " is the correct answer.";
+				var info = indexNode.SelectSingleNode ("//Blank" + subIndexForInfo + "//Option" + optionNumber + "//info").InnerXml;
+				// OLD version
+				// infoText.text = option.GetComponentInChildren<Text> ().text + " is also not correct." + correctAnsNode.InnerText + " is the correct answer.";
+				// New version july11
+				infoText.text = "That's still incorrect. " + info;
 				blankText.text = correctAnsNode.InnerText;
 			}
 
@@ -233,7 +240,7 @@ public class FillInTheBlankManager : MonoBehaviour {
 			// update button text to show options for next blank
 			XmlNode nextBlankNode = indexNode.NextSibling.NextSibling.FirstChild.NextSibling;
 
-			if (fibm.subIndex <= 6) {
+			if (fibm.subIndex <= 7) {
 				option1.GetComponentInChildren<Text> ().text = nextBlankNode.SelectSingleNode ("//Blank" + fibm.subIndex + "//Option1//value").InnerText;
 				option2.GetComponentInChildren<Text> ().text = nextBlankNode.SelectSingleNode ("//Blank" + fibm.subIndex + "//Option2//value").InnerText;
 				option3.GetComponentInChildren<Text> ().text = nextBlankNode.SelectSingleNode ("//Blank" + fibm.subIndex + "//Option3//value").InnerText;
@@ -280,7 +287,9 @@ public class FillInTheBlankManager : MonoBehaviour {
 
 		Text questionText = GameObject.Find ("Question").GetComponent<Text> ();
 
-		if (questionText.text.Contains(indexNode.SelectSingleNode ("//Question6").InnerText)) {
+		if (questionText.text.Contains(indexNode.SelectSingleNode ("//Question7").InnerText)) {
+			blankToChange (7, optionButton, optionNumber);
+		} else if (questionText.text.Contains(indexNode.SelectSingleNode ("//Question6").InnerText)) {
 			blankToChange (6, optionButton, optionNumber);
 		} else if (questionText.text.Contains(indexNode.SelectSingleNode ("//Question5").InnerText)) {
 			blankToChange (5, optionButton, optionNumber);

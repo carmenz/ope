@@ -4,44 +4,44 @@
 		<Game>
 			<Index>1</Index>
 			<Word1>
-				<value>WHEN THE FUN STOPS, STOP!</value>
-				<Yes>F</Yes>
-				<info>This is No</info>
+				<value>wear a watch and always be aware of the time</value>
+				<Yes>T</Yes>
+				<info>Yes! That is positive play!</info>
 			</Word1>
 			<Word2>
-				<value>DON'T LET GAMBLING BE A LOSING GAME</value>
+				<value>bring your debit or credit cards to the casino</value>
 				<Yes>F</Yes>
-				<info>This is No</info>
+				<info>Oops sorry.That is not positive play!</info>
 			</Word2>
 			<Word3>
-				<value>PLAY LIKE MOST PLAYERS - POSITIVELY</value>
+				<value>bring a friend, or have someone pick you up at the casino</value>
 				<Yes>T</Yes>
-				<info>This is Yes</info>
+				<info>Yes! That is positive play!</info>
 			</Word3>
 			<Word4>
-				<value>KNOW WHEN TO FOLD 'EM</value>
-				<Yes>F</Yes>
-				<info>This is No</info>
+				<value>plan other fun activities during the day in addition to gambling</value>
+				<Yes>T</Yes>
+				<info>Yes! That is positive play!</info>
 			</Word4>
 			<Word5>
-				<value>WHEN YOU’VE HAD ENOUGH, WALK AWAY!</value>
-				<Yes>F</Yes>
-				<info>This is No</info>
+				<value>take breaks during gambling</value>
+				<Yes>T</Yes>
+				<info>Yes! That is positive play!</info>
 			</Word5>
 			<Word6>
-				<value>KEEP IT FUN</value>
+				<value>keep tabs on your spending in the casino and save some for your next outing</value>
 				<Yes>T</Yes>
-				<info>This is Yes</info>
+				<info>Yes! That is positive play!</info>
 			</Word6>
 			<Word7>
-				<value>yessssssssssss</value>
-				<Yes>T</Yes>
-				<info>This is Yes</info>
+				<value>don't feel bad about losing - you can always win back your losses</value>
+				<Yes>F</Yes>
+				<info>Oops sorry.That is not positive play!</info>
 			</Word7>
 			<Word8>
-				<value>yessss again</value>
-				<Yes>T</Yes>
-				<info>This is Yes</info>
+				<value>keep the drinks coming in</value>
+				<Yes>F</Yes>
+				<info>Oops sorry.That is not positive play!</info>
 			</Word8>
 		</Game>
 		<Game>
