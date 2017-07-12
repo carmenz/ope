@@ -76,7 +76,7 @@ public class FillInTheBlankManager : MonoBehaviour {
 		while (indexNode != null) {
 
 			if(o1Active && o2Active && o3Active && o4Active) {
-				if (subIndex - 1 == 6) {
+				if (subIndex - 1 == 7) {
 					// break once the last question is correct
 					break;
 				}
@@ -241,7 +241,7 @@ public class FillInTheBlankManager : MonoBehaviour {
 			// update button text to show options for next blank
 			XmlNode nextBlankNode = indexNode.NextSibling.NextSibling.FirstChild.NextSibling;
 
-			if (fibm.subIndex <= 6) {
+			if (fibm.subIndex <= 7) {
 				option1.GetComponentInChildren<Text> ().text = nextBlankNode.SelectSingleNode ("//Blank" + fibm.subIndex + "//Option1//value").InnerText;
 				option2.GetComponentInChildren<Text> ().text = nextBlankNode.SelectSingleNode ("//Blank" + fibm.subIndex + "//Option2//value").InnerText;
 				option3.GetComponentInChildren<Text> ().text = nextBlankNode.SelectSingleNode ("//Blank" + fibm.subIndex + "//Option3//value").InnerText;
@@ -288,7 +288,9 @@ public class FillInTheBlankManager : MonoBehaviour {
 
 		Text questionText = GameObject.Find ("Question").GetComponent<Text> ();
 
-		if (questionText.text.Contains(indexNode.SelectSingleNode ("//Question6").InnerText)) {
+		if (questionText.text.Contains(indexNode.SelectSingleNode ("//Question7").InnerText)) {
+			blankToChange (7, optionButton, optionNumber);
+		} else if (questionText.text.Contains(indexNode.SelectSingleNode ("//Question6").InnerText)) {
 			blankToChange (6, optionButton, optionNumber);
 		} else if (questionText.text.Contains(indexNode.SelectSingleNode ("//Question5").InnerText)) {
 			blankToChange (5, optionButton, optionNumber);

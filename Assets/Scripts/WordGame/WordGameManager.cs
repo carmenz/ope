@@ -101,8 +101,9 @@ public class WordGameManager : MonoBehaviour {
 
 		int subIndexForInfo = wgm.subIndex - 1;
 
-		Text infoText = GameObject.Find ("Info").GetComponent<Text> ();
-		infoText.text = indexNode.SelectSingleNode ("//Word"+ subIndexForInfo + "//info").InnerText;
+		// Disable now to use new texts
+		// Text infoText = GameObject.Find ("Info").GetComponent<Text> ();
+		// infoText.text = indexNode.SelectSingleNode ("//Word"+ subIndexForInfo + "//info").InnerText;
 
 		// update user.xml to store user answers
 		while (usernameNode.InnerText != gm.Username) {
@@ -198,8 +199,9 @@ public class WordGameManager : MonoBehaviour {
 
 		int subIndexForInfo = wgm.subIndex - 1;
 
-		Text infoText = GameObject.Find ("Info").GetComponent<Text> ();
-		infoText.text = indexNode.SelectSingleNode ("//Word"+ subIndexForInfo + "//info").InnerText;
+		//Disable now to use new texts
+		// Text infoText = GameObject.Find ("Info").GetComponent<Text> ();
+		// infoText.text = indexNode.SelectSingleNode ("//Word"+ subIndexForInfo + "//info").InnerText;
 
 
 
@@ -288,9 +290,11 @@ public class WordGameManager : MonoBehaviour {
 		xmlWordGameDoc.Load (gm.Path);
 		XmlNode indexNode = xmlWordGameDoc.SelectSingleNode ("//Index");
 		int subIndexForInfo = wgm.subIndex - 1;
+		Text infoText = GameObject.Find ("Info").GetComponent<Text> ();
 
 		if (indexNode.SelectSingleNode ("//Word" + subIndexForInfo + "//Yes").InnerText == booleanValue) {
 			print ("user got the correct answer");
+			infoText.text = "Yes! Correct answer!";
 			multiplexerCount++;
 			crossCount = 0;
 
@@ -306,6 +310,7 @@ public class WordGameManager : MonoBehaviour {
 			cross2.gameObject.SetActive (false);
 			cross3.gameObject.SetActive (false);
 		} else {
+			infoText.text = "Oops sorry. Wrong answer!";
 			multiplexerCount = 0;
 			crossCount++;
 			multiplexerCheck (multiplexerCount);
