@@ -11,7 +11,9 @@ using System;
 public class NewPlayer : MonoBehaviour {
 
 	[SerializeField]
-	private float movingSpeed = 25f;
+	private float movingSpeed = 80f;
+	[SerializeField]
+	Camera playerCamera;
 
 	private Vector2 moveTowardPosition = Vector2.zero;
     private Vector2 moveStartPosition = Vector2.zero;
@@ -44,17 +46,24 @@ public class NewPlayer : MonoBehaviour {
         if (Input.GetButton("Fire1") && !EventSystem.current.IsPointerOverGameObject())
         {   
             moveStartPosition = curenPosition;
-            moveTowardPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+			// playerCamera.ScreenToViewportPoint
+			var mp = Input.mousePosition;
+			mp.z = playerCamera.farClipPlane;
+			moveTowardPosition = playerCamera.ScreenToWorldPoint(mp);
 
-            var subVector3 = moveTowardPosition - curenPosition;
-            transform.GetComponent<Rigidbody2D>().velocity = subVector3;
+            var subVector2 = moveTowardPosition - curenPosition;
+            transform.GetComponent<Rigidbody2D>().velocity = subVector2.normalized * movingSpeed;
             _isRuning = true;
         }
         if (_isRuning)
         {
-            var d = Vector2.Distance(curenPosition, moveTowardPosition);
+            Debug.Log(curenPosition + "hahaha" + moveTowardPosition);
+
+			var d = Vector2.Distance(curenPosition, moveTowardPosition);
+			Debug.Log(d);
 
             if (d < 1) {
+				Debug.Log("arrive");
                 transform.GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
                 transform.position = moveTowardPosition;
                 _isRuning = false;
