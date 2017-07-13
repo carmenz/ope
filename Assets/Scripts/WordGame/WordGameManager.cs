@@ -128,6 +128,7 @@ public class WordGameManager : MonoBehaviour {
 			wordNode.InnerText = "T";
 
 			if (gameIndexNode.ParentNode.LastChild.Name == "Score") {
+				print ("heheheh");
 				int prevIndex = subIndexForInfo - 1;
 				XmlNode prevNode = gameIndexNode.ParentNode.SelectSingleNode (".//Word" + prevIndex);
 				gameIndexNode.ParentNode.InsertAfter (wordNode, prevNode);
@@ -274,7 +275,8 @@ public class WordGameManager : MonoBehaviour {
 		}
 
 		// update node if <Score> node already exist
-		if (gameIndexNode.ParentNode.ChildNodes.Count == 10) {
+		//if (gameIndexNode.ParentNode.ChildNodes.Count == 10) {
+		if(gameIndexNode.ParentNode.LastChild.Name == "Score") {
 			gameIndexNode.ParentNode.SelectSingleNode("//Score").InnerText = currentScore.ToString();
 			//finishAddingToDB = true;
 		} else {
@@ -295,6 +297,7 @@ public class WordGameManager : MonoBehaviour {
 		while (usernameNode.InnerText != gm.Username) {
 			usernameNode = usernameNode.ParentNode.NextSibling.FirstChild;
 		} 
+		print ("hahaha");
 		usernameNode.ParentNode.SelectSingleNode ("TotalScore").InnerText = 
 			(int.Parse(usernameNode.ParentNode.SelectSingleNode ("TotalScore").InnerText) + currentScore).ToString();
 
