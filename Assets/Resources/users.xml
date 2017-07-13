@@ -4,9 +4,9 @@
     <User>
       <Username>1</Username>
       <Password>fn5g+xrZS7Ud7B8EBFfuxg==</Password>
-      <CurrentPosX>-309.3187</CurrentPosX>
-      <CurrentPosY>-107.8414</CurrentPosY>
-      <TotalScore>70</TotalScore>
+      <CurrentPosX>-133.0265</CurrentPosX>
+      <CurrentPosY>-29.19011</CurrentPosY>
+      <TotalScore>200</TotalScore>
       <IslandA>
         <WordGames>
           <Game>
@@ -21,7 +21,22 @@
             <Word8>T</Word8>
             <Score>70</Score>
           </Game>
+          <Game>
+            <Index>2</Index>
+            <Word1>T</Word1>
+            <Word2>T</Word2>
+            <Word3>T</Word3>
+            <Word4>T</Word4>
+            <Word5>T</Word5>
+            <Word6>T</Word6>
+            <Word7>T</Word7>
+            <Word8>T</Word8>
+            <Score>70</Score>
+          </Game>
         </WordGames>
+        <Stories>
+          <Story>1<Story>5</Story></Story>
+        </Stories>
       </IslandA>
     </User>
     <User>
