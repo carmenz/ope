@@ -24,7 +24,7 @@ public class NewPlayer : MonoBehaviour {
 	private WordGame wordGame = new WordGame();
 	private Quiz quiz = new Quiz();
 
-
+	private Material defaultMaterial;
 
 	bool _isRuning = false;
 	bool _canBeTriggered = true;
@@ -65,10 +65,13 @@ public class NewPlayer : MonoBehaviour {
         }
     }
 
+
+
 	// Use this for initialization
 	void Start () {
 		// init game manager
 		gm = GameObject.Find("GameManager").GetComponent<GameManager>();
+		defaultMaterial = GameObject.Find("Board").GetComponent<SpriteRenderer>().material;
 		// init location
         transform.position = gm.Coordinate;
 		// init missions panel and refresh mission list
@@ -100,6 +103,14 @@ public class NewPlayer : MonoBehaviour {
 
 		// show or hide the mission panel
 		missionsPanel.SetActive(tts > 0 ? false : true);
+		print (missionsPanel.activeSelf);
+
+		if (missionsPanel.activeSelf) {
+			Material material = new Material (Shader.Find ("Transparent/Diffuse"));
+			//material.color = Color.green;
+			GameObject.Find ("Board").GetComponent<SpriteRenderer> ().material = material;
+		}
+
 
 		// in case players stay on a position before quit
         _canBeTriggered = false;
@@ -222,9 +233,12 @@ public class NewPlayer : MonoBehaviour {
 
 	public void ShowMissons() {
 		missionsPanel.SetActive(true);
+		Material material = new Material (Shader.Find ("Transparent/Diffuse"));
+		GameObject.Find ("Board").GetComponent<SpriteRenderer> ().material = material;
 	}
 
 	public void HideMissions() {
 		missionsPanel.SetActive(false);
+		GameObject.Find ("Board").GetComponent<SpriteRenderer> ().material = defaultMaterial;
 	}
 }
