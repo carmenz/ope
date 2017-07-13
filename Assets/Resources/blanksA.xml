@@ -32,7 +32,7 @@
 	  	<Question2>Megyn knows that this game _________________, </Question2>
 	    <Blank2>
 	      	<Option1>
-	      		<value>purely random</value>
+	      		<value>is purely random</value>
 	      		<correct>T</correct>
 	      		<info>Chance based games are purely random.</info>
 	      	</Option1>
@@ -137,7 +137,7 @@
 	      		<info>Scratch and win has the best odds of winning something.</info>
 	      	</Option1>
 	      	<Option2>
-	      		<value>Something else</value>
+	      		<value>Lotto/49</value>
 	      		<correct>F</correct>
 	      		<info>Scratch and win has the best odds of winning something.</info>
 	      	</Option2>
@@ -167,7 +167,7 @@
 	      		<info>All of these events have better chances of happening than winning the Lotto.</info>
 	      	</Option2>
 	      	<Option3>
-	      		<value>Winning in bingo</value>
+	      		<value>Getting hit by bird poop</value>
 	      		<correct>T</correct>
 	      		<info>All of these events have better chances of happening than winning the Lotto.</info>
 	      	</Option3>
@@ -210,7 +210,7 @@
 	  	<Question2>Megyn knows that this game _________________, </Question2>
 	    <Blank2>
 	      	<Option1>
-	      		<value>purely random</value>
+	      		<value>is purely random</value>
 	      		<correct>T</correct>
 	      		<info>This is correct! Chance based games are purely random</info>
 	      	</Option1>
@@ -315,7 +315,7 @@
 	      		<info>This is wrong!</info>
 	      	</Option1>
 	      	<Option2>
-	      		<value>Something else</value>
+	      		<value>Lotto/49</value>
 	      		<correct>F</correct>
 	      		<info>This is wrong!</info>
 	      	</Option2>
@@ -345,7 +345,7 @@
 	      		<info>All of these events have better chances of happening than winning the Lotto.</info>
 	      	</Option2>
 	      	<Option3>
-	      		<value>Winning in bingo</value>
+	      		<value>Getting hit by bird poop</value>
 	      		<correct>T</correct>
 	      		<info>All of these events have better chances of happening than winning the Lotto.</info>
 	      	</Option3>
