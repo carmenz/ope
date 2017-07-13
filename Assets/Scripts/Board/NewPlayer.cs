@@ -103,11 +103,9 @@ public class NewPlayer : MonoBehaviour {
 
 		// show or hide the mission panel
 		missionsPanel.SetActive(tts > 0 ? false : true);
-		print (missionsPanel.activeSelf);
 
 		if (missionsPanel.activeSelf) {
 			Material material = new Material (Shader.Find ("Transparent/Diffuse"));
-			//material.color = Color.green;
 			GameObject.Find ("Board").GetComponent<SpriteRenderer> ().material = material;
 		}
 
