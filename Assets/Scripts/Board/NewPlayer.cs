@@ -82,7 +82,8 @@ public class NewPlayer : MonoBehaviour {
 		foreach(var mission in gm.missionList) {
 			var mtoggle = Instantiate(MissionToggle);
 			mtoggle.transform.SetParent(missionsPanel.transform);
-			mtoggle.GetComponent<RectTransform>().anchoredPosition = new Vector2(636f, -61f - i * 111f);
+			mtoggle.GetComponent<RectTransform>().anchoredPosition3D = new Vector3(636f, -61f - i * 111f, 0f);
+			mtoggle.GetComponent<RectTransform>().localScale = new Vector3(1f, 1f, 1f);
 			// mtoggle.GetComponent<RectTransform>().position = new Vector3(185f, -9f - i * 112f, 0f);
 			mtoggle.transform.Find("Label").GetComponent<Text>().text = mission.missionDesc;
 			// toggle the checkmark
