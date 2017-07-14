@@ -12,6 +12,6 @@ public class Option1 : MonoBehaviour {
 	}
 
 	public void onClick() {
-		fibm.Task1OnClick();
+		fibm.TaskOnClick(1);
 	}
 }

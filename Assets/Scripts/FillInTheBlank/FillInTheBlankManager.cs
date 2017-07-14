@@ -88,7 +88,6 @@ public class FillInTheBlankManager : MonoBehaviour {
 					print (QNode.Name);
 					subIndex++;
 					yield return new WaitForSeconds(2000);
-					//StartCoroutine(AddListener());
 				} 
 			}      
 			yield return new WaitForSeconds(2000);
@@ -179,9 +178,6 @@ public class FillInTheBlankManager : MonoBehaviour {
 			}
 
 			// update info text on screen
-			// OLD VERSION
-			// infoText.text = option.GetComponentInChildren<Text>().text + " is not correct, try again!";
-			// New version july11
 			infoText.text = "Ooh, that's incorrect. Try again!";
 
 		} else {
@@ -211,9 +207,6 @@ public class FillInTheBlankManager : MonoBehaviour {
 				}
 				XmlNode correctAnsNode = indexNode.SelectSingleNode ("//Blank" + subIndexForInfo + "//Option" + check + "//value");
 				var info = indexNode.SelectSingleNode ("//Blank" + subIndexForInfo + "//Option" + optionNumber + "//info").InnerXml;
-				// OLD version
-				// infoText.text = option.GetComponentInChildren<Text> ().text + " is also not correct." + correctAnsNode.InnerText + " is the correct answer.";
-				// New version july11
 				infoText.text = "That's still incorrect. " + info;
 				blankText.text = correctAnsNode.InnerText;
 			}
@@ -246,36 +239,12 @@ public class FillInTheBlankManager : MonoBehaviour {
 		Start ().MoveNext();
 	}
 		
-
-	public void Task1OnClick()
-	{
-		Debug.Log("option1 is clicked");
-		Button option1 = GameObject.Find ("Option1").GetComponent<Button> ();
-		MacthQuestionWithOption (option1, 1);
+	public void TaskOnClick(int optionNumber) {
+		Button choiceButton = GameObject.Find ("Option" + optionNumber).GetComponent<Button> ();
+		MatchQuestionWithOption (choiceButton, optionNumber);
 	}
 
-	public void Task2OnClick()
-	{
-		Debug.Log("option2 is clicked");
-		Button option2 = GameObject.Find ("Option2").GetComponent<Button> ();
-		MacthQuestionWithOption (option2, 2);
-	}
-
-	public void Task3OnClick()
-	{
-		Debug.Log("option3 is clicked");
-		Button option3 = GameObject.Find ("Option3").GetComponent<Button> ();
-		MacthQuestionWithOption (option3, 3);
-	}
-
-	public void Task4OnClick()
-	{
-		Debug.Log("option4 is clicked");
-		Button option4 = GameObject.Find ("Option4").GetComponent<Button> ();
-		MacthQuestionWithOption (option4, 4);
-	}
-
-	private void MacthQuestionWithOption(Button optionButton, int optionNumber) 
+	private void MatchQuestionWithOption(Button optionButton, int optionNumber) 
 	{
 		XmlDocument xmlFillInTheBlankDoc = new XmlDocument ();
 		xmlFillInTheBlankDoc.Load (gm.Path);
@@ -309,15 +278,7 @@ public class FillInTheBlankManager : MonoBehaviour {
 			CancelInvoke ();
 		}
 	}
-
-	IEnumerator Wait() {
-
-		print ("hehhheheheehhee");
-		yield return new WaitForSeconds(40f);
-	}
-
-
-
+		
 	public IEnumerator FadeTextInAndOut(float t){
 		Text i = GameObject.Find ("Tennnn").GetComponent<Text> ();
 		Color tempColor = i.color;

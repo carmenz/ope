@@ -15,15 +15,16 @@ public class HistoryCheck : MonoBehaviour {
 		xmlUserDoc.Load (userpath);
 		XmlNode usernameNode = xmlUserDoc.SelectSingleNode ("//Username");
 		XmlNode userNode = scanAndGetUser (usernameNode, gm);
-		XmlNode islandNode = userNode.SelectSingleNode (".//" + island);
+
 
 		if (!usernameNode.ParentNode.InnerXml.Contains (island)) {
 			print ("user not yet have the island");
 			AddIsland(xmlUserDoc, userNode, island);
+			xmlUserDoc.Save (userpath);
 		} else {
 			print ("user already have the island");
 		}
-
+		XmlNode islandNode = userNode.SelectSingleNode (".//" + island);
 		if (islandNode.SelectSingleNode (".//" + miniChallengeName) != null) {
 			print ("user already did such a mini challenge on the island");
 
@@ -76,7 +77,9 @@ public class HistoryCheck : MonoBehaviour {
 	public static void AddIsland(XmlDocument xmlUserDoc, XmlNode userNode, string island) {
 		XmlNode nodeBefore = xmlUserDoc.SelectSingleNode ("//TotalScore");
 		XmlNode xmlIsland = xmlUserDoc.CreateNode (XmlNodeType.Element, island, null);
+		//xmlIsland.InnerText = "";
 		userNode.InsertAfter (xmlIsland, nodeBefore);
+		print ("finish adding island");
 	}
 
 	public static void AddMiniChallengeType(XmlDocument xmlUserDoc, XmlNode userNode, string miniChallengeName, string island) {
