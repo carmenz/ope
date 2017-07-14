@@ -12,26 +12,21 @@ public class BackButton : MonoBehaviour {
 	void Start () {
 		gm = GameObject.Find("GameManager").GetComponent<GameManager>();
 	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
 
-	public void QuitFillInTheBlank() {
+	public void Quit() {
 		SceneManager.LoadScene(mainSceneName);
 	}
-
-	public void QuitWordGame() {
-		SceneManager.LoadScene(mainSceneName);
-	}
-
-	public void QuitStory() {
-		SceneManager.LoadScene(mainSceneName);
-	}
-
-	public void QuitQuiz() {
-		SceneManager.LoadScene(mainSceneName);
-	}
+//
+//	public void QuitWordGame() {
+//		SceneManager.LoadScene(mainSceneName);
+//	}
+//
+//	public void QuitStory() {
+//		SceneManager.LoadScene(mainSceneName);
+//	}
+//
+//	public void QuitQuiz() {
+//		SceneManager.LoadScene(mainSceneName);
+//	}
 
 }

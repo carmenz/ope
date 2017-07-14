@@ -4,9 +4,9 @@
     <User>
       <Username>1</Username>
       <Password>fn5g+xrZS7Ud7B8EBFfuxg==</Password>
-      <CurrentPosX>-1831</CurrentPosX>
-      <CurrentPosY>-43</CurrentPosY>
-      <TotalScore>200</TotalScore>
+      <CurrentPosX>-1866.571</CurrentPosX>
+      <CurrentPosY>35.8589</CurrentPosY>
+      <TotalScore>350</TotalScore>
       <IslandA>
         <WordGames>
           <Game>
@@ -37,6 +37,12 @@
         <Stories>
           <Story>1<Story>5</Story></Story>
         </Stories>
+        <FillInTheBlanks>
+          <FIB>
+            <Index>1</Index>
+            <Score>80</Score>
+          </FIB>
+        </FillInTheBlanks>
       </IslandA>
     </User>
     <User>
