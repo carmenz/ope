@@ -4,46 +4,9 @@
     <User>
       <Username>1</Username>
       <Password>fn5g+xrZS7Ud7B8EBFfuxg==</Password>
-      <CurrentPosX>-1866.571</CurrentPosX>
-      <CurrentPosY>35.8589</CurrentPosY>
-      <TotalScore>350</TotalScore>
-      <IslandA>
-        <WordGames>
-          <Game>
-            <Index>1</Index>
-            <Word1>T</Word1>
-            <Word2>T</Word2>
-            <Word3>T</Word3>
-            <Word4>T</Word4>
-            <Word5>T</Word5>
-            <Word6>T</Word6>
-            <Word7>T</Word7>
-            <Word8>T</Word8>
-            <Score>70</Score>
-          </Game>
-          <Game>
-            <Index>2</Index>
-            <Word1>T</Word1>
-            <Word2>T</Word2>
-            <Word3>T</Word3>
-            <Word4>T</Word4>
-            <Word5>T</Word5>
-            <Word6>T</Word6>
-            <Word7>T</Word7>
-            <Word8>T</Word8>
-            <Score>70</Score>
-          </Game>
-        </WordGames>
-        <Stories>
-          <Story>1<Story>5</Story></Story>
-        </Stories>
-        <FillInTheBlanks>
-          <FIB>
-            <Index>1</Index>
-            <Score>80</Score>
-          </FIB>
-        </FillInTheBlanks>
-      </IslandA>
+      <CurrentPosX>-2146.331</CurrentPosX>
+      <CurrentPosY>-108.3279</CurrentPosY>
+      <TotalScore>220</TotalScore>
     </User>
     <User>
       <Username>4</Username>

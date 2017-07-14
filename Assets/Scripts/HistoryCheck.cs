@@ -11,91 +11,28 @@ public class HistoryCheck : MonoBehaviour {
 		var userpath = System.IO.Path.Combine (Application.dataPath, "Resources/users.xml");
 		GameManager gm = GameObject.Find ("GameManager").GetComponent<GameManager> ();
 
-		bool firstChallengeOnIsland = true;
-		bool firstMiniChallengeOnIsland = true;
-
 		XmlDocument xmlUserDoc = new XmlDocument ();
-
 		xmlUserDoc.Load (userpath);
 		XmlNode usernameNode = xmlUserDoc.SelectSingleNode ("//Username");
+		XmlNode userNode = scanAndGetUser (usernameNode, gm);
+		XmlNode islandNode = userNode.SelectSingleNode (".//" + island);
 
-
-		while (usernameNode.InnerText != gm.Username) {
-			usernameNode = usernameNode.ParentNode.NextSibling.FirstChild;
-		}
-		XmlNode userNode = usernameNode.ParentNode;
-
-		if (usernameNode.ParentNode.InnerXml.Contains (island)) {
+		if (!usernameNode.ParentNode.InnerXml.Contains (island)) {
+			print ("user not yet have the island");
+			AddIsland(xmlUserDoc, userNode, island);
+		} else {
 			print ("user already have the island");
-			firstChallengeOnIsland = false;
-			XmlNode islandNode = usernameNode.ParentNode.SelectSingleNode (".//" + island);
-			if (islandNode.SelectSingleNode (".//" + miniChallengeName) != null) {
-				firstMiniChallengeOnIsland = false;
-				print ("user already did such a mini challenge on the island");
-			} else {
-				print ("first such mini challenge for user on the island");
-			}
-		} else {
-			print ("user not yet have island");
 		}
-		//}
 
+		if (islandNode.SelectSingleNode (".//" + miniChallengeName) != null) {
+			print ("user already did such a mini challenge on the island");
 
-		if (firstMiniChallengeOnIsland) {
-
-			while (firstMiniChallengeOnIsland) {
-
-				XmlNode nodeBefore = xmlUserDoc.SelectSingleNode ("//TotalScore");
-
-				XmlNode xmlIsland = xmlUserDoc.CreateNode (XmlNodeType.Element, island, null);
-				XmlNode xmlMiniChallengeType = xmlUserDoc.CreateNode (XmlNodeType.Element, miniChallengeName, null);
-				XmlNode xmlMiniChallengeSingular = xmlUserDoc.CreateNode (XmlNodeType.Element, miniChallengeNameSingular, null);
-				XmlNode xmlIndex = xmlUserDoc.CreateNode (XmlNodeType.Element, "Index", null);
-
-				// found the matching user
-//				while (usernameNode.InnerText != gm.Username) {
-//					usernameNode = usernameNode.ParentNode.NextSibling.FirstChild;
-//				}
-				//XmlNode user = usernameNode.ParentNode;
-
-				if (firstChallengeOnIsland) {
-					xmlIndex.InnerText = "1";
-
-					xmlIsland.AppendChild (xmlMiniChallengeType);
-					xmlMiniChallengeType.AppendChild (xmlMiniChallengeSingular);
-					xmlMiniChallengeSingular.AppendChild (xmlIndex);
-
-					userNode.InsertAfter (xmlIsland, nodeBefore);
-					firstMiniChallengeOnIsland = false;
-
-					gm.Index = 1;
-				} else {
-					print ("not the first challenge but the first such mini challenge" + miniChallengeNameSingular);
-
-
-					XmlNode islandNode = usernameNode.NextSibling.NextSibling.NextSibling.NextSibling.NextSibling;
-			
-					gm.Index = 1;
-					xmlIndex.InnerText = "1";
-
-					islandNode.AppendChild (xmlMiniChallengeType);
-					xmlMiniChallengeType.AppendChild (xmlMiniChallengeSingular);
-					xmlMiniChallengeSingular.AppendChild (xmlIndex);
-
-					firstMiniChallengeOnIsland = false;
-				} 
-				 
-			}
-			xmlUserDoc.Save (userpath);
-
-		} else {
-			// not the first such mini challenge
 			XmlDocument xmlMiniChallengeDoc = new XmlDocument ();
 			xmlMiniChallengeDoc.Load (path);
 			XmlNode indexNode = xmlMiniChallengeDoc.SelectSingleNode (".//" + miniChallengeNameSingular + "//Index");
 			int numOfSuchMiniChallengeInDB = xmlMiniChallengeDoc.SelectNodes (".//" + miniChallengeNameSingular + "//Index").Count;
 
-					
+
 			XmlNode miniChallengeNode = userNode.SelectSingleNode (".//" + miniChallengeName);
 
 			while (miniChallengeNode.ChildNodes.Count.ToString() == indexNode.InnerText) {
@@ -103,7 +40,6 @@ public class HistoryCheck : MonoBehaviour {
 			}
 
 			if (miniChallengeNode.ChildNodes.Count == numOfSuchMiniChallengeInDB) {
-				// user have finished all such mini challenges we have
 				print ("user have finished all the games we have");
 				if (miniChallengeNode.LastChild.FirstChild.InnerText == indexNode.InnerText) {
 					indexNode = indexNode.ParentNode.NextSibling.FirstChild;
@@ -111,22 +47,56 @@ public class HistoryCheck : MonoBehaviour {
 
 				//TODO: update db
 				print("update db");
-			
+
 
 			} else {
-				XmlNode newMiniChallengeNode = xmlUserDoc.CreateNode (XmlNodeType.Element, miniChallengeNameSingular, null);
-				XmlNode xmlIndex = xmlUserDoc.CreateNode (XmlNodeType.Element, "Index", null);
-
-				xmlIndex.InnerText = indexNode.InnerText;
-
-				newMiniChallengeNode.AppendChild (xmlIndex);
-				miniChallengeNode.InsertAfter (newMiniChallengeNode, miniChallengeNode.LastChild);
-
+				print ("second time access this mini challenge");
+				AddMiniChallenge (xmlUserDoc, userNode, miniChallengeNameSingular, miniChallengeName, indexNode.InnerText, false);	
 				gm.Index = int.Parse(indexNode.InnerText);
-
 			}
 
-			xmlUserDoc.Save (userpath);
+		} else {
+			print ("first time access this mini challenge");
+			AddMiniChallengeType (xmlUserDoc, userNode, miniChallengeName, island);
+			AddMiniChallenge (xmlUserDoc, userNode, miniChallengeNameSingular, miniChallengeName, "1", true);		
+			gm.Index = 1;
+		}
+		xmlUserDoc.Save (userpath);
+	}
+
+
+	public static XmlNode scanAndGetUser(XmlNode usernameNode, GameManager gm) {
+		while (usernameNode.InnerText != gm.Username) {
+			usernameNode = usernameNode.ParentNode.NextSibling.FirstChild;
+		}
+		return usernameNode.ParentNode;
+	}
+
+
+	public static void AddIsland(XmlDocument xmlUserDoc, XmlNode userNode, string island) {
+		XmlNode nodeBefore = xmlUserDoc.SelectSingleNode ("//TotalScore");
+		XmlNode xmlIsland = xmlUserDoc.CreateNode (XmlNodeType.Element, island, null);
+		userNode.InsertAfter (xmlIsland, nodeBefore);
+	}
+
+	public static void AddMiniChallengeType(XmlDocument xmlUserDoc, XmlNode userNode, string miniChallengeName, string island) {
+		XmlNode xmlMiniChallengeType = xmlUserDoc.CreateNode (XmlNodeType.Element, miniChallengeName, null);
+		XmlNode islandNode = userNode.SelectSingleNode (".//" + island);
+		islandNode.AppendChild (xmlMiniChallengeType);
+	}
+
+	public static void AddMiniChallenge(XmlDocument xmlUserDoc, XmlNode userNode, string miniChallengeNameSingular, string miniChallengeName, string index, bool firstSuchMiniChallenge) {
+		XmlNode xmlMiniChallengeSingular = xmlUserDoc.CreateNode (XmlNodeType.Element, miniChallengeNameSingular, null);
+		XmlNode xmlIndex = xmlUserDoc.CreateNode (XmlNodeType.Element, "Index", null);
+		xmlIndex.InnerText = index;
+
+		XmlNode miniChallengeTypeNode = userNode.SelectSingleNode (".//" + miniChallengeName);
+		if (firstSuchMiniChallenge) {
+			miniChallengeTypeNode.AppendChild (xmlMiniChallengeSingular);
+			xmlMiniChallengeSingular.AppendChild (xmlIndex);
+		} else {
+			xmlMiniChallengeSingular.AppendChild (xmlIndex);
+			miniChallengeTypeNode.InsertAfter (xmlMiniChallengeSingular, miniChallengeTypeNode.LastChild);
 		}
 	}
 }
