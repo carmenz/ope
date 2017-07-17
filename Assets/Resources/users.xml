@@ -4,16 +4,37 @@
     <User>
       <Username>1</Username>
       <Password>fn5g+xrZS7Ud7B8EBFfuxg==</Password>
-      <CurrentPosX>-1610.323</CurrentPosX>
-      <CurrentPosY>183.1613</CurrentPosY>
-      <TotalScore>360</TotalScore>
+      <CurrentPosX>-1871.054</CurrentPosX>
+      <CurrentPosY>34.26547</CurrentPosY>
+      <TotalScore>600</TotalScore>
       <IslandA>
         <FillInTheBlanks>
           <FIB>
             <Index>1</Index>
+            <Score>80</Score>
+          </FIB>
+          <FIB>
+            <Index>2</Index>
             <Score>60</Score>
           </FIB>
         </FillInTheBlanks>
+        <Stories>
+          <Story>1</Story>
+        </Stories>
+        <WordGames>
+          <Game>
+            <Index>1</Index>
+            <Word1>T</Word1>
+            <Word2>T</Word2>
+            <Word3>T</Word3>
+            <Word4>T</Word4>
+            <Word5>T</Word5>
+            <Word6>T</Word6>
+            <Word7>T</Word7>
+            <Word8>T</Word8>
+            <Score>70</Score>
+          </Game>
+        </WordGames>
       </IslandA>
     </User>
     <User>
@@ -28,6 +49,13 @@
       <Password>zu9DpO2NoTBvPoWX1qcZGg==</Password>
       <CurrentPosX>-1607.133</CurrentPosX>
       <CurrentPosY>85.06628</CurrentPosY>
+      <TotalScore>0</TotalScore>
+    </User>
+    <User>
+      <Username>haha</Username>
+      <Password>IRn782RJLluezCpQqMRZaQ==</Password>
+      <CurrentPosX>907.9006</CurrentPosX>
+      <CurrentPosY>153.9252</CurrentPosY>
       <TotalScore>0</TotalScore>
     </User>
   </Users>
