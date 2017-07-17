@@ -125,6 +125,7 @@ public class NewPlayer : MonoBehaviour {
 
 		// Set up mini map
 		SetUpMiniMap();
+		ChangeMusic();
 
 		// in case players stay on a position before quit
         _canBeTriggered = false;
@@ -329,13 +330,17 @@ public class NewPlayer : MonoBehaviour {
 	public void ChangeMusic() {
 		GameManager gm = GameObject.Find ("GameManager").GetComponent<GameManager> ();
 		string island = gm.currentIsland;
+		AudioSource audioA = GameObject.Find("AudioIslandA").GetComponent<AudioSource>();
+		AudioSource audioB = GameObject.Find("AudioIslandB").GetComponent<AudioSource>();
+
+		audioA.Stop();
+		audioB.Stop();
+
 
 		if (island == "A") {
-			AudioSource audio = GameObject.Find("AudioIslandA").GetComponent<AudioSource>();
-			audio.Play();
+			audioA.Play();
 		} else if (island == "B") {
-			AudioSource audio = GameObject.Find("AudioIslandB").GetComponent<AudioSource>();
-			audio.Play();
+			audioB.Play();
 		}
 	}
 }

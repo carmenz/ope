@@ -58,6 +58,7 @@ public class TicketsController : MonoBehaviour {
 						player.GetComponent<NewPlayer>().SaveCurrentIsland("B");
 						player.GetComponent<NewPlayer>().SetUpMiniMap();
 						player.GetComponent<NewPlayer>().SaveCoordinate();
+						player.GetComponent<NewPlayer>().ChangeMusic();
 					});
 				});
 		});
