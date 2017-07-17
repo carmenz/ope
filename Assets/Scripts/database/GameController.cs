@@ -10,7 +10,7 @@ public class GameController : MonoBehaviour {
 	public static Button saveButton;
 	public static Button loadButton;
 
-	private User currentUser = new User();
+	private GameManager currentUser = new GameManager();
 	private static string datapath;
 
 	void Awake() {

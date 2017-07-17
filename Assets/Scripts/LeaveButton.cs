@@ -27,8 +27,8 @@ public class LeaveButton : MonoBehaviour {
 			usernameNode = usernameNode.ParentNode.NextSibling.FirstChild;
 		} 
 
-		usernameNode.ParentNode.SelectSingleNode ("CurrentPosX").InnerText = gm.Coordinate.x.ToString();
-		usernameNode.ParentNode.SelectSingleNode ("CurrentPosY").InnerText = gm.Coordinate.y.ToString();
+		usernameNode.ParentNode.SelectSingleNode (".//CurrentPosX").InnerText = gm.Coordinate.x.ToString();
+		usernameNode.ParentNode.SelectSingleNode (".//CurrentPosY").InnerText = gm.Coordinate.y.ToString();
 
 		xmlUserDoc.Save (userpath);
 

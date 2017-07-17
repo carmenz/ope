@@ -4,10 +4,18 @@
     <User>
       <Username>1</Username>
       <Password>fn5g+xrZS7Ud7B8EBFfuxg==</Password>
-      <CurrentPosX>-1218.972</CurrentPosX>
-      <CurrentPosY>73.58739</CurrentPosY>
+      <CurrentPosX>-1379.921</CurrentPosX>
+      <CurrentPosY>-253.8347</CurrentPosY>
       <CurrentIsland>A</CurrentIsland>
       <TotalScore>1</TotalScore>
+    </User>
+    <User>
+      <Username>321</Username>
+      <Password>00QmVDtKoX0fPZ/PV4K+bg==</Password>
+      <CurrentPosX>-907.7989</CurrentPosX>
+      <CurrentPosY>-47.75366</CurrentPosY>
+      <CurrentIsland>A</CurrentIsland>
+      <TotalScore>0</TotalScore>
     </User>
   </Users>
 </UserCollection>
