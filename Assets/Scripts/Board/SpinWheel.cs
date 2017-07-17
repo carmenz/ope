@@ -44,17 +44,16 @@ public class SpinWheel : MonoBehaviour {
 			.OnComplete(() => {
 				star.GetComponent<Animator>().SetBool("onClick", false);
 				panel.SetActive (true);
-
-				Text panelScore = GameObject.Find("PanelScore").GetComponent<Text>();
-				GameManager gm = GameObject.Find("GameManager").GetComponent<GameManager>();
-				panelScore.text = point.ToString ();
-				gm.updateDBTotalScore(point);
+				ShowPanel();
 			});
 	}
 
+	public void ShowPanel() {
+		Text panelScore = GameObject.Find("PanelScore").GetComponent<Text>();
+		panelScore.text = point.ToString ();
 
-
-
-
+		GameManager gm = GameObject.Find("GameManager").GetComponent<GameManager>();
+		gm.updateDBTotalScore(point);
+	}
 
 }
