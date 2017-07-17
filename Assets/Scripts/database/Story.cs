@@ -24,14 +24,15 @@ public class Story : MonoBehaviour {
 		userpath = System.IO.Path.Combine (Application.dataPath, "Resources/users.xml");
 
 		int pos = gm.Index;
+		string currentIsland = gm.currentIsland;
 
-		if (pos < 25) {
+		if (currentIsland == "A") {
 			island = "IslandA";
-		} else if (pos < 30) {
+		} else if (currentIsland == "B") {
 			island = "IslandB";
-		} else if (pos < 40) {
+		} else if (currentIsland == "C") {
 			island = "IslandC";
-		} else if (pos < 50) {
+		} else if (currentIsland == "D") {
 			island = "IslandD";
 		}
 
