@@ -108,8 +108,9 @@ public class WordGameManager : MonoBehaviour {
 			usernameNode = usernameNode.ParentNode.NextSibling.FirstChild;
 		}
 
-		XmlNode islandNode = usernameNode.NextSibling.NextSibling.NextSibling.NextSibling.NextSibling;
-		XmlNode gameIndexNode = islandNode.SelectSingleNode (".//Game//Index");
+
+		//XmlNode islandNode = usernameNode.NextSibling.NextSibling.NextSibling.NextSibling.NextSibling.NextSibling;
+		XmlNode gameIndexNode = usernameNode.SelectSingleNode (".//Game//Index");
 
 		// find the matching game index
 		while (gm.Index.ToString() != gameIndexNode.InnerText) {
@@ -171,8 +172,8 @@ public class WordGameManager : MonoBehaviour {
 			usernameNode = usernameNode.ParentNode.NextSibling.FirstChild;
 		}
 
-		XmlNode islandNode = usernameNode.NextSibling.NextSibling.NextSibling.NextSibling.NextSibling;
-		XmlNode gameIndexNode = islandNode.SelectSingleNode (".//Game//Index");
+		//XmlNode islandNode = usernameNode.NextSibling.NextSibling.NextSibling.NextSibling.NextSibling;
+		XmlNode gameIndexNode = usernameNode.SelectSingleNode (".//Game//Index");
 
 		// find the matching game index
 		while (gm.Index.ToString() != gameIndexNode.InnerText) {
