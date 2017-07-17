@@ -90,6 +90,7 @@ public class SaveData : MonoBehaviour {
 			user.Add (new XElement ("Password", current.data.password));
 			user.Add (new XElement ("CurrentPosX", current.data.currentPosX));
 			user.Add (new XElement ("CurrentPosY", current.data.currentPosY));
+			user.Add (new XElement ("CurrentIsland", current.data.currentIsland));
 			user.Add (new XElement ("TotalScore", current.data.totalScore));
 
 			doc.Root.Element ("Users").Add (user);
