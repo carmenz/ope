@@ -28,14 +28,14 @@ public class SaveData : MonoBehaviour {
 	public static NewPlayer player;
 	private static TextAsset textAsset;
 
-	public static void Save(string path, User current) {
+	public static void Save(string path, GameManager current) {
 
 		print ("saveData Save");
 //		OnBeforeSave ();
 		SaveUser(path, current);
 	}
 
-	public static void Load(string path, User current) {
+	public static void Load(string path, GameManager current) {
 
 		print ("saveData Load");
 		//		OnBeforeSave ();
@@ -43,7 +43,7 @@ public class SaveData : MonoBehaviour {
 	}
 
 
-	public static void Update(string path, User current) {
+	public static void Update(string path, GameManager current) {
 
 		print ("saveData Update");
 		//		OnBeforeSave ();
@@ -52,7 +52,7 @@ public class SaveData : MonoBehaviour {
 		
 
 
-	private static void SaveUser(string path, User current) {
+	private static void SaveUser(string path, GameManager current) {
 		
 		current.GetInputData ();
 	
@@ -103,7 +103,7 @@ public class SaveData : MonoBehaviour {
 	}
 		
 
-	private static void LoadUser(string path, User current) {
+	private static void LoadUser(string path, GameManager current) {
 
 		current.GetInputData ();
 
@@ -144,7 +144,7 @@ public class SaveData : MonoBehaviour {
 		}
 	}
 
-	private static void UpdateUser(string path, User current) {
+	private static void UpdateUser(string path, GameManager current) {
 	
 		// check if user.xml exist
 		if (File.Exists (path)) {

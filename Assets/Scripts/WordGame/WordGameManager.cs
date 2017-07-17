@@ -66,7 +66,8 @@ public class WordGameManager : MonoBehaviour {
 		}
 	
 		showPanel ("MissionComplete");
-
+		AudioSource audio = GameObject.Find("AudioComplete").GetComponent<AudioSource>();
+		audio.Play();
 		updateDBScore ();
 		gm.updateDBTotalScore (currentScore);
 
@@ -110,7 +111,8 @@ public class WordGameManager : MonoBehaviour {
 
 
 		//XmlNode islandNode = usernameNode.NextSibling.NextSibling.NextSibling.NextSibling.NextSibling.NextSibling;
-		XmlNode gameIndexNode = usernameNode.SelectSingleNode (".//Game//Index");
+		XmlNode islandNode = usernameNode.ParentNode.SelectSingleNode(".//TotalScore").NextSibling;
+		XmlNode gameIndexNode = islandNode.SelectSingleNode (".//Game//Index");
 
 		// find the matching game index
 		while (gm.Index.ToString() != gameIndexNode.InnerText) {
@@ -173,7 +175,8 @@ public class WordGameManager : MonoBehaviour {
 		}
 
 		//XmlNode islandNode = usernameNode.NextSibling.NextSibling.NextSibling.NextSibling.NextSibling;
-		XmlNode gameIndexNode = usernameNode.SelectSingleNode (".//Game//Index");
+		XmlNode islandNode = usernameNode.ParentNode.SelectSingleNode(".//TotalScore").NextSibling;
+		XmlNode gameIndexNode = islandNode.SelectSingleNode (".//Game//Index");
 
 		// find the matching game index
 		while (gm.Index.ToString() != gameIndexNode.InnerText) {
@@ -217,7 +220,9 @@ public class WordGameManager : MonoBehaviour {
 		Text infoText = GameObject.Find ("Info").GetComponent<Text> ();
 
 		if (indexNode.SelectSingleNode ("//Word" + subIndexForInfo + "//Yes").InnerText == booleanValue) {
-			print ("user got the correct answer");
+			AudioSource audio = GameObject.Find("AudioCorrect").GetComponent<AudioSource>();
+			audio.Play();
+
 			infoText.text = "Yes! Correct answer!";
 			multiplexerCount++;
 			crossCount = 0;
@@ -247,6 +252,8 @@ public class WordGameManager : MonoBehaviour {
 			
 				if (subIndex == 9) {
 					showPanel ("MissionComplete");
+					AudioSource audio = GameObject.Find("AudioComplete").GetComponent<AudioSource>();
+					audio.Play();
 				} else {
 					showPanel ("Oops");
 				}
@@ -315,11 +322,15 @@ public class WordGameManager : MonoBehaviour {
 			multiplexer.text = "x2";
 			if (multiplexerCount == 3) {
 				multiplexer.GetComponent<Animation>().Play();
+				AudioSource audio = GameObject.Find("AudioMultiplier").GetComponent<AudioSource>();
+				audio.Play();
 			}
 		} else {
 			multiplexer.text = "x3";
 			if (multiplexerCount == 6) {
 				multiplexer.GetComponent<Animation>().Play();
+				AudioSource audio = GameObject.Find("AudioMultiplier").GetComponent<AudioSource>();
+				audio.Play();
 			}
 		}
 	}

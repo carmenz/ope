@@ -14,6 +14,8 @@ public class BackButton : MonoBehaviour {
 	}
 
 	public void Quit() {
+		AudioSource audio = GameObject.Find("AudioQuit").GetComponent<AudioSource>();
+		audio.Play();
 		SceneManager.LoadScene(mainSceneName);
 	}
 //
