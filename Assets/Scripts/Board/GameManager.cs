@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour {
 	public List<Mission> missionList = new List<Mission>();
 	[SerializeField]
 	public int score;
+	public string currentIsland;
 
 	public int typeCode;
 	string _uname = "TestUser";
@@ -96,7 +97,6 @@ public class GameManager : MonoBehaviour {
 		while (usernameNode.InnerText != Username) {
 			usernameNode = usernameNode.ParentNode.NextSibling.FirstChild;
 		} 
-		print ("hahaha");
 		usernameNode.ParentNode.SelectSingleNode ("TotalScore").InnerText = 
 			(int.Parse(usernameNode.ParentNode.SelectSingleNode ("TotalScore").InnerText) + currentScore).ToString();
 

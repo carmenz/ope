@@ -9,5 +9,13 @@
       <CurrentIsland>A</CurrentIsland>
       <TotalScore>1</TotalScore>
     </User>
+    <User>
+      <Username>Username</Username>
+      <Password>zu9DpO2NoTBvPoWX1qcZGg==</Password>
+      <CurrentPosX>975.4179</CurrentPosX>
+      <CurrentPosY>-64.71299</CurrentPosY>
+      <CurrentIsland>B</CurrentIsland>
+      <TotalScore>0</TotalScore>
+    </User>
   </Users>
 </UserCollection>

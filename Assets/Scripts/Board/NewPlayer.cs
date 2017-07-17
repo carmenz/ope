@@ -82,6 +82,7 @@ public class NewPlayer : MonoBehaviour {
 		defaultMaterial = GameObject.Find("Board").GetComponent<SpriteRenderer>().material;
 		// init location
         transform.position = gm.Coordinate;
+		gm.currentIsland = GetCurrentIsland();
 		// init missions panel and refresh mission list
 		missionsPanel = GameObject.Find("MissionsPanel");
 		MissionToggle = (GameObject)Resources.Load("MissionToggle", typeof(GameObject));
@@ -122,8 +123,20 @@ public class NewPlayer : MonoBehaviour {
 		ticketsController = GameObject.Find("BuyTicketsPanel").GetComponent<TicketsController>();
 		ticketsController.ClosePanel();
 
+		// Set up mini map
+		SetUpMiniMap();
+
 		// in case players stay on a position before quit
         _canBeTriggered = false;
+	}
+
+	public void SetUpMiniMap() {
+		string[] map = new string[] {"A", "B"};
+		var highLights = GameObject.Find("HighLights");
+		foreach (var item in map) {
+			highLights.transform.Find(item).gameObject.SetActive(false);
+		}
+		highLights.transform.Find(gm.currentIsland).gameObject.SetActive(true);
 	}
 	
 	// Update is called once per frame
@@ -229,7 +242,8 @@ public class NewPlayer : MonoBehaviour {
 		return Int32.Parse(totals);
 	}
 
-	void SaveCoordinate() {
+	public void SaveCurrentIsland(string island) {
+		gm.currentIsland = island;
 		var userpath = System.IO.Path.Combine (Application.dataPath, "Resources/users.xml");
 		XmlDocument xmlUserDoc = new XmlDocument ();
 		xmlUserDoc.Load (userpath);
@@ -240,8 +254,43 @@ public class NewPlayer : MonoBehaviour {
 			usernameNode = usernameNode.ParentNode.NextSibling.FirstChild;
 		} 
 
-		usernameNode.ParentNode.SelectSingleNode ("CurrentPosX").InnerText = gm.Coordinate.x.ToString();
-		usernameNode.ParentNode.SelectSingleNode ("CurrentPosY").InnerText = gm.Coordinate.y.ToString();
+		usernameNode.ParentNode.SelectSingleNode(".//CurrentIsland").InnerText = island;
+		xmlUserDoc.Save (userpath);
+	}
+
+	string GetCurrentIsland() {
+		XmlDocument xmlUserDoc = new XmlDocument ();
+
+		var userpath = System.IO.Path.Combine (Application.dataPath, "Resources/users.xml");
+		xmlUserDoc.Load (userpath);
+		XmlNode usernameNode = xmlUserDoc.SelectSingleNode ("//Username");
+
+
+		while (usernameNode.InnerText != gm.Username) {
+			usernameNode = usernameNode.ParentNode.NextSibling.FirstChild;
+		}
+
+		var currentIsland = usernameNode.ParentNode.SelectSingleNode(".//CurrentIsland").InnerText;
+		xmlUserDoc.Save(userpath);
+		return currentIsland;
+	}
+
+	public void SaveCoordinate() {
+		var userpath = System.IO.Path.Combine (Application.dataPath, "Resources/users.xml");
+		XmlDocument xmlUserDoc = new XmlDocument ();
+		xmlUserDoc.Load (userpath);
+
+		XmlNode usernameNode = xmlUserDoc.SelectSingleNode ("//Username");
+
+		while (usernameNode.InnerText != gm.Username) {
+			usernameNode = usernameNode.ParentNode.NextSibling.FirstChild;
+		} 
+
+		// usernameNode.ParentNode.SelectSingleNode ("CurrentPosX").InnerText = gm.Coordinate.x.ToString();
+		// usernameNode.ParentNode.SelectSingleNode ("CurrentPosY").InnerText = gm.Coordinate.y.ToString();
+
+		usernameNode.ParentNode.SelectSingleNode ("CurrentPosX").InnerText = gameObject.transform.position.x.ToString();
+		usernameNode.ParentNode.SelectSingleNode ("CurrentPosY").InnerText = gameObject.transform.position.y.ToString();
 
 		xmlUserDoc.Save (userpath);
 	}

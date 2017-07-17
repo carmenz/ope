@@ -46,7 +46,11 @@ public class TicketsController : MonoBehaviour {
 				.OnComplete(() => {
 					// move character to the target island
 					player.transform.parent = null;
-					player.transform.DOMove(new Vector3(830f, -30f, 0f), 3f);
+					player.transform.DOMove(new Vector3(830f, -30f, 0f), 3f).OnComplete(() => {
+						player.GetComponent<NewPlayer>().SaveCurrentIsland("B");
+						player.GetComponent<NewPlayer>().SetUpMiniMap();
+						player.GetComponent<NewPlayer>().SaveCoordinate();
+					});
 				});
 		});
 	}
