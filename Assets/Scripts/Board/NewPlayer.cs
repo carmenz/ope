@@ -297,12 +297,16 @@ public class NewPlayer : MonoBehaviour {
 	}
 
 	public void ShowMissons() {
+		AudioSource audio = GameObject.Find("AudioMission").GetComponent<AudioSource>();
+		audio.Play ();
 		missionsPanel.SetActive(true);
 		Material material = new Material (Shader.Find ("Transparent/Diffuse"));
 		GameObject.Find ("Board").GetComponent<SpriteRenderer> ().material = material;
 	}
 
 	public void HideMissions() {
+		AudioSource audio = GameObject.Find("AudioMissionQuit").GetComponent<AudioSource>();
+		audio.Play ();
 		missionsPanel.SetActive(false);
 		GameObject.Find ("Board").GetComponent<SpriteRenderer> ().material = defaultMaterial;
 	}
