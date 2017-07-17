@@ -17,7 +17,8 @@ public class HistoryCheck : MonoBehaviour {
 		XmlNode userNode = scanAndGetUser (usernameNode, gm);
 
 
-		if (!usernameNode.ParentNode.InnerXml.Contains (island)) {
+
+		if (userNode.SelectSingleNode(".//" + island) == null) {
 			print ("user not yet have the island");
 			AddIsland(xmlUserDoc, userNode, island);
 			xmlUserDoc.Save (userpath);
@@ -75,7 +76,7 @@ public class HistoryCheck : MonoBehaviour {
 
 
 	public static void AddIsland(XmlDocument xmlUserDoc, XmlNode userNode, string island) {
-		XmlNode nodeBefore = xmlUserDoc.SelectSingleNode ("//TotalScore");
+		XmlNode nodeBefore = userNode.SelectSingleNode (".//TotalScore");
 		XmlNode xmlIsland = xmlUserDoc.CreateNode (XmlNodeType.Element, island, null);
 		//xmlIsland.InnerText = "";
 		userNode.InsertAfter (xmlIsland, nodeBefore);

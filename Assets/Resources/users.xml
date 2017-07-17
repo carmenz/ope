@@ -62,5 +62,28 @@
       <CurrentIsland>B</CurrentIsland>
       <TotalScore>0</TotalScore>
     </User>
+    <User>
+      <Username>6546</Username>
+      <Password>e42PGXVcV3+HCF3GO+7gzA==</Password>
+      <CurrentPosX>-1592.712</CurrentPosX>
+      <CurrentPosY>-208.3593</CurrentPosY>
+      <CurrentIsland>A</CurrentIsland>
+      <TotalScore>0</TotalScore>
+    </User>
+    <User>
+      <Username>666</Username>
+      <Password>wafL0c6dgmOU1+6Ye4LBkQ==</Password>
+      <CurrentPosX>-793.2623</CurrentPosX>
+      <CurrentPosY>273.5483</CurrentPosY>
+      <CurrentIsland>A</CurrentIsland>
+      <TotalScore>0</TotalScore>
+      <IslandA>
+        <FillInTheBlanks>
+          <FIB>
+            <Index>1</Index>
+          </FIB>
+        </FillInTheBlanks>
+      </IslandA>
+    </User>
   </Users>
 </UserCollection>
