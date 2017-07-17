@@ -12,26 +12,26 @@ public class FillInTheBlank : MonoBehaviour {
 
 	public void GetData() {
 		gm = GameObject.Find ("GameManager").GetComponent<GameManager> ();
-	
+		string currentIsland = gm.currentIsland;
 		pos = gm.Index;
 
 		// choose FillInTheBlank file according to island
-		if (pos < 25) {
+		if (currentIsland == "A") {
 			island = "IslandA";
 			path = System.IO.Path.Combine (Application.dataPath, "Resources/blanksA.xml");
-			print ("we are on island A");
-		} else if (pos < 30) {
+		
+		} else if (currentIsland == "B") {
 			island = "IslandB";
 			path = System.IO.Path.Combine (Application.dataPath, "Resources/blanksB.xml");
-			print ("we are on island B");
-		} else if (pos < 40) {
+		
+		} else if (currentIsland == "C") {
 			island = "IslandC";
 			path = System.IO.Path.Combine (Application.dataPath, "Resources/blanksC.xml");
-			print ("we are on island C");
-		} else if (pos < 50) {
+	
+		} else if (currentIsland == "D") {
 			island = "IslandD";
 			path = System.IO.Path.Combine (Application.dataPath, "Resources/blanksD.xml");
-			print ("we are on island D");
+
 		}
 
 		gm.Path = path;

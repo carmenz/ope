@@ -9,30 +9,34 @@ public class WordGame : MonoBehaviour {
 	private GameManager gm;
 	private int pos;
 
+
 	public void GetData() {
 
 		gm = GameObject.Find ("GameManager").GetComponent<GameManager> ();
 
+		string currentIsland = gm.currentIsland;
+
 		pos = gm.Index;
 
 		// choose game file according to island
-		if (pos < 25) {
+		if (currentIsland == "A") {
 			island = "IslandA";
 			path = System.IO.Path.Combine (Application.dataPath, "Resources/wordGamesA.xml");
-			print ("we are on island A");
-		} else if (pos < 30) {
+		} else if (currentIsland == "B") {
 			island = "IslandB";
 			path = System.IO.Path.Combine (Application.dataPath, "Resources/wordGamesB.xml");
-			print ("we are on island B");
-		} else if (pos < 40) {
+		} else if (currentIsland == "C") {
 			island = "IslandC";
 			path = System.IO.Path.Combine (Application.dataPath, "Resources/wordGamesC.xml");
-			print ("we are on island C");
-		} else if (pos < 50) {
+		} else if (currentIsland == "D") {
 			island = "IslandD";
 			path = System.IO.Path.Combine (Application.dataPath, "Resources/wordGamesD.xml");
-			print ("we are on island D");
 		}
+
+
+
+
+
 
 		gm.Path = path;
 		HistoryCheck.FirstTimeCheck (path, island, "WordGames", "Game");
