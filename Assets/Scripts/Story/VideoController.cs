@@ -39,11 +39,6 @@ public class VideoController : MonoBehaviour {
 		xmlUserDoc.Save (userpath);
 
 	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
 
 	void EndReached(VideoPlayer vPlayer) {
 		// SceneManager.LoadScene(mainSceneName);

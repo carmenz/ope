@@ -16,6 +16,7 @@ public class User : MonoBehaviour {
 	public string  password = "000";
 	public float currentPosX = 0.0f;
 	public float currentPosY = 0.0f;
+	public string currentIsland = "A";
 	public int score = 0;
 
 
@@ -39,6 +40,7 @@ public class User : MonoBehaviour {
 		}
 		data.currentPosX = GameObject.Find ("GameManager").GetComponent<GameManager> ().Coordinate.x;
 		data.currentPosY = GameObject.Find ("GameManager").GetComponent<GameManager> ().Coordinate.y;
+		data.currentIsland = "A";
 		data.totalScore = score;
 
 	}
@@ -96,6 +98,9 @@ public class UserData{
 
 	[XmlElement("CurrentposY")]
 	public float currentPosY;
+
+	[XmlElement("CurrentIsland")]
+	public string currentIsland;
 
 	[XmlElement("TotalScore")]
 	public int totalScore;

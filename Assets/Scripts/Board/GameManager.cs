@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Xml;
 
 public class GameManager : MonoBehaviour {
 	public static GameManager instance;
@@ -23,6 +24,7 @@ public class GameManager : MonoBehaviour {
 
 	[SerializeField]
 	string _path = "path";
+
 
 		
 	public string Username{
@@ -84,9 +86,21 @@ public class GameManager : MonoBehaviour {
 
 	}
 
-	// Use this for initialization
-	void Start () {
-		
+	public void updateDBTotalScore(int currentScore) {
+
+		string userpath = System.IO.Path.Combine (Application.dataPath, "Resources/users.xml");
+		XmlDocument xmlUserDoc = new XmlDocument ();
+		xmlUserDoc.Load (userpath);
+		XmlNode usernameNode = xmlUserDoc.SelectSingleNode ("//Username");
+		// Find user and update <TotalScore>
+		while (usernameNode.InnerText != Username) {
+			usernameNode = usernameNode.ParentNode.NextSibling.FirstChild;
+		} 
+		print ("hahaha");
+		usernameNode.ParentNode.SelectSingleNode ("TotalScore").InnerText = 
+			(int.Parse(usernameNode.ParentNode.SelectSingleNode ("TotalScore").InnerText) + currentScore).ToString();
+
+		xmlUserDoc.Save (userpath);
 	}
 	
 	// Update is called once per frame

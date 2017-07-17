@@ -68,7 +68,7 @@ public class WordGameManager : MonoBehaviour {
 		showPanel ("MissionComplete");
 
 		updateDBScore ();
-		updateDBTotalScore ();
+		gm.updateDBTotalScore (currentScore);
 
 	}
 
@@ -108,8 +108,9 @@ public class WordGameManager : MonoBehaviour {
 			usernameNode = usernameNode.ParentNode.NextSibling.FirstChild;
 		}
 
-		XmlNode islandNode = usernameNode.NextSibling.NextSibling.NextSibling.NextSibling.NextSibling;
-		XmlNode gameIndexNode = islandNode.SelectSingleNode (".//Game//Index");
+
+		//XmlNode islandNode = usernameNode.NextSibling.NextSibling.NextSibling.NextSibling.NextSibling.NextSibling;
+		XmlNode gameIndexNode = usernameNode.SelectSingleNode (".//Game//Index");
 
 		// find the matching game index
 		while (gm.Index.ToString() != gameIndexNode.InnerText) {
@@ -171,8 +172,8 @@ public class WordGameManager : MonoBehaviour {
 			usernameNode = usernameNode.ParentNode.NextSibling.FirstChild;
 		}
 
-		XmlNode islandNode = usernameNode.NextSibling.NextSibling.NextSibling.NextSibling.NextSibling;
-		XmlNode gameIndexNode = islandNode.SelectSingleNode (".//Game//Index");
+		//XmlNode islandNode = usernameNode.NextSibling.NextSibling.NextSibling.NextSibling.NextSibling;
+		XmlNode gameIndexNode = usernameNode.SelectSingleNode (".//Game//Index");
 
 		// find the matching game index
 		while (gm.Index.ToString() != gameIndexNode.InnerText) {
@@ -289,20 +290,20 @@ public class WordGameManager : MonoBehaviour {
 	}
 
 
-	public void updateDBTotalScore() {
-		XmlDocument xmlUserDoc = new XmlDocument ();
-		xmlUserDoc.Load (userpath);
-		XmlNode usernameNode = xmlUserDoc.SelectSingleNode ("//Username");
-		// Find user and update <TotalScore>
-		while (usernameNode.InnerText != gm.Username) {
-			usernameNode = usernameNode.ParentNode.NextSibling.FirstChild;
-		} 
-		print ("hahaha");
-		usernameNode.ParentNode.SelectSingleNode ("TotalScore").InnerText = 
-			(int.Parse(usernameNode.ParentNode.SelectSingleNode ("TotalScore").InnerText) + currentScore).ToString();
-
-		xmlUserDoc.Save (userpath);
-	}
+//	public void updateDBTotalScore() {
+//		XmlDocument xmlUserDoc = new XmlDocument ();
+//		xmlUserDoc.Load (userpath);
+//		XmlNode usernameNode = xmlUserDoc.SelectSingleNode ("//Username");
+//		// Find user and update <TotalScore>
+//		while (usernameNode.InnerText != gm.Username) {
+//			usernameNode = usernameNode.ParentNode.NextSibling.FirstChild;
+//		} 
+//		print ("hahaha");
+//		usernameNode.ParentNode.SelectSingleNode ("TotalScore").InnerText = 
+//			(int.Parse(usernameNode.ParentNode.SelectSingleNode ("TotalScore").InnerText) + currentScore).ToString();
+//
+//		xmlUserDoc.Save (userpath);
+//	}
 
 
 	public void multiplexerCheck(int multiplexerCount) {
