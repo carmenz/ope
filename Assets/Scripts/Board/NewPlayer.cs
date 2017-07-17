@@ -7,6 +7,7 @@ using UnityEngine.EventSystems;
 using System.Xml;
 using System.IO;
 using System;
+using DG.Tweening;
 
 public class NewPlayer : MonoBehaviour {
 
@@ -142,10 +143,30 @@ public class NewPlayer : MonoBehaviour {
 		_canBeTriggered = false;
 		// Get slot type
 		// WORDPLAY, SLIDESTORY, MADLIBS, SPINNINGWHEEL, SHOP, PORT
-		// var type = collider.name.Replace(" Slot", "");
 		var sc = collider.GetComponent<SquareController>();
-		if (!sc)
+		if (!sc) {
+			// can be ferry spot
+			var fc = collider.GetComponent<FerrySpot>();
+			if (!fc)
+				return;
+			// TODO: show ferry tickets panel
+			// TODO: close panel
+			var ferry = GameObject.Find("Ferry");
+			// move character to the ferry
+			transform.DOMove(new Vector3(-479.2394f, 177.2796f, 0f), 3f).OnComplete(() => {
+				transform.parent = ferry.transform;
+				
+				var seq = DOTween.Sequence ();  
+				// move ferry 
+				seq.Append(ferry.GetComponent<DOTweenPath>().tween)
+					.OnComplete(() => {
+						// move character to the target island
+						transform.parent = null;
+						transform.DOMove(new Vector3(830f, -30f, 0f), 3f);
+					});
+			});
 			return;
+		}
 		var type = sc.type;
 		gm.typeCode = sc.index;
 		gm.Index = sc.index;
