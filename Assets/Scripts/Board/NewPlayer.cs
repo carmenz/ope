@@ -36,6 +36,8 @@ public class NewPlayer : MonoBehaviour {
 	GameObject missionsPanel;
 	GameObject MissionToggle;
 
+	TicketsController ticketsController;
+
 	public bool IsRuning
     {
         get { return _isRuning; }
@@ -58,13 +60,9 @@ public class NewPlayer : MonoBehaviour {
         }
         if (_isRuning)
         {
-            Debug.Log(curenPosition + "hahaha" + moveTowardPosition);
-
 			var d = Vector2.Distance(curenPosition, moveTowardPosition);
-			Debug.Log(d);
 
             if (d < 1) {
-				Debug.Log("arrive");
                 transform.GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
                 transform.position = moveTowardPosition;
                 _isRuning = false;
@@ -120,6 +118,9 @@ public class NewPlayer : MonoBehaviour {
 			GameObject.Find ("Board").GetComponent<SpriteRenderer> ().material = material;
 		}
 
+		// Set up BuyTicketsPanel
+		ticketsController = GameObject.Find("BuyTicketsPanel").GetComponent<TicketsController>();
+		ticketsController.ClosePanel();
 
 		// in case players stay on a position before quit
         _canBeTriggered = false;
@@ -149,22 +150,7 @@ public class NewPlayer : MonoBehaviour {
 			var fc = collider.GetComponent<FerrySpot>();
 			if (!fc)
 				return;
-			// TODO: show ferry tickets panel
-			// TODO: close panel
-			var ferry = GameObject.Find("Ferry");
-			// move character to the ferry
-			transform.DOMove(new Vector3(-479.2394f, 177.2796f, 0f), 3f).OnComplete(() => {
-				transform.parent = ferry.transform;
-				
-				var seq = DOTween.Sequence ();  
-				// move ferry 
-				seq.Append(ferry.GetComponent<DOTweenPath>().tween)
-					.OnComplete(() => {
-						// move character to the target island
-						transform.parent = null;
-						transform.DOMove(new Vector3(830f, -30f, 0f), 3f);
-					});
-			});
+			ticketsController.OpenPanel();
 			return;
 		}
 		var type = sc.type;
