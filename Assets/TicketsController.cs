@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using DG.Tweening;
 
 public class TicketsController : MonoBehaviour {
@@ -26,18 +27,25 @@ public class TicketsController : MonoBehaviour {
 	}
 
 	public void OpenPanel() {
+		score.GetComponent<Text>().text = player.GetComponent<NewPlayer>().GetTotalScore().ToString();
 		gameObject.SetActive(true);
 	}
 
 	public void GetTicket() {
-		popup.SetActive(true);
+		var total = player.GetComponent<NewPlayer>().GetTotalScore();
+		if (total >= 100) {
+			player.GetComponent<NewPlayer>().AddTotalScore(-100);
+			popup.SetActive(true);
+		} else {
+			Debug.Log("points not enough");
+		}
 	}
 
 	public void Comfirmed() {
 		ClosePanel();
 		var ferry = GameObject.Find("Ferry");
 		// move character to the ferry
-		player.transform.DOMove(new Vector3(-479.2394f, 177.2796f, 0f), 3f).OnComplete(() => {
+		player.transform.DOMove(new Vector3(-479.2394f, 48f, 0f), 3f).OnComplete(() => {
 			player.transform.parent = ferry.transform;
 			
 			var seq = DOTween.Sequence ();  

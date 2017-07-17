@@ -44,10 +44,31 @@
     <User>
       <Username>Username</Username>
       <Password>zu9DpO2NoTBvPoWX1qcZGg==</Password>
-      <CurrentPosX>975.4179</CurrentPosX>
-      <CurrentPosY>-64.71299</CurrentPosY>
+      <CurrentPosX>830</CurrentPosX>
+      <CurrentPosY>-30</CurrentPosY>
       <CurrentIsland>B</CurrentIsland>
-      <TotalScore>0</TotalScore>
+      <TotalScore>300</TotalScore>
+      <IslandA>
+        <WordGames>
+          <Game>
+            <Index>1</Index>
+            <Word1>T</Word1>
+            <Word2>F</Word2>
+            <Word3>T</Word3>
+            <Word4>F</Word4>
+            <Word5>T</Word5>
+            <Word6>F</Word6>
+            <Word7>T</Word7>
+            <Word8>F</Word8>
+            <Score>60</Score>
+          </Game>
+        </WordGames>
+        <FillInTheBlanks>
+          <FIB>
+            <Index>1</Index>
+          </FIB>
+        </FillInTheBlanks>
+      </IslandA>
     </User>
     <User>
       <Username>6546</Username>
