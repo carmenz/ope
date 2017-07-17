@@ -324,4 +324,18 @@ public class NewPlayer : MonoBehaviour {
 		xmlUserDoc.Save(userpath);
 		GameObject.Find("Score").GetComponent<Text>().text = result;
 	}
+
+
+	public void ChangeMusic() {
+		GameManager gm = GameObject.Find ("GameManager").GetComponent<GameManager> ();
+		string island = gm.currentIsland;
+
+		if (island == "A") {
+			AudioSource audio = GameObject.Find("AudioIslandA").GetComponent<AudioSource>();
+			audio.Play();
+		} else if (island == "B") {
+			AudioSource audio = GameObject.Find("AudioIslandB").GetComponent<AudioSource>();
+			audio.Play();
+		}
+	}
 }
