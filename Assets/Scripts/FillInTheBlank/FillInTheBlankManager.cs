@@ -101,6 +101,9 @@ public class FillInTheBlankManager : MonoBehaviour {
 		option4.GetComponent<Button>().interactable = false; 
 
 
+		AudioSource audio = GameObject.Find("AudioComplete").GetComponent<AudioSource>();
+		audio.Play();
+
 		panel.SetActive(true);
 		// display score on panel
 		Text panelScore = GameObject.Find("PanelScore").GetComponent<Text>();
@@ -151,6 +154,8 @@ public class FillInTheBlankManager : MonoBehaviour {
 
 		// check if user answer is correct
 		if(indexNode.SelectSingleNode ("//Blank"+ subIndexForInfo +"//Option"+ optionNumber +"//correct").InnerText == "T") {
+			AudioSource audio = GameObject.Find("AudioCorrect").GetComponent<AudioSource>();
+			audio.Play();
 			blankText.color = Color.green;
 			blankText.text = indexNode.SelectSingleNode ("//Blank"+ subIndexForInfo +"//Option"+ optionNumber +"//value").InnerText;
 			clickCounter = 2;
@@ -163,7 +168,8 @@ public class FillInTheBlankManager : MonoBehaviour {
 
 		// user got the first chance wrong
 		if (clickCounter == 1) {
-			
+			AudioSource audio = GameObject.Find("AudioIncorrect1").GetComponent<AudioSource>();
+			audio.Play();
 			Button clicked = GameObject.Find ("Option" + optionNumber).GetComponent<Button> ();
 			clicked.gameObject.SetActive (false);
 
@@ -205,6 +211,8 @@ public class FillInTheBlankManager : MonoBehaviour {
 				while (indexNode.SelectSingleNode ("//Blank" + subIndexForInfo + "//Option" + check + "//correct").InnerText != "T") {
 					check++;
 				}
+				AudioSource audio = GameObject.Find("AudioIncorrect2").GetComponent<AudioSource>();
+				audio.Play();
 				XmlNode correctAnsNode = indexNode.SelectSingleNode ("//Blank" + subIndexForInfo + "//Option" + check + "//value");
 				var info = indexNode.SelectSingleNode ("//Blank" + subIndexForInfo + "//Option" + optionNumber + "//info").InnerXml;
 				infoText.text = "That's still incorrect. " + info;
