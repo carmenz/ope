@@ -6,43 +6,6 @@
       <Password>fn5g+xrZS7Ud7B8EBFfuxg==</Password>
       <CurrentPosX>-2142.602</CurrentPosX>
       <CurrentPosY>-117.3669</CurrentPosY>
-      <TotalScore>100</TotalScore>
-      <IslandA>
-        <WordGames>
-          <Game>
-            <Index>1</Index>
-            <Word1>T</Word1>
-            <Word2>T</Word2>
-            <Word3>T</Word3>
-            <Word4>T</Word4>
-            <Word5>T</Word5>
-            <Word6>T</Word6>
-            <Word7>T</Word7>
-            <Word8>T</Word8>
-            <Score>70</Score>
-          </Game>
-        </WordGames>
-      </IslandA>
-    </User>
-    <User>
-      <Username>4</Username>
-      <Password>mLWXEU/AUyCTnlVe+VCeYQ==</Password>
-      <CurrentPosX>163.6889</CurrentPosX>
-      <CurrentPosY>-217.7268</CurrentPosY>
-      <TotalScore>30</TotalScore>
-    </User>
-    <User>
-      <Username>Username</Username>
-      <Password>zu9DpO2NoTBvPoWX1qcZGg==</Password>
-      <CurrentPosX>-1607.133</CurrentPosX>
-      <CurrentPosY>85.06628</CurrentPosY>
-      <TotalScore>0</TotalScore>
-    </User>
-    <User>
-      <Username>haha</Username>
-      <Password>IRn782RJLluezCpQqMRZaQ==</Password>
-      <CurrentPosX>907.9006</CurrentPosX>
-      <CurrentPosY>153.9252</CurrentPosY>
       <TotalScore>0</TotalScore>
     </User>
   </Users>
