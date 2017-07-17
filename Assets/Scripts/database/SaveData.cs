@@ -12,10 +12,8 @@ using System;
 
 public class SaveData : MonoBehaviour {
 
-	// xml loading occur
 
 	public static UserContainer userContainer = new UserContainer();
-	//public static User user = new User();
 
 
 	public delegate void SerializeAction ();
@@ -68,14 +66,6 @@ public class SaveData : MonoBehaviour {
 			FileStream stream = new FileStream (path, FileMode.Open);
 			XmlTextReader xmlReader = new XmlTextReader (stream);
 
-
-//		
-//			XmlDocument xmlReader = new XmlDocument();
-//
-//			xmlReader.Load (path);
-//			textAsset = (TextAsset) Resources.Load("users.xml");
-			//xmlReader.LoadXml(textAsset.text);
-
 			// read file, check if user exist
 			while (xmlReader.Read ()) {
 				if (xmlReader.Name == "Username") {
@@ -87,27 +77,13 @@ public class SaveData : MonoBehaviour {
 					}
 				}
 			}
-//			XmlNode usernameNode = xmlReader.SelectSingleNode("//Username");
-//			while(usernameNode != null) {
-//				if (usernameNode.InnerText == current.data.username) {
-//					userNotExist = false;
-//					print ("username already exist, please load saved game!!!!");
-//					break;
-//				} else {
-//					usernameNode = usernameNode.ParentNode.NextSibling.FirstChild;
-//				}
-//			}
 			stream.Close ();
-
 		}
 
 		// create a user element if user does not exist
 		if (userNotExist) {
 
 			XDocument doc = XDocument.Load (path);
-
-//			XmlDocument doc = new XmlDocument ();
-//			doc.Load (path);
 
 			XElement user = new XElement ("User");
 			user.Add (new XElement ("Username", current.data.username));
@@ -118,31 +94,6 @@ public class SaveData : MonoBehaviour {
 
 			doc.Root.Element ("Users").Add (user);
 			doc.Save (path);
-
-
-//			XmlNode newUserNode = doc.CreateNode (XmlNodeType.Element, "User", null);
-//			XmlNode usernameNode = doc.CreateNode (XmlNodeType.Element, "UserName", null);
-//			XmlNode passwordNode = doc.CreateNode (XmlNodeType.Element, "Password", null);
-//			XmlNode currentPosXNode = doc.CreateNode (XmlNodeType.Element, "CurrentPosX", null);
-//			XmlNode currentPosYNode = doc.CreateNode (XmlNodeType.Element, "CurrentPosY", null);
-//			XmlNode totalScoreNode = doc.CreateNode (XmlNodeType.Element, "TotalScore", null);
-//
-//			usernameNode.InnerText = current.data.username;
-//			passwordNode.InnerText = current.data.password;
-//			currentPosXNode.InnerText = current.data.currentPosX.ToString();
-//			currentPosYNode.InnerText = current.data.currentPosY.ToString();
-//			totalScoreNode.InnerText = current.data.totalScore.ToString();
-//
-//			newUserNode.AppendChild (usernameNode);
-//			newUserNode.AppendChild (passwordNode);
-//			newUserNode.AppendChild (currentPosXNode);
-//			newUserNode.AppendChild (currentPosYNode);
-//			newUserNode.AppendChild (totalScoreNode);
-//
-//			XmlNode usersNode = doc.SelectSingleNode ("//Users");
-//			usersNode.InsertAfter (newUserNode, usersNode.LastChild);
-//
-//			doc.Save (path);
 
 			SceneManager.LoadScene ("Main");
 			GameManager gm = GameObject.Find ("GameManager").GetComponent<GameManager> ();
@@ -159,7 +110,6 @@ public class SaveData : MonoBehaviour {
 		if (File.Exists (path)) {
 			var dox = new XmlDocument ();
 			dox.Load (path);
-
 
 			FileStream stream = new FileStream (path, FileMode.Open);
 			XmlTextReader xmlReader = new XmlTextReader (stream);
@@ -178,7 +128,6 @@ public class SaveData : MonoBehaviour {
 							xmlReader.ReadToNextSibling ("CurrentPos");
 
 							//load player position
-
 							SceneManager.LoadScene ("Main");
 							GameManager gm = GameObject.Find ("GameManager").GetComponent<GameManager> ();
 							//gm.CurrentPosition = xmlReader.ReadElementContentAsInt ();
@@ -195,8 +144,6 @@ public class SaveData : MonoBehaviour {
 	}
 
 	private static void UpdateUser(string path, User current) {
-
-
 	
 		// check if user.xml exist
 		if (File.Exists (path)) {
@@ -233,6 +180,8 @@ public class SaveData : MonoBehaviour {
 			stream.Close ();
 		}
 	}
+
+
 
 
 
