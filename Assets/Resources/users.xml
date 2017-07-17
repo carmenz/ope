@@ -119,5 +119,21 @@
         </Stories>
       </IslandA>
     </User>
+    <User>
+      <Username>dd</Username>
+      <Password>BSz7x5494LUgO6v7l2FOdw==</Password>
+      <CurrentPosX>-815.05</CurrentPosX>
+      <CurrentPosY>267.9376</CurrentPosY>
+      <CurrentIsland>A</CurrentIsland>
+      <TotalScore>70</TotalScore>
+      <IslandA>
+        <FillInTheBlanks>
+          <FIB>
+            <Index>1</Index>
+            <Score>70</Score>
+          </FIB>
+        </FillInTheBlanks>
+      </IslandA>
+    </User>
   </Users>
 </UserCollection>
