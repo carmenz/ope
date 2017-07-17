@@ -225,7 +225,7 @@ public class NewPlayer : MonoBehaviour {
 		return false;
 	}
 
-	int GetTotalScore() {
+	public int GetTotalScore() {
 		XmlDocument xmlUserDoc = new XmlDocument ();
 
 		var userpath = System.IO.Path.Combine (Application.dataPath, "Resources/users.xml");
@@ -304,5 +304,24 @@ public class NewPlayer : MonoBehaviour {
 	public void HideMissions() {
 		missionsPanel.SetActive(false);
 		GameObject.Find ("Board").GetComponent<SpriteRenderer> ().material = defaultMaterial;
+	}
+
+	public void AddTotalScore(int points) {
+		XmlDocument xmlUserDoc = new XmlDocument ();
+
+		var userpath = System.IO.Path.Combine (Application.dataPath, "Resources/users.xml");
+		xmlUserDoc.Load (userpath);
+		XmlNode usernameNode = xmlUserDoc.SelectSingleNode ("//Username");
+
+
+		while (usernameNode.InnerText != gm.Username) {
+			usernameNode = usernameNode.ParentNode.NextSibling.FirstChild;
+		}
+
+		var totals = Int32.Parse(usernameNode.ParentNode.SelectSingleNode(".//TotalScore").InnerText);
+		var result = (totals + points).ToString();
+		usernameNode.ParentNode.SelectSingleNode(".//TotalScore").InnerText = result;
+		xmlUserDoc.Save(userpath);
+		GameObject.Find("Score").GetComponent<Text>().text = result;
 	}
 }
