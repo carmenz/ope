@@ -12,10 +12,23 @@
     <User>
       <Username>Username</Username>
       <Password>zu9DpO2NoTBvPoWX1qcZGg==</Password>
-      <CurrentPosX>1300</CurrentPosX>
-      <CurrentPosY>-200</CurrentPosY>
+      <CurrentPosX>1366.368</CurrentPosX>
+      <CurrentPosY>-57.4821</CurrentPosY>
       <CurrentIsland>A</CurrentIsland>
-      <TotalScore>0</TotalScore>
+      <TotalScore>60</TotalScore>
+      <IslandA>
+        <FillInTheBlanks>
+          <FIB>
+            <Index>1</Index>
+            <Score>30</Score>
+          </FIB>
+        </FillInTheBlanks>
+        <Stories>
+          <Story>
+            <Index>1</Index>
+          </Story>
+        </Stories>
+      </IslandA>
     </User>
     <User>
       <Username>6546</Username>

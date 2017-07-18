@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Video;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using System.Xml;
+using System;
 
 public class VideoController : MonoBehaviour {
 
@@ -13,14 +15,19 @@ public class VideoController : MonoBehaviour {
 	private int currentScore = 30;
 	private static string userpath = string.Empty;
 
+	GameObject slider;
+
 	void Awake () {
 		vPlayer = gameObject.GetComponent<VideoPlayer>();
+		slider = GameObject.Find("Slider");
 	}
 	
 	// Use this for initialization
 	void Start () {
 		vPlayer.loopPointReached += EndReached;
         vPlayer.Play();
+
+		
 
 		// store and update score in user.xml
 		userpath = System.IO.Path.Combine (Application.dataPath, "Resources/users.xml");
@@ -38,6 +45,18 @@ public class VideoController : MonoBehaviour {
 
 		xmlUserDoc.Save (userpath);
 
+	}
+
+	void Update() {
+		float result = (float)(vPlayer.time / vPlayer.clip.length);
+		if (float.IsPositiveInfinity(result))
+		{
+			result = float.MaxValue;
+		} else if (float.IsNegativeInfinity(result))
+		{
+			result = float.MinValue;
+		}
+		slider.GetComponent<Slider>().value = result;
 	}
 
 	void EndReached(VideoPlayer vPlayer) {
