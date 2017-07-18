@@ -114,10 +114,10 @@ public class NewPlayer : MonoBehaviour {
 		// show or hide the mission panel
 		missionsPanel.SetActive(tts > 0 ? false : true);
 
-		if (missionsPanel.activeSelf) {
-			Material material = new Material (Shader.Find ("Transparent/Diffuse"));
-			GameObject.Find ("Board").GetComponent<SpriteRenderer> ().material = material;
-		}
+		// if (missionsPanel.activeSelf) {
+		// 	Material material = new Material (Shader.Find ("Transparent/Diffuse"));
+		// 	GameObject.Find ("Board").GetComponent<SpriteRenderer> ().material = material;
+		// }
 
 		// Set up BuyTicketsPanel
 		ticketsController = GameObject.Find("BuyTicketsPanel").GetComponent<TicketsController>();
