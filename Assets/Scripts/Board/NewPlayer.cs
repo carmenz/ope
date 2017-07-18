@@ -300,8 +300,8 @@ public class NewPlayer : MonoBehaviour {
 		AudioSource audio = GameObject.Find("AudioMission").GetComponent<AudioSource>();
 		audio.Play ();
 		missionsPanel.SetActive(true);
-		Material material = new Material (Shader.Find ("Transparent/Diffuse"));
-		GameObject.Find ("Board").GetComponent<SpriteRenderer> ().material = material;
+//		Material material = new Material (Shader.Find ("Transparent/Diffuse"));
+//		GameObject.Find ("Board").GetComponent<SpriteRenderer> ().material = material;
 	}
 
 	public void HideMissions() {
