@@ -27,6 +27,8 @@ public class TicketsController : MonoBehaviour {
 	}
 
 	public void OpenPanel() {
+		AudioSource audio = GameObject.Find("AudioFerry").GetComponent<AudioSource>();
+		audio.Play();
 		score.GetComponent<Text>().text = player.GetComponent<NewPlayer>().GetTotalScore().ToString();
 		gameObject.SetActive(true);
 	}
