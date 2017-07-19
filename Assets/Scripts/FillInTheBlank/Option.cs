@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class Option4 : MonoBehaviour {
+public class Option : MonoBehaviour {
 
 	private FillInTheBlankManager fibm;
 
@@ -11,7 +11,19 @@ public class Option4 : MonoBehaviour {
 		fibm = GameObject.Find("FillInTheBlankManager").GetComponent<FillInTheBlankManager>();
 	}
 
-	public void onClick() {
+	public void onClick1() {
+		fibm.TaskOnClick(1);
+	}
+
+	public void onClick2() {
+		fibm.TaskOnClick(2);
+	}
+
+	public void onClick3() {
+		fibm.TaskOnClick(3);
+	}
+
+	public void onClick4() {
 		fibm.TaskOnClick(4);
 	}
 }
