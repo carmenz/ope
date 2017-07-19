@@ -12,9 +12,13 @@ using DG.Tweening;
 public class NewPlayer : MonoBehaviour {
 
 	[SerializeField]
-	private float movingSpeed = 80f;
+	float movingSpeed = 80f;
 	[SerializeField]
 	Camera playerCamera;
+	[SerializeField]
+	GameObject missionsPanel;
+	[SerializeField]
+	GameObject ferry;
 
 	private Vector2 moveTowardPosition = Vector2.zero;
     private Vector2 moveStartPosition = Vector2.zero;
@@ -33,10 +37,7 @@ public class NewPlayer : MonoBehaviour {
 	bool _canBeTriggered = true;
 
 	GameManager gm;
-	GameObject missionsPanel;
 	GameObject MissionToggle;
-
-	TicketsController ticketsController;
 
 	public bool IsRuning
     {
@@ -84,7 +85,6 @@ public class NewPlayer : MonoBehaviour {
         transform.position = gm.Coordinate;
 		gm.currentIsland = GetCurrentIsland();
 		// init missions panel and refresh mission list
-		missionsPanel = GameObject.Find("MissionsPanel");
 		MissionToggle = (GameObject)Resources.Load("MissionToggle", typeof(GameObject));
 		
 		var i = 1;
@@ -119,13 +119,12 @@ public class NewPlayer : MonoBehaviour {
 		// 	GameObject.Find ("Board").GetComponent<SpriteRenderer> ().material = material;
 		// }
 
-		// Set up BuyTicketsPanel
-		ticketsController = GameObject.Find("BuyTicketsPanel").GetComponent<TicketsController>();
-		ticketsController.ClosePanel();
+		// Set up TicketsPanel
+		ferry.GetComponent<FerryController>().CloseTicketsPanel();
 
 		// Set up mini map
 		SetUpMiniMap();
-		ChangeMusic();
+		PlayBGM();
 
 		// in case players stay on a position before quit
         _canBeTriggered = false;
@@ -164,7 +163,7 @@ public class NewPlayer : MonoBehaviour {
 			var fc = collider.GetComponent<FerrySpot>();
 			if (!fc)
 				return;
-			ticketsController.OpenPanel();
+			ferry.GetComponent<FerryController>().OpenTicketsPanel();
 			return;
 		}
 		var type = sc.type;
@@ -331,7 +330,7 @@ public class NewPlayer : MonoBehaviour {
 	}
 
 
-	public void ChangeMusic() {
+	public void PlayBGM() {
 		GameManager gm = GameObject.Find ("GameManager").GetComponent<GameManager> ();
 		string island = gm.currentIsland;
 		AudioSource audioA = GameObject.Find("AudioIslandA").GetComponent<AudioSource>();
