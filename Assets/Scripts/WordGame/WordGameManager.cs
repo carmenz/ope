@@ -217,13 +217,14 @@ public class WordGameManager : MonoBehaviour {
 		xmlWordGameDoc.Load (gm.Path);
 		XmlNode indexNode = xmlWordGameDoc.SelectSingleNode ("//Index");
 		int subIndexForInfo = wgm.subIndex - 1;
-		Text infoText = GameObject.Find ("Info").GetComponent<Text> ();
+		//Text infoText = GameObject.Find ("Info").GetComponent<Text> ();
 
 		if (indexNode.SelectSingleNode ("//Word" + subIndexForInfo + "//Yes").InnerText == booleanValue) {
 			AudioSource audio = GameObject.Find("AudioCorrect").GetComponent<AudioSource>();
 			audio.Play();
 
-			infoText.text = "Yes! Correct answer!";
+			//infoText.text = "Yes! Correct answer!";
+			StartCoroutine(FadeTextInAndOut(0.6f,"Correct"));
 			multiplexerCount++;
 			crossCount = 0;
 
@@ -238,7 +239,9 @@ public class WordGameManager : MonoBehaviour {
 			cross2.gameObject.SetActive (false);
 			cross3.gameObject.SetActive (false);
 		} else {
-			infoText.text = "Oops sorry. Wrong answer!";
+			//infoText.text = "Oops sorry. Wrong answer!";
+
+			StartCoroutine(FadeTextInAndOut(0.6f,"Incorrect"));
 			multiplexerCount = 0;
 			crossCount++;
 			multiplexerCheck (multiplexerCount);
@@ -296,21 +299,29 @@ public class WordGameManager : MonoBehaviour {
 		xmlUserDoc.Save (userpath);
 	}
 
+	public IEnumerator FadeTextInAndOut(float t, string correctness){
+		Text infoText;
+		GameObject textContainer;
+		if (correctness == "Correct") {
+			textContainer = GameObject.Find ("InfoCorrect");
+			infoText = textContainer.GetComponent<Text> ();
+		} else {
+			textContainer = GameObject.Find ("InfoIncorrect");
+			infoText = textContainer.GetComponent<Text> ();
+		}
+		Color tempColor = infoText.color;
+		infoText.color = new Color(0, 255, 0, 1);
 
-//	public void updateDBTotalScore() {
-//		XmlDocument xmlUserDoc = new XmlDocument ();
-//		xmlUserDoc.Load (userpath);
-//		XmlNode usernameNode = xmlUserDoc.SelectSingleNode ("//Username");
-//		// Find user and update <TotalScore>
-//		while (usernameNode.InnerText != gm.Username) {
-//			usernameNode = usernameNode.ParentNode.NextSibling.FirstChild;
-//		} 
-//		print ("hahaha");
-//		usernameNode.ParentNode.SelectSingleNode ("TotalScore").InnerText = 
-//			(int.Parse(usernameNode.ParentNode.SelectSingleNode ("TotalScore").InnerText) + currentScore).ToString();
-//
-//		xmlUserDoc.Save (userpath);
-//	}
+		while (infoText.color.a > 0.3f)
+		{
+			infoText.color = Color.Lerp (infoText.color, Color.clear, 0.9f * Time.deltaTime);
+			textContainer.transform.localScale += new Vector3 (0.2f,0.2f,0);
+
+			yield return null;
+		}
+		textContainer.transform.localScale = new Vector3 (1, 1, 1);
+		infoText.color = tempColor;
+	}
 
 
 	public void multiplexerCheck(int multiplexerCount) {

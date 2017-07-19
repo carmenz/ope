@@ -38,5 +38,30 @@
       <CurrentIsland>A</CurrentIsland>
       <TotalScore>0</TotalScore>
     </User>
+    <User>
+      <Username>34</Username>
+      <Password>JbdhisBr//YC/1NiQQprdQ==</Password>
+      <CurrentPosX>-1666.076</CurrentPosX>
+      <CurrentPosY>-119.0001</CurrentPosY>
+      <CurrentIsland>A</CurrentIsland>
+      <TotalScore>0</TotalScore>
+      <IslandA>
+        <WordGames>
+          <Game>
+            <Index>1</Index>
+            <Word1>T</Word1>
+            <Word2>F</Word2>
+            <Word3>T</Word3>
+            <Word4>T</Word4>
+            <Word5>T</Word5>
+            <Word5>F</Word5>
+          </Game>
+          <Game>
+            <Index>2</Index>
+            <Word1>T</Word1>
+          </Game>
+        </WordGames>
+      </IslandA>
+    </User>
   </Users>
 </UserCollection>
