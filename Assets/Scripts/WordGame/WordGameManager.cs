@@ -7,13 +7,10 @@ using System.Xml;
 public class WordGameManager : MonoBehaviour {
 
 	private GameManager gm;
-	private WordGameManager wgm;
 	public GameObject missionCompletePanel;
 	public GameObject oopsPanel;
 	private static string userpath = string.Empty;
 	private int currentScore = 0;
-	//public static bool finishAddingToDB = false;
-
 
 	private int crossCount = 0;
 	private int multiplexerCount = 0;
@@ -22,259 +19,213 @@ public class WordGameManager : MonoBehaviour {
 	public GameObject cross3;
 
 	private Text multiplexer;
-//	private Text panelScore;
 
 	public int subIndex = 1;
 
+	public GameObject info;
+	public Button yes;
+	public Button no;
+
+	void Awake() {
+		info.SetActive (false);
+	}
+
 	// Use this for initialization
-	IEnumerator Start () {
-		//multiplexer = GameObject.Find("Multiplexer").GetComponent<Text>();
+	void Start () {
 
 		userpath = System.IO.Path.Combine (Application.dataPath, "Resources/users.xml");
 		gm = GameObject.Find("GameManager").GetComponent<GameManager>();
-		wgm = GameObject.Find("WordGameManager").GetComponent<WordGameManager>();
 
 		XmlDocument xmlWordGameDoc = new XmlDocument ();
 		xmlWordGameDoc.Load (gm.Path);
 		XmlNode indexNode = xmlWordGameDoc.SelectSingleNode ("//Index");
 
-
-		print("this is game" + gm.Index.ToString());
-
 		while (indexNode.InnerText != gm.Index.ToString ()) {
-			//move to next word
+			//move to next index
 			indexNode = indexNode.ParentNode.NextSibling.FirstChild;
 		}
-
 		Text wordText = GameObject.Find ("Word").GetComponent<Text> ();
+
+		// get the first word
 		XmlNode wordNode = indexNode.NextSibling;
-		while (indexNode != null) {
-
-			if (subIndex - 1 == 8) {
-				print ("nullll");
-				break;
-			}
-			wordText.text = indexNode.SelectSingleNode("//Word" + subIndex + "//value").InnerText;
-
-			// move to next question in the quiz
-			if (wordNode.NextSibling != null) {
-				wordNode = indexNode.NextSibling;
-
-				subIndex++;
-				yield return new WaitForSeconds(2000);
-			} 
-		}
-	
-		showPanel ("MissionComplete");
-		AudioSource audio = GameObject.Find("AudioComplete").GetComponent<AudioSource>();
-		audio.Play();
-		updateDBScore ();
-		gm.updateDBTotalScore (currentScore);
-
+		wordText.text = indexNode.SelectSingleNode("//Word" + subIndex + "//value").InnerText;
+		subIndex++;
 	}
 
-	public void showPanel(string type) {
+	public void YesOnClick()
+	{
+		UpdateOrCreateWordNode("T");
+
+		VerifyAnswer("T");
+		ShowNextWord();
+	}
+
+	public void NoOnClick()
+	{
+		UpdateOrCreateWordNode("F");
+
+		VerifyAnswer("F");
+		ShowNextWord();
+	}
+
+
+	public void UpdateOrCreateWordNode(string value) {
+		XmlDocument xmlUserDoc = new XmlDocument ();
+		xmlUserDoc.Load (userpath);
+		XmlNode usernameNode = xmlUserDoc.SelectSingleNode ("//Username");
+
+		int subIndexForInfo = subIndex - 1;
+
+		// update user.xml to store user answers
+		while (usernameNode.InnerText != gm.Username) {
+			usernameNode = usernameNode.ParentNode.NextSibling.FirstChild;
+		}
+
+		XmlNode islandNode = usernameNode.ParentNode.SelectSingleNode(".//TotalScore").NextSibling;
+		XmlNode gameIndexNode = islandNode.SelectSingleNode (".//Game//Index");
+
+		// find the matching game index
+		while (gm.Index.ToString() != gameIndexNode.InnerText) {
+			gameIndexNode = gameIndexNode.ParentNode.NextSibling.FirstChild;
+		}
+		XmlNode gameNode = gameIndexNode.ParentNode;
+
+		// clear history if <word#> node already exist
+		if (gameNode.ChildNodes.Count > subIndexForInfo + 1) {
+			while (gameNode.ChildNodes.Count > 1) {
+				gameNode.RemoveChild (gameNode.LastChild);
+			}
+		} 
+		// create new <word#> node
+		XmlNode wordNode = xmlUserDoc.CreateNode (XmlNodeType.Element, "Word" + subIndexForInfo, null);
+		wordNode.InnerText = value;
+		gameNode.AppendChild (wordNode);
+
+		xmlUserDoc.Save (userpath);
+	}
+
+
+
+	public void ShowNextWord() {
+		if (subIndex != 9) {
+			XmlDocument xmlWordGameDoc = new XmlDocument ();
+			xmlWordGameDoc.Load (gm.Path);
+			XmlNode indexNode = xmlWordGameDoc.SelectSingleNode ("//Index");
+			while (indexNode.InnerText != gm.Index.ToString ()) {
+				//move to next word
+				indexNode = indexNode.ParentNode.NextSibling.FirstChild;
+			}
+			Text wordText = GameObject.Find ("Word").GetComponent<Text> ();
+			wordText.text = indexNode.ParentNode.SelectSingleNode (".//Word" + subIndex + "//value").InnerText;
+			subIndex++;
+		} else {
+			// add subIndex for the last word
+			subIndex++;
+		}
+	}
+
+	public void ShowPanel(string type) {
 		if (type == "MissionComplete") {
 			missionCompletePanel.SetActive (true);
+			AudioSource audio = GameObject.Find ("AudioComplete").GetComponent<AudioSource> ();
+			audio.Play ();
 		} else {
 			oopsPanel.SetActive(true);
 		}
+
 		// display score on panel
 		Text panelScore = GameObject.Find("PanelScore").GetComponent<Text>();
 		panelScore.text = currentScore.ToString();
 	}
 
 
-	public void YesOnClick()
-	{
-		Debug.Log("yes is clicked");
-		//finishAddingToDB = false;
 
+	public void VerifyAnswer(string booleanValue) {
 		XmlDocument xmlWordGameDoc = new XmlDocument ();
 		xmlWordGameDoc.Load (gm.Path);
 		XmlNode indexNode = xmlWordGameDoc.SelectSingleNode ("//Index");
-
-		XmlDocument xmlUserDoc = new XmlDocument ();
-		xmlUserDoc.Load (userpath);
-		XmlNode usernameNode = xmlUserDoc.SelectSingleNode ("//Username");
-
-		int subIndexForInfo = wgm.subIndex - 1;
-
-		// Disable now to use new texts
-		// Text infoText = GameObject.Find ("Info").GetComponent<Text> ();
-		// infoText.text = indexNode.SelectSingleNode ("//Word"+ subIndexForInfo + "//info").InnerText;
-
-		// update user.xml to store user answers
-		while (usernameNode.InnerText != gm.Username) {
-			usernameNode = usernameNode.ParentNode.NextSibling.FirstChild;
-		}
-
-
-		//XmlNode islandNode = usernameNode.NextSibling.NextSibling.NextSibling.NextSibling.NextSibling.NextSibling;
-		XmlNode islandNode = usernameNode.ParentNode.SelectSingleNode(".//TotalScore").NextSibling;
-		XmlNode gameIndexNode = islandNode.SelectSingleNode (".//Game//Index");
-
-		// find the matching game index
-		while (gm.Index.ToString() != gameIndexNode.InnerText) {
-			gameIndexNode = gameIndexNode.ParentNode.NextSibling.FirstChild;
-		}
-
-		// update node if <word#> node already exist
-		if (gameIndexNode.ParentNode.ChildNodes.Count > subIndexForInfo + 1) {
-			gameIndexNode.ParentNode.SelectSingleNode (".//Word" + subIndexForInfo).InnerText = "T";
-			//finishAddingToDB = true;
-
-
-		} else {
-			// create new <word#> node
-			XmlNode wordNode = xmlUserDoc.CreateNode (XmlNodeType.Element, "Word" + subIndexForInfo, null);
-			wordNode.InnerText = "T";
-
-			if (gameIndexNode.ParentNode.LastChild.Name == "Score") {
-				print ("heheheh");
-				int prevIndex = subIndexForInfo - 1;
-				XmlNode prevNode = gameIndexNode.ParentNode.SelectSingleNode (".//Word" + prevIndex);
-				gameIndexNode.ParentNode.InsertAfter (wordNode, prevNode);
-
-			} else {
-				gameIndexNode.ParentNode.AppendChild (wordNode);
-			}
-		
-		}
-		xmlUserDoc.Save (userpath);
-
-		verifyAnswer ("T");
-
-		Start ().MoveNext();
-	}
-
-	public void NoOnClick()
-	{
-		Debug.Log("No is clicked");
-		//finishAddingToDB = false;
-
-		XmlDocument xmlWordGameDoc = new XmlDocument ();
-		xmlWordGameDoc.Load (gm.Path);
-		XmlNode indexNode = xmlWordGameDoc.SelectSingleNode ("//Index");
-
-		XmlDocument xmlUserDoc = new XmlDocument ();
-		xmlUserDoc.Load (userpath);
-		XmlNode usernameNode = xmlUserDoc.SelectSingleNode ("//Username");
-
-		int subIndexForInfo = wgm.subIndex - 1;
-
-		//Disable now to use new texts
-		// Text infoText = GameObject.Find ("Info").GetComponent<Text> ();
-		// infoText.text = indexNode.SelectSingleNode ("//Word"+ subIndexForInfo + "//info").InnerText;
-
-
-
-		// update user.xml to store user answers
-		while (usernameNode.InnerText != gm.Username) {
-			usernameNode = usernameNode.ParentNode.NextSibling.FirstChild;
-		}
-
-		//XmlNode islandNode = usernameNode.NextSibling.NextSibling.NextSibling.NextSibling.NextSibling;
-		XmlNode islandNode = usernameNode.ParentNode.SelectSingleNode(".//TotalScore").NextSibling;
-		XmlNode gameIndexNode = islandNode.SelectSingleNode (".//Game//Index");
-
-		// find the matching game index
-		while (gm.Index.ToString() != gameIndexNode.InnerText) {
-			gameIndexNode = gameIndexNode.ParentNode.NextSibling.FirstChild;
-		}
-
-		// update node if <word#> node already exist
-		if (gameIndexNode.ParentNode.ChildNodes.Count > subIndexForInfo+1) {
-			gameIndexNode.ParentNode.SelectSingleNode(".//Word" + subIndexForInfo).InnerText = "F";
-			
-		} else {
-			// create new <word#> node
-
-			XmlNode wordNode = xmlUserDoc.CreateNode (XmlNodeType.Element, "Word" + subIndexForInfo, null);
-			wordNode.InnerText = "F";
-
-			if (gameIndexNode.ParentNode.LastChild.Name == "Score") {
-				int prevIndex = subIndexForInfo - 1;
-				XmlNode prevNode = gameIndexNode.ParentNode.SelectSingleNode (".//Word" + prevIndex);
-				gameIndexNode.ParentNode.InsertAfter (wordNode, prevNode);
-
-			} else {
-				gameIndexNode.ParentNode.AppendChild (wordNode);
-			}
-		
-
-
-		}
-		xmlUserDoc.Save (userpath);
-
-		verifyAnswer ("F");
-		Start ().MoveNext();
-	}
-
-
-	public void verifyAnswer(string booleanValue) {
-		XmlDocument xmlWordGameDoc = new XmlDocument ();
-		xmlWordGameDoc.Load (gm.Path);
-		XmlNode indexNode = xmlWordGameDoc.SelectSingleNode ("//Index");
-		int subIndexForInfo = wgm.subIndex - 1;
-		//Text infoText = GameObject.Find ("Info").GetComponent<Text> ();
+		int subIndexForInfo = subIndex - 1;
 
 		if (indexNode.SelectSingleNode ("//Word" + subIndexForInfo + "//Yes").InnerText == booleanValue) {
 			AudioSource audio = GameObject.Find("AudioCorrect").GetComponent<AudioSource>();
 			audio.Play();
 
-			//infoText.text = "Yes! Correct answer!";
-			StartCoroutine(FadeTextInAndOut(0.6f,"Correct"));
-			multiplexerCount++;
-			crossCount = 0;
-
-			multiplexerCheck (multiplexerCount);
-
-			updateCurrentScore ();
-
-			Text score = GameObject.Find("Score").GetComponent<Text>();
-			score.text = currentScore.ToString();
+			StartCoroutine(FadeResultInAndOut(0.6f,"Correct"));
+			UpdateCurrentScore ();
 
 			cross1.gameObject.SetActive (false);
 			cross2.gameObject.SetActive (false);
 			cross3.gameObject.SetActive (false);
+
 		} else {
-			//infoText.text = "Oops sorry. Wrong answer!";
-
-			StartCoroutine(FadeTextInAndOut(0.6f,"Incorrect"));
-			multiplexerCount = 0;
-			crossCount++;
-			multiplexerCheck (multiplexerCount);
-
-			if (crossCount == 1) {
-				cross1.gameObject.SetActive (true);
-			} else if (crossCount == 2) {
-				cross2.gameObject.SetActive (true);
-			} else {
-				cross3.gameObject.SetActive (true);
-			
-				if (subIndex == 9) {
-					showPanel ("MissionComplete");
-					AudioSource audio = GameObject.Find("AudioComplete").GetComponent<AudioSource>();
-					audio.Play();
-				} else {
-					showPanel ("Oops");
-				}
-				updateDBScore ();
-			}
+			UpdateCrosses ();
+			StartCoroutine(FadeResultInAndOut(0.6f,"Incorrect"));
 		}
 	}
 
 
+	public void UpdateCrosses() {
+		multiplexerCount = 0;
+		crossCount++;
+		MultiplexerCheck (multiplexerCount);
 
-	public void updateDBScore() {
+		if (crossCount == 1) {
+			cross1.gameObject.SetActive (true);
+		} else if (crossCount == 2) {
+			cross2.gameObject.SetActive (true);
+		} else {
+			cross3.gameObject.SetActive (true);
+		}
+	}
+
+	public IEnumerator FadeResultInAndOut(float t, string correctness){
+		info.SetActive (true);
+		Text infoText = GameObject.Find ("Info").GetComponentInChildren<Text>();
+		GameObject textContainer = GameObject.Find ("Info");
+		if (correctness == "Correct") {
+			infoText.text = "Yes! Correct answer!";
+
+			multiplexerCount++;
+			crossCount = 0;
+			MultiplexerCheck (multiplexerCount);
+
+		} else {
+			infoText.text = "Oops sorry. Wrong answer!";
+		}
+		yes.gameObject.SetActive(false);
+		no.gameObject.SetActive(false);
+
+		yield return new WaitForSeconds (1);
+		yes.gameObject.SetActive(true);
+		no.gameObject.SetActive(true);
+		info.SetActive (false);
+		print (subIndex);
+		if (crossCount == 3) {
+			if (subIndex == 10) {
+				ShowPanel ("MissionComplete");
+			} else {
+				ShowPanel ("Oops");
+			}
+			UpdateDBScore ();
+			gm.updateDBTotalScore (currentScore);
+		} else {
+			if (subIndex == 10) {
+				yes.gameObject.SetActive (false);
+				no.gameObject.SetActive (false);
+				ShowPanel ("MissionComplete");
+				UpdateDBScore ();
+				gm.updateDBTotalScore (currentScore);
+			}
+		}
+	}
+
+	public void UpdateDBScore() {
 
 		XmlDocument xmlUserDoc = new XmlDocument ();
 		xmlUserDoc.Load (userpath);
 		XmlNode usernameNode = xmlUserDoc.SelectSingleNode ("//Username");
 
 		while (usernameNode.InnerText != gm.Username) {
-
 			usernameNode = usernameNode.ParentNode.NextSibling.FirstChild;
 		}
 		// Update user.xml with the score
@@ -285,46 +236,15 @@ public class WordGameManager : MonoBehaviour {
 			gameIndexNode = gameIndexNode.ParentNode.NextSibling.FirstChild;
 		}
 
-		// update node if <Score> node already exist
-		//if (gameIndexNode.ParentNode.ChildNodes.Count == 10) {
-		if(gameIndexNode.ParentNode.LastChild.Name == "Score") {
-			gameIndexNode.ParentNode.SelectSingleNode("//Score").InnerText = currentScore.ToString();
-			//finishAddingToDB = true;
-		} else {
-			// create new <Score> node
-			XmlNode scoreIndex = xmlUserDoc.CreateNode (XmlNodeType.Element, "Score", null);
-			scoreIndex.InnerText = currentScore.ToString();
-			gameIndexNode.ParentNode.AppendChild (scoreIndex);
-		}
+		// create new <Score> node
+		XmlNode scoreIndex = xmlUserDoc.CreateNode (XmlNodeType.Element, "Score", null);
+		scoreIndex.InnerText = currentScore.ToString();
+		gameIndexNode.ParentNode.AppendChild (scoreIndex);
+
 		xmlUserDoc.Save (userpath);
 	}
 
-	public IEnumerator FadeTextInAndOut(float t, string correctness){
-		Text infoText;
-		GameObject textContainer;
-		if (correctness == "Correct") {
-			textContainer = GameObject.Find ("InfoCorrect");
-			infoText = textContainer.GetComponent<Text> ();
-		} else {
-			textContainer = GameObject.Find ("InfoIncorrect");
-			infoText = textContainer.GetComponent<Text> ();
-		}
-		Color tempColor = infoText.color;
-		infoText.color = new Color(0, 255, 0, 1);
-
-		while (infoText.color.a > 0.3f)
-		{
-			infoText.color = Color.Lerp (infoText.color, Color.clear, 0.9f * Time.deltaTime);
-			textContainer.transform.localScale += new Vector3 (0.2f,0.2f,0);
-
-			yield return null;
-		}
-		textContainer.transform.localScale = new Vector3 (1, 1, 1);
-		infoText.color = tempColor;
-	}
-
-
-	public void multiplexerCheck(int multiplexerCount) {
+	public void MultiplexerCheck(int multiplexerCount) {
 		multiplexer = GameObject.Find("Multiplexer").GetComponent<Text>();
 		if (multiplexerCount <= 2) {
 			multiplexer.text = "x1";
@@ -347,7 +267,7 @@ public class WordGameManager : MonoBehaviour {
 	}
 
 
-	public void updateCurrentScore() {
+	public void UpdateCurrentScore() {
 		if (multiplexer.text == "x1") {
 			currentScore = currentScore + 10 * 1;
 		} else if (multiplexer.text == "x2") {
@@ -355,7 +275,11 @@ public class WordGameManager : MonoBehaviour {
 		} else {
 			currentScore = currentScore + 10 * 3;
 		}
+		Text score = GameObject.Find("Score").GetComponent<Text>();
+		score.text = currentScore.ToString();
 	}
+
+
 }
 
 
