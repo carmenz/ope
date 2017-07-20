@@ -12,17 +12,11 @@
     <User>
       <Username>Username</Username>
       <Password>zu9DpO2NoTBvPoWX1qcZGg==</Password>
-      <CurrentPosX>830</CurrentPosX>
-      <CurrentPosY>-30</CurrentPosY>
-      <CurrentIsland>B</CurrentIsland>
+      <CurrentPosX>-802.8517</CurrentPosX>
+      <CurrentPosY>257.6577</CurrentPosY>
+      <CurrentIsland>A</CurrentIsland>
       <TotalScore>700</TotalScore>
       <IslandA>
-        <FillInTheBlanks>
-          <FIB>
-            <Index>1</Index>
-            <Score>30</Score>
-          </FIB>
-        </FillInTheBlanks>
         <Stories>
           <Story>
             <Index>1</Index>

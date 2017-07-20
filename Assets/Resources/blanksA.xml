@@ -1,361 +1,359 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FillInTheBlankCollction xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <FillInTheBlanks>
-    <FIB>
-      <Index>1</Index>
-      <Q>
-      	<Question1>To celebrate her year end bonus, Megyn is thinking of spending some of her earnings on gambling. She thought of spending it on a chance based game like _________________. </Question1>
-	    <Blank1>
-	      	<Option1>
-	      		<value>Roulette</value>
-	      		<correct>T</correct>
-	      		<info>Roulette, Slots and Bingo are chance based games.</info>
-	      	</Option1>
-	      	<Option2>
-	      		<value>Slots</value>
-	      		<correct>T</correct>
-	      		<info>Roulette, Slots and Bingo are chance based games.</info>
-	      	</Option2>
-	      	<Option3>
-	      		<value>Horse race betting</value>
-	      		<correct>F</correct>
-	      		<info>Roulette, Slots and Bingo are chance based games.</info>
-	      	</Option3>
-	      	<Option4>
-	      		<value>Poker</value>
-	      		<correct>F</correct>
-	      		<info>Roulette, Slots and Bingo are chance based games.</info>
-	      	</Option4>
-	    </Blank1>
-	  </Q>
-	  <Q>
-	  	<Question2>Megyn knows that this game _________________, </Question2>
-	    <Blank2>
-	      	<Option1>
-	      		<value>is purely random</value>
-	      		<correct>T</correct>
-	      		<info>Chance based games are purely random.</info>
-	      	</Option1>
-	      	<Option2>
-	      		<value>requires skill</value>
-	      		<correct>F</correct>
-	      		<info>Chance based games are purely random.</info>
-	      	</Option2>
-	      	<Option3>
-	      		<value>is a guaranteed win</value>
-	      		<correct>F</correct>
-	      		<info>Chance based games are purely random.</info>
-	      	</Option3>
-	      	<Option4>
-	      		<value>requires experience</value>
-	      		<correct>F</correct>
-	      		<info>Chance based games are purely random.</info>
-	      	</Option4>
-	    </Blank2>
-	  </Q>
-	  <Q>
-	  	<Question3>which means that the odds of winning _________________ each time you play. </Question3>
-	    <Blank3>
-	      	<Option1>
-	      		<value>never change</value>
-	      		<correct>T</correct>
-	      		<info>The odds of winning random games never change.</info>
-	      	</Option1>
-	      	<Option2>
-	      		<value>gets better</value>
-	      		<correct>F</correct>
-	      		<info>The odds of winning random games never change.</info>
-	      	</Option2>
-	      	<Option3>
-	      		<value>gets worse</value>
-	      		<correct>F</correct>
-	      		<info>The odds of winning random games never change.</info>
-	      	</Option3>
-	      	<Option4>
-	      		<value>is very high</value>
-	      		<correct>F</correct>
-	      		<info>The odds of winning random games never change.</info>
-	      	</Option4>
-	    </Blank3>
-	  </Q>
-	  <Q>
-	  	<Question4>She also thought about spending it on a skill based game like _________________. </Question4>
-	    <Blank4>
-	      	<Option1>
-	      		<value>Poker</value>
-	      		<correct>T</correct>
-	      		<info>Horse race betting and Poker are chance based games.</info>
-	      	</Option1>
-	      	<Option2>
-	      		<value>Roulette</value>
-	      		<correct>F</correct>
-	      		<info>Horse race betting and Poker are chance based games.</info>
-	      	</Option2>
-	      	<Option3>
-	      		<value>Slots</value>
-	      		<correct>F</correct>
-	      		<info>Horse race betting and Poker are chance based games.</info>
-	      	</Option3>
-	      	<Option4>
-	      		<value>Bingo</value>
-	      		<correct>F</correct>
-	      		<info>Horse race betting and Poker are chance based games.</info>
-	      	</Option4>
-	    </Blank4>
-	  </Q>
-	  <Q>
-	  	<Question5>However, she understands that _________________ the outcome of the game. </Question5>
-	    <Blank5>
-	      	<Option1>
-	      		<value>she can easily predict</value>
-	      		<correct>F</correct>
-	      		<info>A gambler cannot affect the outcome of a skill based game.</info>
-	      	</Option1>
-	      	<Option2>
-	      		<value>she can’t affect</value>
-	      		<correct>T</correct>
-	      		<info>A gambler cannot affect the outcome of a skill based game.</info>
-	      	</Option2>
-	      	<Option3>
-	      		<value>she can get tips on</value>
-	      		<correct>F</correct>
-	      		<info>A gambler cannot affect the outcome of a skill based game.</info>
-	      	</Option3>
-	      	<Option4>
-	      		<value>she can get insights on</value>
-	      		<correct>F</correct>
-	      		<info>A gambler cannot affect the outcome of a skill based game.</info>
-	      	</Option4>
-	    </Blank5>
-	  </Q>
-	  <Q>
-	  	<Question6>She finally decided on buying a Lotto Max ticket, even though a _________________ ticket had better odds of winning. </Question6>
-	    <Blank6>
-	      	<Option1>
-	      		<value>BC/49</value>
-	      		<correct>F</correct>
-	      		<info>Scratch and win has the best odds of winning something.</info>
-	      	</Option1>
-	      	<Option2>
-	      		<value>Lotto/49</value>
-	      		<correct>F</correct>
-	      		<info>Scratch and win has the best odds of winning something.</info>
-	      	</Option2>
-	      	<Option3>
-	      		<value>scratch and win</value>
-	      		<correct>T</correct>
-	      		<info>Scratch and win has the best odds of winning something.</info>
-	      	</Option3>
-	      	<Option4>
-	      		<value>Daily Grand</value>
-	      		<correct>F</correct>
-	      		<info>Scratch and win has the best odds of winning something.</info>
-	      	</Option4>
-	    </Blank6>
-	  </Q>
-	  <Q>
-	  	<Question7>Megyn doesn’t expect to win the ultimate prize, because quite frankly _________________ has a better chance of happening. </Question7>
-	    <Blank7>
-	      	<Option1>
-	      		<value>Asteroid hitting earth</value>
-	      		<correct>T</correct>
-	      		<info>All of these events have better chances of happening than winning the Lotto.</info>
-	      	</Option1>
-	      	<Option2>
-	      		<value>Getting struck by lightning</value>
-	      		<correct>T</correct>
-	      		<info>All of these events have better chances of happening than winning the Lotto.</info>
-	      	</Option2>
-	      	<Option3>
-	      		<value>Getting hit by bird poop</value>
-	      		<correct>T</correct>
-	      		<info>All of these events have better chances of happening than winning the Lotto.</info>
-	      	</Option3>
-	      	<Option4>
-	      		<value>Being in a car accident</value>
-	      		<correct>T</correct>
-	      		<info>All of these events have better chances of happening than winning the Lotto.</info>
-	      	</Option4>
-	    </Blank7>
-	  </Q>
+    <FIB index="1">
+      <Question index="1">
+      	<Value>To celebrate her year end bonus, Megyn is thinking of spending some of her earnings on gambling. She thought of spending it on a chance based game like ________________. </Value>
+	    <Options>
+	      	<Option index="1">
+	      		<Value>Roulette</Value>
+	      		<Correct>T</Correct>
+	      		<Info>Roulette, Slots and Bingo are chance based games.</Info>
+	      	</Option>
+	      	<Option index="2">
+	      		<Value>Slots</Value>
+	      		<Correct>T</Correct>
+	      		<Info>Roulette, Slots and Bingo are chance based games.</Info>
+	      	</Option>
+	      	<Option index="3">
+	      		<Value>Horse race betting</Value>
+	      		<Correct>F</Correct>
+	      		<Info>Roulette, Slots and Bingo are chance based games.</Info>
+	      	</Option>
+	      	<Option index="4">
+	      		<Value>Poker</Value>
+	      		<Correct>F</Correct>
+	      		<Info>Roulette, Slots and Bingo are chance based games.</Info>
+	      	</Option>
+	    </Options>
+	  </Question>
+	  <Question index="2">
+	  	<Value>Megyn knows that this game ________________, </Value>
+	    <Options>
+	      	<Option index="1">
+	      		<Value>is purely random</Value>
+	      		<Correct>T</Correct>
+	      		<Info>Chance based games are purely random.</Info>
+	      	</Option>
+	      	<Option index="2">
+	      		<Value>requires skill</Value>
+	      		<Correct>F</Correct>
+	      		<Info>Chance based games are purely random.</Info>
+	      	</Option>
+	      	<Option index="3">
+	      		<Value>is a guaranteed win</Value>
+	      		<Correct>F</Correct>
+	      		<Info>Chance based games are purely random.</Info>
+	      	</Option>
+	      	<Option index="4">
+	      		<Value>requires experience</Value>
+	      		<Correct>F</Correct>
+	      		<Info>Chance based games are purely random.</Info>
+	      	</Option>
+	    </Options>
+	  </Question>
+	  <Question index="3">
+	  	<Value>which means that the odds of winning ________________ each time you play. </Value>
+	    <Options>
+	      	<Option index="1">
+	      		<Value>never change</Value>
+	      		<Correct>T</Correct>
+	      		<Info>The odds of winning random games never change.</Info>
+	      	</Option>
+	      	<Option index="2">
+	      		<Value>gets better</Value>
+	      		<Correct>F</Correct>
+	      		<Info>The odds of winning random games never change.</Info>
+	      	</Option>
+	      	<Option index="3">
+	      		<Value>gets worse</Value>
+	      		<Correct>F</Correct>
+	      		<Info>The odds of winning random games never change.</Info>
+	      	</Option>
+	      	<Option index="4">
+	      		<Value>is very high</Value>
+	      		<Correct>F</Correct>
+	      		<Info>The odds of winning random games never change.</Info>
+	      	</Option>
+	    </Options>
+	  </Question>
+	  <Question index="4">
+	  	<Value>She also thought about spending it on a skill based game like ________________. </Value>
+	    <Options>
+	      	<Option index="1">
+	      		<Value>Poker</Value>
+	      		<Correct>T</Correct>
+	      		<Info>Horse race betting and Poker are chance based games.</Info>
+	      	</Option>
+	      	<Option index="2">
+	      		<Value>Roulette</Value>
+	      		<Correct>F</Correct>
+	      		<Info>Horse race betting and Poker are chance based games.</Info>
+	      	</Option>
+	      	<Option index="3">
+	      		<Value>Slots</Value>
+	      		<Correct>F</Correct>
+	      		<Info>Horse race betting and Poker are chance based games.</Info>
+	      	</Option>
+	      	<Option index="4">
+	      		<Value>Bingo</Value>
+	      		<Correct>F</Correct>
+	      		<Info>Horse race betting and Poker are chance based games.</Info>
+	      	</Option>
+	    </Options>
+	  </Question>
+	  <Question index="5">
+	  	<Value>However, she understands that ________________ the outcome of the game. </Value>
+	    <Options>
+	      	<Option index="1">
+	      		<Value>she can easily predict</Value>
+	      		<Correct>F</Correct>
+	      		<Info>A gambler cannot affect the outcome of a skill based game.</Info>
+	      	</Option>
+	      	<Option index="2">
+	      		<Value>she can’t affect</Value>
+	      		<Correct>T</Correct>
+	      		<Info>A gambler cannot affect the outcome of a skill based game.</Info>
+	      	</Option>
+	      	<Option index="3">
+	      		<Value>she can get tips on</Value>
+	      		<Correct>F</Correct>
+	      		<Info>A gambler cannot affect the outcome of a skill based game.</Info>
+	      	</Option>
+	      	<Option index="4">
+	      		<Value>she can get insights on</Value>
+	      		<Correct>F</Correct>
+	      		<Info>A gambler cannot affect the outcome of a skill based game.</Info>
+	      	</Option>
+	    </Options>
+	  </Question>
+	  <Question index="6">
+	  	<Value>She finally decided on buying a Lotto Max ticket, even though a ________________ ticket had better odds of winning. </Value>
+	    <Options>
+	      	<Option index="1">
+	      		<Value>BC/49</Value>
+	      		<Correct>F</Correct>
+	      		<Info>Scratch and win has the best odds of winning something.</Info>
+	      	</Option>
+	      	<Option index="2">
+	      		<Value>Lotto/49</Value>
+	      		<Correct>F</Correct>
+	      		<Info>Scratch and win has the best odds of winning something.</Info>
+	      	</Option>
+	      	<Option index="3">
+	      		<Value>scratch and win</Value>
+	      		<Correct>T</Correct>
+	      		<Info>Scratch and win has the best odds of winning something.</Info>
+	      	</Option>
+	      	<Option index="4">
+	      		<Value>Daily Grand</Value>
+	      		<Correct>F</Correct>
+	      		<Info>Scratch and win has the best odds of winning something.</Info>
+	      	</Option>
+	    </Options>
+	  </Question>
+	  <Question index="7">
+	  	<Value>Megyn doesn’t expect to win the ultimate prize, because quite frankly ________________ has a better chance of happening. </Value>
+	    <Options>
+	      	<Option index="1">
+	      		<Value>Asteroid hitting earth</Value>
+	      		<Correct>T</Correct>
+	      		<Info>All of these events have better chances of happening than winning the Lotto.</Info>
+	      	</Option>
+	      	<Option index="2">
+	      		<Value>Getting struck by lightning</Value>
+	      		<Correct>T</Correct>
+	      		<Info>All of these events have better chances of happening than winning the Lotto.</Info>
+	      	</Option>
+	      	<Option index="3">
+	      		<Value>Getting hit by bird poop</Value>
+	      		<Correct>T</Correct>
+	      		<Info>All of these events have better chances of happening than winning the Lotto.</Info>
+	      	</Option>
+	      	<Option index="4">
+	      		<Value>Being in a car accident</Value>
+	      		<Correct>T</Correct>
+	      		<Info>All of these events have better chances of happening than winning the Lotto.</Info>
+	      	</Option>
+	    </Options>
+	  </Question>
     </FIB>
-    <FIB>
-      <Index>2</Index>
-      <Q>
-      	<Question1>To celebrate her year end bonus, Megyn is thinking of spending some of her earnings on gambling. She thought of spending it on a chance based game like _________________. </Question1>
-	    <Blank1>
-	      	<Option1>
-	      		<value>Roulette</value>
-	      		<correct>T</correct>
-	      		<info>This is correct! Roulette is a chance based game, so as slots!</info>
-	      	</Option1>
-	      	<Option2>
-	      		<value>Slots</value>
-	      		<correct>T</correct>
-	      		<info>This is correct! Slots is a chance based game, so as Roulette!</info>
-	      	</Option2>
-	      	<Option3>
-	      		<value>Horse race betting</value>
-	      		<correct>F</correct>
-	      		<info>This is wrong!</info>
-	      	</Option3>
-	      	<Option4>
-	      		<value>Poker</value>
-	      		<correct>F</correct>
-	      		<info>This is wrong!</info>
-	      	</Option4>
-	    </Blank1>
-	  </Q>
-	  <Q>
-	  	<Question2>Megyn knows that this game _________________, </Question2>
-	    <Blank2>
-	      	<Option1>
-	      		<value>is purely random</value>
-	      		<correct>T</correct>
-	      		<info>This is correct! Chance based games are purely random</info>
-	      	</Option1>
-	      	<Option2>
-	      		<value>requires skill</value>
-	      		<correct>F</correct>
-	      		<info>This is wrong!</info>
-	      	</Option2>
-	      	<Option3>
-	      		<value>is a guaranteed win</value>
-	      		<correct>F</correct>
-	      		<info>This is wrong!</info>
-	      	</Option3>
-	      	<Option4>
-	      		<value>requires experience</value>
-	      		<correct>F</correct>
-	      		<info>This is wrong!</info>
-	      	</Option4>
-	    </Blank2>
-	  </Q>
-	  <Q>
-	  	<Question3>which means that the odds of winning _________________ each time you play. </Question3>
-	    <Blank3>
-	      	<Option1>
-	      		<value>never change</value>
-	      		<correct>T</correct>
-	      		<info>This is correct! The odds of winning never changes in chance based games.</info>
-	      	</Option1>
-	      	<Option2>
-	      		<value>gets better</value>
-	      		<correct>F</correct>
-	      		<info>This is wrong!</info>
-	      	</Option2>
-	      	<Option3>
-	      		<value>gets worse</value>
-	      		<correct>F</correct>
-	      		<info>This is wrong!</info>
-	      	</Option3>
-	      	<Option4>
-	      		<value>is very high</value>
-	      		<correct>F</correct>
-	      		<info>This is wrong!</info>
-	      	</Option4>
-	    </Blank3>
-	  </Q>
-	  <Q>
-	  	<Question4>She also thought about spending it on a skill based game like _________________. </Question4>
-	    <Blank4>
-	      	<Option1>
-	      		<value>Poker</value>
-	      		<correct>T</correct>
-	      		<info>This is correct! Poker is a skill based game, so as a horse race betting.</info>
-	      	</Option1>
-	      	<Option2>
-	      		<value>Roulette</value>
-	      		<correct>F</correct>
-	      		<info>This is wrong!</info>
-	      	</Option2>
-	      	<Option3>
-	      		<value>Slots</value>
-	      		<correct>F</correct>
-	      		<info>This is wrong!</info>
-	      	</Option3>
-	      	<Option4>
-	      		<value>Bingo</value>
-	      		<correct>F</correct>
-	      		<info>This is wrong!</info>
-	      	</Option4>
-	    </Blank4>
-	  </Q>
-	  <Q>
-	  	<Question5>However, she understands that _________________ the outcome of the game. </Question5>
-	    <Blank5>
-	      	<Option1>
-	      		<value>she can easily predict</value>
-	      		<correct>F</correct>
-	      		<info>Oops, she can’t affect the outcome of the game. Skill and strategy can play a role in these games, but you still don't control the cards that are being dealt or the outcome of an event that is being waged.</info>
-	      	</Option1>
-	      	<Option2>
-	      		<value>she can’t affect</value>
-	      		<correct>T</correct>
-	      		<info>This is correct!</info>
-	      	</Option2>
-	      	<Option3>
-	      		<value>she can get tips on</value>
-	      		<correct>F</correct>
-	      		<info>Oops, she can’t affect the outcome of the game. Skill and strategy can play a role in these games, but you still don't control the cards that are being dealt or the outcome of an event that is being waged.</info>
-	      	</Option3>
-	      	<Option4>
-	      		<value>she can get insights on</value>
-	      		<correct>F</correct>
-	      		<info>Oops, she can’t affect the outcome of the game. Skill and strategy can play a role in these games, but you still don't control the cards that are being dealt or the outcome of an event that is being waged.</info>
-	      	</Option4>
-	    </Blank5>
-	  </Q>
-	  <Q>
-	  	<Question6>She finally decided on buying a Lotto Max ticket, even though a _________________ ticket had better odds of winning. </Question6>
-	    <Blank6>
-	      	<Option1>
-	      		<value>BC/49</value>
-	      		<correct>F</correct>
-	      		<info>This is wrong!</info>
-	      	</Option1>
-	      	<Option2>
-	      		<value>Lotto/49</value>
-	      		<correct>F</correct>
-	      		<info>This is wrong!</info>
-	      	</Option2>
-	      	<Option3>
-	      		<value>scratch and win</value>
-	      		<correct>T</correct>
-	      		<info>This is correct! Scratch and win has better odds of winning than a Lotto Max ticket.</info>
-	      	</Option3>
-	      	<Option4>
-	      		<value>Daily Grand</value>
-	      		<correct>F</correct>
-	      		<info>This is wrong!</info>
-	      	</Option4>
-	    </Blank6>
-	  </Q>
-	  <Q>
-	  	<Question7>Megyn doesn’t expect to win the ultimate prize, because quite frankly _________________ has a better chance of happening. </Question7>
-	    <Blank7>
-	      	<Option1>
-	      		<value>Asteroid hitting earth</value>
-	      		<correct>T</correct>
-	      		<info>All of these events have better chances of happening than winning the Lotto.</info>
-	      	</Option1>
-	      	<Option2>
-	      		<value>Getting struck by lightning</value>
-	      		<correct>T</correct>
-	      		<info>All of these events have better chances of happening than winning the Lotto.</info>
-	      	</Option2>
-	      	<Option3>
-	      		<value>Getting hit by bird poop</value>
-	      		<correct>T</correct>
-	      		<info>All of these events have better chances of happening than winning the Lotto.</info>
-	      	</Option3>
-	      	<Option4>
-	      		<value>Being in a car accident</value>
-	      		<correct>T</correct>
-	      		<info>All of these events have better chances of happening than winning the Lotto.</info>
-	      	</Option4>
-	    </Blank7>
-	  </Q>
+    <FIB index="2">
+      <Question index="1">
+      	<Value>To celebrate her year end bonus, Megyn is thinking of spending some of her earnings on gambling. She thought of spending it on a chance based game like ________________. </Value>
+	    <Options>
+	      	<Option index="1">
+	      		<Value>Roulette</Value>
+	      		<Correct>T</Correct>
+	      		<Info>Roulette, Slots and Bingo are chance based games.</Info>
+	      	</Option>
+	      	<Option index="2">
+	      		<Value>Slots</Value>
+	      		<Correct>T</Correct>
+	      		<Info>Roulette, Slots and Bingo are chance based games.</Info>
+	      	</Option>
+	      	<Option index="3">
+	      		<Value>Horse race betting</Value>
+	      		<Correct>F</Correct>
+	      		<Info>Roulette, Slots and Bingo are chance based games.</Info>
+	      	</Option>
+	      	<Option index="4">
+	      		<Value>Poker</Value>
+	      		<Correct>F</Correct>
+	      		<Info>Roulette, Slots and Bingo are chance based games.</Info>
+	      	</Option>
+	    </Options>
+	  </Question>
+	  <Question index="2">
+	  	<Value>Megyn knows that this game ________________, </Value>
+	    <Options>
+	      	<Option index="1">
+	      		<Value>is purely random</Value>
+	      		<Correct>T</Correct>
+	      		<Info>Chance based games are purely random.</Info>
+	      	</Option>
+	      	<Option index="2">
+	      		<Value>requires skill</Value>
+	      		<Correct>F</Correct>
+	      		<Info>Chance based games are purely random.</Info>
+	      	</Option>
+	      	<Option index="3">
+	      		<Value>is a guaranteed win</Value>
+	      		<Correct>F</Correct>
+	      		<Info>Chance based games are purely random.</Info>
+	      	</Option>
+	      	<Option index="4">
+	      		<Value>requires experience</Value>
+	      		<Correct>F</Correct>
+	      		<Info>Chance based games are purely random.</Info>
+	      	</Option>
+	    </Options>
+	  </Question>
+	  <Question index="3">
+	  	<Value>which means that the odds of winning ________________ each time you play. </Value>
+	    <Options>
+	      	<Option index="1">
+	      		<Value>never change</Value>
+	      		<Correct>T</Correct>
+	      		<Info>The odds of winning random games never change.</Info>
+	      	</Option>
+	      	<Option index="2">
+	      		<Value>gets better</Value>
+	      		<Correct>F</Correct>
+	      		<Info>The odds of winning random games never change.</Info>
+	      	</Option>
+	      	<Option index="3">
+	      		<Value>gets worse</Value>
+	      		<Correct>F</Correct>
+	      		<Info>The odds of winning random games never change.</Info>
+	      	</Option>
+	      	<Option index="4">
+	      		<Value>is very high</Value>
+	      		<Correct>F</Correct>
+	      		<Info>The odds of winning random games never change.</Info>
+	      	</Option>
+	    </Options>
+	  </Question>
+	  <Question index="4">
+	  	<Value>She also thought about spending it on a skill based game like ________________. </Value>
+	    <Options>
+	      	<Option index="1">
+	      		<Value>Poker</Value>
+	      		<Correct>T</Correct>
+	      		<Info>Horse race betting and Poker are chance based games.</Info>
+	      	</Option>
+	      	<Option index="2">
+	      		<Value>Roulette</Value>
+	      		<Correct>F</Correct>
+	      		<Info>Horse race betting and Poker are chance based games.</Info>
+	      	</Option>
+	      	<Option index="3">
+	      		<Value>Slots</Value>
+	      		<Correct>F</Correct>
+	      		<Info>Horse race betting and Poker are chance based games.</Info>
+	      	</Option>
+	      	<Option index="4">
+	      		<Value>Bingo</Value>
+	      		<Correct>F</Correct>
+	      		<Info>Horse race betting and Poker are chance based games.</Info>
+	      	</Option>
+	    </Options>
+	  </Question>
+	  <Question index="5">
+	  	<Value>However, she understands that ________________ the outcome of the game. </Value>
+	    <Options>
+	      	<Option index="1">
+	      		<Value>she can easily predict</Value>
+	      		<Correct>F</Correct>
+	      		<Info>A gambler cannot affect the outcome of a skill based game.</Info>
+	      	</Option>
+	      	<Option index="2">
+	      		<Value>she can’t affect</Value>
+	      		<Correct>T</Correct>
+	      		<Info>A gambler cannot affect the outcome of a skill based game.</Info>
+	      	</Option>
+	      	<Option index="3">
+	      		<Value>she can get tips on</Value>
+	      		<Correct>F</Correct>
+	      		<Info>A gambler cannot affect the outcome of a skill based game.</Info>
+	      	</Option>
+	      	<Option index="4">
+	      		<Value>she can get insights on</Value>
+	      		<Correct>F</Correct>
+	      		<Info>A gambler cannot affect the outcome of a skill based game.</Info>
+	      	</Option>
+	    </Options>
+	  </Question>
+	  <Question index="6">
+	  	<Value>She finally decided on buying a Lotto Max ticket, even though a ________________ ticket had better odds of winning. </Value>
+	    <Options>
+	      	<Option index="1">
+	      		<Value>BC/49</Value>
+	      		<Correct>F</Correct>
+	      		<Info>Scratch and win has the best odds of winning something.</Info>
+	      	</Option>
+	      	<Option index="2">
+	      		<Value>Lotto/49</Value>
+	      		<Correct>F</Correct>
+	      		<Info>Scratch and win has the best odds of winning something.</Info>
+	      	</Option>
+	      	<Option index="3">
+	      		<Value>scratch and win</Value>
+	      		<Correct>T</Correct>
+	      		<Info>Scratch and win has the best odds of winning something.</Info>
+	      	</Option>
+	      	<Option index="4">
+	      		<Value>Daily Grand</Value>
+	      		<Correct>F</Correct>
+	      		<Info>Scratch and win has the best odds of winning something.</Info>
+	      	</Option>
+	    </Options>
+	  </Question>
+	  <Question index="7">
+	  	<Value>Megyn doesn’t expect to win the ultimate prize, because quite frankly ________________ has a better chance of happening. </Value>
+	    <Options>
+	      	<Option index="1">
+	      		<Value>Asteroid hitting earth</Value>
+	      		<Correct>T</Correct>
+	      		<Info>All of these events have better chances of happening than winning the Lotto.</Info>
+	      	</Option>
+	      	<Option index="2">
+	      		<Value>Getting struck by lightning</Value>
+	      		<Correct>T</Correct>
+	      		<Info>All of these events have better chances of happening than winning the Lotto.</Info>
+	      	</Option>
+	      	<Option index="3">
+	      		<Value>Getting hit by bird poop</Value>
+	      		<Correct>T</Correct>
+	      		<Info>All of these events have better chances of happening than winning the Lotto.</Info>
+	      	</Option>
+	      	<Option index="4">
+	      		<Value>Being in a car accident</Value>
+	      		<Correct>T</Correct>
+	      		<Info>All of these events have better chances of happening than winning the Lotto.</Info>
+	      	</Option>
+	    </Options>
+	  </Question>
     </FIB>
   </FillInTheBlanks>
 </FillInTheBlankCollction>
