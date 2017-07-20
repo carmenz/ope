@@ -43,9 +43,9 @@ public class Option : MonoBehaviour {
 			fibm.RenderInfo("That's correct! " + info);
 			fibm.RenderNext();
 		} else {
-			fibm.CHANCE--;
+			fibm.Chance--;
 			// check chance if chance - 1 > 0
-			if (fibm.CHANCE > 0) {
+			if (fibm.Chance > 0) {
 				// alert first wrong
 				fibm.RenderInfo("Ooh, that's incorrect. Try again!");
 				// disable this button

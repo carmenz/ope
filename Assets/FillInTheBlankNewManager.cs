@@ -10,10 +10,12 @@ using System.Text.RegularExpressions;
 public class FillInTheBlankNewManager : MonoBehaviour {
 
 	static string userpath = string.Empty;
+	public int Chance;
+
 	int NUM_OF_OPTIONS = 4;
 	string CORRECT_COLOR = "#008000ff";
 	string WRONG_COLOR = "#ff0000ff";
-	public int CHANCE = 2;
+	int CHANCE = 2;
 
 	GameManager gm;
 	XmlDocument xmlFillInTheBlankDoc;
@@ -63,7 +65,7 @@ public class FillInTheBlankNewManager : MonoBehaviour {
 
 	public void RenderNext () {
 		// reset
-		CHANCE = 2;
+		Chance = CHANCE;
 
 		XmlNode questionNode = _questions.Item(_curQuestionIndex);
 
