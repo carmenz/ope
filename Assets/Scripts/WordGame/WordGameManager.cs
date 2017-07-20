@@ -56,22 +56,22 @@ public class WordGameManager : MonoBehaviour {
 
 	public void YesOnClick()
 	{
-		updateOrCreateWordNode("T");
+		UpdateOrCreateWordNode("T");
 
-		verifyAnswer("T");
-		showNextWord();
+		VerifyAnswer("T");
+		ShowNextWord();
 	}
 
 	public void NoOnClick()
 	{
-		updateOrCreateWordNode("F");
+		UpdateOrCreateWordNode("F");
 
-		verifyAnswer("F");
-		showNextWord();
+		VerifyAnswer("F");
+		ShowNextWord();
 	}
 
 
-	public void updateOrCreateWordNode(string value) {
+	public void UpdateOrCreateWordNode(string value) {
 		XmlDocument xmlUserDoc = new XmlDocument ();
 		xmlUserDoc.Load (userpath);
 		XmlNode usernameNode = xmlUserDoc.SelectSingleNode ("//Username");
@@ -90,8 +90,8 @@ public class WordGameManager : MonoBehaviour {
 		while (gm.Index.ToString() != gameIndexNode.InnerText) {
 			gameIndexNode = gameIndexNode.ParentNode.NextSibling.FirstChild;
 		}
-
 		XmlNode gameNode = gameIndexNode.ParentNode;
+
 		// clear history if <word#> node already exist
 		if (gameNode.ChildNodes.Count > subIndexForInfo + 1) {
 			while (gameNode.ChildNodes.Count > 1) {
@@ -108,7 +108,7 @@ public class WordGameManager : MonoBehaviour {
 
 
 
-	public void showNextWord() {
+	public void ShowNextWord() {
 		if (subIndex != 9) {
 			XmlDocument xmlWordGameDoc = new XmlDocument ();
 			xmlWordGameDoc.Load (gm.Path);
@@ -126,7 +126,7 @@ public class WordGameManager : MonoBehaviour {
 		}
 	}
 
-	public void showPanel(string type) {
+	public void ShowPanel(string type) {
 		if (type == "MissionComplete") {
 			missionCompletePanel.SetActive (true);
 			AudioSource audio = GameObject.Find ("AudioComplete").GetComponent<AudioSource> ();
@@ -142,7 +142,7 @@ public class WordGameManager : MonoBehaviour {
 
 
 
-	public void verifyAnswer(string booleanValue) {
+	public void VerifyAnswer(string booleanValue) {
 		XmlDocument xmlWordGameDoc = new XmlDocument ();
 		xmlWordGameDoc.Load (gm.Path);
 		XmlNode indexNode = xmlWordGameDoc.SelectSingleNode ("//Index");
@@ -153,23 +153,23 @@ public class WordGameManager : MonoBehaviour {
 			audio.Play();
 
 			StartCoroutine(FadeResultInAndOut(0.6f,"Correct"));
-			updateCurrentScore ();
+			UpdateCurrentScore ();
 
 			cross1.gameObject.SetActive (false);
 			cross2.gameObject.SetActive (false);
 			cross3.gameObject.SetActive (false);
 
 		} else {
-			updateCrosses ();
+			UpdateCrosses ();
 			StartCoroutine(FadeResultInAndOut(0.6f,"Incorrect"));
 		}
 	}
 
 
-	public void updateCrosses() {
+	public void UpdateCrosses() {
 		multiplexerCount = 0;
 		crossCount++;
-		multiplexerCheck (multiplexerCount);
+		MultiplexerCheck (multiplexerCount);
 
 		if (crossCount == 1) {
 			cross1.gameObject.SetActive (true);
@@ -189,7 +189,7 @@ public class WordGameManager : MonoBehaviour {
 
 			multiplexerCount++;
 			crossCount = 0;
-			multiplexerCheck (multiplexerCount);
+			MultiplexerCheck (multiplexerCount);
 
 		} else {
 			infoText.text = "Oops sorry. Wrong answer!";
@@ -204,24 +204,24 @@ public class WordGameManager : MonoBehaviour {
 		print (subIndex);
 		if (crossCount == 3) {
 			if (subIndex == 10) {
-				showPanel ("MissionComplete");
+				ShowPanel ("MissionComplete");
 			} else {
-				showPanel ("Oops");
+				ShowPanel ("Oops");
 			}
-			updateDBScore ();
+			UpdateDBScore ();
 			gm.updateDBTotalScore (currentScore);
 		} else {
 			if (subIndex == 10) {
 				yes.gameObject.SetActive (false);
 				no.gameObject.SetActive (false);
-				showPanel ("MissionComplete");
-				updateDBScore ();
+				ShowPanel ("MissionComplete");
+				UpdateDBScore ();
 				gm.updateDBTotalScore (currentScore);
 			}
 		}
 	}
 
-	public void updateDBScore() {
+	public void UpdateDBScore() {
 
 		XmlDocument xmlUserDoc = new XmlDocument ();
 		xmlUserDoc.Load (userpath);
@@ -246,7 +246,7 @@ public class WordGameManager : MonoBehaviour {
 		xmlUserDoc.Save (userpath);
 	}
 
-	public void multiplexerCheck(int multiplexerCount) {
+	public void MultiplexerCheck(int multiplexerCount) {
 		multiplexer = GameObject.Find("Multiplexer").GetComponent<Text>();
 		if (multiplexerCount <= 2) {
 			multiplexer.text = "x1";
@@ -269,7 +269,7 @@ public class WordGameManager : MonoBehaviour {
 	}
 
 
-	public void updateCurrentScore() {
+	public void UpdateCurrentScore() {
 		if (multiplexer.text == "x1") {
 			currentScore = currentScore + 10 * 1;
 		} else if (multiplexer.text == "x2") {
