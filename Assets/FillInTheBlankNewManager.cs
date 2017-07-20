@@ -70,6 +70,7 @@ public class FillInTheBlankNewManager : MonoBehaviour {
 		XmlNode questionNode = _questions.Item(_curQuestionIndex);
 
 		//check if there is a next line
+		// if there is no next line => open score panel!
 		if (questionNode == null)
 			return;
 
