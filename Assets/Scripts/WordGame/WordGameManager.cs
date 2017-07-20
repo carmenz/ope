@@ -7,7 +7,6 @@ using System.Xml;
 public class WordGameManager : MonoBehaviour {
 
 	private GameManager gm;
-	private WordGameManager wgm;
 	public GameObject missionCompletePanel;
 	public GameObject oopsPanel;
 	private static string userpath = string.Empty;
@@ -36,7 +35,6 @@ public class WordGameManager : MonoBehaviour {
 
 		userpath = System.IO.Path.Combine (Application.dataPath, "Resources/users.xml");
 		gm = GameObject.Find("GameManager").GetComponent<GameManager>();
-		wgm = GameObject.Find("WordGameManager").GetComponent<WordGameManager>();
 
 		XmlDocument xmlWordGameDoc = new XmlDocument ();
 		xmlWordGameDoc.Load (gm.Path);
@@ -76,7 +74,7 @@ public class WordGameManager : MonoBehaviour {
 		xmlUserDoc.Load (userpath);
 		XmlNode usernameNode = xmlUserDoc.SelectSingleNode ("//Username");
 
-		int subIndexForInfo = wgm.subIndex - 1;
+		int subIndexForInfo = subIndex - 1;
 
 		// update user.xml to store user answers
 		while (usernameNode.InnerText != gm.Username) {
@@ -146,7 +144,7 @@ public class WordGameManager : MonoBehaviour {
 		XmlDocument xmlWordGameDoc = new XmlDocument ();
 		xmlWordGameDoc.Load (gm.Path);
 		XmlNode indexNode = xmlWordGameDoc.SelectSingleNode ("//Index");
-		int subIndexForInfo = wgm.subIndex - 1;
+		int subIndexForInfo = subIndex - 1;
 
 		if (indexNode.SelectSingleNode ("//Word" + subIndexForInfo + "//Yes").InnerText == booleanValue) {
 			AudioSource audio = GameObject.Find("AudioCorrect").GetComponent<AudioSource>();

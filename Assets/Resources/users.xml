@@ -41,24 +41,15 @@
     <User>
       <Username>34</Username>
       <Password>JbdhisBr//YC/1NiQQprdQ==</Password>
-      <CurrentPosX>-1633.794</CurrentPosX>
-      <CurrentPosY>-102.4014</CurrentPosY>
+      <CurrentPosX>-1630.813</CurrentPosX>
+      <CurrentPosY>-116.3564</CurrentPosY>
       <CurrentIsland>A</CurrentIsland>
-      <TotalScore>2180</TotalScore>
+      <TotalScore>2300</TotalScore>
       <IslandA>
         <WordGames>
           <Game>
             <Index>1</Index>
-            <Word1>T</Word1>
-            <Word2>F</Word2>
-            <Word3>F</Word3>
-            <Word4>F</Word4>
-            <Word5>F</Word5>
-            <Score>20</Score>
-          </Game>
-          <Game>
-            <Index>2</Index>
-            <Word1>T</Word1>
+            <Word1>F</Word1>
             <Word2>T</Word2>
             <Word3>T</Word3>
             <Word4>T</Word4>
@@ -66,7 +57,7 @@
             <Word6>T</Word6>
             <Word7>T</Word7>
             <Word8>T</Word8>
-            <Score>70</Score>
+            <Score>60</Score>
           </Game>
         </WordGames>
       </IslandA>
