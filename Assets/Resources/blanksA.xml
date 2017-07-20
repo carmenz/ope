@@ -1,184 +1,111 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FillInTheBlankCollction xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <FillInTheBlanks>
-    <FIB index="1">
+    <FIB>
+      <Index>1</Index>
       <Question index="1">
-      	<Value>To celebrate her year end bonus, Megyn is thinking of spending some of her earnings on gambling. She thought of spending it on a chance based game like ________________. </Value>
+      	<Value>David plays slots at his local casino once a week, but he hasn't won big in awhile.  He decides to ________________. </Value>
 	    <Options>
 	      	<Option index="1">
-	      		<Value>Roulette</Value>
-	      		<Correct>T</Correct>
-	      		<Info>Roulette, Slots and Bingo are chance based games.</Info>
+	      		<Value>increase his bet size</Value>
+	      		<Correct>F</Correct>
+	      		<Info>Actually, no. It is a myth that this will change David's odds of winning.</Info>
 	      	</Option>
 	      	<Option index="2">
-	      		<Value>Slots</Value>
-	      		<Correct>T</Correct>
-	      		<Info>Roulette, Slots and Bingo are chance based games.</Info>
+	      		<Value>find a hot machine</Value>
+	      		<Correct>F</Correct>
+	      		<Info>Actually, no. It is a myth that this will change David's odds of winning.</Info>
 	      	</Option>
 	      	<Option index="3">
-	      		<Value>Horse race betting</Value>
+	      		<Value>only play the same machine</Value>
 	      		<Correct>F</Correct>
-	      		<Info>Roulette, Slots and Bingo are chance based games.</Info>
+	      		<Info>Actually, no. It is a myth that this will change David's odds of winning.</Info>
 	      	</Option>
 	      	<Option index="4">
-	      		<Value>Poker</Value>
-	      		<Correct>F</Correct>
-	      		<Info>Roulette, Slots and Bingo are chance based games.</Info>
+	      		<Value>focus on having fun, not on winning.</Value>
+	      		<Correct>T</Correct>
+	      		<Info>Correct! Keeping gambling fun is the best approach.</Info>
 	      	</Option>
 	    </Options>
 	  </Question>
 	  <Question index="2">
-	  	<Value>Megyn knows that this game ________________, </Value>
+	  	<Value>He makes sure he has fun at the casino by ________________. </Value>
 	    <Options>
 	      	<Option index="1">
-	      		<Value>is purely random</Value>
+	      		<Value>setting a time limit</Value>
 	      		<Correct>T</Correct>
-	      		<Info>Chance based games are purely random.</Info>
+	      		<Info>Great! This is a good example of positive play behaviour.</Info>
 	      	</Option>
 	      	<Option index="2">
-	      		<Value>requires skill</Value>
+	      		<Value>playing more often with bigger bet sizes</Value>
 	      		<Correct>F</Correct>
-	      		<Info>Chance based games are purely random.</Info>
+	      		<Info>Actually, this is a sign David is not having fun.</Info>
 	      	</Option>
 	      	<Option index="3">
-	      		<Value>is a guaranteed win</Value>
-	      		<Correct>F</Correct>
-	      		<Info>Chance based games are purely random.</Info>
+	      		<Value>gambling with friends </Value>
+	      		<Correct>T</Correct>
+	      		<Info>Great! This is a good example of positive play behaviour.</Info>
 	      	</Option>
 	      	<Option index="4">
-	      		<Value>requires experience</Value>
-	      		<Correct>F</Correct>
-	      		<Info>Chance based games are purely random.</Info>
+	      		<Value>sticking to a budget</Value>
+	      		<Correct>T</Correct>
+	      		<Info>Great! This is a good example of positive play behaviour.</Info>
 	      	</Option>
 	    </Options>
 	  </Question>
 	  <Question index="3">
-	  	<Value>which means that the odds of winning ________________ each time you play. </Value>
+	  	<Value>When gambling comes up in conversation with friends and family, David ________________. </Value>
 	    <Options>
 	      	<Option index="1">
-	      		<Value>never change</Value>
-	      		<Correct>T</Correct>
-	      		<Info>The odds of winning random games never change.</Info>
+	      		<Value>says he has fun at the casino on the weekends</Value>
+	      		<Correct>F</Correct>
+	      		<Info>Correct! Honesty with friends and family is important in keeping a positive play mindset</Info>
 	      	</Option>
 	      	<Option index="2">
-	      		<Value>gets better</Value>
-	      		<Correct>F</Correct>
-	      		<Info>The odds of winning random games never change.</Info>
+	      		<Value>never talks about visiting the casino  </Value>
+	      		<Correct>T</Correct>
+	      		<Info>Actually, David is not being honest about his gambling.</Info>
 	      	</Option>
 	      	<Option index="3">
-	      		<Value>gets worse</Value>
-	      		<Correct>F</Correct>
-	      		<Info>The odds of winning random games never change.</Info>
+	      		<Value>says he's been there before, but doesn’t go anymore</Value>
+	      		<Correct>T</Correct>
+	      		<Info>Actually, David is not being honest about his gambling.</Info>
 	      	</Option>
 	      	<Option index="4">
-	      		<Value>is very high</Value>
-	      		<Correct>F</Correct>
-	      		<Info>The odds of winning random games never change.</Info>
+	      		<Value>mentions he goes to the casino maybe once a month</Value>
+	      		<Correct>T</Correct>
+	      		<Info>Actually, David is not being honest about his gambling.</Info>
 	      	</Option>
 	    </Options>
 	  </Question>
 	  <Question index="4">
-	  	<Value>She also thought about spending it on a skill based game like ________________. </Value>
+	  	<Value>David also plays the lottery because ________________. </Value>
 	    <Options>
 	      	<Option index="1">
-	      		<Value>Poker</Value>
-	      		<Correct>T</Correct>
-	      		<Info>Horse race betting and Poker are chance based games.</Info>
+	      		<Value>he doesn’t have a good pension plan at work</Value>
+	      		<Correct>F</Correct>
+	      		<Info>Actually, no. People shouldn’t gamble to make money.</Info>
 	      	</Option>
 	      	<Option index="2">
-	      		<Value>Roulette</Value>
+	      		<Value>he's behind on his credit card payments</Value>
 	      		<Correct>F</Correct>
-	      		<Info>Horse race betting and Poker are chance based games.</Info>
+	      		<Info>Actually, no. People shouldn’t gamble to make money.</Info>
 	      	</Option>
 	      	<Option index="3">
-	      		<Value>Slots</Value>
-	      		<Correct>F</Correct>
-	      		<Info>Horse race betting and Poker are chance based games.</Info>
+	      		<Value>he enjoys dreaming about what he could buy with a big jackpo</Value>
+	      		<Correct>T</Correct>
+	      		<Info>Yes, having fun with the idea of winning is an example of positive play.</Info>
 	      	</Option>
 	      	<Option index="4">
-	      		<Value>Bingo</Value>
+	      		<Value>he's afraid his numbers will win the week he doesn’t buy a ticket</Value>
 	      		<Correct>F</Correct>
-	      		<Info>Horse race betting and Poker are chance based games.</Info>
-	      	</Option>
-	    </Options>
-	  </Question>
-	  <Question index="5">
-	  	<Value>However, she understands that ________________ the outcome of the game. </Value>
-	    <Options>
-	      	<Option index="1">
-	      		<Value>she can easily predict</Value>
-	      		<Correct>F</Correct>
-	      		<Info>A gambler cannot affect the outcome of a skill based game.</Info>
-	      	</Option>
-	      	<Option index="2">
-	      		<Value>she can’t affect</Value>
-	      		<Correct>T</Correct>
-	      		<Info>A gambler cannot affect the outcome of a skill based game.</Info>
-	      	</Option>
-	      	<Option index="3">
-	      		<Value>she can get tips on</Value>
-	      		<Correct>F</Correct>
-	      		<Info>A gambler cannot affect the outcome of a skill based game.</Info>
-	      	</Option>
-	      	<Option index="4">
-	      		<Value>she can get insights on</Value>
-	      		<Correct>F</Correct>
-	      		<Info>A gambler cannot affect the outcome of a skill based game.</Info>
-	      	</Option>
-	    </Options>
-	  </Question>
-	  <Question index="6">
-	  	<Value>She finally decided on buying a Lotto Max ticket, even though a ________________ ticket had better odds of winning. </Value>
-	    <Options>
-	      	<Option index="1">
-	      		<Value>BC/49</Value>
-	      		<Correct>F</Correct>
-	      		<Info>Scratch and win has the best odds of winning something.</Info>
-	      	</Option>
-	      	<Option index="2">
-	      		<Value>Lotto/49</Value>
-	      		<Correct>F</Correct>
-	      		<Info>Scratch and win has the best odds of winning something.</Info>
-	      	</Option>
-	      	<Option index="3">
-	      		<Value>scratch and win</Value>
-	      		<Correct>T</Correct>
-	      		<Info>Scratch and win has the best odds of winning something.</Info>
-	      	</Option>
-	      	<Option index="4">
-	      		<Value>Daily Grand</Value>
-	      		<Correct>F</Correct>
-	      		<Info>Scratch and win has the best odds of winning something.</Info>
-	      	</Option>
-	    </Options>
-	  </Question>
-	  <Question index="7">
-	  	<Value>Megyn doesn’t expect to win the ultimate prize, because quite frankly ________________ has a better chance of happening. </Value>
-	    <Options>
-	      	<Option index="1">
-	      		<Value>Asteroid hitting earth</Value>
-	      		<Correct>T</Correct>
-	      		<Info>All of these events have better chances of happening than winning the Lotto.</Info>
-	      	</Option>
-	      	<Option index="2">
-	      		<Value>Getting struck by lightning</Value>
-	      		<Correct>T</Correct>
-	      		<Info>All of these events have better chances of happening than winning the Lotto.</Info>
-	      	</Option>
-	      	<Option index="3">
-	      		<Value>Getting hit by bird poop</Value>
-	      		<Correct>T</Correct>
-	      		<Info>All of these events have better chances of happening than winning the Lotto.</Info>
-	      	</Option>
-	      	<Option index="4">
-	      		<Value>Being in a car accident</Value>
-	      		<Correct>T</Correct>
-	      		<Info>All of these events have better chances of happening than winning the Lotto.</Info>
+	      		<Info>Actually, no. People shouldn’t gamble to make money.</Info>
 	      	</Option>
 	    </Options>
 	  </Question>
     </FIB>
-    <FIB index="2">
+    <FIB>
+      <Index>2</Index>
       <Question index="1">
       	<Value>To celebrate her year end bonus, Megyn is thinking of spending some of her earnings on gambling. She thought of spending it on a chance based game like ________________. </Value>
 	    <Options>

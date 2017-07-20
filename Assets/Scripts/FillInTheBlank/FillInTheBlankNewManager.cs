@@ -23,9 +23,13 @@ public class FillInTheBlankNewManager : MonoBehaviour {
 	List<Option> options = new List<Option>();
 	Text infoTextBox;
 	Text scoreBox;
+	int scorePlaceholder = 0;
+	int currentScore = 0;
+	public GameObject ten;
+	public GameObject panel;
 
 	XmlNode fib;
-	string _fibIndex;
+	//string _fibIndex;
 	XmlNodeList _questions;
 	int _curQuestionIndex = 0;
 	string _lastAnswer;
@@ -39,12 +43,10 @@ public class FillInTheBlankNewManager : MonoBehaviour {
 		xmlFillInTheBlankDoc = new XmlDocument ();
 		xmlFillInTheBlankDoc.Load (gm.Path);
 		fib = xmlFillInTheBlankDoc.SelectSingleNode("//FIB");
-		_fibIndex = xmlFillInTheBlankDoc.SelectSingleNode("//FIB/@index").Value;
+		//_fibIndex = xmlFillInTheBlankDoc.SelectSingleNode("//FIB/@index").Value;
 		_questions = fib.ChildNodes;
 		
-		XmlDocument xmlUserDoc = new XmlDocument ();
-		xmlUserDoc.Load (userpath);
-		XmlNode usernameNode = xmlUserDoc.SelectSingleNode ("//Username");
+
 		
 		// TODO: set up boxes
 		questionTextBox = GameObject.Find ("Question").GetComponent<Text> ();
@@ -57,28 +59,41 @@ public class FillInTheBlankNewManager : MonoBehaviour {
 		// init first line
 		RenderNext();
 	}
-	
-	// Update is called once per frame
-	void Update () {
-		
+
+
+	public IEnumerator ReadInfo() {
+		int j = 0;
+		for(j = 0; j < options.Count; j++) {
+				options[j].Disable();
+		}
+
+		yield return new WaitForSeconds (2);
+		RenderNext();
 	}
 
 	public void RenderNext () {
 		// reset
 		Chance = CHANCE;
 
-		XmlNode questionNode = _questions.Item(_curQuestionIndex);
+		XmlNode questionNode = _questions.Item(_curQuestionIndex+1);
 
 		//check if there is a next line
 		// if there is no next line => open score panel!
-		if (questionNode == null)
+		if (questionNode == null) {
+			//StartCoroutine(RenderScorePanel ());
+			RenderScorePanel();
+			UpdateDBScore ();
 			return;
+		}
 
 		// TODO: push next line into text box
 		var questionText = questionNode.SelectSingleNode(".//Value").InnerText;
 		questionTextBox.text = questionTextBox.text + questionText;
 
 		// Init the options
+		for(int j = 0; j < options.Count; j++) {
+			options [j].Enable ();
+		}
 		var optionsNode = questionNode.SelectSingleNode(".//Options").ChildNodes;
 		for (var i=0; i< optionsNode.Count;i++) {
 			options[i].gameObject.SetActive(true);
@@ -108,15 +123,75 @@ public class FillInTheBlankNewManager : MonoBehaviour {
 		infoTextBox.text = info;
 	}
 
-	public void AddScore() {
-		// TODO: add score
-		// TODO: animation of +10
-		// TODO: animation of scoreTextBox
+	public void RenderScorePanel() {
+		//yield return new WaitForSeconds (2);
+		AudioSource audio = GameObject.Find("AudioComplete").GetComponent<AudioSource>();
+		audio.Play();
+
+		panel.SetActive(true);
+		// display score on panel
+		Text panelScore = GameObject.Find("PanelScore").GetComponent<Text>();
+
+		panelScore.text = currentScore.ToString ();
+
 	}
 
-	public void ShowPanel() {
-		// TODO: set score text box
-		// TODO: set active
+	public void UpdateDBScore() {
+		XmlDocument xmlUserDoc = new XmlDocument ();
+		xmlUserDoc.Load (userpath);
+		XmlNode usernameNode = xmlUserDoc.SelectSingleNode ("//Username");
+
+		while (usernameNode.InnerText != gm.Username) {
+			usernameNode = usernameNode.ParentNode.NextSibling.FirstChild;
+		}
+
+		// Update user.xml with the score
+		XmlNode fillInTheBlankIndexNode = usernameNode.ParentNode.SelectSingleNode (".//FIB//Index");
+		XmlNode fibNode = fillInTheBlankIndexNode.ParentNode;
+
+		// find the matching game index
+		while (gm.Index.ToString() != fillInTheBlankIndexNode.InnerText) {
+			fillInTheBlankIndexNode = fibNode.NextSibling.FirstChild;
+		}
+			
+		if (fibNode.ChildNodes.Count == 2) {
+			fibNode.RemoveChild (fibNode.LastChild);
+		} 
+
+		// create new <Score> node
+		currentScore = currentScore + 10;
+		XmlNode scoreIndex = xmlUserDoc.CreateNode (XmlNodeType.Element, "Score", null);
+		scoreIndex.InnerText = currentScore.ToString();
+		fillInTheBlankIndexNode.ParentNode.AppendChild (scoreIndex);
+
+		xmlUserDoc.Save (userpath);
 	}
+
+	public void AddScore() {
+		// add score
+		InvokeRepeating ("AddToTen", 0.0f, 0.07f);
+		currentScore = currentScore + 10;
+
+		// animation of +10
+		var y = ten.transform.localPosition.y;
+		ten.SetActive(true);
+		ten.transform.DOLocalMoveY(-180, 2f);
+		ten.GetComponent<Text> ().DOFade (0, 2f).OnComplete (() => {
+			ten.SetActive (false);
+			ten.transform.DOLocalMoveY (y, 0f);
+			ten.GetComponent<Text> ().DOFade (1, 0f);
+		});
+	}
+
+	public void AddToTen () {
+		scorePlaceholder++;
+		Text score = GameObject.Find("Score").GetComponent<Text>();
+		score.text = scorePlaceholder.ToString ();
+		if (scorePlaceholder % 10 == 0) {
+			CancelInvoke ();
+		}
+	}
+
+
 
 }
