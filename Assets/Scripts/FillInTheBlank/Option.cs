@@ -12,35 +12,33 @@ public class Option : MonoBehaviour {
 
 	[SerializeField]
 	int optionIndex;
-	string value;
-	bool correctAnswer;
-	string info;
-	XmlNode root;
+	string _value;
+	bool _isCorrect;
+	string _info;
 
 	void Start() {
 		fibm = GameObject.Find("FillInTheBlankManager").GetComponent<FillInTheBlankNewManager>();
 	}
 
-	public void Init(XmlNode optionNode) {
-		root = optionNode;
-		value = root.SelectSingleNode(".//Value").InnerText;
-		info = root.SelectSingleNode(".//Info").InnerText;
-		correctAnswer = root.SelectSingleNode(".//Correct").InnerText == "T" ? true : false;
+	public void Init(string value, string info, bool isCorrect) {
+		_value = value;
+		_info = info;
+		_isCorrect = isCorrect;
 		Render();
 	}
 
 	public void Render() {
-		gameObject.transform.Find("Text").GetComponent<Text>().text = value;
+		gameObject.transform.Find("Text").GetComponent<Text>().text = _value;
 	}
 
 	public void OnClick() {
-		if (correctAnswer) {
+		if (_isCorrect) {
 			// got correct answer
 			// TODO: add score
 			// TODO: check chance
 			//fibm.AddScore(第一次就正确的分数or第二次正确的分数);
-			fibm.RenderAnswerIntoGameView(value, correctAnswer);
-			fibm.RenderInfo("That's correct! " + info);
+			fibm.RenderAnswerIntoGameView(_value, _isCorrect);
+			fibm.RenderInfo("That's correct! " + _info);
 			fibm.RenderNext();
 		} else {
 			fibm.Chance--;
@@ -54,8 +52,8 @@ public class Option : MonoBehaviour {
 				// alert correct answer
 				// TODO: add score
 				//fibm.AddScore(不正确加不加分？);
-				fibm.RenderAnswerIntoGameView(value, correctAnswer);
-				fibm.RenderInfo("That's still incorrect. " + info);
+				fibm.RenderAnswerIntoGameView(_value, _isCorrect);
+				fibm.RenderInfo("That's still incorrect. " + _info);
 				fibm.RenderNext();
 			}
 		}

@@ -81,7 +81,11 @@ public class FillInTheBlankNewManager : MonoBehaviour {
 		var optionsNode = questionNode.SelectSingleNode(".//Options").ChildNodes;
 		for (var i=0; i< optionsNode.Count;i++) {
 			options[i].gameObject.SetActive(true);
-			options[i].Init(optionsNode.Item(i));
+			var optionRoot = optionsNode.Item(i);
+			var value = optionRoot.SelectSingleNode(".//Value").InnerText;
+			var info = optionRoot.SelectSingleNode(".//Info").InnerText;
+			var correctAnswer = optionRoot.SelectSingleNode(".//Correct").InnerText == "T" ? true : false;
+			options[i].Init(value, info, correctAnswer);
 		}
 
 		_curQuestionIndex++;
