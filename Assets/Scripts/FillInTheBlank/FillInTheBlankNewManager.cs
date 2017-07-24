@@ -69,6 +69,10 @@ public class FillInTheBlankNewManager : MonoBehaviour {
 
 		yield return new WaitForSeconds (2);
 		RenderNext();
+
+		// reset info text
+		var info = "";
+		RenderInfo(info);
 	}
 
 	public void RenderNext () {
@@ -95,13 +99,21 @@ public class FillInTheBlankNewManager : MonoBehaviour {
 			options [j].Enable ();
 		}
 		var optionsNode = questionNode.SelectSingleNode(".//Options").ChildNodes;
+		string correctValue = "";
+		for(int j = 0; j < 4; j++) {
+			if(optionsNode[j].SelectSingleNode(".//Correct").InnerText == "T") {
+				correctValue = optionsNode [j].SelectSingleNode (".//Value").InnerText;
+			}
+		}
+
+
 		for (var i=0; i< optionsNode.Count;i++) {
 			options[i].gameObject.SetActive(true);
 			var optionRoot = optionsNode.Item(i);
 			var value = optionRoot.SelectSingleNode(".//Value").InnerText;
 			var info = optionRoot.SelectSingleNode(".//Info").InnerText;
 			var correctAnswer = optionRoot.SelectSingleNode(".//Correct").InnerText == "T" ? true : false;
-			options[i].Init(value, info, correctAnswer);
+			options[i].Init(value, info, correctAnswer, correctValue);
 		}
 
 		_curQuestionIndex++;

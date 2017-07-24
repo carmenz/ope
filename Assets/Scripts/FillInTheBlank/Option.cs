@@ -15,15 +15,17 @@ public class Option : MonoBehaviour {
 	string _value;
 	bool _isCorrect;
 	string _info;
+	string _correctValue;
 
 	void Start() {
 		fibm = GameObject.Find("FillInTheBlankManager").GetComponent<FillInTheBlankNewManager>();
 	}
 
-	public void Init(string value, string info, bool isCorrect) {
+	public void Init(string value, string info, bool isCorrect, string correctValue) {
 		_value = value;
 		_info = info;
 		_isCorrect = isCorrect;
+		_correctValue = correctValue;
 		Render();
 	}
 
@@ -49,7 +51,7 @@ public class Option : MonoBehaviour {
 				gameObject.SetActive(false);
 			} else {
 				// alert correct answer
-				fibm.RenderAnswerIntoGameView(_value, _isCorrect);
+				fibm.RenderAnswerIntoGameView(_correctValue, _isCorrect);
 				fibm.RenderInfo(_info);
 				StartCoroutine(fibm.ReadInfo());
 			}
