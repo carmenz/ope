@@ -31,13 +31,13 @@ public class NewPlayer : MonoBehaviour {
 	private WordGame wordGame = new WordGame();
 	private Quiz quiz = new Quiz();
 
-	private Material defaultMaterial;
 
 	bool _isRuning = false;
 	bool _canBeTriggered = true;
 
 	GameManager gm;
 	GameObject MissionToggle;
+	XmlNode _userRootNode;
 
 	public bool IsRuning
     {
@@ -74,16 +74,15 @@ public class NewPlayer : MonoBehaviour {
         }
     }
 
-
-
 	// Use this for initialization
 	void Start () {
 		// init game manager
 		gm = GameObject.Find("GameManager").GetComponent<GameManager>();
-		defaultMaterial = GameObject.Find("Board").GetComponent<SpriteRenderer>().material;
+		InitUserNode();
 		// init location
         transform.position = gm.Coordinate;
-		gm.currentIsland = GetCurrentIsland();
+		gm.currentIsland = _userRootNode.SelectSingleNode(".//CurrentIsland").InnerText;
+		InitSpotState();
 		// init missions panel and refresh mission list
 		MissionToggle = (GameObject)Resources.Load("MissionToggle", typeof(GameObject));
 		
@@ -97,7 +96,7 @@ public class NewPlayer : MonoBehaviour {
 			mtoggle.transform.Find("Label").GetComponent<Text>().text = mission.missionDesc;
 			// toggle the checkmark
 			var cm = mtoggle.transform.Find("Background").Find("Checkmark").gameObject;
-			cm.SetActive(IsCompleted(mission.missionType) ? true : false);
+			cm.SetActive(IsCompleted(mission.missionType, "IslandA") ? true : false);
 			i++;
 		}
 		// calculate coins manually
@@ -113,11 +112,6 @@ public class NewPlayer : MonoBehaviour {
 
 		// show or hide the mission panel
 		missionsPanel.SetActive(tts > 0 ? false : true);
-
-		// if (missionsPanel.activeSelf) {
-		// 	Material material = new Material (Shader.Find ("Transparent/Diffuse"));
-		// 	GameObject.Find ("Board").GetComponent<SpriteRenderer> ().material = material;
-		// }
 
 		// Set up TicketsPanel
 		ferry.GetComponent<FerryController>().CloseTicketsPanel();
@@ -191,7 +185,22 @@ public class NewPlayer : MonoBehaviour {
 		// TODO: 
 	}
 
-	bool IsCompleted(string type) {
+	void InitSpotState() {
+		var scs = GameObject.FindGameObjectsWithTag("Square");
+		var map = new Dictionary<string, string>();
+		map.Add("FillInTheBlank", "FillInTheBlanks");
+		map.Add("WordGame", "WordGames");
+		map.Add("Story", "Stories");
+		map.Add("Quiz", "Quizs");
+		for (var i=0;i<scs.Length;i++) {
+			var manager = scs[i].GetComponent<SquareController>();
+			if (IsCompleted(map[manager.type], "Island" + manager.location)) {
+				manager.ShowCompleted();
+			}
+		}
+	}
+
+	bool IsCompleted(string type, string island) {
 		var userpath = System.IO.Path.Combine (Application.dataPath, "Resources/users.xml");
 		FileStream userStream = new FileStream (userpath, FileMode.Open);
 		XmlTextReader xmlUserReader = new XmlTextReader (userStream);
@@ -203,8 +212,8 @@ public class NewPlayer : MonoBehaviour {
 				// find user from user.xml
 				if (xmlUserReader.ReadElementContentAsString ().Equals (gm.Username)) {
 					xmlUserReader.Name.Contains ("User");
-					if (xmlUserReader.ReadToNextSibling("IslandA")) {
-						print ("user already have the island");
+					if (xmlUserReader.ReadToNextSibling(island)) {
+						print ("user already have the island " + island);
 
 						if (xmlUserReader.ReadToDescendant (type)) {
 							userStream.Close ();
@@ -225,21 +234,23 @@ public class NewPlayer : MonoBehaviour {
 		return false;
 	}
 
-	public int GetTotalScore() {
-		XmlDocument xmlUserDoc = new XmlDocument ();
-
+	void InitUserNode() {
 		var userpath = System.IO.Path.Combine (Application.dataPath, "Resources/users.xml");
+		var xmlUserDoc = new XmlDocument ();
+
 		xmlUserDoc.Load (userpath);
-		XmlNode usernameNode = xmlUserDoc.SelectSingleNode ("//Username");
-
-
+		var usernameNode = xmlUserDoc.SelectSingleNode ("//Username");
 		while (usernameNode.InnerText != gm.Username) {
 			usernameNode = usernameNode.ParentNode.NextSibling.FirstChild;
 		}
 
-		var totals = usernameNode.ParentNode.SelectSingleNode(".//TotalScore").InnerText;
+		_userRootNode = usernameNode.ParentNode;
 		xmlUserDoc.Save(userpath);
-		return Int32.Parse(totals);
+	}
+
+	public int GetTotalScore() {
+		var score = _userRootNode.SelectSingleNode(".//TotalScore");
+		return score != null ? Int32.Parse(score.InnerText) : 0;
 	}
 
 	public void SaveCurrentIsland(string island) {
@@ -256,23 +267,6 @@ public class NewPlayer : MonoBehaviour {
 
 		usernameNode.ParentNode.SelectSingleNode(".//CurrentIsland").InnerText = island;
 		xmlUserDoc.Save (userpath);
-	}
-
-	string GetCurrentIsland() {
-		XmlDocument xmlUserDoc = new XmlDocument ();
-
-		var userpath = System.IO.Path.Combine (Application.dataPath, "Resources/users.xml");
-		xmlUserDoc.Load (userpath);
-		XmlNode usernameNode = xmlUserDoc.SelectSingleNode ("//Username");
-
-
-		while (usernameNode.InnerText != gm.Username) {
-			usernameNode = usernameNode.ParentNode.NextSibling.FirstChild;
-		}
-
-		var currentIsland = usernameNode.ParentNode.SelectSingleNode(".//CurrentIsland").InnerText;
-		xmlUserDoc.Save(userpath);
-		return currentIsland;
 	}
 
 	public void SaveCoordinate() {
@@ -307,7 +301,7 @@ public class NewPlayer : MonoBehaviour {
 		AudioSource audio = GameObject.Find("AudioMissionQuit").GetComponent<AudioSource>();
 		audio.Play ();
 		missionsPanel.SetActive(false);
-		GameObject.Find ("Board").GetComponent<SpriteRenderer> ().material = defaultMaterial;
+		// GameObject.Find ("Board").GetComponent<SpriteRenderer> ().material = defaultMaterial;
 	}
 
 	public void AddTotalScore(int points) {
