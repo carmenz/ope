@@ -49,14 +49,14 @@ public class VideoController : MonoBehaviour {
 
 	void Update() {
 		Text clipLength = GameObject.Find("ClipLength").GetComponent<Text>();
-		float tempTotalLength;
-		tempTotalLength = (float)vPlayer.clip.length;
-		clipLength.text = tempTotalLength.ToString("0.0");
+
+		TimeSpan totalTime = TimeSpan.FromSeconds((float)vPlayer.clip.length);
+		clipLength.text = string.Format("{0:D2}:{1:D2}", totalTime.Minutes, totalTime.Seconds);
+		//clipLength.text = tempTotalLength.ToString("0.0");
 
 		Text playedLength = GameObject.Find("PlayedLength").GetComponent<Text>();
-		float tempPlayedLength;
-		tempPlayedLength = (float)vPlayer.time;
-		playedLength.text = tempPlayedLength.ToString("0.0");
+		TimeSpan playTime = TimeSpan.FromSeconds((float)vPlayer.time);
+		playedLength.text = string.Format("{0:D2}:{1:D2}", playTime.Minutes, playTime.Seconds);
 		float result = (float)(vPlayer.time / vPlayer.clip.length);
 		if (float.IsPositiveInfinity(result))
 		{

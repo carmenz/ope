@@ -157,5 +157,20 @@
         </Stories>
       </IslandA>
     </User>
+    <User>
+      <Username>2</Username>
+      <Password>GKBj9+l9tIjsUVdZQ4eZqQ==</Password>
+      <CurrentPosX>-787.9612</CurrentPosX>
+      <CurrentPosY>-258.7646</CurrentPosY>
+      <CurrentIsland>A</CurrentIsland>
+      <TotalScore>60</TotalScore>
+      <IslandA>
+        <Stories>
+          <Story>
+            <Index>1</Index>
+          </Story>
+        </Stories>
+      </IslandA>
+    </User>
   </Users>
 </UserCollection>
