@@ -39,9 +39,4 @@ public class FillInTheBlank : MonoBehaviour {
 	}
 }
 
-//public class FillInTheBlankData{
-//	[XmlElement("Index")]
-//	public string index;
-//}
-
 

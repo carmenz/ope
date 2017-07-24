@@ -12,8 +12,8 @@
     <User>
       <Username>Username</Username>
       <Password>zu9DpO2NoTBvPoWX1qcZGg==</Password>
-      <CurrentPosX>-1665.244</CurrentPosX>
-      <CurrentPosY>-123.2182</CurrentPosY>
+      <CurrentPosX>-1592.463</CurrentPosX>
+      <CurrentPosY>-180.785</CurrentPosY>
       <CurrentIsland>A</CurrentIsland>
       <TotalScore>1450</TotalScore>
       <IslandA>
@@ -91,6 +91,38 @@
           </Game>
         </WordGames>
       </IslandA>
+    </User>
+    <User>
+      <Username>123</Username>
+      <Password>bfmIsB2tl3zJqMT4F7CzLA==</Password>
+      <CurrentPosX>-1300</CurrentPosX>
+      <CurrentPosY>-200</CurrentPosY>
+      <CurrentIsland>A</CurrentIsland>
+      <TotalScore>0</TotalScore>
+    </User>
+    <User>
+      <Username>12312</Username>
+      <Password>EoaZB5lgHkBJZBpzNdiLKA==</Password>
+      <CurrentPosX>-1300</CurrentPosX>
+      <CurrentPosY>-200</CurrentPosY>
+      <CurrentIsland>A</CurrentIsland>
+      <TotalScore>0</TotalScore>
+    </User>
+    <User>
+      <Username>123232323</Username>
+      <Password>bfmIsB2tl3zJqMT4F7CzLA==</Password>
+      <CurrentPosX>-1300</CurrentPosX>
+      <CurrentPosY>-200</CurrentPosY>
+      <CurrentIsland>A</CurrentIsland>
+      <TotalScore>0</TotalScore>
+    </User>
+    <User>
+      <Username>kok</Username>
+      <Password>zu9DpO2NoTBvPoWX1qcZGg==</Password>
+      <CurrentPosX>-1300</CurrentPosX>
+      <CurrentPosY>-200</CurrentPosY>
+      <CurrentIsland>A</CurrentIsland>
+      <TotalScore>0</TotalScore>
     </User>
   </Users>
 </UserCollection>
