@@ -44,5 +44,48 @@
 				<info>Oops! That is incorrect.</info>
 			</Word8>
 		</Game>
+		<Game>
+			<Index>2</Index>
+			<Word1>
+				<value>our mission is to conduct and manage gambling in a socially responsible manner</value>
+				<Yes>T</Yes>
+				<info>Yes! That is correct!</info>
+			</Word1>
+			<Word2>
+				<value>our vision is to have gambling widely embraced as exceptional entertainment for adults.</value>
+				<Yes>T</Yes>
+				<info>Yes! That is correct!</info>
+			</Word2>
+			<Word3>
+				<value>our goal is to reduce the harm associated with gambling</value>
+				<Yes>T</Yes>
+				<info>Yes! That is correct!</info>
+			</Word3>
+			<Word4>
+				<value>Neutral Play is one of the four pillars of the Player Health strategy</value>
+				<Yes>F</Yes>
+				<info>Oops! That is incorrect.</info>
+			</Word4>
+			<Word5>
+				<value>there are 4 pillars of the Player Health Strategy</value>
+				<Yes>T</Yes>
+				<info>Yes! That is correct!</info>
+			</Word5>
+			<Word6>
+				<value>Problem Gambling is a pillar of the Player Health Strategy</value>
+				<Yes>F</Yes>
+				<info>Oops! That is incorrect.</info>
+			</Word6>
+			<Word7>
+				<value>Positive Play, Effective Referral, Informed Decision Making and Decreased Prevalence in BCLC products are the four pillars of the Player Health Strategy</value>
+				<Yes>T</Yes>
+				<info>Yes! That is correct!</info>
+			</Word7>
+			<Word8>
+				<value>preventing the development of new games is the strategy</value>
+				<Yes>F</Yes>
+				<info>Oops! That is incorrect.</info>
+			</Word8>
+		</Game>
 	</Games>
 </WordGameCollction>

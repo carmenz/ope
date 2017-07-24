@@ -5,12 +5,14 @@ using UnityEngine.UI;
 using System.Xml;
 
 public class WordGameManager : MonoBehaviour {
+	int NUM_OF_OPTIONS = 2;
 
 	private GameManager gm;
 	public GameObject missionCompletePanel;
 	public GameObject oopsPanel;
 	private static string userpath = string.Empty;
 	private int currentScore = 0;
+	List<WordGameOption> options = new List<WordGameOption>();
 
 	private int crossCount = 0;
 	private int multiplexerCount = 0;
@@ -32,6 +34,11 @@ public class WordGameManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		
+		for (int i = 1; i <= NUM_OF_OPTIONS; i++) {
+			options.Add(GameObject.Find ("Option" + i.ToString()).GetComponent<WordGameOption> ());
+			options [i-1].Init (i);
+		}
 
 		userpath = System.IO.Path.Combine (Application.dataPath, "Resources/users.xml");
 		gm = GameObject.Find("GameManager").GetComponent<GameManager>();
@@ -50,23 +57,31 @@ public class WordGameManager : MonoBehaviour {
 		XmlNode wordNode = indexNode.NextSibling;
 		wordText.text = indexNode.SelectSingleNode("//Word" + subIndex + "//value").InnerText;
 		subIndex++;
+
+
 	}
+		
 
-	public void YesOnClick()
-	{
-		UpdateOrCreateWordNode("T");
 
-		VerifyAnswer("T");
-		ShowNextWord();
-	}
+	/// <summary>
+	/// /////////////////////////////////////////////////////////////
+	/// </summary>
 
-	public void NoOnClick()
-	{
-		UpdateOrCreateWordNode("F");
-
-		VerifyAnswer("F");
-		ShowNextWord();
-	}
+//	public void YesOnClick()
+//	{
+//		UpdateOrCreateWordNode("T");
+//
+//		VerifyAnswer("T");
+//		ShowNextWord();
+//	}
+//
+//	public void NoOnClick()
+//	{
+//		UpdateOrCreateWordNode("F");
+//
+//		VerifyAnswer("F");
+//		ShowNextWord();
+//	}
 
 
 	public void UpdateOrCreateWordNode(string value) {

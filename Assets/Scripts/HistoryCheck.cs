@@ -37,15 +37,20 @@ public class HistoryCheck : MonoBehaviour {
 
 			XmlNode miniChallengeNode = userNode.SelectSingleNode (".//" + miniChallengeName);
 
-			while (miniChallengeNode.ChildNodes.Count.ToString() == indexNode.InnerText) {
-				indexNode = indexNode.ParentNode.NextSibling.FirstChild;
-			}
+			// move to next indexed question if this is already
 
+
+			print ("num" + numOfSuchMiniChallengeInDB);
 			if (miniChallengeNode.ChildNodes.Count == numOfSuchMiniChallengeInDB) {
 				print ("user have finished all the games we have");
+
 				if (miniChallengeNode.LastChild.FirstChild.InnerText == indexNode.InnerText) {
-					indexNode = indexNode.ParentNode.NextSibling.FirstChild;
+					indexNode = indexNode.ParentNode.FirstChild;
+					print ("hahahhaa");
 				}
+
+				print ("index" + indexNode.InnerText);
+
 
 				//TODO: update db
 				print("update db");
@@ -53,6 +58,10 @@ public class HistoryCheck : MonoBehaviour {
 
 			} else {
 				print ("second time access this mini challenge");
+				while (miniChallengeNode.ChildNodes.Count.ToString() == indexNode.InnerText && indexNode.ParentNode.NextSibling != null) {
+					indexNode = indexNode.ParentNode.NextSibling.FirstChild;
+				}
+				print ("index" + indexNode.InnerText);
 				AddMiniChallenge (xmlUserDoc, userNode, miniChallengeNameSingular, miniChallengeName, indexNode.InnerText, false);	
 				gm.Index = int.Parse(indexNode.InnerText);
 			}
