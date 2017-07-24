@@ -4,10 +4,20 @@
     <User>
       <Username>1</Username>
       <Password>fn5g+xrZS7Ud7B8EBFfuxg==</Password>
-      <CurrentPosX>1300</CurrentPosX>
-      <CurrentPosY>-200</CurrentPosY>
+      <CurrentPosX>1367.865</CurrentPosX>
+      <CurrentPosY>-50.17058</CurrentPosY>
       <CurrentIsland>B</CurrentIsland>
-      <TotalScore>301</TotalScore>
+      <TotalScore>421</TotalScore>
+      <IslandB>
+        <Stories>
+          <Story>
+            <Index>1</Index>
+            <Story>1</Story>
+            <Story>1</Story>
+            <Story>1</Story>
+          </Story>
+        </Stories>
+      </IslandB>
     </User>
     <User>
       <Username>Username</Username>
@@ -131,6 +141,21 @@
       <CurrentPosY>-200</CurrentPosY>
       <CurrentIsland>A</CurrentIsland>
       <TotalScore>0</TotalScore>
+    </User>
+    <User>
+      <Username>fdsf</Username>
+      <Password>m+Ag+t7UMJNqlbD63G6UgA==</Password>
+      <CurrentPosX>-808.6462</CurrentPosX>
+      <CurrentPosY>-252.5122</CurrentPosY>
+      <CurrentIsland>A</CurrentIsland>
+      <TotalScore>30</TotalScore>
+      <IslandA>
+        <Stories>
+          <Story>
+            <Index>1</Index>
+          </Story>
+        </Stories>
+      </IslandA>
     </User>
   </Users>
 </UserCollection>
