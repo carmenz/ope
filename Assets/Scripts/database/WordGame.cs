@@ -33,11 +33,6 @@ public class WordGame : MonoBehaviour {
 			path = System.IO.Path.Combine (Application.dataPath, "Resources/wordGamesD.xml");
 		}
 
-
-
-
-
-
 		gm.Path = path;
 		HistoryCheck.FirstTimeCheck (path, island, "WordGames", "Game");
 	}

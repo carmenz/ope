@@ -146,6 +146,7 @@ public class WordGameManager : MonoBehaviour {
 		XmlNode indexNode = xmlWordGameDoc.SelectSingleNode ("//Index");
 		int subIndexForInfo = subIndex - 1;
 
+		// user got the correct answer
 		if (indexNode.SelectSingleNode ("//Word" + subIndexForInfo + "//Yes").InnerText == booleanValue) {
 			AudioSource audio = GameObject.Find("AudioCorrect").GetComponent<AudioSource>();
 			audio.Play();
@@ -158,6 +159,7 @@ public class WordGameManager : MonoBehaviour {
 			cross3.gameObject.SetActive (false);
 
 		} else {
+			// user got the incorrect answer
 			UpdateCrosses ();
 			StartCoroutine(FadeResultInAndOut(0.6f,"Incorrect"));
 		}
@@ -169,6 +171,7 @@ public class WordGameManager : MonoBehaviour {
 		crossCount++;
 		MultiplexerCheck (multiplexerCount);
 
+		// render crosses if answer is incorrect
 		if (crossCount == 1) {
 			cross1.gameObject.SetActive (true);
 		} else if (crossCount == 2) {
@@ -199,7 +202,12 @@ public class WordGameManager : MonoBehaviour {
 		yes.gameObject.SetActive(true);
 		no.gameObject.SetActive(true);
 		info.SetActive (false);
-		print (subIndex);
+
+		// display panel if crossCount reaches 3
+		CrossCountCheck ();
+
+	}
+	public void CrossCountCheck() {
 		if (crossCount == 3) {
 			if (subIndex == 10) {
 				ShowPanel ("MissionComplete");

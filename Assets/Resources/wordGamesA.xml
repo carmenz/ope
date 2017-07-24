@@ -4,87 +4,44 @@
 		<Game>
 			<Index>1</Index>
 			<Word1>
-				<value>wear a watch and always be aware of the time</value>
+				<value>our mission is to conduct and manage gambling in a socially responsible manner</value>
 				<Yes>T</Yes>
-				<info>Yes! That is positive play!</info>
+				<info>Yes! That is correct!</info>
 			</Word1>
 			<Word2>
-				<value>bring your debit or credit cards to the casino</value>
-				<Yes>F</Yes>
-				<info>Oops sorry.That is not positive play!</info>
+				<value>our vision is to have gambling widely embraced as exceptional entertainment for adults.</value>
+				<Yes>T</Yes>
+				<info>Yes! That is correct!</info>
 			</Word2>
 			<Word3>
-				<value>bring a friend, or have someone pick you up at the casino</value>
+				<value>our goal is to reduce the harm associated with gambling</value>
 				<Yes>T</Yes>
-				<info>Yes! That is positive play!</info>
+				<info>Yes! That is correct!</info>
 			</Word3>
 			<Word4>
-				<value>plan other fun activities during the day in addition to gambling</value>
-				<Yes>T</Yes>
-				<info>Yes! That is positive play!</info>
+				<value>Neutral Play is one of the four pillars of the Player Health strategy</value>
+				<Yes>F</Yes>
+				<info>Oops! That is incorrect.</info>
 			</Word4>
 			<Word5>
-				<value>take breaks during gambling</value>
+				<value>there are 4 pillars of the Player Health Strategy</value>
 				<Yes>T</Yes>
-				<info>Yes! That is positive play!</info>
+				<info>Yes! That is correct!</info>
 			</Word5>
 			<Word6>
-				<value>keep tabs on your spending in the casino and save some for your next outing</value>
-				<Yes>T</Yes>
-				<info>Yes! That is positive play!</info>
+				<value>Problem Gambling is a pillar of the Player Health Strategy</value>
+				<Yes>F</Yes>
+				<info>Oops! That is incorrect.</info>
 			</Word6>
 			<Word7>
-				<value>don't feel bad about losing - you can always win back your losses</value>
-				<Yes>F</Yes>
-				<info>Oops sorry.That is not positive play!</info>
+				<value>Positive Play, Effective Referral, Informed Decision Making and Decreased Prevalence in BCLC products are the four pillars of the Player Health Strategy</value>
+				<Yes>T</Yes>
+				<info>Yes! That is correct!</info>
 			</Word7>
 			<Word8>
-				<value>keep the drinks coming in</value>
+				<value>preventing the development of new games is the strategy</value>
 				<Yes>F</Yes>
-				<info>Oops sorry.That is not positive play!</info>
-			</Word8>
-		</Game>
-		<Game>
-			<Index>2</Index>
-			<Word1>
-				<value>WHEN THE FUN STOPS, STOP!</value>
-				<Yes>F</Yes>
-				<info>This is Wrong</info>
-			</Word1>
-			<Word2>
-				<value>DON'T LET GAMBLING BE A LOSING GAME</value>
-				<Yes>F</Yes>
-				<info>This is Wrong</info>
-			</Word2>
-			<Word3>
-				<value>PLAY LIKE MOST PLAYERS - POSITIVELY</value>
-				<Yes>T</Yes>
-				<info>This is Correct</info>
-			</Word3>
-			<Word4>
-				<value>KNOW WHEN TO FOLD 'EM</value>
-				<Yes>F</Yes>
-				<info>This is Wrong</info>
-			</Word4>
-			<Word5>
-				<value>WHEN YOU’VE HAD ENOUGH, WALK AWAY!</value>
-				<Yes>F</Yes>
-				<info>This is Wrong</info>
-			</Word5>
-			<Word6>
-				<value>KEEP IT FUN</value>
-				<Yes>T</Yes>
-				<info>This is Correct</info>
-			</Word6>
-			<Word7>
-				<value>yessssssssssss</value>
-				<Yes>T</Yes>
-				<info>This is Yes</info>
-			</Word7>
-			<Word8>
-				<value>yessss again</value>
-				<Yes>T</Yes>
-				<info>This is Yes</info>
+				<info>Oops! That is incorrect.</info>
 			</Word8>
 		</Game>
 	</Games>

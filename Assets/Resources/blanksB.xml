@@ -1,2 +1,183 @@
-﻿<?xml version="1.0" encoding="UTF-8" ?>
-
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FillInTheBlankCollction xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <FillInTheBlanks>
+    <FIB>
+      <Index>1</Index>
+      <Question index="1">
+      	<Value>To celebrate her year end bonus, Megyn is thinking of spending some of her earnings on gambling. She thought of spending it on a chance based game like ________________. </Value>
+	    <Options>
+	      	<Option index="1">
+	      		<Value>Roulette</Value>
+	      		<Correct>T</Correct>
+	      		<Info>That's correct! Roulette, Slots and Bingo are chance based games.</Info>
+	      	</Option>
+	      	<Option index="2">
+	      		<Value>Slots</Value>
+	      		<Correct>T</Correct>
+	      		<Info>That's correct! Roulette, Slots and Bingo are chance based games.</Info>
+	      	</Option>
+	      	<Option index="3">
+	      		<Value>Horse race betting</Value>
+	      		<Correct>F</Correct>
+	      		<Info>That's still incorrect. Horse race betting and Poker are skill based games.</Info>
+	      	</Option>
+	      	<Option index="4">
+	      		<Value>Poker</Value>
+	      		<Correct>F</Correct>
+	      		<Info>That's still incorrect. Horse race betting and Poker are skill based games.</Info>
+	      	</Option>
+	    </Options>
+	  </Question>
+	  <Question index="2">
+	  	<Value>Megyn knows that this game ________________, </Value>
+	    <Options>
+	      	<Option index="1">
+	      		<Value>is purely random</Value>
+	      		<Correct>T</Correct>
+	      		<Info>Chance based games are purely random.</Info>
+	      	</Option>
+	      	<Option index="2">
+	      		<Value>requires skill</Value>
+	      		<Correct>F</Correct>
+	      		<Info>That's still incorrect. Skill or experience do not impact chance based games. There is no guaranteed win.</Info>
+	      	</Option>
+	      	<Option index="3">
+	      		<Value>is a guaranteed win</Value>
+	      		<Correct>F</Correct>
+	      		<Info>That's still incorrect. Skill or experience do not impact chance based games. There is no guaranteed win.</Info>
+	      	</Option>
+	      	<Option index="4">
+	      		<Value>requires experience</Value>
+	      		<Correct>F</Correct>
+	      		<Info>That's still incorrect. Skill or experience do not impact chance based games. There is no guaranteed win.</Info>
+	      	</Option>
+	    </Options>
+	  </Question>
+	  <Question index="3">
+	  	<Value>which means that the odds of winning ________________ each time you play. </Value>
+	    <Options>
+	      	<Option index="1">
+	      		<Value>never change</Value>
+	      		<Correct>T</Correct>
+	      		<Info>The odds of winning random games never change.</Info>
+	      	</Option>
+	      	<Option index="2">
+	      		<Value>gets better</Value>
+	      		<Correct>F</Correct>
+	      		<Info>That's still incorrect. Never assume that your odds could swing in random games.</Info>
+	      	</Option>
+	      	<Option index="3">
+	      		<Value>gets worse</Value>
+	      		<Correct>F</Correct>
+	      		<Info>That's still incorrect. Never assume that your odds could swing in random games.</Info>
+	      	</Option>
+	      	<Option index="4">
+	      		<Value>is very high</Value>
+	      		<Correct>F</Correct>
+	      		<Info>That's still incorrect. Never assume that your odds could swing in random games.</Info>
+	      	</Option>
+	    </Options>
+	  </Question>
+	  <Question index="4">
+	  	<Value>She also thought about spending it on a skill based game like ________________. </Value>
+	    <Options>
+	      	<Option index="1">
+	      		<Value>Poker</Value>
+	      		<Correct>T</Correct>
+	      		<Info>Horse race betting and Poker are skill based games.</Info>
+	      	</Option>
+	      	<Option index="2">
+	      		<Value>Roulette</Value>
+	      		<Correct>F</Correct>
+	      		<Info>That's still incorrect. Roulette and Slots are chance based games.</Info>
+	      	</Option>
+	      	<Option index="3">
+	      		<Value>Slots</Value>
+	      		<Correct>F</Correct>
+	      		<Info>That's still incorrect. Roulette and Slots are chance based games.</Info>
+	      	</Option>
+	      	<Option index="4">
+	      		<Value>Horse race betting</Value>
+	      		<Correct>T</Correct>
+	      		<Info>Horse race betting and Poker are skill based games.</Info>
+	      	</Option>
+	    </Options>
+	  </Question>
+	  <Question index="5">
+	  	<Value>However, she understands that ________________ the outcome of the game. </Value>
+	    <Options>
+	      	<Option index="1">
+	      		<Value>she can easily predict</Value>
+	      		<Correct>F</Correct>
+	      		<Info>That's still incorrect. Skill based games are still gambling, where the outcome is beyond anyone's control.</Info>
+	      	</Option>
+	      	<Option index="2">
+	      		<Value>she can’t affect</Value>
+	      		<Correct>T</Correct>
+	      		<Info>A gambler cannot affect the outcome of a skill based game.</Info>
+	      	</Option>
+	      	<Option index="3">
+	      		<Value>she can become a factor to</Value>
+	      		<Correct>F</Correct>
+	      		<Info>That's still incorrect. Skill based games are still gambling, where the outcome is beyond anyone's control.</Info>
+	      	</Option>
+	      	<Option index="4">
+	      		<Value>she has access to someone that can influence</Value>
+	      		<Correct>F</Correct>
+	      		<Info>That's still incorrect. Skill based games are still gambling, where the outcome is beyond anyone's control.</Info>
+	      	</Option>
+	    </Options>
+	  </Question>
+	  <Question index="6">
+	  	<Value>She finally decided on buying a Lotto Max ticket, even though a ________________ ticket had better odds of winning. </Value>
+	    <Options>
+	      	<Option index="1">
+	      		<Value>BC/49</Value>
+	      		<Correct>F</Correct>
+	      		<Info>That's still incorrect. Lotto 6/49, BC 6/49 and Daily Grand have the worst odds of winning.</Info>
+	      	</Option>
+	      	<Option index="2">
+	      		<Value>Lotto/49</Value>
+	      		<Correct>F</Correct>
+	      		<Info>That's still incorrect. Lotto 6/49, BC 6/49 and Daily Grand have the worst odds of winning.</Info>
+	      	</Option>
+	      	<Option index="3">
+	      		<Value>scratch and win</Value>
+	      		<Correct>T</Correct>
+	      		<Info>Scratch and win has the best odds of winning something.</Info>
+	      	</Option>
+	      	<Option index="4">
+	      		<Value>Daily Grand</Value>
+	      		<Correct>F</Correct>
+	      		<Info>That's still incorrect. Lotto 6/49, BC 6/49 and Daily Grand have the worst odds of winning.</Info>
+	      	</Option>
+	    </Options>
+	  </Question>
+	  <Question index="7">
+	  	<Value>Megyn doesn’t expect to win the ultimate prize, because quite frankly ________________ has a better chance of happening. </Value>
+	    <Options>
+	      	<Option index="1">
+	      		<Value>Asteroid hitting earth</Value>
+	      		<Correct>T</Correct>
+	      		<Info>All of these events have better chances of happening than winning the Lotto.</Info>
+	      	</Option>
+	      	<Option index="2">
+	      		<Value>Getting struck by lightning</Value>
+	      		<Correct>T</Correct>
+	      		<Info>All of these events have better chances of happening than winning the Lotto.</Info>
+	      	</Option>
+	      	<Option index="3">
+	      		<Value>Getting hit by bird poop</Value>
+	      		<Correct>T</Correct>
+	      		<Info>All of these events have better chances of happening than winning the Lotto.</Info>
+	      	</Option>
+	      	<Option index="4">
+	      		<Value>Being in a car accident</Value>
+	      		<Correct>T</Correct>
+	      		<Info>All of these events have better chances of happening than winning the Lotto.</Info>
+	      	</Option>
+	    </Options>
+	  </Question>
+    </FIB>
+  </FillInTheBlanks>
+</FillInTheBlankCollction>

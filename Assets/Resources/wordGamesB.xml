@@ -1,2 +1,48 @@
-﻿<?xml version="1.0" encoding="UTF-8" ?>
-
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<WordGameCollction xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<Games>
+		<Game>
+			<Index>1</Index>
+			<Word1>
+				<value>wear a watch and always be aware of the time</value>
+				<Yes>T</Yes>
+				<info>Yes! That is correct!</info>
+			</Word1>
+			<Word2>
+				<value>bring your debit or credit cards to the casino</value>
+				<Yes>F</Yes>
+				<info>Oops! That is incorrect.</info>
+			</Word2>
+			<Word3>
+				<value>bring a friend, or have someone pick you up at the casino</value>
+				<Yes>T</Yes>
+				<info>Yes! That is correct!</info>
+			</Word3>
+			<Word4>
+				<value>plan other fun activities during the day in addition to gambling</value>
+				<Yes>T</Yes>
+				<info>Yes! That is correct!</info>
+			</Word4>
+			<Word5>
+				<value>take breaks during gambling</value>
+				<Yes>T</Yes>
+				<info>Yes! That is correct!</info>
+			</Word5>
+			<Word6>
+				<value>keep tabs on your spending in the casino and save some for your next outing</value>
+				<Yes>T</Yes>
+				<info>Yes! That is correct!</info>
+			</Word6>
+			<Word7>
+				<value>you can always win back your losses</value>
+				<Yes>F</Yes>
+				<info>Oops! That is incorrect.</info>
+			</Word7>
+			<Word8>
+				<value>keep the drinks coming in</value>
+				<Yes>F</Yes>
+				<info>Oops! That is incorrect.</info>
+			</Word8>
+		</Game>
+	</Games>
+</WordGameCollction>
