@@ -16,6 +16,8 @@ public class FerryController : MonoBehaviour {
 	GameObject ticketsPanel;
 	[SerializeField]
 	Camera playerCamera;
+	[SerializeField]
+	List<GameObject> uis;
 
 	float ZOOM_OUT_ANGLE = 100f;
 	float ZOOM_IN_ANGLE = 59f;
@@ -70,6 +72,8 @@ public class FerryController : MonoBehaviour {
 			playerCamera.GetComponent<Camera>().DOFieldOfView(ZOOM_OUT_ANGLE, ANIM_DURATION);
 			
 			var seq = DOTween.Sequence ();  
+			// disable score, mission list button
+			HideUIs();
 			// move ferry 
 			seq.Append(ferry.GetComponent<DOTweenPath>().tween)
 				.OnComplete(() => {
@@ -79,8 +83,10 @@ public class FerryController : MonoBehaviour {
 					// Zoom in camera view
 					playerCamera.GetComponent<Camera>().DOFieldOfView(ZOOM_IN_ANGLE, ANIM_DURATION);
 					player.transform.DOMove(new Vector3(830f, -30f, 0f), ANIM_DURATION).OnComplete(() => {
+						ShowUIs();
 						_playerController.SaveCurrentIsland("B");
 						_playerController.SetUpMiniMap();
+						_playerController.SetUpMissionList();
 						_playerController.SaveCoordinate();
 						_playerController.PlayBGM();
 					});
@@ -90,5 +96,17 @@ public class FerryController : MonoBehaviour {
 
 	public void NotComfirmed() {
 		popup.SetActive(false);
+	}
+
+	void ShowUIs() {
+		for (var i=0;i<uis.Count;i++) {
+			uis[i].SetActive(true);
+		}
+	}
+
+	void HideUIs() {
+		for (var i=0;i<uis.Count;i++) {
+			uis[i].SetActive(false);
+		}
 	}
 }

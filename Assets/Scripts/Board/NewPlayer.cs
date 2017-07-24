@@ -78,15 +78,47 @@ public class NewPlayer : MonoBehaviour {
 		// init game manager
 		gm = GameObject.Find("GameManager").GetComponent<GameManager>();
 		InitUserNode();
-		// init location
+		// init location & spot state
         transform.position = gm.Coordinate;
 		gm.currentIsland = _userRootNode.SelectSingleNode(".//CurrentIsland").InnerText;
 		InitSpotState();
+
+		// Set up mission list
+		SetUpMissionList();
+
+		// Set up TicketsPanel
+		ferry.GetComponent<FerryController>().CloseTicketsPanel();
+
+		// Set up mini map
+		SetUpMiniMap();
+		PlayBGM();
+
+		// in case players stay on a position before quit
+        _canBeTriggered = false;
+	}
+
+	public void SetUpMissionList() {
 		// init missions panel and refresh mission list
 		MissionToggle = (GameObject)Resources.Load("MissionToggle", typeof(GameObject));
+		List<Mission> missionList = new List<Mission>();
+
+		// Delete all previous missions
+		var mts =  transform.GetComponentsInChildren<Toggle> (true);
+		for (var n=0;n<mts.Length;n++) {
+			if (mts[n].gameObject.name == "MissionToggle(Clone)") {
+				Destroy(mts[n].gameObject);
+			}
+		}
+
+		// Get missions on current island
+		if (gm.currentIsland == "A") {
+			missionList = gm.missionListA;
+		} else if (gm.currentIsland == "B") {
+			missionList = gm.missionListB;
+		}
 		
 		var i = 1;
-		foreach(var mission in gm.missionList) {
+		foreach(var mission in missionList) {
 			var mtoggle = Instantiate(MissionToggle);
 			mtoggle.transform.SetParent(missionsPanel.transform);
 			mtoggle.GetComponent<RectTransform>().anchoredPosition3D = new Vector3(636f, -61f - i * 111f, 0f);
@@ -95,7 +127,7 @@ public class NewPlayer : MonoBehaviour {
 			mtoggle.transform.Find("Label").GetComponent<Text>().text = mission.missionDesc;
 			// toggle the checkmark
 			var cm = mtoggle.transform.Find("Background").Find("Checkmark").gameObject;
-			cm.SetActive(IsCompleted(mission.missionType, "IslandA") ? true : false);
+			cm.SetActive(IsCompleted(mission.missionType, "Island" + gm.currentIsland) ? true : false);
 			i++;
 		}
 		// calculate coins manually
@@ -111,16 +143,6 @@ public class NewPlayer : MonoBehaviour {
 
 		// show or hide the mission panel
 		missionsPanel.SetActive(tts > 0 ? false : true);
-
-		// Set up TicketsPanel
-		ferry.GetComponent<FerryController>().CloseTicketsPanel();
-
-		// Set up mini map
-		SetUpMiniMap();
-		PlayBGM();
-
-		// in case players stay on a position before quit
-        _canBeTriggered = false;
 	}
 
 	public void SetUpMiniMap() {
@@ -290,8 +312,6 @@ public class NewPlayer : MonoBehaviour {
 		AudioSource audio = GameObject.Find("AudioMission").GetComponent<AudioSource>();
 		audio.Play ();
 		missionsPanel.SetActive(true);
-//		Material material = new Material (Shader.Find ("Transparent/Diffuse"));
-//		GameObject.Find ("Board").GetComponent<SpriteRenderer> ().material = material;
 	}
 
 	public void HideMissions() {
