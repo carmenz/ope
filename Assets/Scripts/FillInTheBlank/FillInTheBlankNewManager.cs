@@ -87,6 +87,7 @@ public class FillInTheBlankNewManager : MonoBehaviour {
 			//StartCoroutine(RenderScorePanel ());
 			RenderScorePanel();
 			UpdateDBScore ();
+			gm.updateDBTotalScore (currentScore);
 			return;
 		}
 
@@ -171,7 +172,6 @@ public class FillInTheBlankNewManager : MonoBehaviour {
 		} 
 
 		// create new <Score> node
-		currentScore = currentScore + 10;
 		XmlNode scoreIndex = xmlUserDoc.CreateNode (XmlNodeType.Element, "Score", null);
 		scoreIndex.InnerText = currentScore.ToString();
 		fillInTheBlankIndexNode.ParentNode.AppendChild (scoreIndex);
