@@ -67,7 +67,6 @@ public class NewPlayer : MonoBehaviour {
                 transform.GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
                 transform.position = moveTowardPosition;
                 _isRuning = false;
-				gm.Coordinate = new Vector2(transform.position.x, transform.position.y);
 				SaveCoordinate();
             }
 
@@ -163,7 +162,6 @@ public class NewPlayer : MonoBehaviour {
 		var type = sc.type;
 		gm.typeCode = sc.index;
 		gm.Index = sc.index;
-        gm.Coordinate = new Vector2(transform.position.x, transform.position.y);
 		SaveCoordinate();
 
 		if (type == "FillInTheBlank") {
@@ -280,11 +278,10 @@ public class NewPlayer : MonoBehaviour {
 			usernameNode = usernameNode.ParentNode.NextSibling.FirstChild;
 		} 
 
-		// usernameNode.ParentNode.SelectSingleNode ("CurrentPosX").InnerText = gm.Coordinate.x.ToString();
-		// usernameNode.ParentNode.SelectSingleNode ("CurrentPosY").InnerText = gm.Coordinate.y.ToString();
 
-		usernameNode.ParentNode.SelectSingleNode ("CurrentPosX").InnerText = gameObject.transform.position.x.ToString();
-		usernameNode.ParentNode.SelectSingleNode ("CurrentPosY").InnerText = gameObject.transform.position.y.ToString();
+		gm.Coordinate = new Vector2(transform.position.x, transform.position.y);
+		usernameNode.ParentNode.SelectSingleNode ("CurrentPosX").InnerText = transform.position.x.ToString();
+		usernameNode.ParentNode.SelectSingleNode ("CurrentPosY").InnerText = transform.position.y.ToString();
 
 		xmlUserDoc.Save (userpath);
 	}
@@ -301,7 +298,6 @@ public class NewPlayer : MonoBehaviour {
 		AudioSource audio = GameObject.Find("AudioMissionQuit").GetComponent<AudioSource>();
 		audio.Play ();
 		missionsPanel.SetActive(false);
-		// GameObject.Find ("Board").GetComponent<SpriteRenderer> ().material = defaultMaterial;
 	}
 
 	public void AddTotalScore(int points) {
