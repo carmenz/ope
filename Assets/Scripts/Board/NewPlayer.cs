@@ -309,6 +309,7 @@ public class NewPlayer : MonoBehaviour {
 	}
 
 	public void ShowMissons() {
+		Debug.Log("show");
 		AudioSource audio = GameObject.Find("AudioMission").GetComponent<AudioSource>();
 		audio.Play ();
 		missionsPanel.SetActive(true);
