@@ -4,10 +4,10 @@
     <User>
       <Username>1</Username>
       <Password>fn5g+xrZS7Ud7B8EBFfuxg==</Password>
-      <CurrentPosX>1367.865</CurrentPosX>
-      <CurrentPosY>-50.17058</CurrentPosY>
+      <CurrentPosX>1019.782</CurrentPosX>
+      <CurrentPosY>134.148</CurrentPosY>
       <CurrentIsland>B</CurrentIsland>
-      <TotalScore>421</TotalScore>
+      <TotalScore>511</TotalScore>
       <IslandB>
         <Stories>
           <Story>
@@ -17,6 +17,12 @@
             <Story>1</Story>
           </Story>
         </Stories>
+        <FillInTheBlanks>
+          <FIB>
+            <Index>1</Index>
+            <Score>50</Score>
+          </FIB>
+        </FillInTheBlanks>
       </IslandB>
     </User>
     <User>
