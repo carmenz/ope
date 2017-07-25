@@ -19,6 +19,8 @@ public class NewPlayer : MonoBehaviour {
 	GameObject missionsPanel;
 	[SerializeField]
 	GameObject ferry;
+	[SerializeField]
+	GameObject tutorial;
 
 	private Vector2 moveTowardPosition = Vector2.zero;
     private Vector2 moveStartPosition = Vector2.zero;
@@ -87,7 +89,7 @@ public class NewPlayer : MonoBehaviour {
 		SetUpMissionList();
 
 		// Set up TicketsPanel
-		ferry.GetComponent<FerryController>().CloseTicketsPanel();
+		// ferry.GetComponent<FerryController>().CloseTicketsPanel();
 
 		// Set up mini map
 		SetUpMiniMap();
@@ -143,6 +145,7 @@ public class NewPlayer : MonoBehaviour {
 
 		// show or hide the mission panel
 		missionsPanel.SetActive(tts > 0 ? false : true);
+		tutorial.SetActive(tts > 0 ? false : true);
 	}
 
 	public void SetUpMiniMap() {

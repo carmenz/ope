@@ -222,5 +222,42 @@
         </FillInTheBlanks>
       </IslandA>
     </User>
+    <User>
+      <Username>iop</Username>
+      <Password>TtyhiRRtgLNosCXuS6kysg==</Password>
+      <CurrentPosX>830</CurrentPosX>
+      <CurrentPosY>-30</CurrentPosY>
+      <CurrentIsland>B</CurrentIsland>
+      <TotalScore>60</TotalScore>
+      <IslandA>
+        <WordGames>
+          <Game>
+            <Index>1</Index>
+            <Word1>T</Word1>
+            <Word2>F</Word2>
+            <Word3>T</Word3>
+            <Word4>F</Word4>
+            <Word5>T</Word5>
+            <Word6>F</Word6>
+            <Word7>T</Word7>
+            <Word8>F</Word8>
+            <Score>120</Score>
+          </Game>
+        </WordGames>
+        <Stories>
+          <Story>
+            <Index>1</Index>
+          </Story>
+        </Stories>
+      </IslandA>
+    </User>
+    <User>
+      <Username>ggg</Username>
+      <Password>X0lMUVZ39WErIv5/PnyM2Q==</Password>
+      <CurrentPosX>-1300</CurrentPosX>
+      <CurrentPosY>-200</CurrentPosY>
+      <CurrentIsland>A</CurrentIsland>
+      <TotalScore>0</TotalScore>
+    </User>
   </Users>
 </UserCollection>
