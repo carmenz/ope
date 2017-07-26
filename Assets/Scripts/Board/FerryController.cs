@@ -61,7 +61,6 @@ public class FerryController : MonoBehaviour {
 	public void GetTicket() {
 		var total = _playerController.GetTotalScore();
 		if (total >= TICKET_PRICE) {
-			_playerController.AddTotalScore(-TICKET_PRICE);
 			popup.SetActive(true);
 		} else {
 			Debug.Log("points not enough");
@@ -70,6 +69,7 @@ public class FerryController : MonoBehaviour {
 
 	public void Comfirmed() {
 		CloseTicketsPanel();
+		_playerController.AddTotalScore(-TICKET_PRICE);
 		var ferry = GameObject.Find("Ferry");
 		// move character to the ferry
 		player.transform.DOMove(new Vector3(-479.2394f, 48f, 0f), ANIM_DURATION).OnComplete(() => {
