@@ -165,5 +165,21 @@
       <CurrentIsland>A</CurrentIsland>
       <TotalScore>0</TotalScore>
     </User>
+    <User>
+      <Username>345</Username>
+      <Password>k8LafLvKerZfuW0e14vtWg==</Password>
+      <CurrentPosX>-1106.407</CurrentPosX>
+      <CurrentPosY>-165.4921</CurrentPosY>
+      <CurrentIsland>A</CurrentIsland>
+      <TotalScore>0</TotalScore>
+    </User>
+    <User>
+      <Username>456</Username>
+      <Password>fQiVBriwPzpyDgN/EmxArg==</Password>
+      <CurrentPosX>-839.573</CurrentPosX>
+      <CurrentPosY>287.3133</CurrentPosY>
+      <CurrentIsland>A</CurrentIsland>
+      <TotalScore>0</TotalScore>
+    </User>
   </Users>
 </UserCollection>
