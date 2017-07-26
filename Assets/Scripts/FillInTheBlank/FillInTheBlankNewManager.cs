@@ -138,7 +138,6 @@ public class FillInTheBlankNewManager : MonoBehaviour {
 
 	public void RenderScorePanel() {
 		//yield return new WaitForSeconds (2);
-		print("hehehehehhehe");
 		AudioSource audio = GameObject.Find("AudioComplete").GetComponent<AudioSource>();
 		audio.Play();
 
@@ -188,7 +187,7 @@ public class FillInTheBlankNewManager : MonoBehaviour {
 		// animation of +10
 		var y = ten.transform.localPosition.y;
 		ten.SetActive(true);
-		ten.transform.DOLocalMoveY(-180, 2f);
+		ten.transform.DOLocalMoveY(y+70, 2f, false);
 		ten.GetComponent<Text> ().DOFade (0, 2f).OnComplete (() => {
 			ten.SetActive (false);
 			ten.transform.DOLocalMoveY (y, 0f);

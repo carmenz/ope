@@ -4,8 +4,8 @@
     <User>
       <Username>1</Username>
       <Password>fn5g+xrZS7Ud7B8EBFfuxg==</Password>
-      <CurrentPosX>907.9248</CurrentPosX>
-      <CurrentPosY>167.9706</CurrentPosY>
+      <CurrentPosX>848.128</CurrentPosX>
+      <CurrentPosY>90.23331</CurrentPosY>
       <CurrentIsland>B</CurrentIsland>
       <TotalScore>1441</TotalScore>
       <IslandB>
@@ -326,6 +326,22 @@
             <Score>0</Score>
           </Game>
         </WordGames>
+      </IslandA>
+    </User>
+    <User>
+      <Username>909090</Username>
+      <Password>QYtWCvhtHVNxiR1LWPU9PA==</Password>
+      <CurrentPosX>-821.0424</CurrentPosX>
+      <CurrentPosY>260.2133</CurrentPosY>
+      <CurrentIsland>A</CurrentIsland>
+      <TotalScore>20</TotalScore>
+      <IslandA>
+        <FillInTheBlanks>
+          <FIB>
+            <Index>1</Index>
+            <Score>20</Score>
+          </FIB>
+        </FillInTheBlanks>
       </IslandA>
     </User>
   </Users>
