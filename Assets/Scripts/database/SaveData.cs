@@ -125,14 +125,12 @@ public class SaveData : MonoBehaviour {
 							//load player position
 							SceneManager.LoadScene ("Main");
 							GameManager gm = GameObject.Find ("GameManager").GetComponent<GameManager> ();
-							//gm.CurrentPosition = xmlReader.ReadElementContentAsInt ();
-							print ("heheheheheehe");
 							gm.Username = current.data.username;
 
-						} 
-					} else {
-						GameObject.Find ("InfoBox").GetComponent<Text> ().text = "Username and Password does not match, please try again.";
-					}
+						} else {
+							GameObject.Find ("InfoBox").GetComponent<Text> ().text = "Username and Password does not match, please try again.";
+						}
+					} 
 				}
 			}
 			stream.Close ();
