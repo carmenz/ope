@@ -176,6 +176,8 @@ public class WordGameManager : MonoBehaviour {
 		} else {
 			// user got the incorrect answer
 			UpdateCrosses ();
+			AudioSource audio = GameObject.Find("AudioIncorrect").GetComponent<AudioSource>();
+			audio.Play();
 			StartCoroutine(FadeResultInAndOut(0.6f,"Incorrect"));
 		}
 	}
