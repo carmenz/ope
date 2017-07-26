@@ -41,16 +41,27 @@ public class Option : MonoBehaviour {
 			fibm.RenderInfo(_info);
 			fibm.AddScore ();
 			StartCoroutine(fibm.ReadInfo());
+			AudioSource audio = GameObject.Find("AudioCorrect").GetComponent<AudioSource>();
+			audio.Play();
+
 		} else {
 			fibm.Chance--;
 			// check chance if chance - 1 > 0
 			if (fibm.Chance > 0) {
 				// alert first wrong
 				fibm.RenderInfo("Ooh, that's incorrect. Try again!");
+
+				AudioSource audio = GameObject.Find("AudioIncorrect1").GetComponent<AudioSource>();
+				audio.Play();
+
 				// disable this button
 				gameObject.SetActive(false);
 			} else {
 				// alert correct answer
+
+				AudioSource audio = GameObject.Find("AudioIncorrect2").GetComponent<AudioSource>();
+				audio.Play();
+
 				fibm.RenderAnswerIntoGameView(_correctValue, _isCorrect);
 				fibm.RenderInfo(_info);
 				StartCoroutine(fibm.ReadInfo());
