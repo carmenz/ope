@@ -195,6 +195,10 @@ public class NewPlayer : MonoBehaviour {
 		SaveCoordinate();
 
 		extraClickPanel.SetActive(true);
+		extraClickPanel.transform
+			.Find("bg")
+			.Find("Icons")
+			.Find(_type).gameObject.SetActive(true);
 	}
 
 	public void LoadMiniGames() {
