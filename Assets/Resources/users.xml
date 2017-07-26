@@ -286,5 +286,35 @@
         </Stories>
       </IslandA>
     </User>
+    <User>
+      <Username>1232</Username>
+      <Password>ax6f5CYILU6YsHSKcHi1Gw==</Password>
+      <CurrentPosX>-1658.513</CurrentPosX>
+      <CurrentPosY>-110.6157</CurrentPosY>
+      <CurrentIsland>A</CurrentIsland>
+      <TotalScore>60</TotalScore>
+      <IslandA>
+        <FillInTheBlanks>
+          <FIB>
+            <Index>1</Index>
+            <Score>20</Score>
+          </FIB>
+        </FillInTheBlanks>
+        <Stories>
+          <Story>
+            <Index>1</Index>
+          </Story>
+        </Stories>
+        <WordGames>
+          <Game>
+            <Index>1</Index>
+            <Word1>F</Word1>
+            <Word2>F</Word2>
+            <Word3>F</Word3>
+            <Score>0</Score>
+          </Game>
+        </WordGames>
+      </IslandA>
+    </User>
   </Users>
 </UserCollection>
