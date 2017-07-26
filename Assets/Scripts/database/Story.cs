@@ -56,11 +56,13 @@ public class Story : MonoBehaviour {
 			if (usernameNode.InnerText == gm.Username) {
 				XmlNode storyNode = xmlUserDoc.SelectSingleNode (".//Story");
 
-				XmlNode newStoryNode = xmlUserDoc.CreateNode (XmlNodeType.Element, "Story", null);
-
-				newStoryNode.InnerText = gm.typeCode.ToString();
-
-				storyNode.InsertAfter (newStoryNode, storyNode);
+				if (storyNode.SelectNodes (".//Index").Count < 1) {
+					// append new index node only if the story is new
+					// we currently have 1 story per island
+					XmlNode newIndexNode = xmlUserDoc.CreateNode (XmlNodeType.Element, "Index", null);
+					newIndexNode.InnerText = gm.Index.ToString();
+					storyNode.InsertAfter (newIndexNode, storyNode);
+				}
 			}
 			xmlUserDoc.Save (userpath);
 		} else {

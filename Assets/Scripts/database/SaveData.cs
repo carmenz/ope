@@ -29,24 +29,15 @@ public class SaveData : MonoBehaviour {
 	private static TextAsset textAsset;
 
 	public static void Save(string path, GameManager current) {
-
-		print ("saveData Save");
-//		OnBeforeSave ();
 		SaveUser(path, current);
 	}
 
 	public static void Load(string path, GameManager current) {
-
-		print ("saveData Load");
-		//		OnBeforeSave ();
 		LoadUser(path, current);
 	}
 
 
 	public static void Update(string path, GameManager current) {
-
-		print ("saveData Update");
-		//		OnBeforeSave ();
 		UpdateUser(path, current);
 	}
 		
@@ -62,7 +53,6 @@ public class SaveData : MonoBehaviour {
 			var dox = new XmlDocument ();
 				dox.Load (path);
 
-			print ("pathhhhh");
 			FileStream stream = new FileStream (path, FileMode.Open);
 			XmlTextReader xmlReader = new XmlTextReader (stream);
 
@@ -73,7 +63,7 @@ public class SaveData : MonoBehaviour {
 					if (xmlReader.ReadElementContentAsString ().Equals (current.data.username)) {
 						userNotExist = false;
 						//TODO: put the info into info box
-						GameObject.Find("InfoBox").GetComponent<Text>().text = "username already exist, please load saved game!!!!";
+						GameObject.Find("InfoBox").GetComponent<Text>().text = "Username already exist, please load saved game.";
 					}
 				}
 			}
@@ -83,22 +73,27 @@ public class SaveData : MonoBehaviour {
 		// create a user element if user does not exist
 		if (userNotExist) {
 
-			XDocument doc = XDocument.Load (path);
+			// validations
+			if (current.data.username == "" || current.data.password == "") {
+				GameObject.Find ("InfoBox").GetComponent<Text> ().text = "Username and Passworkd cannot be empty.";
+			} else {
+				XDocument doc = XDocument.Load (path);
 
-			XElement user = new XElement ("User");
-			user.Add (new XElement ("Username", current.data.username));
-			user.Add (new XElement ("Password", current.data.password));
-			user.Add (new XElement ("CurrentPosX", current.data.currentPosX));
-			user.Add (new XElement ("CurrentPosY", current.data.currentPosY));
-			user.Add (new XElement ("CurrentIsland", current.data.currentIsland));
-			user.Add (new XElement ("TotalScore", current.data.totalScore));
+				XElement user = new XElement ("User");
+				user.Add (new XElement ("Username", current.data.username));
+				user.Add (new XElement ("Password", current.data.password));
+				user.Add (new XElement ("CurrentPosX", current.data.currentPosX));
+				user.Add (new XElement ("CurrentPosY", current.data.currentPosY));
+				user.Add (new XElement ("CurrentIsland", current.data.currentIsland));
+				user.Add (new XElement ("TotalScore", current.data.totalScore));
 
-			doc.Root.Element ("Users").Add (user);
-			doc.Save (path);
+				doc.Root.Element ("Users").Add (user);
+				doc.Save (path);
 
-			SceneManager.LoadScene ("Main");
-			GameManager gm = GameObject.Find ("GameManager").GetComponent<GameManager> ();
-			gm.Username = current.data.username;
+				SceneManager.LoadScene ("Main");
+				GameManager gm = GameObject.Find ("GameManager").GetComponent<GameManager> ();
+				gm.Username = current.data.username;
+			}
 		} 
 	}
 		
@@ -118,7 +113,6 @@ public class SaveData : MonoBehaviour {
 			// read file, check if user exist
 			while (xmlReader.Read ()) {
 				if (xmlReader.Name == "Username") {
-					
 					// user exists
 					if (xmlReader.ReadElementContentAsString ().Equals (current.data.username)) {
 						xmlReader.ReadToNextSibling ("Password");
@@ -131,14 +125,13 @@ public class SaveData : MonoBehaviour {
 							//load player position
 							SceneManager.LoadScene ("Main");
 							GameManager gm = GameObject.Find ("GameManager").GetComponent<GameManager> ();
-							//gm.CurrentPosition = xmlReader.ReadElementContentAsInt ();
 							gm.Username = current.data.username;
 
 						} else {
-							GameObject.Find("InfoBox").GetComponent<Text>().text = "Username and Password does not match, please try again";
+							GameObject.Find ("InfoBox").GetComponent<Text> ().text = "Username and Password does not match, please try again.";
 						}
-					}
-				} 
+					} 
+				}
 			}
 			stream.Close ();
 		}
@@ -181,37 +174,4 @@ public class SaveData : MonoBehaviour {
 			stream.Close ();
 		}
 	}
-
-
-
-
-
-
-
-
-
-
-
-	//	private static UserContainer LoadUsers(string path) {
-	//		
-	//		XmlSerializer serializer = new XmlSerializer (typeof(UserContainer));
-	//
-	//		FileStream stream = new FileStream (path, FileMode.Open);
-	//		UserContainer users = serializer.Deserialize (stream) as UserContainer;
-	//
-	//		stream.Close();
-	//		return users;
-	//	}
-
-	//	private static void SaveUsers(string path, UserContainer users) {
-	//
-	//
-	//		XmlSerializer serializer = new XmlSerializer (typeof(UserContainer));
-	//		// tell program to open file in the path, if there's anything in it, append it 
-	//		FileStream stream = new FileStream (path, FileMode.Append);
-	//		serializer.Serialize(stream, users);
-	//		print ("SaveData SaveUsers");
-	//
-	//		stream.Close ();
-	//	}
 }
