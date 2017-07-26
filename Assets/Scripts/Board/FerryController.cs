@@ -15,9 +15,12 @@ public class FerryController : MonoBehaviour {
 	[SerializeField]
 	GameObject ticketsPanel;
 	[SerializeField]
+	GameObject unClickableTicketsPanel;
+	[SerializeField]
 	Camera playerCamera;
 	[SerializeField]
 	List<GameObject> uis;
+	GameManager gm;
 
 	float ZOOM_OUT_ANGLE = 100f;
 	float ZOOM_IN_ANGLE = 59f;
@@ -32,6 +35,7 @@ public class FerryController : MonoBehaviour {
 		_animator = gameObject.GetComponent<Animator>();
 		_animator.SetBool("move", _curValue);
 		_playerController = player.GetComponent<NewPlayer>();
+		gm = GameObject.Find("GameManager").GetComponent<GameManager>();
 	}
 	
 	public void Toggle() {
@@ -47,7 +51,11 @@ public class FerryController : MonoBehaviour {
 		AudioSource audio = GameObject.Find("AudioFerry").GetComponent<AudioSource>();
 		audio.Play();
 		score.GetComponent<Text>().text = _playerController.GetTotalScore().ToString();
-		ticketsPanel.SetActive(true);
+		if (gm.currentIsland == "A") {
+			ticketsPanel.SetActive(true);
+		} else {
+			unClickableTicketsPanel.SetActive(true);
+		}
 	}
 
 	public void GetTicket() {

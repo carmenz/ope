@@ -21,6 +21,8 @@ public class NewPlayer : MonoBehaviour {
 	GameObject ferry;
 	[SerializeField]
 	GameObject tutorial;
+	[SerializeField]
+	GameObject extraClickPanel;
 
 	private Vector2 moveTowardPosition = Vector2.zero;
     private Vector2 moveStartPosition = Vector2.zero;
@@ -36,6 +38,7 @@ public class NewPlayer : MonoBehaviour {
 
 	bool _isRuning = false;
 	bool _canBeTriggered = true;
+	string _type;
 
 	GameManager gm;
 	GameObject MissionToggle;
@@ -185,23 +188,28 @@ public class NewPlayer : MonoBehaviour {
 			ferry.GetComponent<FerryController>().OpenTicketsPanel();
 			return;
 		}
-		var type = sc.type;
+
+		_type = sc.type;
 		gm.typeCode = sc.index;
 		gm.Index = sc.index;
 		SaveCoordinate();
 
-		if (type == "FillInTheBlank") {
+		extraClickPanel.SetActive(true);
+	}
+
+	public void LoadMiniGames() {
+		if (_type == "FillInTheBlank") {
 			fillInTheBlank.GetData ();
-		} else if (type == "WordGame") {
+		} else if (_type == "WordGame") {
 			wordGame.GetData ();
-		} else if (type == "Story") {
+		} else if (_type == "Story") {
 			story.GetData ();
-		} else if (type == "Quiz") {
+		} else if (_type == "Quiz") {
 			quiz.GetData ();
 		}
 
-		SceneManager.LoadScene(type);
-
+		extraClickPanel.SetActive(false);
+		SceneManager.LoadScene(_type);
 	}
 
 	void OnTriggerExit2D(Collider2D collider) {
