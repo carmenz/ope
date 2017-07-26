@@ -316,5 +316,63 @@
         </WordGames>
       </IslandA>
     </User>
+    <User>
+      <Username>cvb</Username>
+      <Password>em536y43tw7cyIfwbMmbxw==</Password>
+      <CurrentPosX>-841.3247</CurrentPosX>
+      <CurrentPosY>-254.8829</CurrentPosY>
+      <CurrentIsland>A</CurrentIsland>
+      <TotalScore>30</TotalScore>
+      <IslandA>
+        <Stories>
+          <Story>
+            <Index>1</Index>
+          </Story>
+        </Stories>
+      </IslandA>
+    </User>
+    <User>
+      <Username>3453</Username>
+      <Password>NNKWzPf6ffuT48ODpTAhAA==</Password>
+      <CurrentPosX>834.0301</CurrentPosX>
+      <CurrentPosY>92.87706</CurrentPosY>
+      <CurrentIsland>B</CurrentIsland>
+      <TotalScore>140</TotalScore>
+      <IslandB>
+        <FillInTheBlanks>
+          <FIB>
+            <Index>1</Index>
+          </FIB>
+        </FillInTheBlanks>
+      </IslandB>
+      <IslandA>
+        <WordGames>
+          <Game>
+            <Index>1</Index>
+            <Word1>T</Word1>
+            <Word2>F</Word2>
+            <Word3>T</Word3>
+            <Word4>F</Word4>
+            <Word5>T</Word5>
+            <Word6>F</Word6>
+            <Word7>T</Word7>
+            <Word8>F</Word8>
+            <Score>120</Score>
+          </Game>
+          <Game>
+            <Index>2</Index>
+            <Word1>T</Word1>
+            <Word2>F</Word2>
+            <Word3>T</Word3>
+            <Word4>F</Word4>
+            <Word5>T</Word5>
+            <Word6>F</Word6>
+            <Word7>T</Word7>
+            <Word8>F</Word8>
+            <Score>120</Score>
+          </Game>
+        </WordGames>
+      </IslandA>
+    </User>
   </Users>
 </UserCollection>
