@@ -52,7 +52,6 @@ public class VideoController : MonoBehaviour {
 
 		TimeSpan totalTime = TimeSpan.FromSeconds((float)vPlayer.clip.length);
 		clipLength.text = string.Format("{0:D2}:{1:D2}", totalTime.Minutes, totalTime.Seconds);
-		//clipLength.text = tempTotalLength.ToString("0.0");
 
 		Text playedLength = GameObject.Find("PlayedLength").GetComponent<Text>();
 		TimeSpan playTime = TimeSpan.FromSeconds((float)vPlayer.time);
@@ -69,7 +68,6 @@ public class VideoController : MonoBehaviour {
 	}
 
 	void EndReached(VideoPlayer vPlayer) {
-		// SceneManager.LoadScene(mainSceneName);
 		panel.SetActive(true);
     } 
 
