@@ -138,6 +138,7 @@ public class FillInTheBlankNewManager : MonoBehaviour {
 
 	public void RenderScorePanel() {
 		//yield return new WaitForSeconds (2);
+		print("hehehehehhehe");
 		AudioSource audio = GameObject.Find("AudioComplete").GetComponent<AudioSource>();
 		audio.Play();
 
