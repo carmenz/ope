@@ -143,8 +143,9 @@ public class NewPlayer : MonoBehaviour {
 			missionsPanel.transform.Find("Footer").GetComponent<Text>().text = (200-tts).ToString() + " Left";
 		}
 
-		// show or hide the mission panel
-		missionsPanel.SetActive(tts > 0 ? false : true);
+		// hide the mission panel
+		missionsPanel.SetActive(false);
+		// show the tutorial
 		tutorial.SetActive(tts > 0 ? false : true);
 	}
 
