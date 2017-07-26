@@ -4,25 +4,22 @@
     <User>
       <Username>1</Username>
       <Password>fn5g+xrZS7Ud7B8EBFfuxg==</Password>
-      <CurrentPosX>1019.782</CurrentPosX>
-      <CurrentPosY>134.148</CurrentPosY>
+      <CurrentPosX>1376.8</CurrentPosX>
+      <CurrentPosY>-48.02129</CurrentPosY>
       <CurrentIsland>B</CurrentIsland>
-      <TotalScore>511</TotalScore>
+      <TotalScore>1321</TotalScore>
       <IslandB>
-        <Stories>
-          <Story>
-            <Index>1</Index>
-            <Story>1</Story>
-            <Story>1</Story>
-            <Story>1</Story>
-          </Story>
-        </Stories>
         <FillInTheBlanks>
           <FIB>
             <Index>1</Index>
             <Score>50</Score>
           </FIB>
         </FillInTheBlanks>
+        <Stories>
+          <Story>
+            <Index>1</Index>
+          </Story>
+        </Stories>
       </IslandB>
     </User>
     <User>
@@ -273,6 +270,21 @@
       <CurrentPosY>-200</CurrentPosY>
       <CurrentIsland>A</CurrentIsland>
       <TotalScore>0</TotalScore>
+    </User>
+    <User>
+      <Username>123213213</Username>
+      <Password>GKBj9+l9tIjsUVdZQ4eZqQ==</Password>
+      <CurrentPosX>-812.8313</CurrentPosX>
+      <CurrentPosY>-262.0885</CurrentPosY>
+      <CurrentIsland>A</CurrentIsland>
+      <TotalScore>60</TotalScore>
+      <IslandA>
+        <Stories>
+          <Story>
+            <Index>1</Index>
+          </Story>
+        </Stories>
+      </IslandA>
     </User>
   </Users>
 </UserCollection>
