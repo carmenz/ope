@@ -93,5 +93,13 @@
       <CurrentIsland>A</CurrentIsland>
       <TotalScore>0</TotalScore>
     </User>
+    <User>
+      <Username>123</Username>
+      <Password>srwfzn5PzJQ9Gzx8a0HFgA==</Password>
+      <CurrentPosX>-1300</CurrentPosX>
+      <CurrentPosY>-200</CurrentPosY>
+      <CurrentIsland>A</CurrentIsland>
+      <TotalScore>0</TotalScore>
+    </User>
   </Users>
 </UserCollection>
