@@ -75,7 +75,7 @@ public class SaveData : MonoBehaviour {
 
 			// validations
 			if (current.data.username == "" || current.data.password == "") {
-				GameObject.Find ("InfoBox").GetComponent<Text> ().text = "Username and Passworkd cannot be empty.";
+				GameObject.Find ("InfoBox").GetComponent<Text> ().text = "Username and Password cannot be empty.";
 			} else {
 				XDocument doc = XDocument.Load (path);
 
