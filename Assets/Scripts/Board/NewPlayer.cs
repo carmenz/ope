@@ -371,6 +371,12 @@ public class NewPlayer : MonoBehaviour {
 			audioA.Play();
 		} else if (island == "B") {
 			audioB.Play();
+			UnlockIslandB();
 		}
+
+	}
+
+	public void UnlockIslandB() {
+		GameObject.Find("Locks").transform.Find("B").gameObject.SetActive(false);
 	}
 }
