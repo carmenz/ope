@@ -118,9 +118,9 @@ public class HistoryCheck : MonoBehaviour {
 		Text islandName = GameObject.Find ("IslandName").GetComponent<Text> ();
 		GameManager gm = GameObject.Find ("GameManager").GetComponent<GameManager> ();
 		if (gm.currentIsland == "A") {
-			islandName.text = "Positive Play";
+			islandName.text = "Positive Play Island";
 		} else if (gm.currentIsland == "B") {
-			islandName.text = "Informed Decisions";
+			islandName.text = "Island Of Informed Decisions";
 		} else if (gm.currentIsland == "C") {
 			islandName.text = "island C";
 		} else if (gm.currentIsland == "D") {
