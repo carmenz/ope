@@ -36,8 +36,10 @@ public class FillInTheBlankManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+
 		// Load data
 		gm = GameObject.Find("GameManager").GetComponent<GameManager>();
+		HistoryCheck.DisplayIslandName ();
 		userpath = System.IO.Path.Combine (Application.dataPath, "Resources/users.xml");
 		
 		xmlFillInTheBlankDoc = new XmlDocument ();

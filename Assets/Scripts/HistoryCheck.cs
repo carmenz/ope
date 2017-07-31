@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
+using UnityEngine.UI;
 using System.Xml;
 
 public class HistoryCheck : MonoBehaviour {
@@ -111,6 +112,21 @@ public class HistoryCheck : MonoBehaviour {
 			xmlMiniChallengeSingular.AppendChild (xmlIndex);
 			miniChallengeTypeNode.InsertAfter (xmlMiniChallengeSingular, miniChallengeTypeNode.LastChild);
 		}
+	}
+
+	public static void DisplayIslandName() {
+		Text islandName = GameObject.Find ("IslandName").GetComponent<Text> ();
+		GameManager gm = GameObject.Find ("GameManager").GetComponent<GameManager> ();
+		if (gm.currentIsland == "A") {
+			islandName.text = "Positive Play";
+		} else if (gm.currentIsland == "B") {
+			islandName.text = "Informed Decisions";
+		} else if (gm.currentIsland == "C") {
+			islandName.text = "island C";
+		} else if (gm.currentIsland == "D") {
+			islandName.text = "island D";
+		}
+
 	}
 }
 
