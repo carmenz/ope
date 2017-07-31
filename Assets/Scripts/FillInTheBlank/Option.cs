@@ -8,7 +8,7 @@ using DG.Tweening;
 
 public class Option : MonoBehaviour {
 
-	private FillInTheBlankNewManager fibm;
+	private FillInTheBlankManager fibm;
 
 	[SerializeField]
 	int optionIndex;
@@ -18,7 +18,7 @@ public class Option : MonoBehaviour {
 	string _correctValue;
 
 	void Start() {
-		fibm = GameObject.Find("FillInTheBlankManager").GetComponent<FillInTheBlankNewManager>();
+		fibm = GameObject.Find("FillInTheBlankManager").GetComponent<FillInTheBlankManager>();
 	}
 
 	public void Init(string value, string info, bool isCorrect, string correctValue) {

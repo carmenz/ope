@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 
 public class FillInTheBlank : MonoBehaviour {
@@ -34,8 +35,10 @@ public class FillInTheBlank : MonoBehaviour {
 
 		}
 
+
 		gm.Path = path;
 		HistoryCheck.FirstTimeCheck (path, island, "FillInTheBlanks", "FIB");
+
 	}
 }
 

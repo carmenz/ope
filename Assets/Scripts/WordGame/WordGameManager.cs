@@ -34,7 +34,8 @@ public class WordGameManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		
+
+		HistoryCheck.DisplayIslandName ();
 		for (int i = 1; i <= NUM_OF_OPTIONS; i++) {
 			options.Add(GameObject.Find ("Option" + i.ToString()).GetComponent<WordGameOption> ());
 			options [i-1].Init (i);
