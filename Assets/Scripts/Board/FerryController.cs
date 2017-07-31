@@ -97,6 +97,7 @@ public class FerryController : MonoBehaviour {
 						_playerController.SetUpMissionList();
 						_playerController.SaveCoordinate();
 						_playerController.PlayBGM();
+						GameObject.Find("ShowMissions").GetComponent<DOTweenAnimation>().DOPlay();
 					});
 				});
 		});
