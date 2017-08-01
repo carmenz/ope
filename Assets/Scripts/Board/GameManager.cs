@@ -17,9 +17,6 @@ public class GameManager : MonoBehaviour {
 	[SerializeField]
 	public List<Mission> missionListA = new List<Mission>();
 	public List<Mission> missionListB = new List<Mission>();
-	//Find a story about Positive Play and help complete the blanks
-	//Seek out Positive Play behaviors that is located near the 2 buildings
-	//Head southbound and witness a story about Positive Play
 	[SerializeField]
 	public int score;
 	public string currentIsland;

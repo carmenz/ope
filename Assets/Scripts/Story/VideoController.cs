@@ -22,8 +22,8 @@ public class VideoController : MonoBehaviour {
 	void Awake () {
 		vPlayer = gameObject.GetComponent<VideoPlayer>();
 
-		//videoToPlay = GetVideo ();
-		//vPlayer.clip = GetVideo();
+		// videoToPlay = GetVideo ();
+		// vPlayer.clip = GetVideo();
 		slider = GameObject.Find("Slider");
 	}
 	
