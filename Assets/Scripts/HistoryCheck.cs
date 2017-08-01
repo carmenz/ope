@@ -120,7 +120,7 @@ public class HistoryCheck : MonoBehaviour {
 		if (gm.currentIsland == "A") {
 			islandName.text = "Positive Play Island";
 		} else if (gm.currentIsland == "B") {
-			islandName.text = "Island Of Informed Decisions";
+			islandName.text = "Island of Informed Decisions";
 		} else if (gm.currentIsland == "C") {
 			islandName.text = "island C";
 		} else if (gm.currentIsland == "D") {
