@@ -16,6 +16,9 @@ public class VideoController : MonoBehaviour {
 	private static string userpath = string.Empty;
 
 	private VideoClip videoToPlay;
+	
+	public AudioSource audioA;
+	public AudioSource audioB;
 
 	GameObject slider;
 
@@ -81,8 +84,10 @@ public class VideoController : MonoBehaviour {
 
 		String island = usernameNode.ParentNode.SelectSingleNode (".//CurrentIsland").InnerText;
 		if (island == "A") {
+			vPlayer.SetTargetAudioSource(0, audioA);
 			return Resources.Load("Videos/video1") as VideoClip;
 		} else if (island == "B") {
+			vPlayer.SetTargetAudioSource(0, audioB);
 			return Resources.Load ("Videos/video2") as VideoClip;
 		}
 
