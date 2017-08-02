@@ -62,6 +62,7 @@ public class VideoController : MonoBehaviour {
 
 	void EndReached(VideoPlayer vPlayer) {
 		panel.SetActive(true);
+		GameObject.Find("AudioComplete").GetComponent<AudioSource>().Play();
     } 
 
 	public void Replay() {
