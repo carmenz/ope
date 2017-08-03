@@ -21,6 +21,7 @@ public class VideoController : MonoBehaviour {
 	public AudioSource audioB;
 
 	GameObject slider;
+	bool _reachEnd = false;
 
 	void Awake () {
 		vPlayer = gameObject.GetComponent<VideoPlayer>();
@@ -33,7 +34,7 @@ public class VideoController : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		vPlayer.clip = GetVideo();
-		vPlayer.loopPointReached += EndReached;
+		// vPlayer.loopPointReached += EndReached;
         vPlayer.Play();
 
 		gm.updateDBTotalScore(currentScore);
@@ -58,14 +59,21 @@ public class VideoController : MonoBehaviour {
 			result = float.MinValue;
 		}
 		slider.GetComponent<Slider>().value = result;
+
+		// For windows bug
+		if (clipLength.text == playedLength.text && !_reachEnd) {
+			_reachEnd = true;
+			AddScore();
+		}
 	}
 
-	void EndReached(VideoPlayer vPlayer) {
-		panel.SetActive(true);
+	void AddScore() {
 		GameObject.Find("AudioComplete").GetComponent<AudioSource>().Play();
+		panel.SetActive(true);
     } 
 
 	public void Replay() {
+		_reachEnd = false;
 		panel.SetActive(false);
 		vPlayer.Play();
 	}
