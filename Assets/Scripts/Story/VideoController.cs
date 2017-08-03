@@ -25,16 +25,12 @@ public class VideoController : MonoBehaviour {
 
 	void Awake () {
 		vPlayer = gameObject.GetComponent<VideoPlayer>();
-
-		// videoToPlay = GetVideo ();
-		// vPlayer.clip = GetVideo();
 		slider = GameObject.Find("Slider");
 	}
 	
 	// Use this for initialization
 	void Start () {
 		vPlayer.clip = GetVideo();
-		// vPlayer.loopPointReached += EndReached;
         vPlayer.Play();
 
 		gm.updateDBTotalScore(currentScore);
@@ -61,6 +57,9 @@ public class VideoController : MonoBehaviour {
 		slider.GetComponent<Slider>().value = result;
 
 		// For windows bug
+		if (clipLength.text != playedLength.text) {
+			_reachEnd = false;
+		}
 		if (clipLength.text == playedLength.text && !_reachEnd) {
 			_reachEnd = true;
 			AddScore();
@@ -73,9 +72,11 @@ public class VideoController : MonoBehaviour {
     } 
 
 	public void Replay() {
-		_reachEnd = false;
 		panel.SetActive(false);
+		vPlayer.clip = GetVideo();
+		vPlayer.frame = 0;
 		vPlayer.Play();
+		GameObject.Find("PlayedLength").GetComponent<Text>().text = "";
 	}
 
 	VideoClip GetVideo() {
