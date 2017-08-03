@@ -167,6 +167,11 @@ public class WordGameManager : MonoBehaviour {
 			AudioSource audio = GameObject.Find("AudioCorrect").GetComponent<AudioSource>();
 			audio.Play();
 
+			if (crossCount != 0) {
+				AudioSource audioBS = GameObject.Find("AudioBreakStrike").GetComponent<AudioSource>();
+				audioBS.Play();
+			}
+
 			StartCoroutine(FadeResultInAndOut(0.6f,"Correct"));
 			UpdateCurrentScore ();
 
